@@ -73,6 +73,8 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, ForeignKey('users.id'), primary_key=True)
     date = db.Column(db.DateTime, nullable=False)
     # schedule = db.Column(db.String(100), nullable=False)
+    specialist = db.Column(db.String(100), nullable=False)
+    observation = db.Column(db.String(100), nullable=False)
     
     def serialize(self):
         return {
@@ -99,7 +101,6 @@ class Service(db.Model):
     description = db.Column(db.String(100), nullable=False, unique=True)
     price = db.Column(db.Integer, nullable=False) 
     image = db.Column(db.String(100), nullable=False)
-    stripe_id = db.Column(db.String(100), nullable=False, unique=True)
 
     def serialize(self):
         return {
@@ -129,7 +130,7 @@ class Specialist(db.Model):
     description = db.Column(db.String(100), nullable=False, unique=True)
     image = db.Column(db.String(100), nullable=False, unique=True)
     contact = db.Column(db.String(100), nullable=False, unique=True)
-    disponibility = db.Column(db.String(100), nullable=False)
+    # disponibility = db.Column(db.String(100), nullable=False)
 
     def serialize(self):
         return {
@@ -138,7 +139,6 @@ class Specialist(db.Model):
             'description': self.description,
             'image': self.image,
             'contact': self.contact,
-            'disponibility': self.disponibility,
         }
 
     def save(self):
@@ -155,10 +155,8 @@ class Specialist(db.Model):
 class Payment(db.Model):
     __tablename__ = 'Payments'
     id = db.Column(db.Integer, ForeignKey('Invoices.id'), primary_key=True)
-    amount = db.Column(db.Integer, nullable=False, unique=True)
-    date_of_purchase = db.Column(db.String(100), nullable=False)
     payment_method = db.Column(db.String(100), nullable=False, unique=True)
-    stripe_id = db.Column(db.String(100), nullable=False)
+    # stripe_id = db.Column(db.String(100), nullable=False)
 
     def serialize(self):
         return {
@@ -185,6 +183,9 @@ class Invoices(db.Model):
     __tablename__ = 'Invoices'
     id = db.Column(db.Integer, ForeignKey('Appointment.id'), primary_key=True)
     user_id = db.Column(db.Integer, ForeignKey('User.id'), primary_key=True)
+    stripe_id = db.Column(db.String(100), nullable=False, unique=True)
+    amount = db.Column(db.Integer, nullable=False, unique=True)
+    date_of_purchase = db.Column(db.String(100), nullable=False)
 
     def serialize(self):
         return {
