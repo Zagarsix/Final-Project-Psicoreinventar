@@ -17,7 +17,7 @@ const Header = ({
             <p className="my-4">{description}</p>
             <button className="btn btn-primary">{btnLabel}</button>
           </div>
-          <div className="main-image">
+          <div className="main-image w-50">
             <img src={img} className="img-fluid w-100" alt={imgLabel} />
           </div>
         </div>

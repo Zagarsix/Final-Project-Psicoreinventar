@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import Header from "../components/Header";
 import Card from "../components/Card";
 import SpecialistCard from "../components/SpecialistCard";
+import LeftHeader from "../components/LeftHeader";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -20,7 +21,7 @@ const Home = () => {
         imgLabel="Doctor"
       />
       <h2 className="fw-bold text-center">Cómo funciona</h2>
-      <section className="card-section bg-warning">
+      <section className="card-section bg-primary">
         <div className="container">
           <div className="row">
             <div className="col-md-10 offset-md-1 py-3">
@@ -54,6 +55,14 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Left Header */}
+      <LeftHeader
+        img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6261a30dc74af77c2d5d2e9c_ilust-woman-waving-cropped-p-500.png"
+        title="Cientos de clientes viven"
+        title_highlight="más felices"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id illum dignissimos eos non quibusdam cupiditate, omnis nesciunt officia molestiae corrupti odio sint sit doloremque incidunt soluta, et nemo harum. Facere!"
+      />
 
       <div className="text-center mt-5">
         <h1>Hello, home here!!!</h1>
