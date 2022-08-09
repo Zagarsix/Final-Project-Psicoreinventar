@@ -16,7 +16,7 @@ const Home = () => {
         Molestias atque itaque illo enim quidem at ad voluptatibus,
         nesciunt quia alias optio debitis quam suscipit, quod animi
         delectus veritatis! Saepe, maxime."
-        btnLabel="Agenda una cita"
+        btnLabel="Agendar cita"
         img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6255ce36e7efb7be217ba6c3_woman-laptop-couch.png"
         imgLabel="Doctor"
       />
