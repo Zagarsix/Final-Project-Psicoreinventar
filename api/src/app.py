@@ -22,30 +22,35 @@ CORS(app)
 
 app.register_blueprint(account, url_prefix='/api')
 
-  id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False, unique=True)
-    phone = db.Column(db.Integer, nullable=False, unique=True)
-    name = db.Column(db.String(100), nullable=False)
-    lastname = db.Column(db.Integer, nullable=False)
-    address= db.Column(db.String(100), nullable=False)
-    is_active = db.Column(db.Boolean(), default=True)
-    role = db.Column(db.String(100), nullable=False)
-    appointment = db.Column(db.String(100), nullable=False)
+    # id = db.Column(db.Integer, primary_key=True)
+    # email = db.Column(db.String(100), unique=True, nullable=False)
+    # password = db.Column(db.String(100), nullable=False, unique=True)
+    # phone = db.Column(db.Integer, nullable=False, unique=True)
+    # name = db.Column(db.String(100), nullable=False)
+    # lastname = db.Column(db.Integer, nullable=False)
+    # address= db.Column(db.String(100), nullable=False)
+    # is_active = db.Column(db.Boolean(), default=True)
+    # role = db.Column(db.String(100), nullable=False)
+    # appointment = db.Column(db.String(100), nullable=False)
 
 @app.route('/')
-def home():
+def main():
     return jsonify({ "msg": "Welcome to OdontoStethical"}), 200
 
 @app.route('/api/login', methods=['POST'])
 def login():
+    
+    avatar = request.form['avatar']
+    username = request.form['username']
+    password = request.form['password']
+    is_active = request.form['is_active']
+    login = request.form['login']
 
-    return jsonify(user.serialize()), 201
+    return jsonify(login.serialize()), 201
 
 @app.route('/api/register', methods=['POST'])
 def register():
     
-    username = request.form['username']
     email = request.form['email']
     password = request.form['password']
     phone = request.form['phone']
@@ -54,10 +59,9 @@ def register():
     address = request.form['address']
 
     
-    if not response: jsonify({ "msg": "error al subir imagen " })
+    # if not response: jsonify({ "msg": "error al subir imagen " })
     
     user = User()
-    user.username = username
     user.password = generate_password_hash(password)
     user.is_active = True if is_active == 'true' else False
     user.avatar = response["secure_url"]
@@ -72,7 +76,6 @@ def register():
 @app.route('/api/profile', methods=['GET'])
 def get_profile():
 
-    username = request.form['username']
     name = request.form['name']
     lastname = request.form['lastname']
     is_active = request.form['is_active']
@@ -80,7 +83,7 @@ def get_profile():
 
 @app.route('/api/profile', methods=['PUT'])
 def update_profile():
-    username = request.form['username']
+
     name = request.form['name']
     lastname = request.form['lastname']
     is_active = request.form['is_active']
@@ -90,13 +93,23 @@ def update_profile():
     phone = request.form['phone']
     address = request.form['address']
 
-@app.route('/api/users', methods=['GET'])
-def list_users():
+@app.route('/api/users', methods=['GET','POST'])
+def list_and_create_users():
 
-    users = User.query.all()
-    users = list(map(lambda user: user.serialize(), users))
+    if request.method == 'GET':  
+        users = User.query.all()
+        users = list(map(lambda user: user.serialize(), user))
     
-    return jsonify(users), 200
+    if request.method =="POST":
+
+        password = request.json.get('password')
+        email = request.json.get('email')
+
+        user = User()
+        user.email= email
+        user.password = generate_password_hash(password)
+
+    return jsonify(user.serialize()), 201
 
 ######### code between this lines #########
 if __name__ == '__main__':
