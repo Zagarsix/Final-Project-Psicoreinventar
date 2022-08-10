@@ -14,7 +14,12 @@ const Header = ({
             {title} <span className="text-primary">{title_highlight}</span>
           </h1>
           <p className="mt-2 mb-3">{description}</p>
-          <button className="btn btn-primary btn-md">{btnLabel}</button>
+          <button
+            className="btn btn-primary btn-md appointment-btn"
+            style={{ padding: ".5em 2em" }}
+          >
+            {btnLabel}
+          </button>
         </div>
         <div className="col-md-6 text-center">
           <img
