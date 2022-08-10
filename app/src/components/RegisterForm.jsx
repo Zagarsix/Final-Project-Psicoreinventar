@@ -1,9 +1,13 @@
 import "../styles/RegisterForm.css";
+import "../styles/Appointment.css";
 
 const RegisterForm = (props) => {
   return (
     <>
-      <div className="card register-form-container py-4 mx-auto">
+      <div
+        className="card appointment-step-container py-4 mx-auto"
+        style={{ minHeight: "505px", borderRadius: "5px" }}
+      >
         <div className="container d-flex justify-content-md-center align-items-center mb-3">
           <div className="col-md-6">
             <div className="step-num-container d-flex align-items-center">

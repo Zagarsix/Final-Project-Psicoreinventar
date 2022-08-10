@@ -7,13 +7,13 @@ const Appointment = () => {
   return (
     <>
       <div className="bg-primary">
-        {/* <div className="appointment-container d-flex justify-content-center mx-auto p-3">
-      
-        </div> */}
-        <div className="">
+        <div
+          className="appointment-container py-4"
+          style={{ minHeight: "505px" }}
+        >
           <StepWizard>
-            <RegisterForm />
             <Services />
+            <RegisterForm />
           </StepWizard>
         </div>
       </div>
