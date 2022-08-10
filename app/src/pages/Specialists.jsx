@@ -4,26 +4,25 @@ import Card from "../components/Card";
 const Specialists = () => {
   return (
     <>
-      <div className="specialists-section w-100 h-100 p-3 mb-5">
+      <main className="main-section w-100 h-100 p-3 mb-5">
+        <Header
+          title="Specialists"
+          title_highlight="Page"
+          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Molestias atque itaque illo enim quidem at ad voluptatibus,
+        nesciunt quia alias optio debitis quam suscipit, quod animi
+        delectus veritatis! Saepe, maxime."
+          btnLabel="Agendar cita"
+          img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62825881dce5c040e3fda9b9_woman-using-tablet.png"
+          imgLabel="Doctor"
+        />
         <div className="container">
-          <div className="row justify-content-center align-items-center">
-            <Header
-              title="Specialists"
-              title_highlight="Page"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, vero. Nobis veniam tempora, aliquid, ut tempore vel asperiores eum sint nam, fugiat amet odit a cumque voluptate consequuntur ex magni."
-              btnLabel="Agendar cita"
-              img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62825881dce5c040e3fda9b9_woman-using-tablet.png"
-              imgLabel="Person"
-            />
-            <div className="container">
-              <h4>Especialistas disponibles</h4>
-              <p className="fw-semibold lead text-secondary">
-                Mostrando <span className="text-primary">10</span> resultados
-              </p>
-            </div>
-          </div>
+          <h4>Especialistas disponibles</h4>
+          <p className="fw-semibold lead text-secondary">
+            Mostrando <span className="text-primary">10</span> resultados
+          </p>
         </div>
-      </div>
+      </main>
       <section className="card-section bg-primary">
         <div className="container">
           <div className="row">
