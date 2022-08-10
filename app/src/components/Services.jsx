@@ -7,7 +7,7 @@ const Services = (props) => {
         <div className="container">
           <div className="row">
             <div className="col-md-10 offset-md-1 py-3">
-              <div className="row align-items-center justify-content-between gy-4">
+              <div className="row align-items-center justify-content-between gy-3">
                 <div className="col-md-6 col-lg-4">
                   <ServiceCard
                     img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"

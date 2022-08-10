@@ -3,18 +3,22 @@ import "../styles/RegisterForm.css";
 const RegisterForm = (props) => {
   return (
     <>
-      <div className="card register-form-container py-4">
-        <div className="container d-flex align-items-center mb-3">
-          <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
-            2
-          </span>
-          <h5 className="fw-semibold">Register</h5>
+      <div className="card register-form-container py-4 mx-auto">
+        <div className="container d-flex justify-content-md-center align-items-center mb-3">
+          <div className="col-md-6">
+            <div className="step-num-container d-flex align-items-center">
+              <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
+                2
+              </span>
+              <h5 className="fw-semibold">Register</h5>
+            </div>
+          </div>
         </div>
         <div className="register-form">
           <div className="container">
             <form action="" id="form">
-              <div className="row">
-                <div className="col-md-6">
+              <div className="row justify-content-center">
+                <div className="col-md-3">
                   <label htmlFor="inputName" className="form-label">
                     Nombre
                   </label>
@@ -25,7 +29,7 @@ const RegisterForm = (props) => {
                     id="inputName"
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-3">
                   <label htmlFor="inputLastName" className="form-label">
                     Apellido
                   </label>
@@ -37,8 +41,8 @@ const RegisterForm = (props) => {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-12">
+              <div className="row justify-content-center">
+                <div className="col-md-6">
                   <label htmlFor="inputEmail" className="form-label">
                     Email
                   </label>
@@ -50,8 +54,8 @@ const RegisterForm = (props) => {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-12">
+              <div className="row justify-content-center">
+                <div className="col-md-6">
                   <label htmlFor="inputPassword" className="form-label">
                     Contraseña
                   </label>
@@ -64,8 +68,8 @@ const RegisterForm = (props) => {
                   />
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-12">
+              <div className="row justify-content-center">
+                <div className="col-md-6">
                   <label htmlFor="inputPhone" className="form-label">
                     Phone
                   </label>
@@ -79,122 +83,26 @@ const RegisterForm = (props) => {
               </div>
             </form>
           </div>
-        </div>
-      </div>
-
-      {/* <div className="register-form p-3">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 p-5">
-              <form className="m-5">
-                <div className="row mb-3">
-                  <label
-                    htmlFor="inputEmail"
-                    className="col-sm-3 col-form-label"
-                  >
-                    Email
-                  </label>
-                  <div className="col-sm-12">
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="email"
-                      name="email"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label
-                    htmlFor="inputPassword"
-                    className="col-sm-3 col-form-label"
-                  >
-                    Password
-                  </label>
-                  <div className="col-sm-12">
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="password"
-                      name="password"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label
-                    htmlFor="inputname"
-                    className="col-sm-3 col-form-label"
-                  >
-                    Name
-                  </label>
-                  <div className="col-sm-12">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="name"
-                      name="name"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label
-                    htmlFor="inputLastName"
-                    className="col-sm-3 col-form-label"
-                  >
-                    Last Name
-                  </label>
-                  <div className="col-sm-12">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="last_name"
-                      name="last_name"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label
-                    htmlFor="inputPhone"
-                    className="col-sm-3 col-form-label"
-                  >
-                    Phone
-                  </label>
-                  <div className="col-sm-12">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="phone"
-                      name="phone"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label
-                    htmlFor="inputAddress"
-                    className="col-sm-3 col-form-label"
-                  >
-                    Address
-                  </label>
-                  <div className="col-sm-12">
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="address"
-                      name="address"
-                    />
-                  </div>
-                </div>
-                <div className="d-flex">
-                  <button type="submit" className="btn btn-primary w-100">
-                    Sign Up
-                  </button>
-                </div>
-              </form>
+          <div className="container d-flex justify-content-md-center align-items-center mb-3">
+            <div className="col-md-6">
+              <button
+                className="btn btn-secondary me-3"
+                onClick={props.previousStep}
+                style={{ width: "5.5rem" }}
+              >
+                Previous
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={props.nextStep}
+                style={{ width: "5.5rem" }}
+              >
+                Next
+              </button>
             </div>
           </div>
-          <button onClick={props.previousStep}>Previous</button>
-          <button onClick={props.nextStep}>Next</button>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

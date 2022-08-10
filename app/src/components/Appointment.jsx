@@ -7,7 +7,10 @@ const Appointment = () => {
   return (
     <>
       <div className="bg-primary">
-        <div className="appointment-container d-flex justify-content-center mx-auto p-3">
+        {/* <div className="appointment-container d-flex justify-content-center mx-auto p-3">
+      
+        </div> */}
+        <div className="">
           <StepWizard>
             <RegisterForm />
             <Services />

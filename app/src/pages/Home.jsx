@@ -25,7 +25,7 @@ const Home = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-10 offset-md-1 py-3">
-              <div className="row justify-content-between">
+              <div className="row justify-content-between gy-3">
                 <div className="col-md-6 col-lg-4">
                   <Card
                     img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558a4ebfab0b487ff53146_steps-icon1.svg"
