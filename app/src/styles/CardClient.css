@@ -1,0 +1,19 @@
+#cardImg{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    object-fit: cover;
+}
+#cardId{
+    border-color:blue;
+    border-radius: 15px;
+    margin: 10px;
+    
+}
+#cardBodyId{
+    font-size: 13px;
+    max-width: 100%;
+    
+}
