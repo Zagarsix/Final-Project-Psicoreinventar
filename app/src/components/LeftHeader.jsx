@@ -12,11 +12,11 @@ const LeftHeader = ({ img, imgLabel, title, title_highlight, description }) => {
                 style={{ maxWidth: "90%" }}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 gy-3">
               <h1 className="fw-bold">
                 {title} <span className="text-primary">{title_highlight}</span>
               </h1>
-              <p className="my-4">{description}</p>
+              <p className="my-2">{description}</p>
             </div>
           </div>
         </div>

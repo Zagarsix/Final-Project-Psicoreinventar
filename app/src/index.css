@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.appointment-btn {
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .appointment-btn {
+    margin-bottom: 0;
+  }
+}

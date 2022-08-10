@@ -10,17 +10,20 @@ const Home = () => {
   const { store, actions } = useContext(Context);
   return (
     <>
-      <Header
-        title="Project"
-        title_highlight="Incoming"
-        description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+      <main className="main-section w-100 h-100 p-3 mb-5">
+        <Header
+          title="Project"
+          title_highlight="Incoming"
+          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         Molestias atque itaque illo enim quidem at ad voluptatibus,
         nesciunt quia alias optio debitis quam suscipit, quod animi
         delectus veritatis! Saepe, maxime."
-        btnLabel="Agendar cita"
-        img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6255ce36e7efb7be217ba6c3_woman-laptop-couch.png"
-        imgLabel="Doctor"
-      />
+          btnLabel="Agendar cita"
+          img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6255ce36e7efb7be217ba6c3_woman-laptop-couch.png"
+          imgLabel="Doctor"
+        />
+      </main>
+
       <h2 className="fw-bold text-center">Cómo funciona</h2>
       <section className="card-section bg-primary">
         <div className="container">

@@ -1,0 +1,9 @@
+.specialists-available {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 75rem) {
+  .specialists-available {
+    margin-top: 0;
+  }
+}

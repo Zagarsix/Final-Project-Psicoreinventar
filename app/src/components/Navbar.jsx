@@ -35,7 +35,7 @@ const Navbar = () => {
                         : "nav-link fw-semibold link-gray me-2"
                     }
                     aria-current="page"
-                    to="/"
+                    to="/hey"
                   >
                     Cómo funciona
                   </NavLink>
