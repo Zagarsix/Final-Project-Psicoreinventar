@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import RegisterForm from "./components/RegisterForm";
 import Services from "./components/Services";
+import Appointment from "./components/Appointment";
 
 const Layout = () => {
   return (
@@ -18,6 +19,7 @@ const Layout = () => {
         {/* WIZARD COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/appointment" element={<Appointment />} />
       </Routes>
     </BrowserRouter>
   );

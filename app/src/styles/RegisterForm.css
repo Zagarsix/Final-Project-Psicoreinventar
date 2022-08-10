@@ -1,0 +1,13 @@
+input {
+  margin-bottom: 1rem;
+}
+
+.register-form-container {
+  max-width: 31.25rem;
+}
+
+.step-num {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+}

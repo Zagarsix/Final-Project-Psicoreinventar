@@ -35,6 +35,8 @@ const Services = (props) => {
               </div>
             </div>
           </div>
+          <button onClick={props.previousStep}>Previous</button>
+          <button onClick={props.nextStep}>Next</button>
         </div>
       </section>
     </>

@@ -1,9 +1,90 @@
+import "../styles/RegisterForm.css";
+
 const RegisterForm = (props) => {
   return (
     <>
-      <div className="register-form p-3">
+      <div className="card register-form-container py-4">
+        <div className="container d-flex align-items-center mb-3">
+          <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
+            2
+          </span>
+          <h5 className="fw-semibold">Register</h5>
+        </div>
+        <div className="register-form">
+          <div className="container">
+            <form action="" id="form">
+              <div className="row">
+                <div className="col-md-6">
+                  <label htmlFor="inputName" className="form-label">
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    className="form-control"
+                    id="inputName"
+                  />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="inputLastName" className="form-label">
+                    Apellido
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    className="form-control"
+                    id="inputLastName"
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <label htmlFor="inputEmail" className="form-label">
+                    Email
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="johndoe@gmail.com"
+                    className="form-control"
+                    id="inputEmail"
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <label htmlFor="inputPassword" className="form-label">
+                    Contraseña
+                  </label>
+                  <input
+                    // type="text"
+                    type="password"
+                    placeholder="Password"
+                    className="form-control"
+                    id="inputPassword"
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <label htmlFor="inputPhone" className="form-label">
+                    Phone
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Phone Number"
+                    className="form-control"
+                    id="inputPhone"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="register-form p-3">
         <div className="container">
-          <div className="row justify-content-center">
+          <div className="row">
             <div className="col-md-6 p-5">
               <form className="m-5">
                 <div className="row mb-3">
@@ -110,8 +191,10 @@ const RegisterForm = (props) => {
               </form>
             </div>
           </div>
+          <button onClick={props.previousStep}>Previous</button>
+          <button onClick={props.nextStep}>Next</button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
