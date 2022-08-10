@@ -1,0 +1,9 @@
+.appointment-step-container {
+  max-width: 72.5rem;
+}
+
+.step-num {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
