@@ -3,7 +3,7 @@ import "../styles/CardClient.css";
 
 const CardClient =({img, imgLabel, clientsName, clientsAge, review})=>{
     return(
-        <div class="card w-75" id="cardId">
+        <div class="card w-75 shadow" id="cardId">
         <div class="row">
             <div class="col-md-4">
             <img src={img}
