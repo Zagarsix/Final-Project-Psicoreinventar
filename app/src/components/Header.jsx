@@ -1,5 +1,3 @@
-import "../styles/Header.css";
-
 const Header = ({
   title,
   title_highlight,
