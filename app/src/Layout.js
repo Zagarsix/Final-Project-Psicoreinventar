@@ -4,6 +4,7 @@ import Specialists from "./pages/Specialists";
 import injectContext from "./store/appContext";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
 
 const Layout = () => {
   return (
@@ -13,6 +14,7 @@ const Layout = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/specialists" element={<Specialists />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
