@@ -21,8 +21,14 @@ def register():
     user.password = generate_password_hash(password)
     user.phone = phone
     
-    for roles_id in roles:
-        role = Role.query.get(roles_id)
+    # if the user pass a role, then assign that role to the user
+    if(roles):
+        for roles_id in roles:
+            role = Role.query.get(roles_id)
+            user.roles.append(role)
+    # is this ok??? if the user does not specified a role, then assign it by default the 3 role (client)
+    else:
+        role = Role.query.get(3)
         user.roles.append(role)
 
     user.save()

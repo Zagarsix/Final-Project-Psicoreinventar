@@ -3,7 +3,7 @@ db = SQLAlchemy()
 
 class Role(db.Model):
     __tablename__ = 'roles'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, default=3)
     name = db.Column(db.String(50), unique=True, nullable=False)
     is_active = db.Column(db.Boolean(), default=True)
 
