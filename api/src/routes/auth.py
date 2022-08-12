@@ -14,6 +14,18 @@ def register():
     phone = request.json.get('phone')
     roles = request.json.get('roles')
 
+    # check if all inputs are filled
+    if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
+    if not lastname: return jsonify({'status': 'failed', 'message': 'Last Name is required', 'data': None}), 400
+    if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
+    if not password: return jsonify({'status': 'failed', 'message': 'Password is required', 'data': None}), 400
+    if not phone: return jsonify({'status': 'failed', 'message': 'Phone is required', 'data': None}), 400
+
+    # check if user already exist
+    userFound = User.query.filter_by(email = email).first()
+    if userFound: return jsonify({'status': 'failed', 'message': 'User already exists', 'data': None}), 400
+
+    # if user doesn't exist, create one
     user = User()
     user.name = name
     user.lastname = lastname
@@ -31,7 +43,19 @@ def register():
         role = Role.query.get(3)
         user.roles.append(role)
 
+    # save the user
     user.save()
 
 
-    return jsonify(user.serialize()), 200
+    # if register succeded
+    if user: return jsonify({'status': 'success', 'message': 'Registered successfully, please login', 'data': None}), 200
+    else: return jsonify({'status': 'failed', 'message': 'Error in register, please try again', 'data': None}), 200
+
+@auth.route('/login', methods=['POST'])
+def login():
+    email = request.json.get('email')
+    password = request.json.get('password')
+
+    if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
+    if not password: return jsonify({'status': 'failed', 'message': 'Password is required', 'data': None}), 400
+    
