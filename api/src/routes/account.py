@@ -13,3 +13,50 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+# Get current user profile
+@account.route('/profile', methods=['GET'])
+@jwt_required()
+def get_profile():
+    id = get_jwt_identity()
+    user = User.query.get(id)
+    data = {
+        'user': user.serialize()
+    }
+    return jsonify({'status': 'success', 'message': 'Login successfully', 'data': data}), 200
+
+# Update current user profile
+@account.route('/update_profile', methods=['PUT'])
+@jwt_required()
+def update_profile():
+    id = get_jwt_identity()
+    user = User.query.get(id)
+
+    name = request.json.get('name')
+    lastname = request.json.get('lastname')
+    email = request.json.get('email')
+    password = request.json.get('password')
+    phone = request.json.get('phone')
+
+    if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
+
+    # update profile
+
+    # check if user already exist
+    userFound = User.query.filter_by(email = email).first()
+    # if user found and its id is different from the current user id
+    if userFound and userFound.id != id: return jsonify({'status': 'failed', 'message': 'Email already exists', 'data': None}), 400
+
+    # if user sends password
+    if password:
+        user.password = generate_password_hash(password)
+
+    user.name = name
+    user.lastname = lastname
+    user.email = email
+    user.phone = phone
+
+    data = {
+        'user': user.serialize()
+    }
+    return jsonify({'status': 'success', 'message': 'Profile Updated', 'data': data}), 200
