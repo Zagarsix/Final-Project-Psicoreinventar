@@ -13,8 +13,8 @@ const Home = () => {
     <>
       <main className="main-section w-100 h-100 p-3 mb-5">
         <Header
-          title="Project"
-          title_highlight="Incoming"
+          title="La salud mental"
+          title_highlight="es importante"
           description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         Molestias atque itaque illo enim quidem at ad voluptatibus,
         nesciunt quia alias optio debitis quam suscipit, quod animi
