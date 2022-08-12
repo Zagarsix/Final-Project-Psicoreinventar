@@ -14,6 +14,8 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+# CLIENTS ROUTES
+
 # Get current user profile
 @account.route('/profile', methods=['GET'])
 @jwt_required()
@@ -60,3 +62,10 @@ def update_profile():
         'user': user.serialize()
     }
     return jsonify({'status': 'success', 'message': 'Profile Updated', 'data': data}), 200
+
+
+# ADMIN ROUTES
+
+@account.route("/get_users", methods=["GET"])
+def get_users():
+    return jsonify([user.serialize() for user in User.query.all()]), 200

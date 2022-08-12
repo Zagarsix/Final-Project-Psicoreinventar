@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -67,7 +67,7 @@ def login():
     if not check_password_hash(userExists.password, password): 
         return jsonify({'status': 'failed', 'message': 'Email/Password are incorrects', 'data': None}), 401
 
-    # expire date of access token
+    # expire date of access token 2 days
     expires = datetime.timedelta(days=1)
 
     # create access token    
