@@ -66,6 +66,16 @@ def update_profile():
 
 # ADMIN ROUTES
 
-@account.route("/get_users", methods=["GET"])
+# Get all users registrated
+@account.route("/users", methods=["GET"])
 def get_users():
-    return jsonify([user.serialize() for user in User.query.all()]), 200
+    users = User.query.all()
+    users = list(map(lambda user: user.serialize(), users))
+    return jsonify(users), 200
+    
+# Get all clients
+# @account.route('/clients', methods=['GET'])
+# def get_clients():
+#     users = User.query.filter(User.roles == 3).all()
+#     users = list(map(lambda user: user.serialize(), users))
+#     return jsonify(users), 200

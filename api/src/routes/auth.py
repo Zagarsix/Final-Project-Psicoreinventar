@@ -67,8 +67,8 @@ def login():
     if not check_password_hash(userExists.password, password): 
         return jsonify({'status': 'failed', 'message': 'Email/Password are incorrects', 'data': None}), 401
 
-    # expire date of access token 2 days
-    expires = datetime.timedelta(days=1)
+    # expire date of access token 3 days
+    expires = datetime.timedelta(days=3)
 
     # create access token    
     acces_token = create_access_token(identity = userExists.id, expires_delta= expires)
