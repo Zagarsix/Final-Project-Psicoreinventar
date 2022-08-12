@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -59,3 +60,22 @@ def login():
     if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
     if not password: return jsonify({'status': 'failed', 'message': 'Password is required', 'data': None}), 400
     
+    userExists = User.query.filter_by(email = email).first()
+    # check if user does not exist
+    if not userExists: return jsonify({'status': 'failed', 'message': 'Email/Password are incorrects', 'data': None}), 401
+    # validate password, if the password of the user is different from the password being passed
+    if not check_password_hash(userExists.password, password): 
+        return jsonify({'status': 'failed', 'message': 'Email/Password are incorrects', 'data': None}), 401
+
+    # expire date of access token
+    expires = datetime.timedelta(days=1)
+
+    # create access token    
+    acces_token = create_access_token(identity = userExists.id, expires_delta= expires)
+
+    data = {
+        'access_token': acces_token,
+        'user': userExists.serialize()
+    }
+
+    return jsonify({ "status": "success", "message": "Login successfully", "data": data }), 200
