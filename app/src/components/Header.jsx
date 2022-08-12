@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = ({
   title,
   title_highlight,
@@ -14,12 +16,13 @@ const Header = ({
             {title} <span className="text-primary">{title_highlight}</span>
           </h1>
           <p className="mt-2 mb-3">{description}</p>
-          <button
+          <Link
             className="btn btn-primary btn-md appointment-btn"
             style={{ padding: ".5em 2em" }}
+            to="/appointment"
           >
             {btnLabel}
-          </button>
+          </Link>
         </div>
         <div className="col-md-6 text-center">
           <img

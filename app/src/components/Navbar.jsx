@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../styles/Navbar.css";
 import Logo from "../img/nav-logo4.jpg";
 
@@ -54,9 +54,13 @@ const Navbar = () => {
                 </li>
               </ul>
               <form className="d-flex">
-                <button className="btn btn-outline-primary" type="button">
-                  Search
-                </button>
+                <Link
+                  className="btn btn-primary btn-md appointment-btn"
+                  style={{ padding: ".5em 2em" }}
+                  to="/appointment"
+                >
+                  Agendar cita
+                </Link>
               </form>
             </div>
           </div>
