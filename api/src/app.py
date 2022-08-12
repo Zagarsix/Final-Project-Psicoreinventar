@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from models import db
+from routes.auth import auth
 from routes.account import account
 
 app = Flask(__name__)
@@ -20,6 +21,7 @@ CORS(app)
 
 ######### code between this lines #########
 
+app.register_blueprint(auth, url_prefix='/api')
 app.register_blueprint(account, url_prefix='/api')
 
     # id = db.Column(db.Integer, primary_key=True)
@@ -110,6 +112,7 @@ def list_and_create_users():
         user.password = generate_password_hash(password)
 
     return jsonify(user.serialize()), 201
+
 
 ######### code between this lines #########
 if __name__ == '__main__':
