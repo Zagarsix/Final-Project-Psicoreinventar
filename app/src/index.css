@@ -21,3 +21,8 @@ code {
     margin-bottom: 0;
   }
 }
+
+#citasRow{
+  margin-top: 100px;
+  background-color: cadetblue;
+}
