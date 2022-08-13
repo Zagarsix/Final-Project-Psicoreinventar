@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import "../styles/Navbar.css";
-import Logo from "../img/nav-logo5.jpg";
+import Logo from "../img/nav-logo-final.png";
 
 const Navbar = () => {
   return (
@@ -53,7 +53,8 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               </ul>
-              <form className="d-flex">
+
+              <div className="d-flex">
                 <Link
                   className="btn btn-primary btn-md appointment-btn"
                   style={{ padding: ".5em 2em" }}
@@ -61,7 +62,7 @@ const Navbar = () => {
                 >
                   Agendar cita
                 </Link>
-              </form>
+              </div>
             </div>
           </div>
         </nav>

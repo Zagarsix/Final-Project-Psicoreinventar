@@ -71,14 +71,20 @@ class RoleUser(db.Model):
 class Appointment(db.Model):
     __tablename__ = 'appointments'
     id = db.Column(db.Integer, primary_key=True)
+<<<<<<< HEAD
     date = db.Column(db.DateTime, nullable=False)
+=======
+>>>>>>> samuelpalacios
     # date = db.Column(db.datetime, nullable=False)
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
     doctors_id = db.Column(db.Integer, db.ForeignKey('users.id')) #
 
     # relationship with doctors (users with role 2)  and with the service being chosen
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> samuelpalacios
     def serialize(self):
         return {
             'id': self.id,
@@ -133,14 +139,20 @@ class Invoice(db.Model):
     date_of_purchase = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
     # relationship with the appointment
+<<<<<<< HEAD
 
+=======
+>>>>>>> samuelpalacios
 
     def serialize(self):
         return {
             'id': self.id,
             'date_of_purchase': self.date_of_purchase,
             'user_id': self.user_id
+<<<<<<< HEAD
 
+=======
+>>>>>>> samuelpalacios
         }
 
     def save(self):
@@ -183,6 +195,7 @@ class Payment(db.Model):
         db.session.commit()
 
 
+<<<<<<< HEAD
 # class Invoices(db.Model):  
 #     __tablename__ = 'Invoices'
 #     id = db.Column(db.Integer, ForeignKey('Appointment.id'), primary_key=True)
@@ -193,6 +206,8 @@ class Payment(db.Model):
 # =======
 
 
+=======
+>>>>>>> samuelpalacios
 # class Appointment(db.Model):
 #     __tablename__ = 'appointments'
 #     id = db.Column(db.Integer, ForeignKey('users.id'), primary_key=True)
