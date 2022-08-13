@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../styles/Navbar.css";
-import Logo from "../img/nav-logo4.jpg";
+// import Logo from "../img/nav-logo4.jpg";
+import Logo from "../img/nav-logo-final.png";
 
 const Navbar = () => {
   return (
@@ -53,11 +54,15 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               </ul>
-              <form className="d-flex">
-                <button className="btn btn-outline-primary" type="button">
-                  Search
-                </button>
-              </form>
+              <div className="d-flex">
+                <Link
+                  className="btn btn-primary btn-md appointment-btn"
+                  style={{ padding: ".5em 2em" }}
+                  to="/appointment"
+                >
+                  Agendar cita
+                </Link>
+              </div>
             </div>
           </div>
         </nav>
