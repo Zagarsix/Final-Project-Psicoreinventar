@@ -13,7 +13,7 @@ const Services = (props) => {
             <div className="col-md-6">
               <div className="step-num-container d-flex align-items-center">
                 <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
-                  1
+                  2
                 </span>
                 <h5 className="fw-semibold">Select a service</h5>
               </div>
