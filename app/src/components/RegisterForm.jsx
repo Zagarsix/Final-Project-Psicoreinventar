@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../styles/RegisterForm.css";
 import "../styles/Appointment.css";
+import { useState } from "react";
 
 const RegisterForm = (props) => {
   const {
@@ -26,6 +28,9 @@ const RegisterForm = (props) => {
       props.nextStep();
     }
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <>
       <div className="card appointment-step-container py-4 mx-auto">
@@ -66,7 +71,7 @@ const RegisterForm = (props) => {
                   />
 
                   {errors.name && (
-                    <span className="text-danger">{errors.name.message}</span>
+                    <span className="text-danger">{errors.name?.message}</span>
                   )}
                 </div>
                 <div className="col-md-3">
@@ -92,7 +97,7 @@ const RegisterForm = (props) => {
                   />
                   {errors.lastname && (
                     <span className="text-danger">
-                      {errors.lastname.message}
+                      {errors.lastname?.message}
                     </span>
                   )}
                 </div>
@@ -111,12 +116,19 @@ const RegisterForm = (props) => {
                         value: true,
                         message: "El campo es requerido",
                       },
+                      pattern: {
+                        value:
+                          // RFC 5322 regex
+                          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: "El formato no es el correcto",
+                      },
                     })}
                     className="form-control"
                     id="inputEmail"
+                    required
                   />
                   {errors.email && (
-                    <span className="text-danger">{errors.email.message}</span>
+                    <span className="text-danger">{errors.email?.message}</span>
                   )}
                 </div>
               </div>
@@ -125,29 +137,39 @@ const RegisterForm = (props) => {
                   <label htmlFor="inputPassword" className="form-label">
                     Contraseña
                   </label>
-                  <input
-                    // type="text"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    {...register("password", {
-                      required: {
-                        value: true,
-                        message: "El campo es requerido",
-                      },
-                      pattern: {
-                        value:
-                          /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
-                        message:
-                          "La contraseña debe tener al menos 8 caracteres, incluyendo al menos: 1 mayúscula, 1 número y 1 caracter especial",
-                      },
-                    })}
-                    className="form-control"
-                    id="inputPassword"
-                  />
+                  <div className="input-password position-relative">
+                    <input
+                      // type="text"
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Password"
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "El campo es requerido",
+                        },
+                        pattern: {
+                          value:
+                            /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+                          message:
+                            "La contraseña debe tener al menos 8 caracteres, incluyendo al menos: 1 mayúscula, 1 número y 1 caracter especial",
+                        },
+                      })}
+                      className="form-control"
+                      id="inputPassword"
+                    />
+                    <span
+                      className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                    </span>
+                  </div>
+
                   {errors.password && (
                     <span className="text-danger">
-                      {errors.password.message}
+                      {errors.password?.message}
                     </span>
                   )}
                 </div>
@@ -175,7 +197,7 @@ const RegisterForm = (props) => {
                     id="inputPhone"
                   />
                   {errors.phone && (
-                    <span className="text-danger">{errors.phone.message}</span>
+                    <span className="text-danger">{errors.phone?.message}</span>
                   )}
                 </div>
               </div>
