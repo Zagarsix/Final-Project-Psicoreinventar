@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Card from "../components/Card";
 import SpecialistCard from "../components/SpecialistCard";
 import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
-import { Link } from "react-router-dom";
+import ServiceCard from "../components/ServiceCard";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
   return (
     <>
+      {/* Main Header */}
       <main className="main-section w-100 h-100 p-3 mb-5">
         <Header
           title="La salud mental"
@@ -25,11 +27,12 @@ const Home = () => {
         />
       </main>
 
-      <h2 className="fw-bold text-center">Cómo funciona</h2>
+      {/* Cómo funciona Section */}
+      <h2 className="fw-bold text-center mb-3">Cómo funciona</h2>
       <section className="card-section bg-primary">
         <div className="container">
           <div className="row">
-            <div className="col-md-10 offset-md-1 py-3">
+            <div className="col-md-10 offset-md-1 py-4">
               <div className="row justify-content-between gy-3">
                 <div className="col-md-6 col-lg-4">
                   <Card
@@ -133,6 +136,43 @@ const Home = () => {
                     clientsName="Luis"
                     clientsAge="35 años"
                     review="Congue malesuada iaculis dictumst convallis pharetra augue elementum euismod felis vel viverra pellentesque rhoncus"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <h2 className="fw-bold text-center mb-3">Nuestros servicios</h2>
+      <section className="card-section bg-primary">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-10 offset-md-1 py-4">
+              <div className="row justify-content-between gy-3">
+                <div className="col-md-6 col-lg-4">
+                  <ServiceCard
+                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
+                    title="Consulta inicial"
+                    time="30 min"
+                    price="Gratis"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-4">
+                  <ServiceCard
+                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
+                    title="Consulta con servicio"
+                    time="45 min"
+                    price="35 USD"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-4">
+                  <ServiceCard
+                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
+                    title="Otra consulta"
+                    time="1 hr"
+                    price="50 USD"
                   />
                 </div>
               </div>
