@@ -8,8 +8,11 @@ const RegisterForm = (props) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: "onTouched",
+  });
 
   const onSubmit = (e) => {
     // console.log(e);
@@ -20,6 +23,7 @@ const RegisterForm = (props) => {
       errors.name ||
       errors.lastname ||
       errors.password ||
+      errors.confirmpassword ||
       errors.phone
     ) {
       console.log("Form data not filled");
@@ -30,6 +34,10 @@ const RegisterForm = (props) => {
   };
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // React hook form method
+  const password = watch("password");
 
   return (
     <>
@@ -62,11 +70,12 @@ const RegisterForm = (props) => {
                         message: "El campo es requerido",
                       },
                       pattern: {
-                        value: /^[a-zA-Z]+$/,
+                        value: /^[A-zÀ-ú]+$/,
                         message: "El formato no es el correcto",
                       },
                     })}
-                    className="form-control"
+                    // If error, then add invalid-input class
+                    className={`form-control ${errors.name && "invalid-input"}`}
                     id="inputName"
                   />
 
@@ -88,11 +97,14 @@ const RegisterForm = (props) => {
                         message: "El campo es requerido",
                       },
                       pattern: {
-                        value: /^[a-zA-Z]+$/,
+                        value: /^[A-zÀ-ú]+$/,
                         message: "El formato no es el correcto",
                       },
                     })}
-                    className="form-control"
+                    // If error, then add invalid-input class
+                    className={`form-control ${
+                      errors.lastname && "invalid-input"
+                    }`}
                     id="inputLastName"
                   />
                   {errors.lastname && (
@@ -123,9 +135,11 @@ const RegisterForm = (props) => {
                         message: "El formato no es el correcto",
                       },
                     })}
-                    className="form-control"
+                    // If error, then add invalid-input class
+                    className={`form-control ${
+                      errors.email && "invalid-input"
+                    }`}
                     id="inputEmail"
-                    required
                   />
                   {errors.email && (
                     <span className="text-danger">{errors.email?.message}</span>
@@ -142,7 +156,7 @@ const RegisterForm = (props) => {
                       // type="text"
                       type={showPassword ? "text" : "password"}
                       name="password"
-                      placeholder="Password"
+                      placeholder="Contraseña"
                       {...register("password", {
                         required: {
                           value: true,
@@ -155,7 +169,10 @@ const RegisterForm = (props) => {
                             "La contraseña debe tener al menos 8 caracteres, incluyendo al menos: 1 mayúscula, 1 número y 1 caracter especial",
                         },
                       })}
-                      className="form-control"
+                      // If error, then add invalid-input class
+                      className={`form-control ${
+                        errors.password && "invalid-input"
+                      }`}
                       id="inputPassword"
                     />
                     <span
@@ -174,6 +191,58 @@ const RegisterForm = (props) => {
                   )}
                 </div>
               </div>
+              {/* Confirm Password */}
+              <div className="row justify-content-center">
+                <div className="col-md-6">
+                  <label htmlFor="inputConfirmPassword" className="form-label">
+                    Confirmar Contraseña
+                  </label>
+                  <div className="input-password position-relative">
+                    <input
+                      // type="text"
+                      type={showConfirmPassword ? "text" : "password"}
+                      name="confirmpassword"
+                      placeholder="Contraseña"
+                      {...register("confirmpassword", {
+                        required: {
+                          value: true,
+                          message: "El campo es requerido",
+                          // Verify if confirm password has the same value of password
+                        },
+                        validate: {
+                          validate: (value) =>
+                            value === password ||
+                            "Las contraseñas no coinciden",
+                        },
+                      })}
+                      // If error, then add invalid-input class
+                      className={`form-control ${
+                        errors.confirmpassword && "invalid-input"
+                      }`}
+                      id="inputConfirmPassword"
+                    />
+                    <span
+                      className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
+                      style={{ cursor: "pointer" }}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                    >
+                      {showConfirmPassword ? (
+                        <AiFillEye />
+                      ) : (
+                        <AiFillEyeInvisible />
+                      )}
+                    </span>
+                  </div>
+
+                  {errors.confirmpassword && (
+                    <span className="text-danger">
+                      {errors.confirmpassword?.message}
+                    </span>
+                  )}
+                </div>
+              </div>
               <div className="row justify-content-center">
                 <div className="col-md-6">
                   <label htmlFor="inputPhone" className="form-label">
@@ -182,7 +251,7 @@ const RegisterForm = (props) => {
                   <input
                     type="text"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder="Número de teléfono"
                     {...register("phone", {
                       required: {
                         value: true,
