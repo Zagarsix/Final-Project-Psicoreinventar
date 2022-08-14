@@ -12,8 +12,8 @@ const Appointment = () => {
           style={{ minHeight: "505px" }}
         >
           <StepWizard>
-            <Services />
             <RegisterForm />
+            <Services />
           </StepWizard>
         </div>
       </div>
