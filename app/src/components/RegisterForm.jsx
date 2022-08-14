@@ -15,8 +15,8 @@ const RegisterForm = (props) => {
   });
 
   const onSubmit = (e) => {
-    // console.log(e);
-    console.log("hey");
+    console.log(e);
+
     // If input is not filled
     if (
       errors.email ||
