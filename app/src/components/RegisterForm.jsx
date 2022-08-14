@@ -12,7 +12,7 @@ const RegisterForm = (props) => {
   const onSubmit = (e) => {
     // console.log(e);
     console.log("hey");
-    // If input is not filled
+    // If input is not filled (only works after errors appears, so u have to press the button first)
     if (
       errors.email ||
       errors.name ||
@@ -26,6 +26,9 @@ const RegisterForm = (props) => {
       props.nextStep();
     }
   };
+  // const onSubmit = (e) => {
+  //   console.log(e);
+  // };
   return (
     <>
       <div className="card appointment-step-container py-4 mx-auto">
@@ -185,7 +188,6 @@ const RegisterForm = (props) => {
                     type="submit"
                     className="btn btn-primary"
                     style={{ width: "5.5rem" }}
-                    onClick={onSubmit}
                   >
                     Submit
                   </button>
