@@ -13,8 +13,6 @@ import Doctores from "./pages/Dashboard/Doctores";
 import Pacientes from "./pages/Dashboard/Pacientes";
 import Servicios from "./pages/Dashboard/Servicios";
 
-
-
 const Layout = () => {
   return (
     <BrowserRouter>
@@ -32,7 +30,7 @@ const Layout = () => {
         {/* WIZARD COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/services" element={<Services />} />
-
+        <Route path="/appointment" element={<Appointment />} />
       </Routes>
     </BrowserRouter>
   );
