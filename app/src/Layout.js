@@ -12,6 +12,7 @@ import Profile from "./pages/Dashboard/Profile";
 import Doctores from "./pages/Dashboard/Doctores";
 import Pacientes from "./pages/Dashboard/Pacientes";
 import Servicios from "./pages/Dashboard/Servicios";
+import Appointment from "./components/Appointment";
 
 const Layout = () => {
   return (
