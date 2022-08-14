@@ -7,11 +7,24 @@ const getState = ({ getStore, getActions, setStore }) => {
     // Define all my variables
     store: {
       apiURL: "http://127.0.0.1:5000",
+      email: "",
+      password: "",
+      name: "",
+      lastname: "",
+      phoneNumber: "",
+      errors: null,
+      currentUser: null,
       title: "Hello",
       message: null,
     },
     // Define all my functions
     actions: {
+      handleChange: (e) => {
+        const { name, value } = e.target;
+        setStore({
+          [name]: value,
+        });
+      },
       getMessage: async () => {
         const { apiURL } = getStore();
         try {
