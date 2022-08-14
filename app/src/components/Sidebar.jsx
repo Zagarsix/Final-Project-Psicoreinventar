@@ -6,8 +6,8 @@ const Sidebar = () => {
         <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <a
                 href="/"
-                className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-            >
+                className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
+                style={{color:"#8dc2fe"}}>
                 <span className="fs-5 d-none d-sm-inline">Dashboard</span>
             </a>
             <ul
@@ -16,8 +16,8 @@ const Sidebar = () => {
             >
                 <li className="nav-item">
                     <Link to="/profile" className="nav-link align-middle px-0">
-                        <i className="fa-solid fa-user" />{" "}
-                        <span className="ms-1 d-none d-sm-inline">Mi perfil</span>
+                        <i className="fa-solid fa-user" style={{color:"#8dc2fe"}}/>{" "}
+                        <span className="ms-1 d-none d-sm-inline text-white">Mi perfil</span>
                     </Link>
                 </li>
                 <li>
@@ -26,8 +26,8 @@ const Sidebar = () => {
                         data-bs-toggle="collapse"
                         className="nav-link px-0 align-middle"
                     >
-                        <i className="fa-solid fa-users" />{" "}
-                        <span className="ms-1 d-none d-sm-inline">Roles</span>{" "}
+                        <i className="fa-solid fa-users" style={{color:"#8dc2fe"}} />{" "}
+                        <span className="ms-1 d-none d-sm-inline text-white">Roles</span>{" "}
                     </a>
                     <ul
                         className="collapse show nav flex-column ms-1"
@@ -36,20 +36,20 @@ const Sidebar = () => {
                     >
                         <li>
                             <Link to="/admin" className="nav-link px-0">
-                                {" "}
-                                <span className="d-none d-sm-inline">Admin</span> {" "}
+                            <i class="fa-solid fa-crown" style={{color:"#8dc2fe"}}></i>{" "}
+                                <span className="d-none d-sm-inline text-white">Admin</span> {" "}
                             </Link>
                         </li>
                         <li className="w-100">
                             <Link to="/doctores" className="nav-link px-0">
-                                {" "}
-                                <span className="d-none d-sm-inline">Doctores</span>{" "}
+                            <i className="fa-solid fa-user-doctor" style={{color:"#8dc2fe"}}></i>{" "}
+                                <span className="d-none d-sm-inline text-white">Doctores</span>{" "}
                             </Link>
                         </li>
                         <li>
                             <Link to="/pacientes" className="nav-link px-0">
-                                {" "}
-                                <span className="d-none d-sm-inline">Pacientes</span> {" "}
+                            <i className="fa-solid fa-head-side-brain" style={{color:"#8dc2fe"}}></i> {" "}
+                                <span className="d-none d-sm-inline text-white">Pacientes</span> {" "}
                             </Link>
                         </li>
                         
@@ -57,21 +57,9 @@ const Sidebar = () => {
                 </li>
                 
                 <li>
-                    <Link to="/citas" className="nav-link px-0 align-middle">
-                        <i className="fa-solid fa-calendar-check" />{" "}
-                        <span className="ms-1 d-none d-sm-inline">Citas</span>{" "}
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/agenda" className="nav-link px-0 align-middle">
-                        <i className="fa-solid fa-calendar-days" />{" "}
-                        <span className="ms-1 d-none d-sm-inline">Agenda</span>{" "}
-                    </Link>
-                </li>
-                <li>
                     <Link to="/servicios" className="nav-link px-0 align-middle">
-                        <i className="fa-solid fa-bookmark" />{" "}
-                        <span className="ms-1 d-none d-sm-inline">Servicios</span>{" "}
+                        <i className="fa-solid fa-bookmark" style={{color:"#8dc2fe"}} />{" "}
+                        <span className="ms-1 d-none d-sm-inline text-white">Servicios</span>{" "}
                     </Link>
                 </li>
             </ul>

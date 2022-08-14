@@ -10,17 +10,22 @@ const Profile = () => {
                 </div>
                 <div className="col py-3">
                     {/* inicio contenido */}
-                    <div className="container">
+                    <div className="container"
+                    style={{backgroundColor: "#8dc2fe", fontFamily: "monospace" }}>
                         <div className="row">
-                            <div className="column">
-                                <h1>Hola nombre de perfil </h1>
+                            <div className="div">
+                                <div className="col-md-12 p-4 my-3  text-center">
+                                    <h2>Hola, <strong>Usuario Ficticio</strong> </h2>
+                                </div>
+
+                                <div className="col-md-12 p-4">
+                                    <h6> Actualizar mis datos </h6>
+                                </div>
                             </div>
 
-                            <div className="column">
-                                <h1> Actualizar mis datos </h1>
-                            </div>
-                            <form>
-                            <div className="row mb-3">
+                            <form
+                                style={{ backgroundColor: "#fcfcfc", padding:"2em"}}>
+                                <div className="row mb-3">
                                     <label htmlFor="inputEmail3" className="col-sm-1 col-form-label">
                                         Nombre
                                     </label>
@@ -44,10 +49,12 @@ const Profile = () => {
                                         <input type="password" placeholder="*******" className="form-control" id="inputPassword3" />
                                     </div>
                                 </div>
-
-                                <button type="submit" className="btn btn-primary">
-                                    Guardar Cambios
-                                </button>
+                                
+                                    <button type="submit" className="btn"
+                                    style={{backgroundColor: "#8dc2fe", float:"inline-end"}}>
+                                        Guardar Cambios
+                                    </button>
+                                
                             </form>
 
                         </div>
