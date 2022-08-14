@@ -1,10 +1,24 @@
+import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../styles/RegisterForm.css";
 import "../styles/Appointment.css";
-import { useState } from "react";
 
 const RegisterForm = (props) => {
+  // Using context
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+
+  useEffect(() => {}, []);
+
+  // If user signed in, redirect to home page
+  useEffect(() => {
+    if (store.currentUser !== null) navigate("/");
+  }, [store.currentUser]);
+
+  // React hook form
   const {
     register,
     handleSubmit,
@@ -14,9 +28,7 @@ const RegisterForm = (props) => {
     mode: "onTouched",
   });
 
-  const onSubmit = (e) => {
-    console.log(e);
-
+  const onSubmit = () => {
     // If input is not filled
     if (
       errors.email ||
@@ -31,6 +43,10 @@ const RegisterForm = (props) => {
       // If input is filled, go to the next step
       props.nextStep();
     }
+  };
+
+  const submitForm = (e) => {
+    handleSubmit();
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -54,7 +70,14 @@ const RegisterForm = (props) => {
         </div>
         <div className="register-form">
           <div className="container">
-            <form onSubmit={handleSubmit(onSubmit)} id="form">
+            {/* onSubmit={handleSubmit(onSubmit)}  */}
+            <form
+              onSubmit={(e) => {
+                handleSubmit(onSubmit)(e);
+                actions.handleRegister(e, navigate);
+              }}
+              id="form"
+            >
               <div className="row justify-content-center">
                 <div className="col-md-3">
                   <label htmlFor="inputName" className="form-label">
@@ -76,6 +99,8 @@ const RegisterForm = (props) => {
                     })}
                     // If error, then add invalid-input class
                     className={`form-control ${errors.name && "invalid-input"}`}
+                    value={store.name}
+                    onChange={actions.handleChange}
                     id="inputName"
                   />
 
@@ -105,6 +130,8 @@ const RegisterForm = (props) => {
                     className={`form-control ${
                       errors.lastname && "invalid-input"
                     }`}
+                    value={store.lastname}
+                    onChange={actions.handleChange}
                     id="inputLastName"
                   />
                   {errors.lastname && (
@@ -139,6 +166,8 @@ const RegisterForm = (props) => {
                     className={`form-control ${
                       errors.email && "invalid-input"
                     }`}
+                    value={store.email}
+                    onChange={actions.handleChange}
                     id="inputEmail"
                   />
                   {errors.email && (
@@ -173,6 +202,8 @@ const RegisterForm = (props) => {
                       className={`form-control ${
                         errors.password && "invalid-input"
                       }`}
+                      value={store.password}
+                      onChange={actions.handleChange}
                       id="inputPassword"
                     />
                     <span
@@ -263,6 +294,8 @@ const RegisterForm = (props) => {
                       },
                     })}
                     className="form-control"
+                    value={store.phone}
+                    onChange={actions.handleChange}
                     id="inputPhone"
                   />
                   {errors.phone && (
@@ -274,6 +307,7 @@ const RegisterForm = (props) => {
                 <div className="col-md-6">
                   <button
                     type="submit"
+                    // onClick={handleSubmit(onSubmit)}
                     className="btn btn-primary"
                     style={{ width: "5.5rem" }}
                   >

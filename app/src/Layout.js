@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import injectContext from "./store/appContext";
 import Home from "./pages/Home";
 import Specialists from "./pages/Specialists";
-import injectContext from "./store/appContext";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import RegisterForm from "./components/RegisterForm";
@@ -21,6 +22,7 @@ const Layout = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/appointment" element={<Appointment />} />
       </Routes>
+      {/* <ToastContainer /> */}
     </BrowserRouter>
   );
 };
