@@ -22,7 +22,7 @@ const Layout = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/appointment" element={<Appointment />} />
       </Routes>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
     </BrowserRouter>
   );
 };

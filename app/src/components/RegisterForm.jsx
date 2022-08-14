@@ -31,6 +31,10 @@ const RegisterForm = (props) => {
   const onSubmit = () => {
     // If input is not filled
     if (
+      // HOW TO MAKE IT NOT WORK IF USER ALREADY EXISTS, like
+      // if (message === "User already exists") {
+
+      // }
       errors.email ||
       errors.name ||
       errors.lastname ||
