@@ -6,7 +6,7 @@ import Specialists from "./pages/Specialists";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
+import Login from "./components/Login";
 import Services from "./components/Services";
 import Appointment from "./components/Appointment";
 
@@ -20,7 +20,7 @@ const Layout = () => {
         <Route path="/specialists" element={<Specialists />} />
         {/* WIZARD COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/services" element={<Services />} />
         <Route path="/appointment" element={<Appointment />} />
       </Routes>

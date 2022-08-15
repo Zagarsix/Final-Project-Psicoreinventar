@@ -1,5 +1,5 @@
 import RegisterForm from "./RegisterForm";
-import LoginForm from "./LoginForm";
+import Login from "./Login";
 import Services from "./Services";
 import StepWizard from "react-step-wizard";
 import "../styles/Appointment.css";
@@ -14,7 +14,7 @@ const Appointment = () => {
         >
           <StepWizard>
             <RegisterForm />
-            <LoginForm />
+            <Login />
             <Services />
           </StepWizard>
         </div>
