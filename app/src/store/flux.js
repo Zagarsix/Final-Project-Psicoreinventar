@@ -122,7 +122,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: "",
           });
 
-          navigate("/profile");
+          // navigate("/profile"); NAVIGATE TO UPDATE PROFILE
+          navigate("/specialists"); // JUST FOR TESTING, SHOULD REDIRECT TO UPDATE PROFILE
         }
       },
       loadProfile: () => {
