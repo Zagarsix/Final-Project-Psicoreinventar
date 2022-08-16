@@ -60,19 +60,18 @@ const Profile = (props) => {
         <div className="col py-3">
           {/* inicio contenido */}
           <div
-            className="container"
+            className="container p-4"
             style={{ backgroundColor: "#8dc2fe", fontFamily: "monospace" }}
           >
             <div className="row">
               <div className="div">
-                <div className="col-md-12 p-4 my-3  text-center">
+                <div className="col-sm-12 p-4 my-3  text-center">
                   <h2>
-                    Hola, <strong>Usuario Ficticio</strong>{" "}
+                    Bienvenido(a), <strong>Usuario(a) Ficticio(a)</strong>{" "}
                   </h2>
                 </div>
-<<<<<<< HEAD
 
-                <div className="col-md-12 p-4">
+                <div className="col-12 p-4">
                   <h6> Actualizar mis datos </h6>
                 </div>
               </div>
@@ -215,24 +214,6 @@ const Profile = (props) => {
                         onChange={actions.handleChange}
                         id="inputPassword"
                       />
-=======
-                <div className="col py-3">
-                    {/* inicio contenido */}
-                    <div className="container p-4"
-                        style={{ backgroundColor: "#8dc2fe", fontFamily: "monospace" }}>
-                        <div className="row">
-                            <div className="div">
-                                <div className="col-sm-12 p-4 my-3  text-center">
-                                    <h2>Bienvenido(a), <strong>Usuario(a) Ficticio(a)</strong> </h2>
-                                </div>
-                                <div className="col--12 p-4">
-                                    <h6> Actualizar mis datos </h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h6>en construcción :D</h6> 
->>>>>>> paulina
                     </div>
 
                     {errors.password && (
