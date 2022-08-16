@@ -109,9 +109,9 @@ const Sidebar = () => {
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <a className="dropdown-item" href="#">
+            <button className="dropdown-item" onClick={actions.handleLogout}>
               Salir
-            </a>
+            </button>
           </li>
         </ul>
       </div>
