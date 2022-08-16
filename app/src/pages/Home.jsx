@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 import SpecialistCard from "../components/SpecialistCard";
 import LeftHeader from "../components/LeftHeader";
-import CardClient from "../components/CardClient";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -69,77 +68,7 @@ const Home = () => {
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id illum dignissimos eos non quibusdam cupiditate, omnis nesciunt officia molestiae corrupti odio sint sit doloremque incidunt soluta, et nemo harum. Facere!"
       />
       {/*Clients review */}
-      <section>
-        <div className="container ">
-          <div className="row">
-            <div className="col-md-5 col-sm-6 col-12 d-flex flex-column justify-content-center">
-              <h1 className="fw-bold">Lo que nuestros clientes opinan</h1>
-              <p className="my-4">
-                Porta quam magna rutrum phasellus vel quisque at mauris
-                fermentum ante, morbi senectus porttitor pulvinar etiam eleifend
-                felis leo posuere.
-              </p>
-              <Link
-                className="btn btn-primary btn-md appointment-btn"
-                style={{ padding: ".5em 2em" }}
-                to="/appointment"
-              >
-                Agendar cita
-              </Link>
-            </div>
-
-            <div className="col-md-7 col-sm-6 col-12">
-              <div className="row">
-                <div className="col-md-9 ">
-                  <CardClient
-                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d509f475bbb766fc9b204_4-p-500.png"
-                    imgLabel="clientpicture"
-                    clientsName="Laura"
-                    clientsAge="27 años"
-                    review="Congue malesuada iaculis dictumst convallis pharetra augue elementum euismod felis vel viverra pellentesque rhoncus"
-                  />
-                </div>
-              </div>
-
-              <div className="row px-3">
-                <div className="col-md-10 offset-md-1 ">
-                  <CardClient
-                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d508cd3237eb424b497fc_2-p-500.png"
-                    imgLabel="clientpicture"
-                    clientsName="Mateo"
-                    clientsAge="30 años"
-                    review="Congue malesuada iaculis dictumst convallis pharetra augue elementum euismod felis vel viverra pellentesque rhoncus"
-                  />
-                </div>
-              </div>
-
-              <div className="row px-4">
-                <div className="col-md-10 offset-md-2 ">
-                  <CardClient
-                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d50e0f373ab219ce4dc84_5-p-500.png"
-                    imgLabel="clientpicture"
-                    clientsName="Vanessa"
-                    clientsAge="23 años"
-                    review="Congue malesuada iaculis dictumst convallis pharetra augue elementum euismod felis vel viverra pellentesque rhoncus"
-                  />
-                </div>
-              </div>
-
-              <div className="row ps-5">
-                <div className="col-md-9 offset-md-3 ">
-                  <CardClient
-                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d5115844b6721a99f62e6_6-p-500.png"
-                    imgLabel="clientpicture"
-                    clientsName="Luis"
-                    clientsAge="35 años"
-                    review="Congue malesuada iaculis dictumst convallis pharetra augue elementum euismod felis vel viverra pellentesque rhoncus"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       <div className="text-center mt-5">
         <h1>Hello, home here!!!</h1>

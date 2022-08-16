@@ -26,7 +26,7 @@ const Sidebar = () => {
                         data-bs-toggle="collapse"
                         className="nav-link px-0 align-middle"
                     >
-                        <i className="fa-solid fa-users" style={{color:"#8dc2fe"}} />{" "}
+                        <i className="fa-solid fa-users" style={{color:"#0d6efd"}} />{" "}
                         <span className="ms-1 d-none d-sm-inline text-white">Roles</span>{" "}
                     </a>
                     <ul
@@ -36,7 +36,7 @@ const Sidebar = () => {
                     >
                         <li>
                             <Link to="/admin" className="nav-link px-0">
-                            <i class="fa-solid fa-crown" style={{color:"#8dc2fe"}}></i>{" "}
+                            <i className="fa-solid fa-crown" style={{color:"#8dc2fe"}}></i>{" "}
                                 <span className="d-none d-sm-inline text-white">Admin</span> {" "}
                             </Link>
                         </li>
@@ -48,7 +48,7 @@ const Sidebar = () => {
                         </li>
                         <li>
                             <Link to="/pacientes" className="nav-link px-0">
-                            <i className="fa-solid fa-head-side-brain" style={{color:"#8dc2fe"}}></i> {" "}
+                            <i className="fa-solid fa-hospital-user" style={{color:"#8dc2fe"}}></i> {" "}
                                 <span className="d-none d-sm-inline text-white">Pacientes</span> {" "}
                             </Link>
                         </li>
