@@ -289,7 +289,7 @@ const RegisterForm = (props) => {
                     Phone
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="phone"
                     placeholder="Número de teléfono"
                     {...register("phone", {
