@@ -31,7 +31,7 @@ class User(db.Model):
     lastname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.String(100), nullable=False)
+    phone = db.Column(db.String(50), nullable=False)
     is_active = db.Column(db.Boolean(), default=True)
     # image = 
     roles = db.relationship('Role', secondary="roles_users")

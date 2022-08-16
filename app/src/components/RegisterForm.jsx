@@ -35,12 +35,12 @@ const RegisterForm = (props) => {
       // if (message === "User already exists") {
 
       // }
+      errors.phone ||
       errors.email ||
       errors.name ||
       errors.lastname ||
       errors.password ||
-      errors.confirmpassword ||
-      errors.phone
+      errors.confirmpassword
     ) {
       console.log("Form data not filled");
     } else {
@@ -286,26 +286,32 @@ const RegisterForm = (props) => {
               <div className="row justify-content-center">
                 <div className="col-md-6">
                   <label htmlFor="inputPhone" className="form-label">
-                    Phone
+                    Teléfono
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     name="phone"
-                    placeholder="Número de teléfono"
+                    placeholder="Teléfono"
                     {...register("phone", {
-                      valueAsNumber: true,
                       required: {
                         value: true,
                         message: "El campo es requerido",
                       },
+                      pattern: {
+                        value: /^[a-z]{8,12}$/,
+                        message: "Minimo 8 caracters, Maximo 12",
+                      },
                     })}
+                    // If error, then add invalid-input class
                     className={`form-control ${
                       errors.phone && "invalid-input"
                     }`}
                     value={store.phone}
                     onChange={actions.handleChange}
+                    pattern="^\d{8,12}$"
                     id="inputPhone"
                   />
+
                   {errors.phone && (
                     <span className="text-danger">{errors.phone?.message}</span>
                   )}
