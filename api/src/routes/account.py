@@ -57,6 +57,7 @@ def update_profile():
     user.lastname = lastname
     user.email = email
     user.phone = phone
+    user.update()
 
     data = {
         'user': user.serialize()

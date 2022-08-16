@@ -192,9 +192,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data);
 
         // Display a certain notification based on status of the fetch data
-        // if (status === "failed") {
-        //   toast.error(message);
-        // }
+        if (status === "failed") {
+          toast.error(message);
+        }
         if (status === "success") {
           Swal.fire({
             icon: "success",
