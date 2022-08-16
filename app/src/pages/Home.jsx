@@ -4,14 +4,10 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Card from "../components/Card";
-import SpecialistCard from "../components/SpecialistCard";
 import LeftHeader from "../components/LeftHeader";
-<<<<<<< HEAD
 import CardClient from "../components/CardClient";
 import ServiceCard from "../components/ServiceCard";
-=======
-import { Link } from "react-router-dom";
->>>>>>> paulina
+import SpecialistCard from "../components/SpecialistCard";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -77,7 +73,6 @@ const Home = () => {
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id illum dignissimos eos non quibusdam cupiditate, omnis nesciunt officia molestiae corrupti odio sint sit doloremque incidunt soluta, et nemo harum. Facere!"
       />
       {/*Clients review */}
-     
 
       {/* Services Section */}
       <h2 className="fw-bold text-center mb-3">Nuestros servicios</h2>
