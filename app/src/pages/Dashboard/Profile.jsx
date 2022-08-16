@@ -67,7 +67,11 @@ const Profile = (props) => {
               <div className="div">
                 <div className="col-sm-12 p-4 my-3  text-center">
                   <h2>
-                    Bienvenido(a), <strong>Usuario(a) Ficticio(a)</strong>{" "}
+                    Bienvenido(a),{" "}
+                    <strong>
+                      {store.currentUser?.user?.name}{" "}
+                      {store.currentUser?.user?.lastname}
+                    </strong>{" "}
                   </h2>
                 </div>
 
