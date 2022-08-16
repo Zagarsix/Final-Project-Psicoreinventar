@@ -1,8 +1,19 @@
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 import Logo from "../img/nav-logo-final.png";
 
 const Navbar = () => {
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+
+  useEffect(() => {}, []);
+
+  // If user is not signed in, redirect to login
+  useEffect(() => {
+    if (store.currentUser === null) navigate("/login");
+  }, [store.currentUser]);
   return (
     <>
       <div className="container">
@@ -27,31 +38,38 @@ const Navbar = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "nav-link fw-semibold link-gray me-2 active-link"
-                        : "nav-link fw-semibold link-gray me-2"
-                    }
-                    aria-current="page"
-                    to="/hey"
-                  >
-                    Cómo funciona
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "nav-link fw-semibold link-gray me-2 active-link"
-                        : "nav-link fw-semibold link-gray me-2"
-                    }
-                    to="/specialists"
-                  >
-                    Especialistas
-                  </NavLink>
-                </li>
+                {/* Conditionally Rendering links if currentUser is different of null, if user is logged don't show navbar cta, only show a dropdown with the name of the user to signout*/}
+                {!!store.currentUser ? (
+                  <></>
+                ) : (
+                  <>
+                    <li className="nav-item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                        aria-current="page"
+                        to="/hey"
+                      >
+                        Cómo funciona
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                        to="/specialists"
+                      >
+                        Especialistas
+                      </NavLink>
+                    </li>
+                  </>
+                )}
               </ul>
 
               <div className="d-flex">

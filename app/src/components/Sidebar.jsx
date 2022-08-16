@@ -1,6 +1,12 @@
+import { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {}, []);
+
   return (
     <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
       <a
@@ -91,7 +97,9 @@ const Sidebar = () => {
             height={30}
             className="rounded-circle"
           />
-          <span className="d-none d-sm-inline mx-1">Usuario</span>
+          <span className="d-none d-sm-inline mx-1">
+            {store.currentUser?.user?.name}
+          </span>
         </a>
         <ul
           className="dropdown-menu dropdown-menu-dark text-small shadow"
