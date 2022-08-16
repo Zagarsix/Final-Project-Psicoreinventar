@@ -195,6 +195,11 @@ const RegisterForm = (props) => {
                       name="password"
                       placeholder="Contraseña"
                       {...register("password", {
+                        required: {
+                          value: true,
+                          message: "El campo es requerido",
+                          // Verify if confirm password has the same value of password
+                        },
                         pattern: {
                           value:
                             /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
@@ -281,23 +286,22 @@ const RegisterForm = (props) => {
               <div className="row justify-content-center">
                 <div className="col-md-6">
                   <label htmlFor="inputPhone" className="form-label">
-                    Teléfono
+                    Phone
                   </label>
                   <input
                     type="text"
                     name="phone"
                     placeholder="Número de teléfono"
                     {...register("phone", {
+                      valueAsNumber: true,
                       required: {
                         value: true,
                         message: "El campo es requerido",
                       },
-                      pattern: {
-                        value: /^\d{8,12}$/,
-                        message: "El formato no es el correcto, 8 a 12 dígitos",
-                      },
                     })}
-                    className="form-control"
+                    className={`form-control ${
+                      errors.phone && "invalid-input"
+                    }`}
                     value={store.phone}
                     onChange={actions.handleChange}
                     id="inputPhone"
