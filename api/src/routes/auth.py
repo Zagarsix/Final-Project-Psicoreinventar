@@ -13,7 +13,8 @@ def register():
     email = request.json.get('email')
     password = request.json.get('password')
     phone = request.json.get('phone')
-    roles = request.json.get('roles')
+    # roles = request.json.get('roles')
+    role = request.json.get('role')
 
     # check if all inputs are filled
     if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
@@ -34,16 +35,25 @@ def register():
     user.password = generate_password_hash(password)
     user.phone = phone
     
-    # if the user pass a role, then assign that role to the user
-    if(roles):
-        for roles_id in roles:
-            role = Role.query.get(roles_id)
-            user.roles.append(role)
-    # is this ok??? if the user does not specified a role, then assign it by default the 3 role (client)
-    else:
-        role = Role.query.get(3)
-        user.roles.append(role)
+    #!!!!!!!!! VERSION 1!!!!!!!!!
+    # # if the user pass a role, then assign that role to the user
+    # if(roles):
+    #     for roles_id in roles:
+    #         role = Role.query.get(roles_id)
+    #         user.roles.append(role)
+    # # is this ok??? if the user does not specified a role, then assign it by default the 3 role (client)
+    # else:
+    #     role = Role.query.get(3)
+    #     user.roles.append(role)
 
+    #!!!!!!!!! NEW VERSION!!!!!!!!!
+    
+    # if user pass role (admin)
+    if(role):
+        user.role_id = role
+
+    # by default role 3
+    user.role_id = 3
     # save the user
     user.save()
 

@@ -1,18 +1,93 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
+# class Role(db.Model):
+#     __tablename__ = 'roles'
+#     id = db.Column(db.Integer, primary_key=True, default=3)
+#     name = db.Column(db.String(50), unique=True, nullable=False)
+#     is_active = db.Column(db.Boolean(), default=True)
+
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'name': self.name,
+#             'is_active': self.is_active
+#         }
+
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
+    
+#     def update(self):
+#         db.session.commit()
+
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
+# class User(db.Model):
+#     __tablename__ = 'users'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(100), nullable=False)
+#     lastname = db.Column(db.String(100), nullable=False)
+#     email = db.Column(db.String(100), unique=True, nullable=False)
+#     password = db.Column(db.String(100), nullable=False)
+#     phone = db.Column(db.String(100), nullable=False)
+#     is_active = db.Column(db.Boolean(), default=True)
+#     # image = 
+#     roles = db.relationship('Role', secondary="roles_users")
+
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'name': self.name,
+#             'lastname': self.lastname, 
+#             'email': self.email,
+#             'phone': self.phone,
+#             'is_active': self.is_active,
+#             'roles': self.get_roles()
+#         }
+
+#     def get_roles(self):
+#         return (list(map(lambda role: role.serialize(), self.roles)))
+
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
+    
+#     def update(self):
+#         db.session.commit()
+
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
+
+
+# Add association table role user
+# class RoleUser(db.Model):
+#     __tablename__ = 'roles_users'
+#     roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), primary_key=True)
+#     users_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+
+# VERSION 2
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True, default=3)
     name = db.Column(db.String(50), unique=True, nullable=False)
     is_active = db.Column(db.Boolean(), default=True)
+    users = db.relationship('User', backref="role")
 
+   
     def serialize(self):
         return {
             'id': self.id,
             'name': self.name,
-            'is_active': self.is_active
+            'is_active': self.is_active,
+            'users': self.get_users()
         }
+
+    def get_users(self): 
+        return list(map(lambda user: user.serialize(), self.users))
 
     def save(self):
         db.session.add(self)
@@ -31,10 +106,11 @@ class User(db.Model):
     lastname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.String(50), nullable=False)
+    phone = db.Column(db.String(100), nullable=False)
     is_active = db.Column(db.Boolean(), default=True)
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
     # image = 
-    roles = db.relationship('Role', secondary="roles_users")
+
 
     def serialize(self):
         return {
@@ -44,11 +120,9 @@ class User(db.Model):
             'email': self.email,
             'phone': self.phone,
             'is_active': self.is_active,
-            'roles': self.get_roles()
+            'role_id': self.role_id,
+            'role': self.role.name
         }
-
-    def get_roles(self):
-        return (list(map(lambda role: role.serialize(), self.roles)))
 
     def save(self):
         db.session.add(self)
@@ -61,12 +135,6 @@ class User(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-
-# Add association table role user
-class RoleUser(db.Model):
-    __tablename__ = 'roles_users'
-    roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), primary_key=True)
-    users_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
 
 # class Appointment(db.Model):
 #     __tablename__ = 'appointments'
