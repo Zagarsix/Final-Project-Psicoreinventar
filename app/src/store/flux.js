@@ -203,11 +203,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             timer: 1500,
           });
 
+          // Backend sends user as data
+          currentUser.user = data.user;
           // Saving user data on session storage
-          sessionStorage.setItem("currentUser", JSON.stringify(data));
-
+          sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+          console.log(currentUser);
           setStore({
-            currentUser: data,
+            currentUser: currentUser,
             // clear password on login so if user goes to update profile, the password field is blank
             password: "",
           });
