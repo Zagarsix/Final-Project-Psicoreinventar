@@ -25,7 +25,7 @@ const RegisterForm = (props) => {
     watch,
     formState: { errors },
   } = useForm({
-    mode: "onTouched",
+    mode: "all",
   });
 
   const onSubmit = () => {
@@ -80,6 +80,7 @@ const RegisterForm = (props) => {
                 handleSubmit(onSubmit)(e);
                 actions.handleRegister(e, navigate);
               }}
+              // ACTIVATE THIS AFTER TEST
               id="form"
             >
               <div className="row justify-content-center">
@@ -151,7 +152,7 @@ const RegisterForm = (props) => {
                     Email
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     name="email"
                     placeholder="johndoe@gmail.com"
                     {...register("email", {
@@ -311,7 +312,6 @@ const RegisterForm = (props) => {
                 <div className="col-md-6">
                   <button
                     type="submit"
-                    // onClick={handleSubmit(onSubmit)}
                     className="btn btn-primary"
                     style={{ width: "5.5rem" }}
                   >

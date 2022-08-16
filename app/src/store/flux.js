@@ -74,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: "",
           });
 
-          // navigate("/login");
+          navigate("/login");
         }
       },
       handleLogin: async (e, navigate) => {
@@ -120,10 +120,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             // clear data if user sign out
             email: "",
             password: "",
+            name: "",
+            lastname: "",
+            phone: "",
           });
 
-          // navigate("/profile"); NAVIGATE TO UPDATE PROFILE
-          navigate("/specialists"); // JUST FOR TESTING, SHOULD REDIRECT TO UPDATE PROFILE
+          navigate("/profile");
         }
       },
       loadProfile: () => {

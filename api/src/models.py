@@ -68,116 +68,116 @@ class RoleUser(db.Model):
     roles_id = db.Column(db.Integer, db.ForeignKey('roles.id'), primary_key=True)
     users_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
 
-class Appointment(db.Model):
-    __tablename__ = 'appointments'
-    id = db.Column(db.Integer, primary_key=True)
-    # date = db.Column(db.datetime, nullable=False)
-    pacient_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
-    doctors_id = db.Column(db.Integer, db.ForeignKey('users.id')) #
+# class Appointment(db.Model):
+#     __tablename__ = 'appointments'
+#     id = db.Column(db.Integer, primary_key=True)
+#     # date = db.Column(db.datetime, nullable=False)
+#     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
+#     doctors_id = db.Column(db.Integer, db.ForeignKey('users.id')) #
 
-    # relationship with doctors (users with role 2)  and with the service being chosen
+#     # relationship with doctors (users with role 2)  and with the service being chosen
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'pacient_id': self.pacient_id,
-            'doctors_id': self.doctors_id
-        }
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'pacient_id': self.pacient_id,
+#             'doctors_id': self.doctors_id
+#         }
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
     
-    def update(self):
-        db.session.commit()
+#     def update(self):
+#         db.session.commit()
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
 
 
-class Service(db.Model):    
-    __tablename__ = 'services'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False, unique=True)
-    description = db.Column(db.String(100), nullable=False, unique=True)
-    price = db.Column(db.Integer, nullable=False) 
-    image = db.Column(db.String(100), nullable=False)
-    stripe_id = db.Column(db.String(100), nullable=False, unique=True)
+# class Service(db.Model):    
+#     __tablename__ = 'services'
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(100), nullable=False, unique=True)
+#     description = db.Column(db.String(100), nullable=False, unique=True)
+#     price = db.Column(db.Integer, nullable=False) 
+#     image = db.Column(db.String(100), nullable=False)
+#     stripe_id = db.Column(db.String(100), nullable=False, unique=True)
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'description': self.description,
-            'price': self.price,
-            'image': self.image,
-            'stripe_id': self.stripe_id
-        }
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'name': self.name,
+#             'description': self.description,
+#             'price': self.price,
+#             'image': self.image,
+#             'stripe_id': self.stripe_id
+#         }
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
     
-    def update(self):
-        db.session.commit()
+#     def update(self):
+#         db.session.commit()
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
 
-class Invoice(db.Model):  
-    __tablename__ = 'invoices'
-    id = db.Column(db.Integer, primary_key=True)
-    date_of_purchase = db.Column(db.String(50), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
-    # relationship with the appointment
+# class Invoice(db.Model):  
+#     __tablename__ = 'invoices'
+#     id = db.Column(db.Integer, primary_key=True)
+#     date_of_purchase = db.Column(db.String(50), nullable=False)
+#     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True)
+#     # relationship with the appointment
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'date_of_purchase': self.date_of_purchase,
-            'user_id': self.user_id
-        }
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'date_of_purchase': self.date_of_purchase,
+#             'user_id': self.user_id
+#         }
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
     
-    def update(self):
-        db.session.commit()
+#     def update(self):
+#         db.session.commit()
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
 
-class Payment(db.Model):
-    __tablename__ = 'Payments'
-    id = db.Column(db.Integer, db.ForeignKey('Invoices.id'), primary_key=True)
-    amount = db.Column(db.Integer, nullable=False, unique=True)
-    date_of_purchase = db.Column(db.String(100), nullable=False)
-    payment_method = db.Column(db.String(100), nullable=False, unique=True)
-    stripe_id = db.Column(db.String(100), nullable=False)
+# class Payment(db.Model):
+#     __tablename__ = 'Payments'
+#     id = db.Column(db.Integer, db.ForeignKey('Invoices.id'), primary_key=True)
+#     amount = db.Column(db.Integer, nullable=False, unique=True)
+#     date_of_purchase = db.Column(db.String(100), nullable=False)
+#     payment_method = db.Column(db.String(100), nullable=False, unique=True)
+#     stripe_id = db.Column(db.String(100), nullable=False)
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'amount': self.amount,
-            'date_of_purchase': self.date_of_purchase,
-            'payment_method': self.payment_method,
-            'stripe_id': self.stripe_id
-        }
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'amount': self.amount,
+#             'date_of_purchase': self.date_of_purchase,
+#             'payment_method': self.payment_method,
+#             'stripe_id': self.stripe_id
+#         }
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
     
-    def update(self):
-        db.session.commit()
+#     def update(self):
+#         db.session.commit()
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
 
 
 # class Appointment(db.Model):
