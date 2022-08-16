@@ -1,12 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import injectContext from "./store/appContext";
 import Home from "./pages/Home";
 import Specialists from "./pages/Specialists";
-import injectContext from "./store/appContext";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import SuperAdmin from "./pages/Dashboard/SuperAdmin";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm";
+import Login from "./components/Login";
 import Services from "./components/Services";
 import Profile from "./pages/Dashboard/Profile";
 import Doctores from "./pages/Dashboard/Doctores";
@@ -30,9 +32,11 @@ const Layout = () => {
         <Route path="/servicios" element={<Servicios />} />
         {/* WIZARD COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/services" element={<Services />} />
         <Route path="/appointment" element={<Appointment />} />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 };
