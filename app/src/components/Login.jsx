@@ -8,7 +8,7 @@ const Login = () => {
 
   useEffect(() => {}, []);
 
-  // If user signed in, redirect to home page
+  // If user signed in, redirect to profile page
   useEffect(() => {
     if (store.currentUser !== null) navigate("/profile");
   }, [store.currentUser]);

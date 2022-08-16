@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, url_for, Blueprint
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import User, Profile
+from models import User
 
 account = Blueprint('account', __name__)
 

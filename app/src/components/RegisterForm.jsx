@@ -49,9 +49,9 @@ const RegisterForm = (props) => {
     }
   };
 
-  const submitForm = (e) => {
-    handleSubmit();
-  };
+  // const submitForm = (e) => {
+  //   handleSubmit();
+  // };
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -195,10 +195,6 @@ const RegisterForm = (props) => {
                       name="password"
                       placeholder="Contraseña"
                       {...register("password", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value:
                             /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
@@ -285,7 +281,7 @@ const RegisterForm = (props) => {
               <div className="row justify-content-center">
                 <div className="col-md-6">
                   <label htmlFor="inputPhone" className="form-label">
-                    Phone
+                    Teléfono
                   </label>
                   <input
                     type="text"

@@ -135,9 +135,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             email: currentUser?.user.email,
             password: "",
-            name: currentUser?.user?.profile?.name,
-            lastname: currentUser?.user?.profile?.lastname,
-            phone: currentUser?.user?.profile?.phone,
+            name: currentUser?.user?.name,
+            lastname: currentUser?.user?.lastname,
+            phone: currentUser?.user?.phone,
           });
         }
       },
