@@ -10,10 +10,6 @@ const Navbar = () => {
 
   useEffect(() => {}, []);
 
-  // If user is not signed in, redirect to login
-  useEffect(() => {
-    if (store.currentUser === null) navigate("/login");
-  }, [store.currentUser]);
   return (
     <>
       <div className="container">
