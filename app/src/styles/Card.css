@@ -8,3 +8,18 @@
     margin: initial;
   }
 }
+
+.pill {
+  border-radius: 1rem;
+  padding: 0.3em 1em;
+}
+
+.card-specialist {
+  width: 18rem;
+}
+
+@media screen and (min-width: 87.5rem) {
+  .card-specialist {
+    width: 22rem;
+  }
+}

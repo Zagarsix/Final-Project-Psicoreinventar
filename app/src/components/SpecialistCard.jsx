@@ -1,47 +1,46 @@
+import { Link } from "react-router-dom";
 import "../styles/Card.css";
 
-const SpecialistCard = () => {
+const SpecialistCard = ({
+  img,
+  imgLabel,
+  title,
+  experience,
+  education,
+  specialization1,
+  specialization2,
+}) => {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-4">
-          <div class="card ">
-            <img src="http://placekitten.com/100/100" class="card-img-top rounded-circle photo mx-auto m-3" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div className="card card-specialist h-100 p-3">
+      <img
+        src={img}
+        className="card-img-top rounded-circle photo m-3"
+        alt={imgLabel}
+        style={{ height: "135px", width: "135px" }}
+      />
+      <div className="card-body">
+        <h5 className="card-title">{title}</h5>
+        <ul className="doctor-info p-3 ms-1 mb-0">
+          <li className="li-item mb-2">{experience}</li>
+          <li className="li-item">{education}</li>
+        </ul>
+        <div className="specialization-info mb-4">
+          <div className="d-flex">
+            <div className="pill bg-primary text-light me-2">
+              {specialization1}
             </div>
+            <div className="pill bg-primary text-light">{specialization2}</div>
           </div>
-
         </div>
-        <div className="col-md-4">
-          <div class="card ">
-            <img src="http://placekitten.com/100/100" class="card-img-top rounded-circle photo mx-auto m-3" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
-        <div className="col-md-4">
-          <div class="card ">
-            <img src="http://placekitten.com/100/100" class="card-img-top rounded-circle photo mx-auto m-3" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
-        </div>
+        <Link
+          className="btn btn-primary specialist-appointment px-4 mt-3"
+          to="/appointment"
+        >
+          Agendar
+        </Link>
       </div>
     </div>
-
-  )
-}
-
+  );
+};
 
 export default SpecialistCard;
