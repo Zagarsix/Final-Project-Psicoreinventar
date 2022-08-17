@@ -18,6 +18,7 @@ def register():
     education = request.json.get('education')
     specialization1 = request.json.get('specialization1')
     specialization2 = request.json.get('specialization2')
+    image = request.json.get('image')
 
     # check if all inputs are filled
     if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
@@ -43,6 +44,7 @@ def register():
     user.education = education
     user.specialization1 = specialization1
     user.specialization2 = specialization2
+    user.image = image
     
     #!!!!!!!!! NEW VERSION!!!!!!!!!
     

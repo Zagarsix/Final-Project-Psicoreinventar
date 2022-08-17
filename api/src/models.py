@@ -47,6 +47,8 @@ class User(db.Model):
     education = db.Column(db.String(100))
     specialization1 = db.Column(db.String(50))
     specialization2 = db.Column(db.String(50))
+    # image url, not uploading
+    image = db.Column(db.String(250))
 
 
     def serialize(self):
@@ -62,7 +64,8 @@ class User(db.Model):
             'experience': self.experience,
             'education': self.education,
             'specialization1': self.specialization1,
-            'specialization2': self.specialization2
+            'specialization2': self.specialization2,
+            'image': self.image
         }
 
     def save(self):

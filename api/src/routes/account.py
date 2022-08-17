@@ -39,6 +39,7 @@ def update_profile():
     email = request.json.get('email')
     password = request.json.get('password')
     phone = request.json.get('phone')
+    # missing update image
 
     if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
 

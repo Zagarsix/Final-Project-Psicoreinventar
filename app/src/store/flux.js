@@ -17,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       education: "",
       specialization1: "",
       specialization2: "",
+      image: "",
       collegeDegree: null,
       // Doctor Model
       errors: null,
@@ -69,6 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           education,
           specialization1,
           specialization2,
+          image,
         } = getStore();
 
         const fields = {
@@ -82,6 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           education: education,
           specialization1: specialization1,
           specialization2: specialization2,
+          image: image,
         };
 
         // Fetching data from API
@@ -172,6 +175,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             education: "",
             specialization1: "",
             specialization2: "",
+            image: "",
           });
 
           navigate("/profile");
@@ -192,6 +196,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             education: currentUser?.user?.education,
             specialization1: currentUser?.user?.specialization1,
             specialization2: currentUser?.user?.specialization2,
+            image: currentUser?.user.image,
           });
         }
       },
@@ -216,6 +221,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             education: "",
             specialization1: "",
             specialization2: "",
+            image: "",
             currentUser: null,
           });
           getActions().checkAuth();
@@ -236,6 +242,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           education,
           specialization1,
           specialization2,
+          image,
           currentUser,
         } = getStore();
 
@@ -250,6 +257,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           education: education,
           specialization1: specialization1,
           specialization2: specialization2,
+          image: image,
         };
 
         // Fetching data from API

@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import "../styles/Card.css";
 
 const SpecialistCard = ({
-  img,
-  imgLabel,
+  image,
   name,
   lastname,
   experience,
@@ -16,7 +15,7 @@ const SpecialistCard = ({
     <div className="col-md-6 col-lg-4">
       <div className="card card-specialist h-100 p-3" id={index}>
         <img
-          src={img}
+          src={image}
           className="card-img-top rounded-circle photo m-3"
           alt="Specialist Photo"
           style={{ height: "135px", width: "135px" }}
