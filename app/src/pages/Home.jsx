@@ -8,7 +8,7 @@ import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
 import ServiceCard from "../components/ServiceCard";
 import SpecialistCard from "../components/SpecialistCard";
-import CardClient from "../components/CardClient";
+
 
 
 const Home = () => {
