@@ -23,9 +23,30 @@ const getState = ({ getStore, getActions, setStore }) => {
       currentUser: null,
       title: "Hello",
       message: null,
+      users: null,
+      clients: null,
+      doctors: null,
+      admins: null,
     },
     // Define all my functions
     actions: {
+      getDoctors: async () => {
+        const { apiURL } = getStore();
+
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/doctors`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await response.json();
+          setStore({ doctors: data });
+        } catch (error) {
+          console.log("Error loading doctors from backend", error);
+        }
+      },
       handleChange: (e) => {
         const { name, value } = e.target;
         setStore({
