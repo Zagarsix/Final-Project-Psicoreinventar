@@ -42,7 +42,6 @@ class User(db.Model):
     phone = db.Column(db.String(100), nullable=False)
     is_active = db.Column(db.Boolean(), default=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
-    # image = 
 
 
     def serialize(self):
@@ -74,10 +73,10 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False)
     # pacient has role 3, doctor has role 2
+    # current user (pacient) id
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False) 
+    # doctor being selected on dropdown id
     doctor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-   #doctor_id = db.Column(db.Integer, db.ForeignKey('user with role 2.id')) #
-    
 
     # relationship with the user booking the appointmnet, doctors (users with role 2)
     # and with the service being chosen
