@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import TableClient from "./TableClient";
+import TableDataClient from "../components/TableDataClient";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import ServiceCard from "./ServiceCard";
 import "../styles/TabSuperAdmin.css";
@@ -19,16 +19,10 @@ function TabSuperAdmin() {
 
   useEffect(() => {
     actions.getClients();
+    actions.getAdmins();
   }, []);
 
   return (
-    // <div className="client-info">
-    //   {!!store.clients &&
-    //     store.clients.length > 0 &&
-    //     store.clients.map((client, i) => (
-    //       <TableClient {...client} key={i} index={client.id} />
-    //     ))}
-    // </div>
     <div className="TabSuperAdmin">
       <Nav tabs id="tabs">
         <NavItem>
@@ -151,7 +145,7 @@ function TabSuperAdmin() {
           </div>
         </TabPane>
 
-        {/* !!!!!!!!!!!!!!!!!! TABLA DE ESPECIALISTAS !!!!!!!!!!!!!!!!!!!!!!!*/}
+        {/* !!!!!!!!!!!!!!!!!! TABLA DE CLIENTES !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="2">
           <div className="container">
             <br />
@@ -165,7 +159,7 @@ function TabSuperAdmin() {
                     Paciente
                   </th>
                   <th scope="col" className="th p-2">
-                    Información
+                    Email
                   </th>
                   <th scope="col" className="th p-2">
                     Historial de citas
@@ -178,52 +172,20 @@ function TabSuperAdmin() {
                   </th>
                   <th scope="col" className="th p-2">
                     <i className="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
               </thead>
-              <tbody
-                className="table-group-divider"
-                style={{ fontSize: "13px" }}
-              >
-                <tr>
-                  <td scope="row" className="td p-2">
-                    #9876
-                  </td>
-                  <td className="td p-2">Joe Opino</td>
-                  <td className="td p-2">joeopino@gmail.com</td>
-                  <td className="td p-2">
-                    13 de Agosto, 2022. Dr. Juanín Juan Harry
-                  </td>
-                  <td className="td p-2">16 de Agosto, 2022. 10:00 hrs</td>
-                  <td className="td p-2">Realizado</td>
-                  <td className="td p-2">
-                    <div>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+              {!!store.clients &&
+                store.clients.length > 0 &&
+                store.clients.map((client, i) => (
+                  <TableDataClient {...client} key={i} index={client.id} />
+                ))}
             </table>
           </div>
         </TabPane>
 
-        {/* !!!!!!!!!!!!!!!!!! TABLA DE PACIENTES !!!!!!!!!!!!!!!!!!!!!!!*/}
+        {/* !!!!!!!!!!!!!!!!!! TABLA DE ESPECIALISTAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="3">
           <div className="container">
             <br />
@@ -250,7 +212,7 @@ function TabSuperAdmin() {
                   </th>
                   <th scope="col" className="th p-2">
                     <i className="fa-solid fa-pen-to-square"></i>{" "}
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
               </thead>
@@ -349,7 +311,7 @@ function TabSuperAdmin() {
                   </th>
                   <th scope="col" className="th p-2">
                     <i className="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
               </thead>

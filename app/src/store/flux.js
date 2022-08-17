@@ -65,6 +65,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Error loading clients from backend", error);
         }
       },
+      getAdmins: async () => {
+        const { apiURL } = getStore();
+
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/admins`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await response.json();
+          setStore({ admins: data });
+        } catch (error) {
+          console.log("Error loading admins from backend", error);
+        }
+      },
       handleChange: (e) => {
         const { name, value } = e.target;
         setStore({
