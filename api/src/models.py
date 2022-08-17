@@ -42,6 +42,11 @@ class User(db.Model):
     phone = db.Column(db.String(100), nullable=False)
     is_active = db.Column(db.Boolean(), default=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
+    # Doctor model (making nullable true for client)
+    experience = db.Column(db.String(100))
+    education = db.Column(db.String(100))
+    specialization1 = db.Column(db.String(50))
+    specialization2 = db.Column(db.String(50))
 
 
     def serialize(self):
@@ -53,7 +58,11 @@ class User(db.Model):
             'phone': self.phone,
             'is_active': self.is_active,
             'role_id': self.role_id,
-            'role': self.role.name
+            'role': self.role.name,
+            'experience': self.experience,
+            'education': self.education,
+            'specialization1': self.specialization1,
+            'specialization2': self.specialization2
         }
 
     def save(self):

@@ -12,7 +12,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       name: "",
       lastname: "",
       phone: "",
+      // Doctor Model
+      experience: "",
+      education: "",
+      specialization1: "",
+      specialization2: "",
       collegeDegree: null,
+      // Doctor Model
       errors: null,
       currentUser: null,
       title: "Hello",
@@ -30,7 +36,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       handleRegister: async (e, navigate) => {
         e.preventDefault();
 
-        const { apiURL, email, password, name, lastname, phone } = getStore();
+        const {
+          apiURL,
+          email,
+          password,
+          name,
+          lastname,
+          phone,
+          // Doctor Model
+          experience,
+          education,
+          specialization1,
+          specialization2,
+        } = getStore();
 
         const fields = {
           email: email,
@@ -38,6 +56,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: name,
           lastname: lastname,
           phone: phone,
+          // Doctor Model
+          experience: experience,
+          education: education,
+          specialization1: specialization1,
+          specialization2: specialization2,
         };
 
         // Fetching data from API
@@ -123,6 +146,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             name: "",
             lastname: "",
             phone: "",
+            // Doctor Model
+            experience: "",
+            education: "",
+            specialization1: "",
+            specialization2: "",
           });
 
           navigate("/profile");
@@ -135,9 +163,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             email: currentUser?.user.email,
             password: "",
-            name: currentUser?.user?.profile?.name,
-            lastname: currentUser?.user?.profile?.lastname,
-            phone: currentUser?.user?.profile?.phone,
+            name: currentUser?.user?.name,
+            lastname: currentUser?.user?.lastname,
+            phone: currentUser?.user?.phone,
+            // Doctor Model
+            experience: currentUser?.user?.experience,
+            education: currentUser?.user?.education,
+            specialization1: currentUser?.user?.specialization1,
+            specialization2: currentUser?.user?.specialization2,
           });
         }
       },
@@ -157,6 +190,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             name: "",
             lastname: "",
             phone: "",
+            // Doctor Model
+            experience: "",
+            education: "",
+            specialization1: "",
+            specialization2: "",
             currentUser: null,
           });
           getActions().checkAuth();
@@ -166,8 +204,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       handleProfile: async (e) => {
         e.preventDefault();
 
-        const { apiURL, email, password, name, lastname, phone, currentUser } =
-          getStore();
+        const {
+          apiURL,
+          email,
+          password,
+          name,
+          lastname,
+          phone, // Doctor Model
+          experience,
+          education,
+          specialization1,
+          specialization2,
+          currentUser,
+        } = getStore();
 
         const fields = {
           email: email,
@@ -175,6 +224,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: name,
           lastname: lastname,
           phone: phone,
+          // Doctor Model
+          experience: experience,
+          education: education,
+          specialization1: specialization1,
+          specialization2: specialization2,
         };
 
         // Fetching data from API
@@ -203,11 +257,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             timer: 1500,
           });
 
+          // Backend sends user as data
+          currentUser.user = data.user;
           // Saving user data on session storage
-          sessionStorage.setItem("currentUser", JSON.stringify(data));
-
+          sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+          console.log(currentUser);
           setStore({
-            currentUser: data,
+            currentUser: currentUser,
             // clear password on login so if user goes to update profile, the password field is blank
             password: "",
           });

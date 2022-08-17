@@ -13,8 +13,11 @@ def register():
     email = request.json.get('email')
     password = request.json.get('password')
     phone = request.json.get('phone')
-    # roles = request.json.get('roles')
     role = request.json.get('role')
+    experience = request.json.get('experience')
+    education = request.json.get('education')
+    specialization1 = request.json.get('specialization1')
+    specialization2 = request.json.get('specialization2')
 
     # check if all inputs are filled
     if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
@@ -34,18 +37,13 @@ def register():
     user.email = email
     user.password = generate_password_hash(password)
     user.phone = phone
-    
-    #!!!!!!!!! VERSION 1!!!!!!!!!
-    # # if the user pass a role, then assign that role to the user
-    # if(roles):
-    #     for roles_id in roles:
-    #         role = Role.query.get(roles_id)
-    #         user.roles.append(role)
-    # # is this ok??? if the user does not specified a role, then assign it by default the 3 role (client)
-    # else:
-    #     role = Role.query.get(3)
-    #     user.roles.append(role)
 
+    # doctor model
+    user.experience = experience
+    user.education = education
+    user.specialization1 = specialization1
+    user.specialization2 = specialization2
+    
     #!!!!!!!!! NEW VERSION!!!!!!!!!
     
     # if user pass role (admin)
@@ -57,7 +55,6 @@ def register():
 
     # save the user
     user.save()
-
 
     # if register succeded
     if user: return jsonify({'status': 'success', 'message': 'Registered successfully, please login', 'data': None}), 200

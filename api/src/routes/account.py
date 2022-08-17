@@ -80,13 +80,14 @@ def get_clients():
     users = User.query.filter_by(role_id = 3)
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
-    
+
 # Get all doctors
-# @account.route('/doctors', methods=['GET'])
-# def get_clients():
-#     users = User.query.filter(User.roles.id == 2)
-#     users = list(map(lambda user: user.serialize(), users))
-#     return jsonify(users), 200
+@account.route('/doctors', methods=['GET'])
+def get_doctors():
+    users = User.query.filter_by(role_id = 2)
+    users = list(map(lambda user: user.serialize(), users))
+    return jsonify(users), 200
+    
 
 # @account.route('/admin/services', methods=['GET', 'POST'])
 # @account.route('/admin/services/<int:id>', methods=['GET', 'PUT', 'DELETE'])
