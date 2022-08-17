@@ -88,6 +88,13 @@ def get_doctors():
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
     
+# Get all admins
+@account.route('/admins', methods=['GET'])
+def get_admins():
+    users = User.query.filter_by(role_id = 1)
+    users = list(map(lambda user: user.serialize(), users))
+    return jsonify(users), 200
+    
 
 # @account.route('/admin/services', methods=['GET', 'POST'])
 # @account.route('/admin/services/<int:id>', methods=['GET', 'PUT', 'DELETE'])
