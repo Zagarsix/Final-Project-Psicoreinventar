@@ -58,17 +58,17 @@ function TabSuperAdmin() {
                                     <th scope="col"
                                         style={{ width: "5%", border: "1px solid #000" }}>#Cita</th>
                                     <th scope="col"
-                                        style={{ width: "10%", border: "1px solid #000" }}>Especialista</th>
+                                        style={{ width: "15%", border: "1px solid #000" }}>Especialista</th>
                                     <th scope="col"
-                                        style={{ width: "10%", border: "1px solid #000" }}>Paciente</th>
+                                        style={{ width: "15%", border: "1px solid #000" }}>Paciente</th>
                                     <th scope="col"
-                                        style={{ width: "15%", border: "1px solid #000" }}>Cita</th>
+                                        style={{ width: "20%", border: "1px solid #000" }}>Cita</th>
                                     <th scope="col"
                                         style={{ width: "20%", border: "1px solid #000" }}>Estado de cita</th>
                                     <th scope="col"
                                         style={{ width: "15%", border: "1px solid #000" }} >Pago</th>
                                     <th scope="col"
-                                        style={{ width: "10%", border: "1px solid #000" }} ><i className="fa-solid fa-pen-to-square"></i> <i className="fa-solid fa-trash-can"></i> </th>
+                                        style={{ width: "5%", border: "1px solid #000" }} ><i className="fa-solid fa-pen-to-square"></i> <i className="fa-solid fa-trash-can"></i> </th>
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider"
@@ -111,9 +111,9 @@ function TabSuperAdmin() {
                                     <th scope="col"
                                         style={{ width: "5%", border: "1px solid #000", padding: "5px 10px" }}>ID</th>
                                     <th scope="col"
-                                        style={{ width: "10%", border: "1px solid #000", padding: "5px 10px" }}>Especialista</th>
+                                        style={{ width: "20%", border: "1px solid #000", padding: "5px 10px" }}>Especialista</th>
                                     <th scope="col"
-                                        style={{ width: "10%", border: "1px solid #000", padding: "5px 10px" }}>Especialidad</th>
+                                        style={{ width: "15%", border: "1px solid #000", padding: "5px 10px" }}>Especialidad</th>
                                     <th scope="col"
                                         style={{ width: "10%", border: "1px solid #000", padding: "5px 10px" }}>Código título</th>
                                     <th scope="col"
@@ -121,7 +121,7 @@ function TabSuperAdmin() {
                                     <th scope="col"
                                         style={{ width: "15%", border: "1px solid #000", padding: "5px 10px" }} >Tarifa</th>
                                     <th scope="col"
-                                        style={{ width: "10%", border: "1px solid #000", padding: "5px 10px" }} ><i className="fa-solid fa-pen-to-square"></i> <i class="fa-solid fa-trash-can"></i></th>
+                                        style={{ width: "5%", border: "1px solid #000", padding: "5px 10px" }} ><i className="fa-solid fa-pen-to-square"></i> <i class="fa-solid fa-trash-can"></i></th>
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider"
@@ -192,7 +192,7 @@ function TabSuperAdmin() {
                                     <th scope="col"
                                         style={{ width: "15%", border: "1px solid #000" }}>Paciente</th>
                                     <th scope="col"
-                                        sstyle={{ width: "15%", border: "1px solid #000" }}>Información</th>
+                                        sstyle={{ width: "20%", border: "1px solid #000" }}>Información</th>
                                     <th scope="col"
                                         style={{ width: "20%", border: "1px solid #000" }}>Historial de citas</th>
                                     <th scope="col"
@@ -200,7 +200,7 @@ function TabSuperAdmin() {
                                     <th scope="col"
                                         style={{ width: "10%", border: "1px solid #000" }} >Pago</th>
                                     <th scope="col"
-                                        style={{ width: "10%", border: "1px solid #000" }} ><i className="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash-can"></i></th>
+                                        style={{ width: "5%", border: "1px solid #000" }} ><i className="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash-can"></i></th>
                                 </tr>
                             </thead>
                             <tbody className="table-group-divider"
@@ -237,33 +237,60 @@ function TabSuperAdmin() {
 
                     </div>
                 </TabPane>
-
+{/*inicio tabla servicios*/}
                 <TabPane tabId="4">
                     <div className="container">
                         <br />
-                        <div className="row">
-                        <ServiceCard 
-                        img=""
-                        title="Sesión Terapia para parejas" 
-                        time="45 minutos" 
-                        price="$20.000"
-                        />
-                        <ServiceCard 
-                        img=""
-                        title="Sesión Terapia individual" 
-                        time="45 minutos" 
-                        price="$10.000"
-                        />
-                        <ServiceCard 
-                        img=""
-                        title="Sesión Psiquiatra" 
-                        time="45 minutos" 
-                        price="$40.000"
-                        />
-                        </div>
+                        <table className="table table-borderer table-sm">
+
+                            <thead>
+                                <tr
+                                    style={{ backgroundColor: "#939794", color:"white" }}>
+                                    <th scope="col"
+                                        style={{ width: "5%", border: "1px solid #000" }}>ID</th>
+                                    <th scope="col"
+                                        style={{ width: "20%", border: "1px solid #000" }}>Servicio</th>
+                                    <th scope="col"
+                                        sstyle={{ width: "20%", border: "1px solid #000" }}>Información</th>
+                                    <th scope="col"
+                                        style={{ width: "10%", border: "1px solid #000" }}>Tarifa</th>
+                                    <th scope="col"
+                                        sstyle={{ width: "20%", border: "1px solid #000" }}>Especialistas disponibles</th>
+                                    <th scope="col"
+                                        style={{ width: "20%", border: "1px solid #000" }} >Disponibilidad</th>
+                                    <th scope="col"
+                                        style={{ width: "5%", border: "1px solid #000" }} ><i className="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash-can"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody className="table-group-divider"
+                                style={{ fontSize: "13px" }}>
+                                <tr>
+                                    <th scope="row"
+                                        style={{ border: "1px solid #000" }}>#9876</th>
+                                    <td
+                                        style={{ border: "1px solid #000" }}>Terapia individual</td>
+                                    <td
+                                        style={{ border: "1px solid #000" }}>Sesión de 45 minutos</td>
+                                    <td
+                                        style={{ border: "1px solid #000" }}>$20.000 por sesión</td>
+                                    <td
+                                        style={{ border: "1px solid #000" }}>Juan Bodoque</td>
+                                    <td
+                                        style={{ border: "1px solid #000" }}>Disponibilidad</td>
+                                    <td
+                                        style={{ border: "1px solid #000" }}>
+                                        <div className="botones">
+                                            <input className="form-check-input " type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="..."></input>
+
+                                            <input className="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="..."></input>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </TabPane>
-
+{/*fin tabla servicios*/}
 
             </TabContent>
         </div>

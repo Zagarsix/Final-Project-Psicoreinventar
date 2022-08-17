@@ -1,20 +1,25 @@
 import "../styles/CardClient.css";
 
-const CardClient = ({ img, imgLabel, clientsName, clientsAge, review }) => {
+const CardClient = ({ImgClient, imgLabel, NameClient, AgeClient, Review}) => {
   return (
-    <div className="card w-75 shadow" id="cardId">
+
+    <div className="card mb-3 shadow"
+    style={{border: "1px solid #0f0ff5", padding:"1rem"}}>
       <div className="row">
-        <div className="col-md-4">
-          <img src={img} alt={imgLabel} className="center" id="cardImg" />
+        <div className="col-7 col-sm-3 col-md-3 col-lg-3">
+          <img src={ImgClient}
+            alt={imgLabel} className="img-fluid foto d-flex"
+            
+             />
         </div>
-        <div className="col-md-8 d-flex">
-          <div className="card-body" id="cardBodyId">
-            <div className="col-md-6">
+        <div className="col-12 col-sm-9 col-md-9 col-lg-9 texto">
+          <div className="card-body">
+            <div className="col">
               <strong>
-                {clientsName}, {clientsAge}
+                {NameClient}, {AgeClient} 
               </strong>
             </div>
-            <div className="col-md-4">
+            <div className="col">
               <img
                 src="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62549889a2813af0a6be7bcd_Star-yellow.svg"
                 alt="star"
@@ -36,11 +41,14 @@ const CardClient = ({ img, imgLabel, clientsName, clientsAge, review }) => {
                 alt="star"
               />
             </div>
-            <p className="card-text">{review}</p>
+            <p className="card-text">{Review}</p>
           </div>
         </div>
       </div>
+
     </div>
+
+
   );
 };
 
