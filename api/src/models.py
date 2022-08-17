@@ -165,30 +165,30 @@ class Invoice(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-class Payment(db.Model):
-    __tablename__ = 'payments'
-    id = db.Column(db.Integer, db.ForeignKey('Invoices.id'), primary_key=True)
-    amount = db.Column(db.Integer, nullable=False, unique=True)
-    date_of_purchase = db.Column(db.String(100), nullable=False)
-    payment_method = db.Column(db.String(100), nullable=False, unique=True)
-    stripe_id = db.Column(db.String(100), nullable=False)
+# class Payment(db.Model):
+#     __tablename__ = 'payments'
+#     # id = db.Column(db.Integer, db.ForeignKey('Invoices.id'), primary_key=True)
+#     amount = db.Column(db.Integer, nullable=False, unique=True)
+#     date_of_purchase = db.Column(db.String(100), nullable=False)
+#     payment_method = db.Column(db.String(100), nullable=False, unique=True)
+#     stripe_id = db.Column(db.String(100), nullable=False)
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'amount': self.amount,
-            'date_of_purchase': self.date_of_purchase,
-            'payment_method': self.payment_method,
-            'stripe_id': self.stripe_id
-        }
+#     def serialize(self):
+#         return {
+#             'id': self.id,
+#             'amount': self.amount,
+#             'date_of_purchase': self.date_of_purchase,
+#             'payment_method': self.payment_method,
+#             'stripe_id': self.stripe_id
+#         }
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
     
-    def update(self):
-        db.session.commit()
+#     def update(self):
+#         db.session.commit()
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
