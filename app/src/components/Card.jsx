@@ -1,3 +1,5 @@
+import "../styles/Card.css";
+
 const Card = ({ img, imgLabel, title, description }) => {
   return (
     <div className="card h-100 text-center" style={{ width: "18rem" }}>
