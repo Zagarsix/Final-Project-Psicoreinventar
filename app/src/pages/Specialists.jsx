@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 import Header from "../components/Header";
 import SpecialistCard from "../components/SpecialistCard";
 import "../styles/Specialists.css";
 
 const Specialists = () => {
+  const { store, actions } = useContext(Context);
+
   return (
     <>
       <main className="main-section w-100 h-100 p-3 mb-5">
@@ -30,72 +34,21 @@ const Specialists = () => {
           <div className="row">
             <div className="col-md-10 offset-md-1 py-4">
               <div className="row justify-content-between gy-3">
-                <div className="col-md-6 col-lg-4">
-                  <SpecialistCard
-                    img="http://placekitten.com/100/100"
-                    imgLabel="Specialist 1"
-                    title="Daniela Guerrero"
-                    experience="5+ años de terapia clínica"
-                    education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
-                    specialization1="Parejas"
-                    specialization2="Adultos"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <SpecialistCard
-                    img="http://placekitten.com/100/100"
-                    imgLabel="Specialist 1"
-                    title="Daniela Guerrero"
-                    experience="5+ años de terapia clínica"
-                    education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
-                    specialization1="Parejas"
-                    specialization2="Adultos"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <SpecialistCard
-                    img="http://placekitten.com/100/100"
-                    imgLabel="Specialist 1"
-                    title="Daniela Guerrero"
-                    experience="5+ años de terapia clínica"
-                    education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
-                    specialization1="Parejas"
-                    specialization2="Adultos"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <SpecialistCard
-                    img="http://placekitten.com/100/100"
-                    imgLabel="Specialist 1"
-                    title="Daniela Guerrero"
-                    experience="5+ años de terapia clínica"
-                    education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
-                    specialization1="Parejas"
-                    specialization2="Adultos"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <SpecialistCard
-                    img="http://placekitten.com/100/100"
-                    imgLabel="Specialist 1"
-                    title="Daniela Guerrero"
-                    experience="5+ años de terapia clínica"
-                    education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
-                    specialization1="Parejas"
-                    specialization2="Adultos"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <SpecialistCard
-                    img="http://placekitten.com/100/100"
-                    imgLabel="Specialist 1"
-                    title="Daniela Guerrero"
-                    experience="5+ años de terapia clínica"
-                    education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
-                    specialization1="Parejas"
-                    specialization2="Adultos"
-                  />
-                </div>
+                {!!store.doctors &&
+                  store.doctors.length > 0 &&
+                  store.doctors.map((doctor, i) => (
+                    <SpecialistCard {...doctor} key={i} index={doctor.id} />
+                  ))}
+
+                {/* <SpecialistCard
+                  img="http://placekitten.com/100/100"
+                  imgLabel="Specialist 1"
+                  title="Daniela Guerrero"
+                  experience="5+ años de terapia clínica"
+                  education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
+                  specialization1="Parejas"
+                  specialization2="Adultos"
+                />   */}
               </div>
             </div>
           </div>

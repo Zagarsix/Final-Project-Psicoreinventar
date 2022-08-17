@@ -12,14 +12,42 @@ const getState = ({ getStore, getActions, setStore }) => {
       name: "",
       lastname: "",
       phone: "",
+      // Doctor Model
+      experience: "",
+      education: "",
+      specialization1: "",
+      specialization2: "",
+      image: "",
       collegeDegree: null,
+      // Doctor Model
       errors: null,
       currentUser: null,
       title: "Hello",
       message: null,
+      users: null,
+      clients: null,
+      doctors: null,
+      admins: null,
     },
     // Define all my functions
     actions: {
+      getDoctors: async () => {
+        const { apiURL } = getStore();
+
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/doctors`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await response.json();
+          setStore({ doctors: data });
+        } catch (error) {
+          console.log("Error loading doctors from backend", error);
+        }
+      },
       handleChange: (e) => {
         const { name, value } = e.target;
         setStore({
@@ -30,7 +58,20 @@ const getState = ({ getStore, getActions, setStore }) => {
       handleRegister: async (e, navigate) => {
         e.preventDefault();
 
-        const { apiURL, email, password, name, lastname, phone } = getStore();
+        const {
+          apiURL,
+          email,
+          password,
+          name,
+          lastname,
+          phone,
+          // Doctor Model
+          experience,
+          education,
+          specialization1,
+          specialization2,
+          image,
+        } = getStore();
 
         const fields = {
           email: email,
@@ -38,6 +79,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: name,
           lastname: lastname,
           phone: phone,
+          // Doctor Model
+          experience: experience,
+          education: education,
+          specialization1: specialization1,
+          specialization2: specialization2,
+          image: image,
         };
 
         // Fetching data from API
@@ -123,6 +170,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             name: "",
             lastname: "",
             phone: "",
+            // Doctor Model
+            experience: "",
+            education: "",
+            specialization1: "",
+            specialization2: "",
+            image: "",
           });
 
           navigate("/profile");
@@ -138,6 +191,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             name: currentUser?.user?.name,
             lastname: currentUser?.user?.lastname,
             phone: currentUser?.user?.phone,
+            // Doctor Model
+            experience: currentUser?.user?.experience,
+            education: currentUser?.user?.education,
+            specialization1: currentUser?.user?.specialization1,
+            specialization2: currentUser?.user?.specialization2,
+            image: currentUser?.user.image,
           });
         }
       },
@@ -157,6 +216,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             name: "",
             lastname: "",
             phone: "",
+            // Doctor Model
+            experience: "",
+            education: "",
+            specialization1: "",
+            specialization2: "",
+            image: "",
             currentUser: null,
           });
           getActions().checkAuth();
@@ -166,8 +231,20 @@ const getState = ({ getStore, getActions, setStore }) => {
       handleProfile: async (e) => {
         e.preventDefault();
 
-        const { apiURL, email, password, name, lastname, phone, currentUser } =
-          getStore();
+        const {
+          apiURL,
+          email,
+          password,
+          name,
+          lastname,
+          phone, // Doctor Model
+          experience,
+          education,
+          specialization1,
+          specialization2,
+          image,
+          currentUser,
+        } = getStore();
 
         const fields = {
           email: email,
@@ -175,6 +252,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           name: name,
           lastname: lastname,
           phone: phone,
+          // Doctor Model
+          experience: experience,
+          education: education,
+          specialization1: specialization1,
+          specialization2: specialization2,
+          image: image,
         };
 
         // Fetching data from API

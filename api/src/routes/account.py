@@ -39,6 +39,7 @@ def update_profile():
     email = request.json.get('email')
     password = request.json.get('password')
     phone = request.json.get('phone')
+    # missing update image
 
     if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
 
@@ -80,13 +81,21 @@ def get_clients():
     users = User.query.filter_by(role_id = 3)
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
-    
+
 # Get all doctors
-# @account.route('/doctors', methods=['GET'])
-# def get_clients():
-#     users = User.query.filter(User.roles.id == 2)
-#     users = list(map(lambda user: user.serialize(), users))
-#     return jsonify(users), 200
+@account.route('/doctors', methods=['GET'])
+def get_doctors():
+    users = User.query.filter_by(role_id = 2)
+    users = list(map(lambda user: user.serialize(), users))
+    return jsonify(users), 200
+    
+# Get all admins
+@account.route('/admins', methods=['GET'])
+def get_admins():
+    users = User.query.filter_by(role_id = 1)
+    users = list(map(lambda user: user.serialize(), users))
+    return jsonify(users), 200
+    
 
 # @account.route('/admin/services', methods=['GET', 'POST'])
 # @account.route('/admin/services/<int:id>', methods=['GET', 'PUT', 'DELETE'])
