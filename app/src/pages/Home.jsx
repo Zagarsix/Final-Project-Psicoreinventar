@@ -16,12 +16,9 @@ const Home = () => {
       {/* Main Header */}
       <main className="main-section w-100 h-100 p-3 mb-5">
         <Header
-          title="La salud mental"
-          title_highlight="es importante"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Molestias atque itaque illo enim quidem at ad voluptatibus,
-        nesciunt quia alias optio debitis quam suscipit, quod animi
-        delectus veritatis! Saepe, maxime."
+          title="El bienestar comienza con la"
+          title_highlight="salud mental"
+          description="Buscamos mejorar la calidad de vida de las personas, a través de la entrega de servicios integrales en salud mental, emocional y conductual personalizados."
           btnLabel="Agendar cita"
           img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6255ce36e7efb7be217ba6c3_woman-laptop-couch.png"
           imgLabel="Doctor"
@@ -68,9 +65,9 @@ const Home = () => {
       {/* Left Header */}
       <LeftHeader
         img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6261a30dc74af77c2d5d2e9c_ilust-woman-waving-cropped-p-500.png"
-        title="Cientos de clientes viven"
-        title_highlight="más felices"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Id illum dignissimos eos non quibusdam cupiditate, omnis nesciunt officia molestiae corrupti odio sint sit doloremque incidunt soluta, et nemo harum. Facere!"
+        title="Ahora más que nunca "
+        title_highlight="estamos contigo."
+        description="En este proceso la guía y contención emocional es fundamental. Brindar un servicio integral y personalizado de forma online a manos de expertos es nuestra misión."
       />
       {/*Clients review */}
 
@@ -80,12 +77,10 @@ const Home = () => {
           <div className="row justify-content-center align-items-center clients-header-text">
             <div className="col-sm-12 col-md-12 col-lg-6 pb-5 fs-6 p-2">
               <h1 className="">
-                <strong>Lo que nuestros clientes opinan</strong>
+                <strong>Clientes más felices</strong>
               </h1>
               <p className="my-3">
-                Nuestro principal objetivo es crear un ambiente de plena
-                confianza entre los especialistas y nuestros clientes con el
-                objetivo de que se conviertan en su mejor versión.
+              Nuestro principal objetivo es que encuentres un especialista adecuado a tus necesidades para que así puedas mejorar tu calidad de vida y ser la mejor versión de ti mismo.
               </p>
 
               <Link className="col-6 btn btn-primary py-2" to="/appointment">
@@ -99,28 +94,28 @@ const Home = () => {
                 imgLabel="CardImgClient"
                 NameClient="Laura"
                 AgeClient="27 años"
-                Review="Lorem ipsum dolor sit amet consectetur adipiscing elit volutpat dui vehicula erat, sodales odio felis nostra"
+                Review="Luego de un año en terapia puedo notar mejorías. Tenía muchos prejuicios sobre tomar terapia pero lo personalizado del servicio me hizo tomar la decisión y no me arrepiento."
               />
               <CardClient
                 ImgClient="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d508cd3237eb424b497fc_2.png"
                 imgLabel="CardImgClient"
                 NameClient="Mateo"
                 AgeClient="32 años"
-                Review="Lorem ipsum dolor sit amet consectetur adipiscing elit volutpat dui vehicula erat, sodales odio felis nostra"
+                Review="Lo personalizado del servicio me permitió escoger un profesional ajustado a mis necesidades y en horarios que realmente me acomodan. Agradezco el profesionalismo del especialista, me ha guiado de forma certera en todo mi proceso."
               />
               <CardClient
                 ImgClient="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d50e0f373ab219ce4dc84_5.png"
                 imgLabel="CardImgClient"
                 NameClient="Carolina"
                 AgeClient="23 años"
-                Review="Lorem ipsum dolor sit amet consectetur adipiscing elit volutpat dui vehicula erat, sodales odio felis nostra"
+                Review="El proceso de sanar ha sido difícil pero mi terapeuta me ha acompañado en todo momento de forma amable y respetuosa. Sin duda alguna recomiendo el servicio."
               />
               <CardClient
                 ImgClient="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d5115844b6721a99f62e6_6.png"
                 imgLabel="CardImgClient"
                 NameClient="Juan"
                 AgeClient="27 años"
-                Review="Lorem ipsum dolor sit amet consectetur adipiscing elit volutpat dui vehicula erat, sodales odio felis nostra"
+                Review="Después de un tiempo intentando solucionar los problemas en mi relación tomar terapia sin duda alguna fue la mejor decisión. Las sesiones han sido provechosas y han aportado a mejorar las dinámicas con mi pareja. Excelente servicio."
               />
             </div>
           </div>
