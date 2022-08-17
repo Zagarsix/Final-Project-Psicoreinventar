@@ -22,7 +22,19 @@ code {
   }
 }
 
-#citasRow{
+#citasRow {
   margin-top: 100px;
   background-color: cadetblue;
+}
+
+@media screen and (min-width: 48rem) {
+  .clients-header-text {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .clients-header-text {
+    text-align: left;
+  }
 }
