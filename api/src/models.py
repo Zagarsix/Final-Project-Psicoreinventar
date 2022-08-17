@@ -192,12 +192,7 @@ class Invoice(db.Model):
 #     def update(self):
 #         db.session.commit()
 
-<<<<<<< HEAD
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-=======
 #     def delete(self):
 #         db.session.delete(self)
 #         db.session.commit()
->>>>>>> samuelpalacios
+
