@@ -51,9 +51,10 @@ def register():
     # if user pass role (admin)
     if(role):
         user.role_id = role
-
     # by default role 3
-    user.role_id = 3
+    else:
+        user.role_id = 3
+
     # save the user
     user.save()
 
