@@ -2,7 +2,10 @@ import "../styles/Card.css";
 
 const ServiceCard = ({ img, title, time, price }) => {
   return (
-    <div className="card h-100 text-center p-3" style={{ width: "18rem" }}>
+    <div
+      className="card service-card h-100 text-center p-3"
+      style={{ width: "18rem" }}
+    >
       <img
         src={img}
         className="card-img-top mx-auto"

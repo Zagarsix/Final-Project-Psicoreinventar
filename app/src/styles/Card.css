@@ -1,12 +1,15 @@
 .card {
   margin: 0 auto;
-  cursor: pointer;
 }
 
 @media screen and (min-width: 75rem) {
   .card {
     margin: initial;
   }
+}
+
+.service-card {
+  cursor: pointer;
 }
 
 .pill {
