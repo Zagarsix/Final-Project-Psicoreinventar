@@ -105,8 +105,8 @@ class Service(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     description = db.Column(db.String(100), nullable=False, unique=True)
     price = db.Column(db.Integer, nullable=False) 
-    image = db.Column(db.String(100), nullable=False)
-    # stripe_id = db.Column(db.String(100), nullable=False, unique=True)
+    service_image = db.Column(db.String(256), nullable=False)
+    stripe_id = db.Column(db.String(100), nullable=False, unique=True)
 
     def serialize(self):
         return {
@@ -114,8 +114,8 @@ class Service(db.Model):
             'name': self.name,
             'description': self.description,
             'price': self.price,
-            'image': self.image,
-            # 'stripe_id': self.stripe_id
+            'service_image': self. service_image,
+            'stripe_id': self.stripe_id
         }
 
     def save(self):
