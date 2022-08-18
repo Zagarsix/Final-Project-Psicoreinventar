@@ -26,6 +26,7 @@ const Layout = () => {
         <Route path="/specialists" element={<Specialists />} />
         <Route path="/admin" element={<SuperAdmin />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/doctores" element={<Doctores />} />
         <Route path="/pacientes" element={<Pacientes />} />
