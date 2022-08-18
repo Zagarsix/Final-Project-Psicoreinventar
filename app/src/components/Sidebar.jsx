@@ -1,11 +1,17 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   useEffect(() => {}, []);
+
+  // If user is not signed in, redirect to login
+  useEffect(() => {
+    if (store.currentUser === null) navigate("/login");
+  }, [store.currentUser]);
 
   return (
     <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -14,7 +20,9 @@ const Sidebar = () => {
         className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
         style={{ color: "#8dc2fe" }}
       >
-        <span className="fs-5 d-none d-sm-inline">Dashboard</span>
+        <span className="fs-5 d-none d-sm-inline">
+          {store.currentUser?.user?.name}
+        </span>
       </a>
       <ul
         className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"

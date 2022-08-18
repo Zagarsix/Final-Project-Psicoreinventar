@@ -19,9 +19,9 @@ const Dashboard = () => {
     <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          {store.currentUser.user.role_id === 1 && (<Sidebar />)}
-          {store.currentUser.user.role_id === 2 && (<SidebarDoctor />)}
-          {store.currentUser.user.role_id === 3 && (<SidebarClient />)}
+          {store.currentUser?.user?.role_id === 1 && <Sidebar />}
+          {store.currentUser?.user?.role_id === 2 && <SidebarDoctor />}
+          {store.currentUser?.user?.role_id === 3 && <SidebarClient />}
         </div>
         <div className="col py-3">
           {/* inicio contenido */}
