@@ -24,6 +24,7 @@ CORS(app)
 
 app.register_blueprint(auth, url_prefix='/api')
 app.register_blueprint(account, url_prefix='/api')
+app.register_blueprint(services, url_prefix='/api')
 
 @app.route('/')
 def root():
