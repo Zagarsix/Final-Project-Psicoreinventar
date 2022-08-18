@@ -6,6 +6,7 @@ import Card from "../components/Card";
 import SpecialistCard from "../components/SpecialistCard";
 import LeftHeader from "../components/LeftHeader";
 import ServiceCard from "../components/ServiceCard";
+import headerImg from "../img/82910-psychotherapy.gif";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -21,8 +22,8 @@ const Home = () => {
         nesciunt quia alias optio debitis quam suscipit, quod animi
         delectus veritatis! Saepe, maxime."
           btnLabel="Agendar cita"
-          img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6255ce36e7efb7be217ba6c3_woman-laptop-couch.png"
-          imgLabel="Doctor"
+          img={headerImg}
+          imgLabel="psychology-session-animation"
         />
       </main>
 
