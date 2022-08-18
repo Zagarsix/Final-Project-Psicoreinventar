@@ -129,7 +129,7 @@ class Service(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     description = db.Column(db.String(100), nullable=False, unique=True)
     price = db.Column(db.Integer, nullable=False) 
-    service_image = db.Column(db.String(256), nullable=False)
+    image = db.Column(db.String(250), nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False, unique=True)
     # Appointment relationship
     appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'))
