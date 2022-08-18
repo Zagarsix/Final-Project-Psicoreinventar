@@ -68,6 +68,58 @@ def update_profile():
 
 # ADMIN ROUTES
 
+# Register doctor from admin dashboard
+@account.route('/register/doctor', methods=['POST'])
+def register_doctor():
+    name = request.json.get('name')
+    lastname = request.json.get('lastname')
+    email = request.json.get('email')
+    password = request.json.get('password')
+    phone = request.json.get('phone')
+    experience = request.json.get('experience')
+    education = request.json.get('education')
+    specialization1 = request.json.get('specialization1')
+    specialization2 = request.json.get('specialization2')
+    image = request.json.get('image')
+
+    # check if all inputs are filled
+    if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
+    if not lastname: return jsonify({'status': 'failed', 'message': 'Last Name is required', 'data': None}), 400
+    if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
+    if not password: return jsonify({'status': 'failed', 'message': 'Password is required', 'data': None}), 400
+    if not phone: return jsonify({'status': 'failed', 'message': 'Phone is required', 'data': None}), 400
+    if not experience: return jsonify({'status': 'failed', 'message': 'Experience is required', 'data': None}), 400
+    if not education: return jsonify({'status': 'failed', 'message': 'Education is required', 'data': None}), 400
+    if not specialization1: return jsonify({'status': 'failed', 'message': 'Specialization1 is required', 'data': None}), 400
+    if not specialization2: return jsonify({'status': 'failed', 'message': 'Specialization2 is required', 'data': None}), 400
+    if not image: return jsonify({'status': 'failed', 'message': 'Image is required', 'data': None}), 400
+
+    # check if user already exist
+    userFound = User.query.filter_by(email = email).first()
+    if userFound: return jsonify({'status': 'failed', 'message': 'User already exists', 'data': None}), 400
+
+    # if user doesn't exist, create one
+    # doctor model
+    user = User()
+    user.name = name
+    user.lastname = lastname
+    user.email = email
+    user.password = generate_password_hash(password)
+    user.phone = phone
+    user.role_id = 2 # Default role for doctors 2
+    user.experience = experience
+    user.education = education
+    user.specialization1 = specialization1
+    user.specialization2 = specialization2
+    user.image = image
+
+    # save the user
+    user.save()
+
+    # if register succeded
+    if user: return jsonify({'status': 'success', 'message': 'Registered successfully, please login', 'data': None}), 200
+    else: return jsonify({'status': 'failed', 'message': 'Error in register, please try again', 'data': None}), 200
+
 # Edit user by id
 @account.route('/edit_user/<int:id>', methods=['PUT'])
 def edit_user(id):
