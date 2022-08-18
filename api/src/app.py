@@ -5,6 +5,7 @@ from flask_cors import CORS
 from models import db
 from routes.auth import auth
 from routes.account import account
+from routes.services import services
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
