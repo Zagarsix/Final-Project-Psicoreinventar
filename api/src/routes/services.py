@@ -9,20 +9,20 @@ def create_service():
     name = request.json.get('name')
     description = request.json.get('description')
     price = request.json.get('price')
-    service_image = request.json.get('service_image')
+    image = request.json.get('image')
 
      # check if all is filled
     if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
     if not description: return jsonify({'status': 'failed', 'message': 'Description is required', 'data': None}), 400
     if not price: return jsonify({'status': 'failed', 'message': 'Price is required', 'data': None}), 400
-    if not service_image: return jsonify({'status': 'failed', 'message': 'Service Image is required', 'data': None}), 400
+    if not image: return jsonify({'status': 'failed', 'message': 'Service Image is required', 'data': None}), 400
 
     service = Service()
 
     service.name = name
     service.description = description
     service.price = price
-    service.service_image = service_image
+    service.image = image
 
     service.save()
 
@@ -32,10 +32,10 @@ def create_service():
    
 
 
-@services.route('/edit_service', methods=['PUT'])
-def edit_service():
-    pass
+# @services.route('/edit_service', methods=['PUT'])
+# def edit_service():
+#     pass
 
-@services.route('/delete_service', methods=['PUT'])
-def edit_service():
-    pass
+# @services.route('/delete_service', methods=['PUT'])
+# def edit_service():
+#     pass
