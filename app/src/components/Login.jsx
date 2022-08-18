@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
   const { store, actions } = useContext(Context);
@@ -13,6 +14,8 @@ const Login = () => {
     if (store.currentUser !== null) navigate("/profile");
   }, [store.currentUser]);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <>
       <div className="container">
@@ -23,17 +26,14 @@ const Login = () => {
               onSubmit={(e) => actions.handleLogin(e, navigate)}
             >
               <div className="row mb-3">
-                <label
-                  htmlFor="inputEmail3"
-                  className="col-sm-2 col-form-label"
-                >
+                <label htmlFor="inputEmail" className="col-sm-2 col-form-label">
                   Email
                 </label>
                 <div className="col-sm-10">
                   <input
                     type="email"
                     className="form-control"
-                    id="email"
+                    id="inputEmail"
                     name="email"
                     value={store.email}
                     onChange={actions.handleChange}
@@ -42,20 +42,29 @@ const Login = () => {
               </div>
               <div className="row mb-3">
                 <label
-                  htmlFor="inputPassword3"
+                  htmlFor="inputPassword"
                   className="col-sm-2 col-form-label"
                 >
                   Password
                 </label>
                 <div className="col-sm-10">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    name="password"
-                    value={store.password}
-                    onChange={actions.handleChange}
-                  />
+                  <div className="input-password position-relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      id="inputPassword"
+                      className="form-control"
+                      value={store.password}
+                      onChange={actions.handleChange}
+                    />
+                    <span
+                      className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                    </span>
+                  </div>
                 </div>
               </div>
               <div className="d-flex">
