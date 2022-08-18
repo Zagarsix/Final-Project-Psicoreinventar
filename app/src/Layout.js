@@ -7,8 +7,6 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import SuperAdmin from "./pages/Dashboard/SuperAdmin";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import DashboardDoctor from "./pages/Dashboard/Dashboard";
-import DashboardClient from "./pages/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm";
 import Login from "./components/Login";
 import Services from "./components/Services";
@@ -28,9 +26,6 @@ const Layout = () => {
         <Route path="/specialists" element={<Specialists />} />
         <Route path="/admin" element={<SuperAdmin />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/doctor/dashboard" element={<DashboardDoctor />} />
-        <Route path="/user/dashboard" element={<DashboardClient />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/doctores" element={<Doctores />} />
         <Route path="/pacientes" element={<Pacientes />} />

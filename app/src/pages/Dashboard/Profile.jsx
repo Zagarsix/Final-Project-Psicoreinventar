@@ -6,6 +6,8 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Sidebar from "../../components/Sidebar";
 import "../../styles/RegisterForm.css";
 import "../../styles/Appointment.css";
+import SidebarDoctor from "../../components/SidebarDoctor";
+import SidebarClient from "../../components/SidebarClient";
 
 const Profile = (props) => {
   // Using context
@@ -55,7 +57,9 @@ const Profile = (props) => {
     <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <Sidebar />
+          {store.currentUser.user.role_id === 1 && (<Sidebar />)}
+          {store.currentUser.user.role_id === 2 && (<SidebarDoctor />)}
+          {store.currentUser.user.role_id === 3 && (<SidebarClient />)}
         </div>
         <div className="col py-3">
           {/* inicio contenido */}

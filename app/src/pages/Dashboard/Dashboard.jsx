@@ -2,6 +2,8 @@ import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
+import SidebarDoctor from "../../components/SidebarDoctor";
+import SidebarClient from "../../components/SidebarClient";
 
 const Dashboard = () => {
   const { store, actions } = useContext(Context);
@@ -17,7 +19,9 @@ const Dashboard = () => {
     <div className="container-fluid">
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <Sidebar />
+          {store.currentUser.user.role_id === 1 && (<Sidebar />)}
+          {store.currentUser.user.role_id === 2 && (<SidebarDoctor />)}
+          {store.currentUser.user.role_id === 3 && (<SidebarClient />)}
         </div>
         <div className="col py-3">
           {/* inicio contenido */}
