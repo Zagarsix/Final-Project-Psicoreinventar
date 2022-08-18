@@ -68,6 +68,46 @@ def update_profile():
 
 # ADMIN ROUTES
 
+# Edit user by id
+@account.route('/edit_user/<int:id>', methods=['PUT'])
+def edit_user(id):
+    user = User.query.filter_by(id=id).first()
+    name = request.json.get('name')
+    lastname = request.json.get('lastname')
+    email = request.json.get('email')
+    password = request.json.get('password')
+    phone = request.json.get('phone')
+    is_active = request.json.get('is_active')
+    role_id = request.json.get('role_id')   
+
+    # check if user already exist
+    userFound = User.query.filter_by(email = email).first()
+    # if user found and its id is different from the current user id
+    if userFound: return jsonify({'status': 'failed', 'message': 'Email already exists', 'data': None}), 400
+
+    # Check if user doesn't exist
+    if not user:  return jsonify({ "status": "failed", "code": 404, "message": "User not found", "data": None }), 404
+
+    user.name = name if name is not None else user.name
+    user.lastname = lastname
+    user.email = email
+    user.password = password
+    user.phone = phone
+    user.update()
+
+    data = {
+        'user': user.serialize()
+    }
+    return jsonify({'status': 'success', 'message': 'User Updated', 'data': data}), 200
+
+# Delete user by id
+@account.route('/delete_user/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    user = User.query.filter_by(id=id).first()
+    user.delete()
+    return jsonify({'status': 'success', 'message': 'User Deleted', 'data': None}), 200
+
+
 # Get all users registrated
 @account.route("/users", methods=["GET"])
 def get_users():
