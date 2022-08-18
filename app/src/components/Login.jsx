@@ -10,9 +10,30 @@ const Login = () => {
   useEffect(() => {}, []);
 
   // If user signed in, redirect to profile page
+  // Quitar este comentario después del test
+  // useEffect(() => {
+  //   if (store.currentUser !== null) navigate("/profile");
+  // }, [store.currentUser]);
+
+  // If user signed in, redirect based no role
   useEffect(() => {
-    if (store.currentUser !== null) navigate("/profile");
-  }, [store.currentUser]);
+    if (
+      localStorage.getItem("token") &&
+      localStorage.getItem("role") == "Admin"
+    ) {
+      navigate("/admin/dashboard");
+    } else if (
+      localStorage.getItem("token") &&
+      localStorage.getItem("role") == "Doctor"
+    ) {
+      navigate("/doctor/dashboard");
+    }else if (
+      localStorage.getItem("token") &&
+      localStorage.getItem("role") == "Client"
+    ) {
+      navigate("/user/dashboard");
+    }
+  });
 
   const [showPassword, setShowPassword] = useState(false);
 
