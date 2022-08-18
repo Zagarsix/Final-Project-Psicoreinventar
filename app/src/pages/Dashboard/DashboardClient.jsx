@@ -3,7 +3,7 @@ import { Context } from "../../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 
-const Dashboard = () => {
+const DashboardClient = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
 
@@ -41,4 +41,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardClient;
