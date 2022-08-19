@@ -123,7 +123,7 @@ class Service(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
     description = db.Column(db.String(100), nullable=False, unique=True)
-    price = db.Column(db.Integer, nullable=False) 
+    price = db.Column(db.String(24), nullable=False) 
     time = db.Column(db.String(24), nullable=False) 
     image = db.Column(db.String(250), nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False, unique=True)

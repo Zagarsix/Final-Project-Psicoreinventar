@@ -131,14 +131,14 @@ def edit_user(id):
     phone = request.json.get('phone')
     is_active = request.json.get('is_active')
     role_id = request.json.get('role_id')   
-    
+
     # Check if user doesn't exist
     if not user:  return jsonify({ "status": "failed", "code": 404, "message": "User not found", "data": None }), 404
 
     user.name = name if name is not None else user.name
     user.lastname = lastname
     user.email = email
-    user.password = password
+    user.password = generate_password_hash(password)
     user.phone = phone
     user.is_active = is_active
     user.role_id = role_id
