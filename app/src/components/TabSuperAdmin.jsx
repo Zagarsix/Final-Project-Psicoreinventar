@@ -5,6 +5,9 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import ServiceCard from "./ServiceCard";
 import "../styles/TabSuperAdmin.css";
 import "../styles/DashboardTables.css";
+import TableDataService from "./TableDataService";
+import TableDataSpecialist from "./TableDataSpecialist";
+import TableDataAppointment from "./TableDataAppointment";
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -106,41 +109,11 @@ function TabSuperAdmin() {
                   </th>
                 </tr>
               </thead>
-              <tbody
-                className="table-group-divider"
-                style={{ fontSize: "13px" }}
-              >
-                <tr>
-                  <td scope="row" className="td p-2">
-                    #5666
-                  </td>
-                  <td className="td p-2">Juanín Juan Harry</td>
-                  <td className="td p-2">Joe Opino</td>
-                  <td className="td p-2">13 de Agosto, 2022. 10:00 hrs</td>
-                  <td className="td p-2">Realizado</td>
-                  <td className="td p-2">Realizado</td>
-                  <td className="td p-2">
-                    <div>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+              {!!store.appointments &&
+                store.appointments.length > 0 &&
+                store.appointments.map((appointment, i) => (
+                  <TableDataAppointment {...appointment} key={i} index={appointment.id} />
+                ))}
             </table>
           </div>
         </TabPane>
@@ -216,71 +189,11 @@ function TabSuperAdmin() {
                   </th>
                 </tr>
               </thead>
-              <tbody
-                className="table-group-divider"
-                style={{ fontSize: "13px" }}
-              >
-                <tr>
-                  <td scope="row" className="td p-2">
-                    #4567
-                  </td>
-                  <td className="td p-2">Juan Bodoque</td>
-                  <td className="td p-2">Psicólogo</td>
-                  <td className="td p-2">#85494b8</td>
-                  <td className="td p-2">Enfoque psicoanalista</td>
-                  <td className="td p-2">$45.000 por sesión</td>
-                  <td className="td p-2">
-                    <div>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="row" className="td p-2">
-                    23459
-                  </td>
-                  <td className="td p-2">Maria Rojas</td>
-                  <td className="td p-2">Psiquiatra</td>
-                  <td className="td p-2">#85334b8</td>
-                  <td className="td p-2">Especialidad Psicosis</td>
-                  <td className="td p-2">$45.000 por sesión</td>
-                  <td className="td p-2">
-                    <div>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+              {!!store.specialists &&
+                store.specialists.length > 0 &&
+                store.specialists.map((specialist, i) => (
+                  <TableDataSpecialist {...specialist} key={i} index={specialist.id} />
+                ))}
             </table>
           </div>
         </TabPane>
@@ -315,41 +228,11 @@ function TabSuperAdmin() {
                   </th>
                 </tr>
               </thead>
-              <tbody
-                className="table-group-divider"
-                style={{ fontSize: "13px" }}
-              >
-                <tr>
-                  <td scope="row" className="td p-2">
-                    #9876
-                  </td>
-                  <td className="td p-2">Terapia individual</td>
-                  <td className="td  p-2">Sesión de 45 minutos</td>
-                  <td className="td p-2">$20.000 por sesión</td>
-                  <td className="td p-2">Juan Bodoque</td>
-                  <td className="td p-2">Disponibilidad</td>
-                  <td className="td p-2">
-                    <div className="botones">
-                      <input
-                        className="form-check-input "
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="radioNoLabel"
-                        id="radioNoLabel1"
-                        value=""
-                        aria-label="..."
-                      ></input>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+              {!!store.services &&
+                store.services.length > 0 &&
+                store.services.map((service, i) => (
+                  <TableDataService {...service} key={i} index={service.id} />
+                ))}
             </table>
           </div>
         </TabPane>
