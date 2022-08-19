@@ -65,3 +65,11 @@ def delete_service(id):
     service = Service.query.filter_by(id=id).first()
     service.delete()
     return jsonify({'status': 'success', 'message': 'Service Deleted', 'data': None}), 200
+
+# Get all services registrated
+@services.route("/services", methods=["GET"])
+def get_services():
+    services = Service.query.all()
+    services = list(map(lambda service: service.serialize(), services))
+    return jsonify(services), 200
+    
