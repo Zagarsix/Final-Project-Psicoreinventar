@@ -131,12 +131,7 @@ def edit_user(id):
     phone = request.json.get('phone')
     is_active = request.json.get('is_active')
     role_id = request.json.get('role_id')   
-
-    # check if user already exist
-    userFound = User.query.filter_by(email = email).first()
     
-    if userFound: return jsonify({'status': 'failed', 'message': 'Email already exists', 'data': None}), 400
-
     # Check if user doesn't exist
     if not user:  return jsonify({ "status": "failed", "code": 404, "message": "User not found", "data": None }), 404
 
