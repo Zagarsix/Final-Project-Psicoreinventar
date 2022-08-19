@@ -1,6 +1,12 @@
+import ModalAddService from "./ModalAddService";
+import ModalDelete from "./ModalDelete";
+import ModalEditService from "./ModalEdit";
+
 const TableDataService = (index, name, description, price, time) => {
 
     return (
+      
+      
       <tbody
         className="table-group-divider"
         style={{ fontSize: "13px" }}
@@ -16,22 +22,8 @@ const TableDataService = (index, name, description, price, time) => {
           <td className="td p-2">Disponible</td>
           <td className="td p-2">
             <div className="botones">
-              <input
-                className="form-check-input "
-                type="radio"
-                name="radioNoLabel"
-                id="radioNoLabel1"
-                value=""
-                aria-label="..."
-              ></input>
-              <input
-                className="form-check-input"
-                type="radio"
-                name="radioNoLabel"
-                id="radioNoLabel1"
-                value=""
-                aria-label="..."
-              ></input>
+              <ModalEditService/>
+              <ModalDelete/>
             </div>
           </td>
         </tr>

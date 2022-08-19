@@ -8,6 +8,8 @@ import "../styles/DashboardTables.css";
 import TableDataService from "./TableDataService";
 import TableDataSpecialist from "./TableDataSpecialist";
 import TableDataAppointment from "./TableDataAppointment";
+import ModalAddUser from "./ModalAddUser";
+import ModalAddService from "./ModalAddService";
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -77,46 +79,52 @@ function TabSuperAdmin() {
           </NavLink>
         </NavItem>
       </Nav>
+     
       <TabContent activeTab={activeTab}>
         {/* !!!!!!!!!!!!!!!!!! TABLA DE CITAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="1">
           <div className="container">
+          <ModalAddUser />
             <br />
+            
             <table className="table table-borderer table-sm shadow">
+              
               <thead>
                 <tr style={{ backgroundColor: "#E8FFEB" }}>
                   <th scope="col" className="th p-2">
-                    #Cita
+                    #
                   </th>
                   <th scope="col" className="th p-2">
-                    Especialista
+                    Fecha
+                  </th>
+                  <th scope="col" className="th p-2">
+                    ID Paciente
                   </th>
                   <th scope="col" className="th p-2">
                     Paciente
                   </th>
                   <th scope="col" className="th p-2">
-                    Cita
+                    ID Doctor
                   </th>
                   <th scope="col" className="th p-2">
-                    Estado de cita
+                    Doctor
                   </th>
                   <th scope="col" className="th p-2">
-                    Pago
+                    Servicio
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square"></i>{" "}
-                    <i className="fa-solid fa-trash-can"></i>{" "}
+                    Invoice
+                  </th>
+                  <th scope="col" className="th p-2">
+                    <i className="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
               </thead>
-              {/* {!!store.appointments &&
+              {/*{!!store.appointments &&
                 store.appointments.length > 0 &&
                 store.appointments.map((appointment, i) => (
-                  <TableDataAppointment
-                    {...appointment}
-                    key={i}
-                    index={appointment.id}
-                  />
+                  <TableDataAppointment {...appointment} key={i} index={appointment.id} />
                 ))} */}
             </table>
           </div>
@@ -209,9 +217,11 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE SERVICIOS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="4">
           <div className="container">
+          <ModalAddService />
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>
+              
                 <tr style={{ backgroundColor: "#939794", color: "white" }}>
                   <th scope="col" className="th p-2">
                     ID
@@ -220,24 +230,22 @@ function TabSuperAdmin() {
                     Servicio
                   </th>
                   <th scope="col" className="th p-2">
-                    Información
+                    Descripción
                   </th>
                   <th scope="col" className="th p-2">
                     Tarifa
                   </th>
                   <th scope="col" className="th p-2">
-                    Especialistas disponibles
+                    Duración
                   </th>
-                  <th scope="col" className="th p-2">
-                    Disponibilidad
-                  </th>
+                  
                   <th scope="col" className="th p-2">
                     <i className="fa-solid fa-pen-to-square"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
               </thead>
-              {/* {!!store.services &&
+              {/*{!!store.services &&
                 store.services.length > 0 &&
                 store.services.map((service, i) => (
                   <TableDataService {...service} key={i} index={service.id} />

@@ -4,6 +4,9 @@ import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
+import ModalEdit from "../../components/ModalEdit";
+import ModalDelete from "../../components/ModalDelete";
+import ModalAddAppointment from "../../components/ModalAddAppointment";
 
 const Doctores = ({
   name,
@@ -63,6 +66,7 @@ const Doctores = ({
           </div>
           <div className="row">
             <div className="container p-5">
+              <ModalAddAppointment/>
               <div className="col-sm-12">
                 <div className="table-responsive">
                   <table
@@ -133,22 +137,12 @@ const Doctores = ({
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
                         <td style={{ border: "1px solid #000" }}>
                           <div>
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="radioNoLabel"
-                              id="radioNoLabel1"
-                              value=""
-                              aria-label="..."
-                            ></input>
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="radioNoLabel"
-                              id="radioNoLabel1"
-                              value=""
-                              aria-label="..."
-                            ></input>
+                          <td style={{ border: "1px solid #000" }}>
+                          <div>
+                          <ModalEdit/>
+                          <ModalDelete/>
+                          </div>
+                        </td>
                           </div>
                         </td>
                       </tr>
