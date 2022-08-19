@@ -52,7 +52,8 @@ const Doctores = ({
                 <h3 className="display-5 fw-bold">
                   Bienvenido(a),
                   <br></br>
-                  Dr(a). Doctor Ficticio
+                  Dr(a). {store.currentUser?.user?.name}{" "}
+                  {store.currentUser?.user?.lastname}
                 </h3>
                 <p className="col-sm-8 fs-5 pt-4 m-2">
                   Tienes 1 cita(s) agendada(s)

@@ -38,7 +38,8 @@ const SuperAdmin = () => {
             >
               <div className="container-fluid py-5">
                 <h1 className="display-5 fw-bold">
-                  Bienvenido(a), Super Admin
+                  Bienvenido(a), {store.currentUser?.user?.name} {""}{" "}
+                  {store.currentUser?.user?.lastname}
                 </h1>
               </div>
             </div>

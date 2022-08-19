@@ -20,12 +20,10 @@ const SidebarClient = () => {
         className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
         style={{ color: "#8dc2fe" }}
       >
-        <span className="fs-5 d-none d-sm-inline">
-          {store.currentUser?.user?.name}
-        </span>
+        <span className="fs-5 d-none d-sm-inline">Dashboard</span>
       </a>
       <ul
-        className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+        className="nav nav-pills flex-column mb-5 align-items-center align-items-sm-start"
         id="menu"
       >
         <li className="nav-item">
@@ -42,7 +40,7 @@ const SidebarClient = () => {
               className="fa-solid fa-hospital-user"
               style={{ color: "#8dc2fe" }}
             ></i>{" "}
-            <span className="d-none d-sm-inline text-white">Pacientes</span>{" "}
+            <span className="d-none d-sm-inline text-white">Paciente</span>{" "}
           </Link>
         </li>
       </ul>
