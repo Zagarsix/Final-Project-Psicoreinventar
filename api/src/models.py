@@ -129,6 +129,7 @@ class Service(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     description = db.Column(db.String(100), nullable=False, unique=True)
     price = db.Column(db.Integer, nullable=False) 
+    time = db.Column(db.String(24), nullable=False) 
     image = db.Column(db.String(250), nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False, unique=True)
     # Appointment relationship
@@ -140,8 +141,9 @@ class Service(db.Model):
             'name': self.name,
             'description': self.description,
             'price': self.price,
-            'service_image': self. service_image,
-            'stripe_id': self.stripe_id,
+            'time': self.time,
+            'image': self.image,
+            # 'stripe_id': self.stripe_id,
         }
 
     # Serialize with appointment
@@ -151,8 +153,9 @@ class Service(db.Model):
             'name': self.name,
             'description': self.description,
             'price': self.price,
-            'service_image': self. service_image,
-            'stripe_id': self.stripe_id,
+            'time': self.time,
+            'image': self.image,
+            # 'stripe_id': self.stripe_id,
             'appointment': self.appointment.id
         }
 
@@ -173,7 +176,7 @@ class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_of_purchase = db.Column(db.String(50), nullable=False)
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    stripe_id = db.Column(db.String(100), nullable=False)
+    # stripe_id = db.Column(db.String(100), nullable=False)
     # relationship with the appointment
     appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'))
 
@@ -202,7 +205,7 @@ class Payment(db.Model):
     amount = db.Column(db.Integer, nullable=False)
     date_of_purchase = db.Column(db.String(100), nullable=False)
     payment_method = db.Column(db.String(100), nullable=False, unique=True)
-    stripe_id = db.Column(db.String(100), nullable=False)
+    # stripe_id = db.Column(db.String(100), nullable=False)
 
     def serialize(self):
         return {
@@ -210,7 +213,7 @@ class Payment(db.Model):
             'amount': self.amount,
             'date_of_purchase': self.date_of_purchase,
             'payment_method': self.payment_method,
-            'stripe_id': self.stripe_id
+            # 'stripe_id': self.stripe_id
         }
 
     def save(self):

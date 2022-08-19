@@ -134,7 +134,7 @@ def edit_user(id):
 
     # check if user already exist
     userFound = User.query.filter_by(email = email).first()
-    # if user found and its id is different from the current user id
+    
     if userFound: return jsonify({'status': 'failed', 'message': 'Email already exists', 'data': None}), 400
 
     # Check if user doesn't exist
@@ -145,6 +145,8 @@ def edit_user(id):
     user.email = email
     user.password = password
     user.phone = phone
+    user.is_active = is_active
+    user.role_id = role_id
     user.update()
 
     data = {
