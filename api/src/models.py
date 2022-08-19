@@ -49,10 +49,6 @@ class User(db.Model):
     specialization2 = db.Column(db.String(50))
     # image url, not uploading media
     image = db.Column(db.String(250))
-    appointment_pacients = db.relationship('Appointment', backref='pacient')
-    appointment_doctors = db.relationship('Appointment', backref='doctor')
- 
-
 
     def serialize(self):
         return {
@@ -90,6 +86,9 @@ class Appointment(db.Model):
     # relationing with the currentUser.user.id (pacient) and with the doctor being chosen on dropdown
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    pacient = db.relationship('User', foreign_keys=[pacient_id], backref='pacient')
+    doctor = db.relationship('User', foreign_keys=[doctor_id], backref='doctor')
     # relationing the appointment with the service being chosen
     service = db.relationship('Service', backref="appointment", uselist=False)
     # creating an invoice for the appointment
