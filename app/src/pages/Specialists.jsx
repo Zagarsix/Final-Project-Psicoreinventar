@@ -21,7 +21,9 @@ const Specialists = () => {
         <div className="container specialists-available">
           <h4>Especialistas disponibles</h4>
           <p className="fw-semibold lead text-secondary">
-            Mostrando <span className="text-primary">10</span> resultados
+            Mostrando{" "}
+            <span className="text-primary">{store.doctors?.length}</span>{" "}
+            resultados
           </p>
         </div>
       </main>
