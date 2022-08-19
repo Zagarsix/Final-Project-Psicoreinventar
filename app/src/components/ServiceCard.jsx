@@ -16,7 +16,9 @@ const ServiceCard = ({ index, image, name, time, price }) => {
     <div className="col-md-6 col-lg-4">
       <div
         className="card service-card h-100 text-center p-3"
+        id={index}
         style={{ width: "18rem" }}
+        onClick={(e) => actions.handleClickService(index)}
       >
         <img
           src={image}
@@ -37,7 +39,7 @@ const ServiceCard = ({ index, image, name, time, price }) => {
             </div>
           </div>
         </div>
-        <div className="selection-section">
+        {/* <div className="selection-section">
           <div className="d-flex justify-content-center align-items-center">
             <div
               className="btn btn-primary rounded-pill"
@@ -47,7 +49,7 @@ const ServiceCard = ({ index, image, name, time, price }) => {
               Seleccionar
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

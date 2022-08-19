@@ -8,6 +8,14 @@
   }
 }
 
+.service-card {
+  cursor: pointer;
+}
+
+.service-card:hover {
+  background-color: #fcede4;
+}
+
 .pill {
   border-radius: 1rem;
   padding: 0.4em 1em;

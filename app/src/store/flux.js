@@ -34,8 +34,9 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     // Define all my functions
     actions: {
-      handleClickService: (data) => {
-        setStore({ service: data });
+      // Save user onclick selected service on variable service
+      handleClickService: (id) => {
+        setStore({ service: id });
       },
       getServices: async () => {
         const { apiURL } = getStore();
