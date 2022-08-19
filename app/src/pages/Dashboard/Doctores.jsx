@@ -67,6 +67,7 @@ const Doctores = ({
           </div>
           <div className="row">
             <div className="container p-5">
+              {/* agendar cita con la base de datos de usuarios */}
               <ModalAddAppointment />
               <div className="col-sm-12">
                 <div className="table-responsive">
@@ -88,7 +89,7 @@ const Doctores = ({
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "25%", border: "1px solid #000" }}
+                          style={{ width: "20%", border: "1px solid #000" }}
                         >
                           Paciente
                         </th>
@@ -113,7 +114,7 @@ const Doctores = ({
                         </th>
                         <th
                           scope="col"
-                          style={{ width: "10%", border: "1px solid #000" }}
+                          style={{ width: "15%", border: "1px solid #000" }}
                         >
                           <i className="fa-solid fa-pen-to-square"></i>{" "}
                           <i className="fa-solid fa-trash-can"></i>
@@ -138,8 +139,8 @@ const Doctores = ({
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
                         <td style={{ border: "1px solid #000" }}>
                           <div>
-                            <td style={{ border: "1px solid #000" }}>
-                              <div>
+                            <td>
+                              <div className="d-flex justify-content-between">
                                 <ModalEdit />
                                 <ModalDelete />
                               </div>

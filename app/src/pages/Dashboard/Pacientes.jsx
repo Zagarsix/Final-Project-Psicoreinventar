@@ -112,7 +112,7 @@ const Pacientes = ({}) => {
                         </td>
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
                         <td style={{ border: "1px solid #000" }}>
-                          <ModalEdit />
+                          {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
                           <ModalDelete />
                         </td>
                       </tr>

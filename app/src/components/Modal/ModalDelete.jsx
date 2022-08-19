@@ -8,7 +8,7 @@ function ModalDelete(props) {
 
   return (
     <div>
-      <Button color="primary" onClick={toggle} className="px-4 mt-4">
+      <Button color="primary" onClick={toggle} className="px-4">
         <i className="fa-solid fa-trash-can"></i>
       </Button>
       <Modal isOpen={modal} fade={false} toggle={toggle}>
