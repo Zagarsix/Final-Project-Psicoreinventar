@@ -42,13 +42,7 @@ def edit_service(id):
     price = request.json.get('price')
     time = request.json.get('time')
     image = request.json.get('image')
-
-    # check if service already exist
-
-    serviceFound = Service.query.filter_by(name = name).first()
-    # if service found and its id is different from the current user id
-    if serviceFound: return jsonify({'status': 'failed', 'message': 'Service already exists', 'data': None}), 400
-
+    
     # Check if service doesn't exist
     if not service:  return jsonify({ "status": "failed", "code": 404, "message": "Service not found", "data": None }), 404
 

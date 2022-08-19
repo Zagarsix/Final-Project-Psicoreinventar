@@ -128,7 +128,7 @@ class Service(db.Model):
     image = db.Column(db.String(250), nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False, unique=True)
     # Appointment relationship
-    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'), nullable=False)
+    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'))
 
     def serialize(self):
         return {
@@ -199,7 +199,7 @@ class Payment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Integer, nullable=False)
     date_of_purchase = db.Column(db.String(100), nullable=False)
-    payment_method = db.Column(db.String(100), nullable=False, unique=True)
+    payment_method = db.Column(db.String(100), unique=True, nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False)
 
     def serialize(self):
