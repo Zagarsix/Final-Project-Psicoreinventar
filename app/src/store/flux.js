@@ -34,6 +34,9 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     // Define all my functions
     actions: {
+      handleClickService: (data) => {
+        setStore({ service: data });
+      },
       getServices: async () => {
         const { apiURL } = getStore();
 

@@ -8,11 +8,8 @@ const ServiceCard = ({ index, image, name, time, price }) => {
 
   let [serviceSelected, setServiceSelected] = useState(null);
 
-  // store.service = serviceSelected
-  // console.log(serviceSelected);
-
-  store.service = serviceSelected;
-  console.log(store.service);
+  // store.service = serviceSelected;
+  // console.log(store.service);
 
   // store.setStore({ service: serviceSelected });
   return (
@@ -45,7 +42,7 @@ const ServiceCard = ({ index, image, name, time, price }) => {
             <div
               className="btn btn-primary rounded-pill"
               id={index}
-              onClick={(e) => setServiceSelected(e.currentTarget.id)}
+              onClick={(e) => actions.handleClickService(e.currentTarget.id)}
             >
               Seleccionar
             </div>
