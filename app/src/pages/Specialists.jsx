@@ -38,16 +38,6 @@ const Specialists = () => {
                   store.doctors.map((doctor, i) => (
                     <SpecialistCard {...doctor} key={i} index={doctor.id} />
                   ))}
-
-                {/* <SpecialistCard
-                  img="http://placekitten.com/100/100"
-                  imgLabel="Specialist 1"
-                  title="Daniela Guerrero"
-                  experience="5+ años de terapia clínica"
-                  education="Maestría en Psicoterapia Gestalt y Educación, Licenciatura en Psicología"
-                  specialization1="Parejas"
-                  specialization2="Adultos"
-                />   */}
               </div>
             </div>
           </div>

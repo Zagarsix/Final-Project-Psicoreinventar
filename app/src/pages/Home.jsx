@@ -132,43 +132,16 @@ const Home = () => {
           <div className="row">
             <div className="col-md-10 offset-md-1 py-4">
               <div className="row justify-content-between gy-3">
-                <div className="col-md-6 col-lg-4">
-                  <ServiceCard
-                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
-                    title="Consulta inicial"
-                    time="30 min"
-                    price="Gratis"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <ServiceCard
-                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
-                    title="Consulta con servicio"
-                    time="45 min"
-                    price="35 USD"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-4">
-                  <ServiceCard
-                    img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
-                    title="Otra consulta"
-                    time="1 hr"
-                    price="50 USD"
-                  />
-                </div>
+                {!!store.services &&
+                  store.services.length > 0 &&
+                  store.services.map((service, i) => (
+                    <ServiceCard {...service} key={i} index={service.id} />
+                  ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="text-center mt-5">
-        <h1>Hello, home here!!!</h1>
-        <div className="alert alert-info">
-          {store.message ||
-            "Loading message from the backend (make sure your python backend is running)..."}
-        </div>
-      </div>
     </>
   );
 };

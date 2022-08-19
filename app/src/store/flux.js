@@ -19,11 +19,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       specialization2: "",
       image: "",
       collegeDegree: null,
-      // Doctor Model
+      // Appointment
+      service: null,
+      date: null,
+      doctor: null,
+      // Getting Users and Services
+      services: null,
       errors: null,
       currentUser: null,
-      title: "Hello",
-      message: null,
       users: null,
       clients: null,
       doctors: null,
@@ -31,6 +34,23 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     // Define all my functions
     actions: {
+      getServices: async () => {
+        const { apiURL } = getStore();
+
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/services`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await response.json();
+          setStore({ services: data });
+        } catch (error) {
+          console.log("Error loading services from backend", error);
+        }
+      },
       getDoctors: async () => {
         const { apiURL } = getStore();
 
@@ -46,40 +66,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ doctors: data });
         } catch (error) {
           console.log("Error loading doctors from backend", error);
-        }
-      },
-      getClients: async () => {
-        const { apiURL } = getStore();
-
-        try {
-          // Fetch data from backend
-          const response = await fetch(`${apiURL}/api/clients`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          const data = await response.json();
-          setStore({ clients: data });
-        } catch (error) {
-          console.log("Error loading clients from backend", error);
-        }
-      },
-      getAdmins: async () => {
-        const { apiURL } = getStore();
-
-        try {
-          // Fetch data from backend
-          const response = await fetch(`${apiURL}/api/admins`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          const data = await response.json();
-          setStore({ admins: data });
-        } catch (error) {
-          console.log("Error loading admins from backend", error);
         }
       },
       handleChange: (e) => {
@@ -330,17 +316,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             // clear password on login so if user goes to update profile, the password field is blank
             password: "",
           });
-        }
-      },
-      getMessage: async () => {
-        const { apiURL } = getStore();
-        try {
-          // Fetch data from backend
-          const response = await fetch(`${apiURL}/api/hello`);
-          const data = await response.json();
-          setStore({ message: data.message });
-        } catch (error) {
-          console.log("Error loading message from backend", error);
         }
       },
     },
