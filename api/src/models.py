@@ -42,15 +42,15 @@ class User(db.Model):
     phone = db.Column(db.String(100), nullable=False)
     is_active = db.Column(db.Boolean(), default=True)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
-    #Relationships of client
-    appointments = db.relationship('Appointment', backref="user")
     # Doctor model (making nullable true for client)
     experience = db.Column(db.String(100))
     education = db.Column(db.String(100))
     specialization1 = db.Column(db.String(50))
     specialization2 = db.Column(db.String(50))
-    # image url, not uploading
+    # image url, not uploading media
     image = db.Column(db.String(250))
+    appointment_doctors = db.relationship('Appointment', useref='doctor')
+    appointment_pacients = db.relationship('Appointment', useref='pacient')
  
 
 
@@ -87,12 +87,9 @@ class Appointment(db.Model):
     __tablename__ = 'appointments'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False)
-    #!!!!!!!!!!!! GETTING ERROR BECAUSE there are multiple foreign key paths linking the tables.  
-    # pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False) 
-    # # doctor being selected on dropdown id
-    # doctor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # relationing with the currentUser.user.id (pacient) and with the doctor being chosen on dropdown
+    pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    doctor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     # relationing the appointment with the service being chosen
     service = db.relationship('Service', backref="appointment", uselist=False)
     # creating an invoice for the appointment
@@ -103,9 +100,8 @@ class Appointment(db.Model):
         return {
             'id': self.id,
             'date': self.date,
-            'user_id': self.user_id,
-            # 'pacient_id': self.pacient_id,
-            # 'doctor_id': self.doctor_id,
+            'pacient': self.pacient.name,
+            'doctor': self.doctor.name,
             # Getting the name of the service chosen for the appointment
             'service': self.service.name,
             # Getting all the data of the invoice
@@ -132,7 +128,7 @@ class Service(db.Model):
     image = db.Column(db.String(250), nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False, unique=True)
     # Appointment relationship
-    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'))
+    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'), nullable=False)
 
     def serialize(self):
         return {
@@ -175,7 +171,7 @@ class Invoice(db.Model):
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     stripe_id = db.Column(db.String(100), nullable=False)
     # relationship with the appointment
-    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'))
+    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'), nullable=False)
 
     def serialize(self):
         return {
