@@ -10,6 +10,8 @@ import TableDataSpecialist from "./TableDataSpecialist";
 import TableDataAppointment from "./TableDataAppointment";
 import ModalAddUser from "./ModalAddUser";
 import ModalAddService from "./ModalAddService";
+import ModalAddSpecialist from "./Modal/ModalAddSpecialist";
+import ModalAddAppointment from "./Modal/ModalAddAppointment";
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -29,6 +31,8 @@ function TabSuperAdmin() {
 
   return (
     <div className="TabSuperAdmin">
+      <ModalAddUser/>
+      <br />
       <Nav tabs id="tabs">
         <NavItem>
           <NavLink
@@ -71,8 +75,7 @@ function TabSuperAdmin() {
             className={activeTab == "4" ? "activeTab baseTab" : "baseTab"}
             onClick={() => cambiarTab("4")}
           >
-            <i
-              className="fa-solid fa-bookmark p-1"
+            <i className="fa-solid fa-bookmark p-1"
               style={{ color: "#8DC2FE" }}
             />
             Servicios
@@ -84,7 +87,7 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE CITAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="1">
           <div className="container">
-          <ModalAddUser />
+          <ModalAddAppointment />
             <br />
             
             <table className="table table-borderer table-sm shadow">
@@ -173,6 +176,7 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE ESPECIALISTAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="3">
           <div className="container">
+            <ModalAddSpecialist/>
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>

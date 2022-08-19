@@ -6,7 +6,7 @@ import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
 import ModalEdit from "../../components/ModalEdit";
 import ModalDelete from "../../components/ModalDelete";
-import ModalAddAppointment from "../../components/ModalAddAppointment";
+import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
 
 const Doctores = ({
   name,
