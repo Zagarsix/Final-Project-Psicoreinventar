@@ -1,33 +1,52 @@
-import { useContext } from "react";
+// import { useContext, useState } from "react";
+// import { Context } from "../store/appContext";
+// import FormControl from "@mui/material/FormControl";
+// import InputLabel from "@mui/material/InputLabel";
+// import MenuItem from "@mui/material/MenuItem";
+// import Select from "@mui/material/Select";
+
+import * as React from "react";
+import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const SelectDoctor = () => {
   const { store, actions } = useContext(Context);
+
+  const [specialistSelected, setSpecialistSelected] = useState("");
+
+  const handleChange = (e) => {
+    setSpecialistSelected(e.target.value);
+  };
+
   return (
-    <div className="dropdown">
-      <button
-        className="btn btn-secondary dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Especialistas
-      </button>
-      <ul className="dropdown-menu">
-        {!!store.doctors &&
-          store.doctors.length > 0 &&
-          store.doctors.map((doctor, i) => (
-            <li
-              key={i}
-              index={doctor.id}
-              onClick={(e) => actions.handleClickDoctor(doctor.id)}
-            >
-              <p className="specialist-name dropdown-item">
-                {doctor.name} {doctor.lastname}
-              </p>
-            </li>
-          ))}
-      </ul>
+    <div className="specialists-select" style={{ maxWidth: "15rem" }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Specialist</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={specialistSelected}
+          label="Specialist"
+          onChange={handleChange}
+        >
+          {!!store.doctors &&
+            store.doctors.length > 0 &&
+            store.doctors.map((doctor, i) => (
+              <MenuItem
+                key={i}
+                index={doctor.id}
+                onClick={(e) => actions.handleClickDoctor(doctor.id)}
+                value={doctor.id}
+              >
+                {doctor.name} {""} {doctor.lastname}
+              </MenuItem>
+            ))}
+        </Select>
+      </FormControl>
     </div>
   );
 };
