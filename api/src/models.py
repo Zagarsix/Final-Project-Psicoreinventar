@@ -49,8 +49,8 @@ class User(db.Model):
     specialization2 = db.Column(db.String(50))
     # image url, not uploading media
     image = db.Column(db.String(250))
-    appointment_doctors = db.relationship('Appointment', useref='doctor')
-    appointment_pacients = db.relationship('Appointment', useref='pacient')
+    appointment_pacients = db.relationship('Appointment', backref='pacient')
+    appointment_doctors = db.relationship('Appointment', backref='doctor')
  
 
 
