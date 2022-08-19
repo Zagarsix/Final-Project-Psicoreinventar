@@ -4,6 +4,9 @@ import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
+import ModalAddAppointment from "../../components/ModalAddAppointment";
+import ModalEdit from "../../components/ModalEdit";
+import ModalDelete from "../../components/ModalDelete";
 
 const Pacientes = ({}) => {
   const { store, actions } = useContext(Context);
@@ -19,6 +22,7 @@ const Pacientes = ({}) => {
   useEffect(() => {}, []);
   return (
     <div className="container-fluid">
+      
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           {store.currentUser?.user?.role_id === 1 && <Sidebar />}
@@ -47,6 +51,7 @@ const Pacientes = ({}) => {
           </div>
           <div className="row">
             <div className="container p-2">
+            <ModalAddAppointment/>
               <div className="col-md-12">
                 <div className="table-responsive">
                   <table
@@ -87,7 +92,8 @@ const Pacientes = ({}) => {
                           scope="col"
                           style={{ width: "15%", border: "1px solid #000" }}
                         >
-                          Pago
+                          <i className="fa-solid fa-pen-to-square"></i>
+                          <i class="fa-solid fa-xmark"></i>
                         </th>
                       </tr>
                     </thead>
@@ -106,7 +112,10 @@ const Pacientes = ({}) => {
                           13 Agosto, 2022. 15:00 hrs
                         </td>
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
-                        <td style={{ border: "1px solid #000" }}>Realizado</td>
+                        <td style={{ border: "1px solid #000" }}>
+                          <ModalEdit/>
+                          <ModalDelete/>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
