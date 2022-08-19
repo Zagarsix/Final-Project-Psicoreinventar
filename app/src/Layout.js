@@ -16,6 +16,7 @@ import Pacientes from "./pages/Dashboard/Pacientes";
 import Servicios from "./pages/Dashboard/Servicios";
 import Appointment from "./components/Appointment";
 import SelectDoctor from "./components/SelectDoctor";
+import Calendar from "./components/Calendar";
 
 const Layout = () => {
   return (
@@ -36,6 +37,7 @@ const Layout = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/services" element={<Services />} />
         <Route path="/selectdoctor" element={<SelectDoctor />} />
+        <Route path="/calendar" element={<Calendar />} />
         <Route path="/appointment" element={<Appointment />} />
       </Routes>
       <ToastContainer />
