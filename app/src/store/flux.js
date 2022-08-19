@@ -38,6 +38,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       handleClickService: (id) => {
         setStore({ service: id });
       },
+      handleClickDoctor: (id) => {
+        setStore({ doctor: id });
+      },
       getServices: async () => {
         const { apiURL } = getStore();
 

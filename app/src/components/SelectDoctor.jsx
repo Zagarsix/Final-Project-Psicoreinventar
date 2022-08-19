@@ -17,7 +17,11 @@ const SelectDoctor = () => {
         {!!store.doctors &&
           store.doctors.length > 0 &&
           store.doctors.map((doctor, i) => (
-            <li key={i} index={doctor.id}>
+            <li
+              key={i}
+              index={doctor.id}
+              onClick={(e) => actions.handleClickDoctor(doctor.id)}
+            >
               <p className="specialist-name dropdown-item">
                 {doctor.name} {doctor.lastname}
               </p>

@@ -109,11 +109,15 @@ function TabSuperAdmin() {
                   </th>
                 </tr>
               </thead>
-              {!!store.appointments &&
+              {/* {!!store.appointments &&
                 store.appointments.length > 0 &&
                 store.appointments.map((appointment, i) => (
-                  <TableDataAppointment {...appointment} key={i} index={appointment.id} />
-                ))}
+                  <TableDataAppointment
+                    {...appointment}
+                    key={i}
+                    index={appointment.id}
+                  />
+                ))} */}
             </table>
           </div>
         </TabPane>
@@ -172,16 +176,16 @@ function TabSuperAdmin() {
                     Especialista
                   </th>
                   <th scope="col" className="th p-2">
-                    Especialidad
+                    Email
                   </th>
                   <th scope="col" className="th p-2">
-                    Código título
+                    Formación académica
                   </th>
                   <th scope="col" className="th p-2">
-                    Datos generales
+                    Experiencia laboral
                   </th>
                   <th scope="col" className="th p-2">
-                    Tarifa
+                    Especialización
                   </th>
                   <th scope="col" className="th p-2">
                     <i className="fa-solid fa-pen-to-square"></i>{" "}
@@ -189,11 +193,16 @@ function TabSuperAdmin() {
                   </th>
                 </tr>
               </thead>
-              {!!store.specialists &&
-                store.specialists.length > 0 &&
-                store.specialists.map((specialist, i) => (
-                  <TableDataSpecialist {...specialist} key={i} index={specialist.id} />
+              {!!store.doctors &&
+                store.doctors.length > 0 &&
+                store.doctors.map((doctor, i) => (
+                  <TableDataSpecialist {...doctor} key={i} index={doctor.id} />
                 ))}
+              {/* {!!store.doctors &&
+                store.doctors.length > 0 &&
+                store.doctors.map((doctor, i) => (
+                  <TableDataSpecialist {...doctor} key={i} index={doctor.id} />
+                ))} */}
             </table>
           </div>
         </TabPane>
@@ -228,11 +237,11 @@ function TabSuperAdmin() {
                   </th>
                 </tr>
               </thead>
-              {!!store.services &&
+              {/* {!!store.services &&
                 store.services.length > 0 &&
                 store.services.map((service, i) => (
                   <TableDataService {...service} key={i} index={service.id} />
-                ))}
+                ))} */}
             </table>
           </div>
         </TabPane>
