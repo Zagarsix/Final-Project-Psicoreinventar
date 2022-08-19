@@ -7,6 +7,7 @@ import "../styles/Appointment.css";
 const Appointment = () => {
   return (
     <>
+      {/* Blue background on appointment */}
       <div className="bg-primary">
         <div
           className="appointment-container py-4"

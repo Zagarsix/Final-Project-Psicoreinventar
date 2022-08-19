@@ -13,9 +13,9 @@ const RegisterForm = (props) => {
 
   useEffect(() => {}, []);
 
-  // If user signed in, redirect to home page
+  // If user signed in, redirect to profile page
   useEffect(() => {
-    if (store.currentUser !== null) navigate("/");
+    if (store.currentUser !== null) navigate("/profile");
   }, [store.currentUser]);
 
   // React hook form
@@ -48,10 +48,6 @@ const RegisterForm = (props) => {
       props.nextStep();
     }
   };
-
-  // const submitForm = (e) => {
-  //   handleSubmit();
-  // };
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -151,7 +147,7 @@ const RegisterForm = (props) => {
               </div>
               <div className="row justify-content-center">
                 <div className="col-md-6">
-                  <label htmlFor="inputEmail" className="form-label">
+                  <label htmlFor="inputEmail1" className="form-label">
                     Email
                   </label>
                   <input
@@ -176,7 +172,7 @@ const RegisterForm = (props) => {
                     }`}
                     value={store.email}
                     onChange={actions.handleChange}
-                    id="inputEmail"
+                    id="inputEmail1"
                   />
                   {errors.email && (
                     <span className="text-danger">{errors.email?.message}</span>
@@ -185,7 +181,7 @@ const RegisterForm = (props) => {
               </div>
               <div className="row justify-content-center">
                 <div className="col-md-6">
-                  <label htmlFor="inputPassword" className="form-label">
+                  <label htmlFor="inputPassword1" className="form-label">
                     Contraseña
                   </label>
                   <div className="input-password position-relative">
@@ -213,7 +209,7 @@ const RegisterForm = (props) => {
                       }`}
                       value={store.password}
                       onChange={actions.handleChange}
-                      id="inputPassword"
+                      id="inputPassword1"
                     />
                     <span
                       className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
@@ -260,6 +256,7 @@ const RegisterForm = (props) => {
                         errors.confirmpassword && "invalid-input"
                       }`}
                       id="inputConfirmPassword"
+                      pattern={store.password}
                     />
                     <span
                       className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
