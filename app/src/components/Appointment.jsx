@@ -19,6 +19,7 @@ const Appointment = () => {
           <StepWizard>
             <Services />
             <BookingDoctor />
+            
           </StepWizard>
           {/* <StepWizard>
             <RegisterForm />

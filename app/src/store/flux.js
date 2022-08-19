@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       collegeDegree: null,
       // Appointment
       service: null,
-      date: null,
+      dateTime: null,
       doctor: null,
       // Getting Users and Services
       services: null,
@@ -40,6 +40,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       handleClickDoctor: (id) => {
         setStore({ doctor: id });
+      },
+      handleChangeDateTime: (dateSelected) => {
+        setStore({ dateTime: dateSelected });
       },
       getServices: async () => {
         const { apiURL } = getStore();

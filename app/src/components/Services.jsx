@@ -6,7 +6,19 @@ import { Context } from "../store/appContext";
 const Services = (props) => {
   const { store, actions } = useContext(Context);
 
+  const [message, setMessage] = useState(false);
+
   // let [serviceSelected, setServiceSelected] = useState(null);
+
+  const handleSubmit = () => {
+    if (store.service !== null) {
+      props.nextStep();
+      console.log(store.services[store.service - 1].name);
+      setMessage(store.services[store.service - 1].name);
+    } else {
+      console.log("selecciona servicio");
+    }
+  };
 
   return (
     <>
@@ -19,7 +31,7 @@ const Services = (props) => {
             <div className="col-md-6">
               <div className="step-num-container d-flex align-items-center">
                 <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
-                  2
+                  1
                 </span>
                 <h5 className="fw-semibold">Selecciona un servicio</h5>
               </div>
@@ -37,6 +49,7 @@ const Services = (props) => {
                 </div>
               </div>
             </div>
+            <span>{message}</span>
             <div className="container">
               <div className="row d-flex justify-content-center">
                 <div className="col-md-6">
@@ -49,7 +62,10 @@ const Services = (props) => {
                   </button>
                   <button
                     className="btn btn-primary"
-                    onClick={props.nextStep}
+                    onClick={(e) => {
+                      handleSubmit(e);
+                    }}
+                    // onClick={props.nextStep}
                     style={{ width: "5.5rem" }}
                   >
                     Next

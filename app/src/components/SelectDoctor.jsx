@@ -1,10 +1,3 @@
-// import { useContext, useState } from "react";
-// import { Context } from "../store/appContext";
-// import FormControl from "@mui/material/FormControl";
-// import InputLabel from "@mui/material/InputLabel";
-// import MenuItem from "@mui/material/MenuItem";
-// import Select from "@mui/material/Select";
-
 import * as React from "react";
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
@@ -13,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const SelectDoctor = () => {
+const SelectDoctor = (props) => {
   const { store, actions } = useContext(Context);
 
   const [specialistSelected, setSpecialistSelected] = useState("");
