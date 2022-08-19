@@ -4,8 +4,9 @@ import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
-import ModalEdit from "../../components/ModalEdit";
-import ModalDelete from "../../components/ModalDelete";
+
+import ModalEdit from "../../components/Modal/ModalEdit";
+import ModalDelete from "../../components/Modal/ModalDelete";
 import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
 
 const Doctores = ({
@@ -66,7 +67,7 @@ const Doctores = ({
           </div>
           <div className="row">
             <div className="container p-5">
-              <ModalAddAppointment/>
+              <ModalAddAppointment />
               <div className="col-sm-12">
                 <div className="table-responsive">
                   <table
@@ -137,12 +138,12 @@ const Doctores = ({
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
                         <td style={{ border: "1px solid #000" }}>
                           <div>
-                          <td style={{ border: "1px solid #000" }}>
-                          <div>
-                          <ModalEdit/>
-                          <ModalDelete/>
-                          </div>
-                        </td>
+                            <td style={{ border: "1px solid #000" }}>
+                              <div>
+                                <ModalEdit />
+                                <ModalDelete />
+                              </div>
+                            </td>
                           </div>
                         </td>
                       </tr>

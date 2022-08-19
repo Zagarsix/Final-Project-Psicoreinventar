@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { useState } from "react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 function ModalAddAppointment(props) {
   const [modal, setModal] = useState(false);
@@ -8,18 +8,16 @@ function ModalAddAppointment(props) {
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>
-      <i class="fa-solid fa-circle-plus"></i>
+      <Button color="primary" onClick={toggle} className="px-4 mt-4">
+        <i className="fa-solid fa-circle-plus"></i>
       </Button>
       <Modal isOpen={modal} fade={false} toggle={toggle}>
         <ModalHeader toggle={toggle}>Agendar cita</ModalHeader>
-        <ModalBody>
-          Rellena los campos
-        </ModalBody>
+        <ModalBody>Rellena los campos</ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
             Agendar
-          </Button>{' '}
+          </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancelar
           </Button>

@@ -8,8 +8,7 @@ import "../styles/DashboardTables.css";
 import TableDataService from "./TableDataService";
 import TableDataSpecialist from "./TableDataSpecialist";
 import TableDataAppointment from "./TableDataAppointment";
-import ModalAddUser from "./ModalAddUser";
-import ModalAddService from "./ModalAddService";
+import ModalAddService from "./Modal/ModalAddService";
 import ModalAddSpecialist from "./Modal/ModalAddSpecialist";
 import ModalAddAppointment from "./Modal/ModalAddAppointment";
 
@@ -31,7 +30,6 @@ function TabSuperAdmin() {
 
   return (
     <div className="TabSuperAdmin">
-      <ModalAddUser/>
       <br />
       <Nav tabs id="tabs">
         <NavItem>
@@ -75,23 +73,23 @@ function TabSuperAdmin() {
             className={activeTab == "4" ? "activeTab baseTab" : "baseTab"}
             onClick={() => cambiarTab("4")}
           >
-            <i className="fa-solid fa-bookmark p-1"
+            <i
+              className="fa-solid fa-bookmark p-1"
               style={{ color: "#8DC2FE" }}
             />
             Servicios
           </NavLink>
         </NavItem>
       </Nav>
-     
+
       <TabContent activeTab={activeTab}>
         {/* !!!!!!!!!!!!!!!!!! TABLA DE CITAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="1">
           <div className="container">
-          <ModalAddAppointment />
+            <ModalAddAppointment />
             <br />
-            
+
             <table className="table table-borderer table-sm shadow">
-              
               <thead>
                 <tr style={{ backgroundColor: "#E8FFEB" }}>
                   <th scope="col" className="th p-2">
@@ -176,7 +174,7 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE ESPECIALISTAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="3">
           <div className="container">
-            <ModalAddSpecialist/>
+            <ModalAddSpecialist />
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>
@@ -221,11 +219,10 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE SERVICIOS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="4">
           <div className="container">
-          <ModalAddService />
+            <ModalAddService />
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>
-              
                 <tr style={{ backgroundColor: "#939794", color: "white" }}>
                   <th scope="col" className="th p-2">
                     ID
@@ -242,7 +239,7 @@ function TabSuperAdmin() {
                   <th scope="col" className="th p-2">
                     Duración
                   </th>
-                  
+
                   <th scope="col" className="th p-2">
                     <i className="fa-solid fa-pen-to-square"></i>
                     <i className="fa-solid fa-trash-can"></i>

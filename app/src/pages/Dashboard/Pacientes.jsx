@@ -4,9 +4,9 @@ import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
-import ModalAddAppointment from "../../components/ModalAddAppointment";
-import ModalEdit from "../../components/ModalEdit";
-import ModalDelete from "../../components/ModalDelete";
+import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
+import ModalEdit from "../../components/Modal/ModalEdit";
+import ModalDelete from "../../components/Modal/ModalDelete";
 
 const Pacientes = ({}) => {
   const { store, actions } = useContext(Context);
@@ -22,7 +22,6 @@ const Pacientes = ({}) => {
   useEffect(() => {}, []);
   return (
     <div className="container-fluid">
-      
       <div className="row flex-nowrap">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           {store.currentUser?.user?.role_id === 1 && <Sidebar />}
@@ -51,7 +50,7 @@ const Pacientes = ({}) => {
           </div>
           <div className="row">
             <div className="container p-2">
-            <ModalAddAppointment/>
+              <ModalAddAppointment />
               <div className="col-md-12">
                 <div className="table-responsive">
                   <table
@@ -113,8 +112,8 @@ const Pacientes = ({}) => {
                         </td>
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
                         <td style={{ border: "1px solid #000" }}>
-                          <ModalEdit/>
-                          <ModalDelete/>
+                          <ModalEdit />
+                          <ModalDelete />
                         </td>
                       </tr>
                     </tbody>
