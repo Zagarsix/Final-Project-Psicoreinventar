@@ -8,6 +8,7 @@ import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
 import ServiceCard from "../components/ServiceCard";
 import SpecialistCard from "../components/SpecialistCard";
+import headerImg from "../img/82910-psychotherapy.gif";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -20,8 +21,8 @@ const Home = () => {
           title_highlight="salud mental"
           description="Buscamos mejorar la calidad de vida de las personas, a través de la entrega de servicios integrales en salud mental, emocional y conductual personalizados."
           btnLabel="Agendar cita"
-          img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/6255ce36e7efb7be217ba6c3_woman-laptop-couch.png"
-          imgLabel="Doctor"
+          img={headerImg}
+          imgLabel="psychology-session-animation"
         />
       </main>
 
@@ -80,7 +81,9 @@ const Home = () => {
                 <strong>Clientes más felices</strong>
               </h1>
               <p className="my-3">
-              Nuestro principal objetivo es que encuentres un especialista adecuado a tus necesidades para que así puedas mejorar tu calidad de vida y ser la mejor versión de ti mismo.
+                Nuestro principal objetivo es que encuentres un especialista
+                adecuado a tus necesidades para que así puedas mejorar tu
+                calidad de vida y ser la mejor versión de ti mismo.
               </p>
 
               <Link className="col-6 btn btn-primary py-2" to="/appointment">
