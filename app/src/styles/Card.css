@@ -8,10 +8,6 @@
   }
 }
 
-.service-card {
-  cursor: pointer;
-}
-
 .pill {
   border-radius: 1rem;
   padding: 0.4em 1em;

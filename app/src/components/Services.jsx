@@ -1,7 +1,13 @@
 import ServiceCard from "./ServiceCard";
 import "../styles/Appointment.css";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
 
 const Services = (props) => {
+  const { store, actions } = useContext(Context);
+
+  // let [serviceSelected, setServiceSelected] = useState(null);
+
   return (
     <>
       <section className="card-section bg-primary">
@@ -15,7 +21,7 @@ const Services = (props) => {
                 <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
                   2
                 </span>
-                <h5 className="fw-semibold">Select a service</h5>
+                <h5 className="fw-semibold">Selecciona un servicio</h5>
               </div>
             </div>
           </div>
@@ -23,30 +29,11 @@ const Services = (props) => {
             <div className="row">
               <div className="col-md-10 offset-md-1 py-3 mb-3">
                 <div className="row align-items-center justify-content-between gy-3">
-                  <div className="col-md-6 col-lg-4">
-                    <ServiceCard
-                      img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
-                      title="Consulta inicial"
-                      time="30 min"
-                      price="Gratis"
-                    />
-                  </div>
-                  <div className="col-md-6 col-lg-4">
-                    <ServiceCard
-                      img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
-                      title="Consulta con servicio"
-                      time="45 min"
-                      price="35 USD"
-                    />
-                  </div>
-                  <div className="col-md-6 col-lg-4">
-                    <ServiceCard
-                      img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62558793a951d723d8150c4a_plans-icon-1.png"
-                      title="Otra consulta"
-                      time="1 hr"
-                      price="50 USD"
-                    />
-                  </div>
+                  {!!store.services &&
+                    store.services.length > 0 &&
+                    store.services.map((service, i) => (
+                      <ServiceCard {...service} key={i} index={service.id} />
+                    ))}
                 </div>
               </div>
             </div>
