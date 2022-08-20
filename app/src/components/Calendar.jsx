@@ -9,14 +9,6 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 const Calendar = () => {
   const { store, actions } = useContext(Context);
 
-  const handleSubmit = () => {
-    if (store.service !== null && store.date !== null) {
-      console.log("Especialista y Fecha seleccionados exitosamente");
-    } else {
-      console.log("selecciona especialista y fecha");
-    }
-  };
-
   const [dateTimeSelected, setDatetimeSelected] = useState(null);
 
   {
