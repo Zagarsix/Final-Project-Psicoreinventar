@@ -22,14 +22,19 @@ const Calendar = () => {
           renderInput={(props) => <TextField {...props} />}
           label="DateTimePicker"
           value={dateTimeSelected}
+          disablePast
+          minutesStep={45}
+          minTime={new Date(0, 0, 0, 9)}
+          maxTime={new Date(0, 0, 0, 17)}
+          views={["day", "hours", "minutes"]}
           onChange={(newValue) => {
             setDatetimeSelected(newValue);
-            actions.handleChangeDateTime(dateTimeSelected);
+            // How to just sent  dateTimeSelected actual value to handleChangeDateTime, state is updating to prev state
+            actions.handleChangeDateTime(newValue);
           }}
         />
       </LocalizationProvider>
     </div>
   );
 };
-
 export default Calendar;
