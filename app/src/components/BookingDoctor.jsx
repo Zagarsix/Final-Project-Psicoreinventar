@@ -54,12 +54,19 @@ const BookingDoctor = (props) => {
               <div className="row d-flex justify-content-center">
                 <div className="col-md-6">
                   <button
+                    className="btn btn-secondary me-3"
+                    // reset state if user goes back to profile page
+                    // como resetearlo si el usuario le da click a la flecha de atrás
+                    onClick={props.previousStep}
+                    style={{ width: "5.5rem" }}
+                  >
+                    Previous
+                  </button>
+                  <button
                     className="btn btn-primary"
                     // onSubmit={send data to api}
                     onClick={(e) => {
                       submitBooking(e);
-                      // actions.handleRegister(e, navigate);
-                      // actions.handleAppointment
                     }}
                     style={{ width: "5.5rem" }}
                     type="submit"

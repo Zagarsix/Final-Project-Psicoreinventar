@@ -35,9 +35,13 @@ const getState = ({ getStore, getActions, setStore }) => {
     // Define all my functions
     actions: {
       // Save user onclick selected service on variable service
-      handleClickService: (id) => {
-        setStore({ service: id });
+      handleClickService: (data) => {
+        setStore({ service: data });
       },
+      // Old version
+      // handleClickService: (id) => {
+      //   setStore({ service: id });
+      // },
       handleClickDoctor: (id) => {
         setStore({ doctor: id });
       },
@@ -361,6 +365,24 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: "",
           });
         }
+      },
+      handleAppointmentSuccess: (message) => {
+        // Display a certain notification based on appointment user error
+        Swal.fire({
+          icon: "success",
+          title: message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },
+      handleAppointmentError: (message) => {
+        // Display a certain notification based on appointment user error
+        Swal.fire({
+          icon: "error",
+          title: message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       },
     },
   };

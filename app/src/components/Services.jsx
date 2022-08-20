@@ -2,21 +2,21 @@ import ServiceCard from "./ServiceCard";
 import "../styles/Appointment.css";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const Services = (props) => {
   const { store, actions } = useContext(Context);
-
-  const [message, setMessage] = useState(false);
-
   // let [serviceSelected, setServiceSelected] = useState(null);
 
   const handleSubmit = () => {
     if (store.service !== null) {
       props.nextStep();
       console.log(store.services[store.service - 1].name);
-      setMessage(store.services[store.service - 1].name);
+      actions.handleAppointmentSuccess(
+        `Servicio seleccionado ${store.services[store.service - 1].name}`
+      );
     } else {
-      console.log("selecciona servicio");
+      actions.handleAppointmentError("Selecciona un servicio");
     }
   };
 
@@ -49,23 +49,24 @@ const Services = (props) => {
                 </div>
               </div>
             </div>
-            <span>{message}</span>
             <div className="container">
               <div className="row d-flex justify-content-center">
                 <div className="col-md-6">
-                  <button
+                  <Link
                     className="btn btn-secondary me-3"
-                    onClick={props.previousStep}
+                    // reset state if user goes back to profile page
+                    // como resetearlo si el usuario le da click a la flecha de atrás
+                    onClick={() => (store.service = null)}
+                    to="/profile"
                     style={{ width: "5.5rem" }}
                   >
                     Previous
-                  </button>
+                  </Link>
                   <button
                     className="btn btn-primary"
                     onClick={(e) => {
                       handleSubmit(e);
                     }}
-                    // onClick={props.nextStep}
                     style={{ width: "5.5rem" }}
                   >
                     Next

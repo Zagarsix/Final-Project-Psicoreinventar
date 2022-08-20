@@ -6,12 +6,6 @@ import "../styles/Card.css";
 const ServiceCard = ({ index, image, name, time, price }) => {
   const { store, actions } = useContext(Context);
 
-  let [serviceSelected, setServiceSelected] = useState(null);
-
-  // store.service = serviceSelected;
-  // console.log(store.service);
-
-  // store.setStore({ service: serviceSelected });
   return (
     <div className="col-md-6 col-lg-4">
       <div
@@ -39,17 +33,6 @@ const ServiceCard = ({ index, image, name, time, price }) => {
             </div>
           </div>
         </div>
-        {/* <div className="selection-section">
-          <div className="d-flex justify-content-center align-items-center">
-            <div
-              className="btn btn-primary rounded-pill"
-              id={index}
-              onClick={(e) => actions.handleClickService(e.currentTarget.id)}
-            >
-              Seleccionar
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 function ModalAddAppointment(props) {
@@ -9,18 +10,18 @@ function ModalAddAppointment(props) {
   return (
     <div>
       <Button color="primary" onClick={toggle} className="px-4">
-        <i className="fa-solid fa-circle-plus"></i>
+        Agendar Cita
       </Button>
       <Modal isOpen={modal} fade={false} toggle={toggle}>
         <ModalHeader toggle={toggle}>Agendar cita</ModalHeader>
-        <ModalBody>Rellena los campos</ModalBody>
+        <ModalBody>Seguro que quieres agendar una cita?</ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+          <Link className="btn btn-primary" onClick={toggle} to="/appointment">
             Agendar
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
+          </Link>{" "}
+          <button className="btn btn-secondary" onClick={toggle}>
             Cancelar
-          </Button>
+          </button>
         </ModalFooter>
       </Modal>
     </div>
