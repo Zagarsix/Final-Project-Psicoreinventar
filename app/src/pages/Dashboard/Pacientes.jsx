@@ -94,7 +94,7 @@ const Pacientes = ({}) => {
                           style={{ width: "15%", border: "1px solid #000" }}
                         >
                           <i className="fa-solid fa-pen-to-square"></i>
-                          <i class="fa-solid fa-xmark"></i>
+                          <i className="fa-solid fa-xmark"></i>
                         </th>
                       </tr>
                     </thead>

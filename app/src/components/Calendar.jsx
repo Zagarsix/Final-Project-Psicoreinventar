@@ -50,12 +50,6 @@ const Calendar = () => {
             console.log(newValue);
           }}
         />
-        {/* onChange={(newValue) => {
-            setDatetimeSelected(newValue);
-            // How to just sent  dateTimeSelected actual value to handleChangeDateTime, state is updating to prev state
-            actions.handleChangeDateTime(newValue);
-          }}
-        /> */}
       </LocalizationProvider>
     </div>
   );

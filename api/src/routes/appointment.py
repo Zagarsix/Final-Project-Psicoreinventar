@@ -6,23 +6,29 @@ from models import User, Appointment
 appointment = Blueprint('appointment', __name__)
 
 @appointment.route('/appointment', methods=['POST'])
+@jwt_required()
 def add_appointment():
-    
-    date = request.json.get('date')
-    pacient_id = request.json.get('pacient_id')
+    id = get_jwt_identity()
+    dateTime = request.json.get('dateTime')
+    pacient_id = User.query.get(id)
     doctor_id = request.json.get('doctor_id')
+    service = request.json.get('service')
 
-    if not date: return jsonify({'status': 'failed', 'message': 'Date is required', 'data': None}), 400
-    if not pacient_id: return jsonify({'status': 'failed', 'message': 'pacient_id is required', 'data': None}), 400
-    if not doctor_id: return jsonify({'status': 'failed', 'message': 'doctor_id is required', 'data': None}), 400
+    if not dateTime: return jsonify({'status': 'failed', 'message': 'Date and Time are required', 'data': None}), 400
+    # if not pacient_id: return jsonify({'status': 'failed', 'message': 'Pacient_id is required', 'data': None}), 400
+    # if not doctor_id: return jsonify({'status': 'failed', 'message': 'Doctor_id is required', 'data': None}), 400
+    # if not service: return jsonify({'status': 'failed', 'message': 'Service is required', 'data': None}), 400
 
     appointment = Appointment()
-    appointment.date = date
+
+    appointment.dateTime = dateTime
     appointment.pacient_id = pacient_id
     appointment.doctor_id = doctor_id
+    appointment.service = service
 
     appointment.save()
 
+    # if add appointment succeded
     if appointment: return jsonify({'status': 'success', 'message': 'Cita agendada exitosamente', 'data': None}), 200
     else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': None}), 200
 
@@ -30,17 +36,19 @@ def add_appointment():
 @appointment.route('/edit_appoinment/<int:id>', methods=['PUT'])
 def edit_appoinment(id):
     appointment = Appointment.query.filter_by(id=id).first()
-    date = request.json.get('date')
+    dateTime = request.json.get('dateTime')
     pacient_id = request.json.get('pacient_id')
     doctor_id = request.json.get('doctor_id')  
+    service = request.json.get('service')
 
     # Check if appointment doesn't exist
     if not appointment:  return jsonify({ "status": "failed", "code": 404, "message": "Cita no encontrada", "data": None }), 404
 
     appointment = Appointment()
-    appointment.date = date
+    appointment.dateTime = dateTime
     appointment.pacient_id = pacient_id
     appointment.doctor_id = doctor_id
+    appointment.service = service
     
     appointment.update()
 

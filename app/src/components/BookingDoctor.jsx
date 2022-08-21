@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import SelectDoctor from "./SelectDoctor";
 import Calendar from "./Calendar";
 import "../styles/Appointment.css";
 
 const BookingDoctor = (props) => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   const submitBooking = () => {
     /*  Find which doctor in the database has the same id as the doctor being selected and saved on store.doctor
@@ -77,11 +79,16 @@ const BookingDoctor = (props) => {
                   <button
                     className="btn btn-primary"
                     // onSubmit={send data to api}
+                    // onClick={(e) => {
+                    //   submitBooking(e);
+                    //   actions.handleAppointment(e, navigate);
+                    // }}
                     onClick={(e) => {
                       submitBooking(e);
+                      actions.handleAppointment(e, navigate);
                     }}
                     style={{ width: "5.5rem" }}
-                    type="submit"
+                    // type="submit"
                   >
                     Submit
                   </button>

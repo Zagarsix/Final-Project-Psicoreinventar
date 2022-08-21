@@ -82,7 +82,7 @@ class User(db.Model):
 class Appointment(db.Model):
     __tablename__ = 'appointments'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, nullable=False)
+    dateTime = db.Column(db.DateTime, nullable=False)
     # relationing with the currentUser.user.id (pacient) and with the doctor being chosen on dropdown
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

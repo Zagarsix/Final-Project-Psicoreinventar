@@ -250,7 +250,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         if (currentUser !== null) {
           setStore({
-            email: currentUser?.user.email,
+            email: currentUser?.user?.email,
             password: "",
             name: currentUser?.user?.name,
             lastname: currentUser?.user?.lastname,
@@ -359,6 +359,52 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentUser: currentUser,
             // clear password on login so if user goes to update profile, the password field is blank
             password: "",
+          });
+        }
+      },
+      handleAppointment: async (e, navigate) => {
+        const { service, doctor, dateTime, currentUser, apiURL } = getStore();
+
+        const fields = {
+          dateTime: dateTime,
+          pacient_id: currentUser?.user?.id,
+          doctor_id: doctor,
+          service: service,
+        };
+
+        // Fetching data from API
+        const response = await fetch(`${apiURL}/api/appointment`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${currentUser?.access_token}`,
+          },
+          body: JSON.stringify(fields),
+        });
+        // const response = await fetch(`${apiURL}/api/appointment`, {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Authorization: `Bearer ${currentUser?.access_token}`,
+        //   },
+        //   body: JSON.stringify(fields),
+        // });
+
+        const { status, message, data } = await response.json();
+
+        console.log(data);
+
+        // Display a certain notification based on status of the fetch data
+        if (status === "failed") {
+          toast.error(message);
+        }
+
+        if (status === "success") {
+          Swal.fire({
+            icon: "success",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500,
           });
         }
       },
