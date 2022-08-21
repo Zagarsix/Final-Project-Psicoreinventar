@@ -35,13 +35,9 @@ const getState = ({ getStore, getActions, setStore }) => {
     // Define all my functions
     actions: {
       // Save user onclick selected service on variable service
-      handleClickService: (data) => {
-        setStore({ service: data });
+      handleClickService: (id) => {
+        setStore({ service: id });
       },
-      // Old version
-      // handleClickService: (id) => {
-      //   setStore({ service: id });
-      // },
       handleClickDoctor: (id) => {
         setStore({ doctor: id });
       },

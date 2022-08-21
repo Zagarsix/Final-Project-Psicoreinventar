@@ -11,10 +11,6 @@ const Calendar = () => {
 
   const [dateTimeSelected, setDatetimeSelected] = useState(null);
 
-  {
-    console.log(dateTimeSelected);
-  }
-
   return (
     <div className="">
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -22,11 +18,18 @@ const Calendar = () => {
           renderInput={(props) => <TextField {...props} />}
           label="DateTimePicker"
           value={dateTimeSelected}
+          inputFormat="dd/MM/yyyy hh:mm"
+          format="dd/MM/yyyy hh:mm"
           disablePast
           minutesStep={45}
           minTime={new Date(0, 0, 0, 9)}
           maxTime={new Date(0, 0, 0, 17)}
           views={["day", "hours", "minutes"]}
+          // onChange={(newValue) => {
+          //   setDatetimeSelected(newValue);
+          //   // How to just sent  dateTimeSelected actual value to handleChangeDateTime, state is updating to prev state
+          //   actions.handleChangeDateTime(newValue);
+          // }}
           onChange={(newValue) => {
             setDatetimeSelected(newValue);
             // How to just sent  dateTimeSelected actual value to handleChangeDateTime, state is updating to prev state

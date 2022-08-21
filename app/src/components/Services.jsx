@@ -9,9 +9,9 @@ const Services = (props) => {
   // let [serviceSelected, setServiceSelected] = useState(null);
 
   const handleSubmit = () => {
+    // If service selected, go to next step and display notification
     if (store.service !== null) {
       props.nextStep();
-      console.log(store.services[store.service - 1].name);
       actions.handleAppointmentSuccess(
         `Servicio seleccionado ${store.services[store.service - 1].name}`
       );

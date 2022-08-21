@@ -30,6 +30,7 @@ const SelectDoctor = (props) => {
             store.doctors.length > 0 &&
             store.doctors.map((doctor, i) => (
               <MenuItem
+                // {...doctor}
                 key={i}
                 index={doctor.id}
                 onClick={(e) => actions.handleClickDoctor(doctor.id)}
@@ -43,5 +44,4 @@ const SelectDoctor = (props) => {
     </div>
   );
 };
-
 export default SelectDoctor;

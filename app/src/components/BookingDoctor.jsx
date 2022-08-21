@@ -8,11 +8,24 @@ const BookingDoctor = (props) => {
   const { store, actions } = useContext(Context);
 
   const submitBooking = () => {
-    if (store.service !== null && store.date !== null) {
-      console.log("Especialista y Fecha seleccionados exitosamente");
+    /*  Find which doctor in the database has the same id as the doctor being selected and saved on store.doctor
+        Doing this because on the flux, the doctors attribute is being saved starting from zero, not with doctor.id*/
+    const doctorSelected = store.doctors.find(
+      (doctor) => doctor.id === store?.doctor
+    );
+    const doctorName = `${doctorSelected.name} ${doctorSelected.lastname}`;
+
+    // If doctor and dateTime selected, display notification and post request
+    if (store.doctor !== null && store.dateTime !== null) {
+      actions.handleAppointmentSuccess(
+        `Agendando cita con: ${doctorName}, el ${store.dateTime}`
+      );
     } else {
-      console.log("selecciona especialista y fecha");
+      actions.handleAppointmentError(
+        "Seleccione un especialista y la fecha y el horario de la cita"
+      );
     }
+    console.log(doctorName);
   };
 
   return (
