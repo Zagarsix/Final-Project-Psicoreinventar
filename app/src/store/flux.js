@@ -367,9 +367,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         const fields = {
           dateTime: dateTime,
-          pacient_id: currentUser?.user?.id,
+          // pacient_id: currentUser?.user?.id,
           doctor_id: doctor,
-          service: service,
+          service_id: service,
         };
 
         // Fetching data from API
@@ -381,14 +381,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
           body: JSON.stringify(fields),
         });
-        // const response = await fetch(`${apiURL}/api/appointment`, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     Authorization: `Bearer ${currentUser?.access_token}`,
-        //   },
-        //   body: JSON.stringify(fields),
-        // });
 
         const { status, message, data } = await response.json();
 

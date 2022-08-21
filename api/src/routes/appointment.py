@@ -9,22 +9,23 @@ appointment = Blueprint('appointment', __name__)
 @jwt_required()
 def add_appointment():
     id = get_jwt_identity()
+    user = User.query.get(id)
+    pacient_id = user.id
     dateTime = request.json.get('dateTime')
-    pacient_id = User.query.get(id)
     doctor_id = request.json.get('doctor_id')
-    service = request.json.get('service')
+    service_id = request.json.get('service_id')
 
+    if not pacient_id: return jsonify({'status': 'failed', 'message': 'Pacient_id is required', 'data': None}), 400
+    if not doctor_id: return jsonify({'status': 'failed', 'message': 'Doctor_id is required', 'data': None}), 400
+    if not service_id: return jsonify({'status': 'failed', 'message': 'Service is required', 'data': None}), 400
     if not dateTime: return jsonify({'status': 'failed', 'message': 'Date and Time are required', 'data': None}), 400
-    # if not pacient_id: return jsonify({'status': 'failed', 'message': 'Pacient_id is required', 'data': None}), 400
-    # if not doctor_id: return jsonify({'status': 'failed', 'message': 'Doctor_id is required', 'data': None}), 400
-    # if not service: return jsonify({'status': 'failed', 'message': 'Service is required', 'data': None}), 400
 
     appointment = Appointment()
 
     appointment.dateTime = dateTime
     appointment.pacient_id = pacient_id
     appointment.doctor_id = doctor_id
-    appointment.service = service
+    appointment.service_id = service_id
 
     appointment.save()
 
@@ -39,7 +40,7 @@ def edit_appoinment(id):
     dateTime = request.json.get('dateTime')
     pacient_id = request.json.get('pacient_id')
     doctor_id = request.json.get('doctor_id')  
-    service = request.json.get('service')
+    service_id = request.json.get('service_id')
 
     # Check if appointment doesn't exist
     if not appointment:  return jsonify({ "status": "failed", "code": 404, "message": "Cita no encontrada", "data": None }), 404
@@ -48,7 +49,7 @@ def edit_appoinment(id):
     appointment.dateTime = dateTime
     appointment.pacient_id = pacient_id
     appointment.doctor_id = doctor_id
-    appointment.service = service
+    appointment.service_id = service_id
     
     appointment.update()
 
