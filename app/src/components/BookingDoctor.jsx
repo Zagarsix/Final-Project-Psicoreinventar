@@ -25,7 +25,6 @@ const BookingDoctor = (props) => {
         "Seleccione un especialista y la fecha y el horario de la cita"
       );
     }
-    console.log(doctorName);
   };
 
   return (

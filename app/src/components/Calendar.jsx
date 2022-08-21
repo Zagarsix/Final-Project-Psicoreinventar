@@ -11,6 +11,17 @@ const Calendar = () => {
 
   const [dateTimeSelected, setDatetimeSelected] = useState(null);
 
+  // const dateSelected =
+  //   dateTimeSelected && dateTimeSelected.toLocaleDateString();
+
+  // const timeSelected =
+  //   dateTimeSelected && dateTimeSelected.toLocaleTimeString();
+
+  // // Returns date and time selected as = 8/25/2022 2:45:00 PM
+  // const selectedDateTime = `${dateSelected} ${timeSelected}`;
+
+  // console.log(selectedDateTime);
+
   return (
     <div className="">
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -25,17 +36,26 @@ const Calendar = () => {
           minTime={new Date(0, 0, 0, 9)}
           maxTime={new Date(0, 0, 0, 17)}
           views={["day", "hours", "minutes"]}
-          // onChange={(newValue) => {
-          //   setDatetimeSelected(newValue);
-          //   // How to just sent  dateTimeSelected actual value to handleChangeDateTime, state is updating to prev state
-          //   actions.handleChangeDateTime(newValue);
-          // }}
           onChange={(newValue) => {
+            const dateSelected = newValue?.toLocaleDateString();
+
+            const timeSelected = newValue?.toLocaleTimeString();
+
+            // Returns date and time selected as = 8/25/2022 2:45:00 PM
+            newValue = `${dateSelected} ${timeSelected}`;
+
+            setDatetimeSelected(newValue);
+            // How to just sent  dateTimeSelected actual value to handleChangeDateTime, state is updating to prev state
+            actions.handleChangeDateTime(newValue);
+            console.log(newValue);
+          }}
+        />
+        {/* onChange={(newValue) => {
             setDatetimeSelected(newValue);
             // How to just sent  dateTimeSelected actual value to handleChangeDateTime, state is updating to prev state
             actions.handleChangeDateTime(newValue);
           }}
-        />
+        /> */}
       </LocalizationProvider>
     </div>
   );
