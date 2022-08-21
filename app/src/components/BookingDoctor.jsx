@@ -13,7 +13,7 @@ const BookingDoctor = (props) => {
     const doctorSelected = store.doctors.find(
       (doctor) => doctor.id === store?.doctor
     );
-    const doctorName = `${doctorSelected.name} ${doctorSelected.lastname}`;
+    const doctorName = `${doctorSelected?.name} ${doctorSelected?.lastname}`;
 
     // If doctor and dateTime selected, display notification and post request
     if (store.doctor !== null && store.dateTime !== null) {
