@@ -8,9 +8,7 @@ import "../styles/DashboardTables.css";
 import TableDataService from "./TableDataService";
 import TableDataSpecialist from "./TableDataSpecialist";
 import TableDataAppointment from "./TableDataAppointment";
-import ModalAddService from "./Modal/ModalAddService";
-import ModalAddSpecialist from "./Modal/ModalAddSpecialist";
-import ModalAddAppointment from "./Modal/ModalAddAppointment";
+import ModalAddWithForm from "./Modal/ModalAddWithForm";
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -87,7 +85,6 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE CITAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="1">
           <div className="container">
-            <ModalAddAppointment />
             <br />
 
             <table className="table table-borderer table-sm shadow">
@@ -179,7 +176,14 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE ESPECIALISTAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="3">
           <div className="container">
-            <ModalAddSpecialist />
+            <div className="add-specialist-button mt-2">
+              {/* <ModalAddSpecialist /> */}
+              <ModalAddWithForm
+                addWord="Agregar"
+                connector="un"
+                addWhat="especialista"
+              />
+            </div>
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>
@@ -219,7 +223,12 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE SERVICIOS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="4">
           <div className="container">
-            <ModalAddService />
+            {/* <ModalAddService /> */}
+            <ModalAddWithForm
+              addWord="Añadir"
+              connector="un"
+              addWhat="servicio"
+            />
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>
