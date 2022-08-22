@@ -224,11 +224,14 @@ function TabSuperAdmin() {
         <TabPane tabId="4">
           <div className="container">
             {/* <ModalAddService /> */}
-            <ModalAddWithForm
-              addWord="Añadir"
-              connector="un"
-              addWhat="servicio"
-            />
+
+            <div className="add-service-button mt-2">
+              <ModalAddWithForm
+                addWord="Añadir"
+                connector="un"
+                addWhat="servicio"
+              />
+            </div>
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>
