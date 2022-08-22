@@ -99,7 +99,9 @@ class Appointment(db.Model):
         return {
             'id': self.id,
             'dateTime': self.dateTime,
-            'pacient': self.pacient.name,
+            'pacient_id': self.pacient_id,
+            'doctor_id': self.doctor_id,
+            'pacient': self.pacient.name + " " + self.pacient.lastname,
             'doctor': self.doctor.name + " " + self.doctor.lastname,
             # Getting the name of the service chosen for the appointment
             'service': self.service.name,

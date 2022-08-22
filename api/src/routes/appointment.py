@@ -82,9 +82,19 @@ def delete_appoinment(id):
     return jsonify({'status': 'success', 'message': 'Appointment Deleted', 'data': None}), 200
 
 # Get all appointments registrated
-@appointment.route("/appointments", methods=["GET"])
+@appointment.route("/all_appointments", methods=["GET"])
 def get_appointments():
     appointments = Appointment.query.all()
     appointments = list(map(lambda appointment: appointment.serialize(), appointments))
     return jsonify(appointments), 200
-    
+
+# Get current user (client) appointments
+@appointment.route("/appointments", methods=["GET"])
+@jwt_required()
+def get_user_appointments():
+    id = get_jwt_identity()
+    user = User.query.get(id)
+    appointments = Appointment.query.filter_by(pacient_id = id)
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify(appointments), 200
+

@@ -29,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       currentUser: null,
       users: null,
       clients: null,
+      appointments: null, // Save appointments
       doctors: null,
       admins: null,
     },
@@ -112,6 +113,44 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Error loading clients from backend", error);
         }
       },
+      getAllAppointments: async () => {
+        // Get all appointments
+        const { apiURL } = getStore();
+
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/all_appointments`, {
+            // Display appointments of the currentUser client
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await response.json();
+          setStore({ appointments: data });
+        } catch (error) {
+          console.log("Error loading appointments from backend", error);
+        }
+      },
+      // getAppointments: async () => {
+      //   // Get currentUser (client) appointments
+      //   const { apiURL } = getStore();
+
+      //   try {
+      //     // Fetch data from backend
+      //     const response = await fetch(`${apiURL}/api/appointments`, {
+      //       // Display appointments of the currentUser client
+      //       method: "GET",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //     });
+      //     const data = await response.json();
+      //     setStore({ appointments: data });
+      //   } catch (error) {
+      //     console.log("Error loading appointments from backend", error);
+      //   }
+      // },
       handleChange: (e) => {
         const { name, value } = e.target;
         setStore({

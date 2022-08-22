@@ -24,6 +24,7 @@ function TabSuperAdmin() {
   };
 
   useEffect(() => {
+    actions.getAllAppointments();
     actions.getClients();
     actions.getAdmins();
   }, []);
@@ -122,11 +123,15 @@ function TabSuperAdmin() {
                   </th>
                 </tr>
               </thead>
-              {/*{!!store.appointments &&
+              {!!store.appointments &&
                 store.appointments.length > 0 &&
                 store.appointments.map((appointment, i) => (
-                  <TableDataAppointment {...appointment} key={i} index={appointment.id} />
-                ))} */}
+                  <TableDataAppointment
+                    {...appointment}
+                    key={i}
+                    index={appointment.id}
+                  />
+                ))}
             </table>
           </div>
         </TabPane>
