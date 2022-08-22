@@ -80,3 +80,11 @@ def delete_appoinment(id):
     appointment = Appointment.query.filter_by(id=id).first()
     appointment.delete()
     return jsonify({'status': 'success', 'message': 'Appointment Deleted', 'data': None}), 200
+
+# Get all appointments registrated
+@appointment.route("/appointments", methods=["GET"])
+def get_appointments():
+    appointments = Appointment.query.all()
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify(appointments), 200
+    

@@ -100,7 +100,7 @@ class Appointment(db.Model):
             'id': self.id,
             'dateTime': self.dateTime,
             'pacient': self.pacient.name,
-            'doctor': self.doctor.name,
+            'doctor': self.doctor.name + " " + self.doctor.lastname,
             # Getting the name of the service chosen for the appointment
             'service': self.service.name,
             # Getting all the data of the invoice
