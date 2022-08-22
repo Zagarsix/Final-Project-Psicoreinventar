@@ -93,8 +93,7 @@ const Pacientes = ({}) => {
                           scope="col"
                           style={{ width: "15%", border: "1px solid #000" }}
                         >
-                          <i className="fa-solid fa-pen-to-square"></i>
-                          <i className="fa-solid fa-xmark"></i>
+                          Cancelar cita
                         </th>
                       </tr>
                     </thead>
@@ -115,7 +114,11 @@ const Pacientes = ({}) => {
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
                         <td style={{ border: "1px solid #000" }}>
                           {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
-                          <ModalDelete />
+                          <ModalDelete
+                            deleteWord="Cancelar"
+                            connector="la"
+                            deleteWhat="cita"
+                          />
                         </td>
                       </tr>
                     </tbody>
