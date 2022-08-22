@@ -98,11 +98,11 @@ class Appointment(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'date': self.date,
+            'dateTime': self.dateTime,
             'pacient': self.pacient.name,
             'doctor': self.doctor.name,
             # Getting the name of the service chosen for the appointment
-            'service_id': self.service.name,
+            'service': self.service.name,
             # Getting all the data of the invoice
             'invoice': self.invoice.serialize()
         }
@@ -129,6 +129,8 @@ class Service(db.Model):
     # stripe_id = db.Column(db.String(100), nullable=False, unique=True)
     # Appointment relationship
     appointment = db.relationship('Appointment', backref="service", uselist=False)
+    invoice = db.relationship('Invoice', backref="service", uselist=False)
+    # invoice = db.relationship('Invoice', backref="invoice", uselist=False)
 
     def serialize(self):
         return {
@@ -171,6 +173,8 @@ class Invoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_of_purchase = db.Column(db.String(50), nullable=False)
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False)
     # relationship with the appointment
     appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'), nullable=False)
@@ -180,7 +184,9 @@ class Invoice(db.Model):
             'id': self.id,
             'date_of_purchase': self.date_of_purchase,
             'pacient_id': self.pacient_id,
-            'appointment_id': self.appointment_id
+            'appointment_id': self.appointment_id,
+            'service': self.service.name,
+            'price': self.service.price,
         }
 
     def save(self):

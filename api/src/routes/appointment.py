@@ -35,14 +35,19 @@ def add_appointment():
     # should be linked to stripe but currently is just the datetime of the appointment
     invoice.date_of_purchase = dateTime # should be date_of_purchase but what is mentioned above
     invoice.pacient_id = user.id
+    invoice.service_id = service_id
 
     #relationship of appointment with invoice
     appointment.invoice = invoice
     appointment.save()
 
+    data = {
+        'appointment': appointment.serialize()
+    }
+
     # if add appointment succeded
-    if appointment: return jsonify({'status': 'success', 'message': 'Cita agendada exitosamente', 'data': None}), 200
-    else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': None}), 200
+    if appointment: return jsonify({'status': 'success', 'message': 'Cita agendada exitosamente', 'data': data}), 200
+    else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': data}), 200
 
 # Edit appoinment
 @appointment.route('/edit_appoinment/<int:id>', methods=['PUT'])
