@@ -90,7 +90,6 @@ class Appointment(db.Model):
     pacient = db.relationship('User', foreign_keys=[pacient_id], backref='pacient')
     doctor = db.relationship('User', foreign_keys=[doctor_id], backref='doctor')
     # relationing the appointment with the service being chosen
-    # service = db.relationship('Service', backref="appointment", uselist=False)
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
     # creating an invoice for the appointment
     invoice = db.relationship('Invoice', backref="appointment", uselist=False)
@@ -130,7 +129,6 @@ class Service(db.Model):
     # stripe_id = db.Column(db.String(100), nullable=False, unique=True)
     # Appointment relationship
     appointment = db.relationship('Appointment', backref="service", uselist=False)
-    # appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'))
 
     def serialize(self):
         return {

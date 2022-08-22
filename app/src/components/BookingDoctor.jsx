@@ -19,9 +19,15 @@ const BookingDoctor = (props) => {
 
     // If doctor and dateTime selected, display notification and post request
     if (store.doctor !== null && store.dateTime !== null) {
-      actions.handleAppointmentSuccess(
-        `Agendando cita con: ${doctorName}, el ${store.dateTime}`
-      );
+      // Displaying this alert after the one coming from the backend, 2 seconds after (right when the other closes)
+      setTimeout(() => {
+        actions.handleAppointmentSuccess(
+          `Agendando cita con: ${doctorName}, el ${store.dateTime}`
+        );
+      }, 2000);
+      // actions.handleAppointmentSuccess(
+      //   `Agendando cita con: ${doctorName}, el ${store.dateTime}`
+      // );
     } else {
       actions.handleAppointmentError(
         "Seleccione un especialista y la fecha y el horario de la cita"

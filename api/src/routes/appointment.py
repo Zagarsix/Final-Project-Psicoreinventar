@@ -1,13 +1,14 @@
 from flask import Flask, jsonify, request, url_for, Blueprint
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import User, Appointment
+from models import User, Appointment, Invoice
 
 appointment = Blueprint('appointment', __name__)
 
 @appointment.route('/appointment', methods=['POST'])
 @jwt_required()
 def add_appointment():
+    # Appointment
     id = get_jwt_identity()
     user = User.query.get(id)
     pacient_id = user.id
@@ -15,10 +16,13 @@ def add_appointment():
     doctor_id = request.json.get('doctor_id')
     service_id = request.json.get('service_id')
 
-    if not pacient_id: return jsonify({'status': 'failed', 'message': 'Pacient_id is required', 'data': None}), 400
-    if not doctor_id: return jsonify({'status': 'failed', 'message': 'Doctor_id is required', 'data': None}), 400
-    if not service_id: return jsonify({'status': 'failed', 'message': 'Service is required', 'data': None}), 400
-    if not dateTime: return jsonify({'status': 'failed', 'message': 'Date and Time are required', 'data': None}), 400
+    # if not pacient_id: return jsonify({'status': 'failed', 'message': 'Pacient_id is required', 'data': None}), 400
+    # if not doctor_id: return jsonify({'status': 'failed', 'message': 'Doctor_id is required', 'data': None}), 400
+    # if not service_id: return jsonify({'status': 'failed', 'message': 'Service is required', 'data': None}), 400
+    # if not dateTime: return jsonify({'status': 'failed', 'message': 'Date and Time are required', 'data': None}), 400
+
+    # Invoice 
+    # date_of_purchase = request.json.get('date_of_purchase')
 
     appointment = Appointment()
 
@@ -27,6 +31,13 @@ def add_appointment():
     appointment.doctor_id = doctor_id
     appointment.service_id = service_id
 
+    invoice = Invoice()
+    # should be linked to stripe but currently is just the datetime of the appointment
+    invoice.date_of_purchase = dateTime # should be date_of_purchase but what is mentioned above
+    invoice.pacient_id = user.id
+
+    #relationship of appointment with invoice
+    appointment.invoice = invoice
     appointment.save()
 
     # if add appointment succeded
