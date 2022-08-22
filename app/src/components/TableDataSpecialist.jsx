@@ -1,3 +1,6 @@
+import ModalDelete from "./Modal/ModalDelete";
+import ModalEdit from "./Modal/ModalEdit";
+
 const TableDataSpecialist = ({
   index,
   name,
@@ -29,23 +32,17 @@ const TableDataSpecialist = ({
           {specialization2}
         </td>
         <td className="td p-2">
-          <div>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="radioNoLabel"
-              id="radioNoLabel1"
-              value=""
-              aria-label="..."
-            ></input>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="radioNoLabel"
-              id="radioNoLabel1"
-              value=""
-              aria-label="..."
-            ></input>
+          <div className="botones">
+            <div className="d-flex align-items-center">
+              <div className="edit-btn me-2">
+                <ModalEdit editWhat="especialista" />
+              </div>
+              <ModalDelete
+                deleteWord="Eliminar"
+                connector="al"
+                deleteWhat="especialista"
+              />
+            </div>
           </div>
         </td>
       </tr>

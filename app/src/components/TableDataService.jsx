@@ -1,8 +1,8 @@
 import ModalAddService from "./Modal/ModalAddService";
 import ModalDelete from "./Modal/ModalDelete";
-import ModalEditService from "./Modal/ModalEditService";
+import ModalEdit from "./Modal/ModalEdit";
 
-const TableDataService = (index, name, description, price, time) => {
+const TableDataService = ({ index, name, description, price, time }) => {
   return (
     <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
       <tr>
@@ -13,11 +13,18 @@ const TableDataService = (index, name, description, price, time) => {
         <td className="td  p-2">{description}</td>
         <td className="td p-2">{price}</td>
         <td className="td p-2">{time}</td>
-        <td className="td p-2">Disponible</td>
         <td className="td p-2">
           <div className="botones">
-            <ModalEditService />
-            <ModalDelete />
+            <div className="d-flex align-items-center">
+              <div className="edit-btn me-2">
+                <ModalEdit editWhat="servicio" />
+              </div>
+              <ModalDelete
+                deleteWord="Eliminar"
+                connector="el"
+                deleteWhat="servicio"
+              />
+            </div>
           </div>
         </td>
       </tr>

@@ -1,3 +1,6 @@
+import ModalDelete from "./Modal/ModalDelete";
+import ModalEdit from "./Modal/ModalEdit";
+
 const TableDataClient = ({ name, lastname, email, index }) => {
   return (
     <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
@@ -13,23 +16,17 @@ const TableDataClient = ({ name, lastname, email, index }) => {
         <td className="td p-2">16 de Agosto, 2022. 10:00 hrs</td>
         <td className="td p-2">Realizado</td>
         <td className="td p-2">
-          <div>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="radioNoLabel"
-              id="radioNoLabel1"
-              value=""
-              aria-label="..."
-            ></input>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="radioNoLabel"
-              id="radioNoLabel1"
-              value=""
-              aria-label="..."
-            ></input>
+          <div className="botones">
+            <div className="d-flex align-items-center">
+              <div className="edit-btn me-2">
+                <ModalEdit editWhat="cliente" />
+              </div>
+              <ModalDelete
+                deleteWord="Eliminar"
+                connector="al"
+                deleteWhat="cliente"
+              />
+            </div>
           </div>
         </td>
       </tr>

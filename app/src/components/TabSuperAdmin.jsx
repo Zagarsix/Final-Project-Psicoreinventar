@@ -117,7 +117,7 @@ function TabSuperAdmin() {
                     Invoice
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-pen-to-square me-2"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
@@ -157,7 +157,7 @@ function TabSuperAdmin() {
                     Pago
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-pen-to-square me-2"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
@@ -198,7 +198,7 @@ function TabSuperAdmin() {
                     Especialización
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square"></i>{" "}
+                    <i className="fa-solid fa-pen-to-square me-2"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
@@ -208,11 +208,6 @@ function TabSuperAdmin() {
                 store.doctors.map((doctor, i) => (
                   <TableDataSpecialist {...doctor} key={i} index={doctor.id} />
                 ))}
-              {/* {!!store.doctors &&
-                store.doctors.length > 0 &&
-                store.doctors.map((doctor, i) => (
-                  <TableDataSpecialist {...doctor} key={i} index={doctor.id} />
-                ))} */}
             </table>
           </div>
         </TabPane>
@@ -224,33 +219,33 @@ function TabSuperAdmin() {
             <table className="table table-borderer table-sm shadow">
               <thead>
                 <tr style={{ backgroundColor: "#939794", color: "white" }}>
-                  <th scope="col" className="th p-2">
+                  <th scope="col" className="th p-2" style={{ width: "5%" }}>
                     ID
                   </th>
-                  <th scope="col" className="th p-2">
+                  <th scope="col" className="th p-2" style={{ width: "25%" }}>
                     Servicio
                   </th>
-                  <th scope="col" className="th p-2">
+                  <th scope="col" className="th p-2" style={{ width: "35%" }}>
                     Descripción
                   </th>
-                  <th scope="col" className="th p-2">
+                  <th scope="col" className="th p-2" style={{ width: "10%" }}>
                     Tarifa
                   </th>
-                  <th scope="col" className="th p-2">
+                  <th scope="col" className="th p-2" style={{ width: "10%" }}>
                     Duración
                   </th>
 
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-pen-to-square me-2"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
               </thead>
-              {/*{!!store.services &&
+              {!!store.services &&
                 store.services.length > 0 &&
                 store.services.map((service, i) => (
                   <TableDataService {...service} key={i} index={service.id} />
-                ))} */}
+                ))}
             </table>
           </div>
         </TabPane>
