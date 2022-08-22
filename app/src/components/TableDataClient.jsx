@@ -19,7 +19,7 @@ const TableDataClient = ({ name, lastname, email, index }) => {
           <div className="botones">
             <div className="d-flex align-items-center">
               <div className="edit-btn me-2">
-                <ModalEdit editWhat="cliente" />
+                <ModalEdit editWord="Editar" editWhat="cliente" />
               </div>
               <ModalDelete
                 deleteWord="Eliminar"

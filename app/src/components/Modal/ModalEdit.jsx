@@ -12,11 +12,13 @@ function ModalEdit({ editWord, connector, editWhat }) {
         <i className="fa-solid fa-pen-to-square"></i>
       </Button>
       <Modal isOpen={modal} fade={false} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Editar {editWhat}</ModalHeader>
+        <ModalHeader toggle={toggle}>
+          {editWord} {editWhat}
+        </ModalHeader>
         <ModalBody>Modifica los campos</ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
-            Editar
+            {editWord}
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancelar

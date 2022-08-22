@@ -141,8 +141,17 @@ const Doctores = ({
                           <div>
                             <td>
                               <div className="d-flex justify-content-between">
-                                <ModalEdit />
-                                <ModalDelete />
+                                <div className="edit-btn me-2">
+                                  <ModalEdit
+                                    editWord="Reagendar"
+                                    editWhat="cita"
+                                  />
+                                </div>
+                                <ModalDelete
+                                  deleteWord="Cancelar"
+                                  connector="la"
+                                  deleteWhat="cita"
+                                />
                               </div>
                             </td>
                           </div>

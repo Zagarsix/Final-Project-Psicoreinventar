@@ -35,7 +35,7 @@ const TableDataSpecialist = ({
           <div className="botones">
             <div className="d-flex align-items-center">
               <div className="edit-btn me-2">
-                <ModalEdit editWhat="especialista" />
+                <ModalEdit editWord="Editar" editWhat="especialista" />
               </div>
               <ModalDelete
                 deleteWord="Eliminar"
