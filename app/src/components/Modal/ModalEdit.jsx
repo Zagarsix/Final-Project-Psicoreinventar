@@ -8,7 +8,7 @@ function ModalEdit({ editWord, connector, editWhat }) {
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>
+      <Button color="light" onClick={toggle}>
         <i className="fa-solid fa-pen-to-square"></i>
       </Button>
       <Modal isOpen={modal} fade={false} toggle={toggle}>

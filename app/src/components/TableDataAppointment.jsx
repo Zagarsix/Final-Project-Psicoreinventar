@@ -1,3 +1,6 @@
+import ModalDelete from "./Modal/ModalDelete";
+import ModalEdit from "./Modal/ModalEdit";
+
 const TableDataAppointment = ({
   index,
   dateTime,
@@ -8,8 +11,6 @@ const TableDataAppointment = ({
   service,
   invoice,
 }) => {
-  console.log(invoice);
-
   return (
     <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
       <tr>
@@ -32,23 +33,15 @@ const TableDataAppointment = ({
           })}
         </td>
         <td className="td p-2">
-          <div>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="radioNoLabel"
-              id="radioNoLabel1"
-              value=""
-              aria-label="..."
-            ></input>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="radioNoLabel"
-              id="radioNoLabel1"
-              value=""
-              aria-label="..."
-            ></input>
+          <div className="botones">
+            <div className="d-flex align-items-center">
+              <ModalEdit editWord="Reagendar" editWhat="cita" />
+              <ModalDelete
+                deleteWord="Eliminar"
+                connector="la"
+                deleteWhat="cita"
+              />
+            </div>
           </div>
         </td>
       </tr>

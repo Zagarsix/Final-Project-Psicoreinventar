@@ -51,7 +51,11 @@ const Pacientes = ({}) => {
           <div className="row">
             <div className="container p-2">
               <div className="appointment-button mb-4">
-                <ModalAddAppointment />
+                <ModalAddAppointment
+                  backgroundColor="#BCBBF8"
+                  color="white"
+                  addButtonColor="black"
+                />
               </div>
               <div className="col-md-12">
                 <div className="table-responsive">

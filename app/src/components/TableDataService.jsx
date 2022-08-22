@@ -16,9 +16,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
         <td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
-              <div className="edit-btn me-2">
-                <ModalEdit editWord="Editar" editWhat="servicio" />
-              </div>
+              <ModalEdit editWord="Editar" editWhat="servicio" />
               <ModalDelete
                 deleteWord="Eliminar"
                 connector="el"

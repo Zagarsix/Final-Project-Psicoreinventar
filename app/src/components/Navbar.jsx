@@ -36,34 +36,7 @@ const Navbar = () => {
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 {/* Conditionally Rendering links if currentUser is different of null, if user is logged don't show navbar cta, only show a dropdown with the name of the user to signout*/}
                 {!!store.currentUser ? (
-                  <li className="nav-item">
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "nav-link fw-semibold link-gray me-2 active-link"
-                          : "nav-link fw-semibold link-gray me-2"
-                      }
-                      aria-current="page"
-                      to="/profile"
-                    >
-                      Dashboard
-                    </NavLink>
-                  </li>
-                ) : (
                   <>
-                    <li className="nav-item">
-                      <NavLink
-                        className={({ isActive }) =>
-                          isActive
-                            ? "nav-link fw-semibold link-gray me-2 active-link"
-                            : "nav-link fw-semibold link-gray me-2"
-                        }
-                        aria-current="page"
-                        to="/hey"
-                      >
-                        Cómo funciona
-                      </NavLink>
-                    </li>
                     <li className="nav-item">
                       <NavLink
                         className={({ isActive }) =>
@@ -76,19 +49,65 @@ const Navbar = () => {
                         Especialistas
                       </NavLink>
                     </li>
+                    <li className="nav-item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                        aria-current="page"
+                        to="/profile"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="nav-item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                        to="/specialists"
+                      >
+                        Especialistas
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                        to="/register"
+                      >
+                        Registrate
+                      </NavLink>
+                    </li>
                   </>
                 )}
               </ul>
 
-              <div className="d-flex">
-                <Link
-                  className="btn btn-primary btn-md appointment-btn"
-                  style={{ padding: ".5em 2em" }}
-                  to="/appointment"
-                >
-                  Agendar cita
-                </Link>
-              </div>
+              {/* Admin and doctors shouldn't view agendar cita button on navbar */}
+              {store.currentUser?.user?.role_id !== 1 &&
+              store.currentUser?.user?.role_id !== 2 ? (
+                <div className="d-flex">
+                  <Link
+                    className="btn btn-primary btn-md appointment-btn"
+                    style={{ padding: ".5em 2em" }}
+                    to="/appointment"
+                  >
+                    Agendar cita
+                  </Link>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </nav>

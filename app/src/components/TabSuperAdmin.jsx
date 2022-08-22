@@ -115,7 +115,7 @@ function TabSuperAdmin() {
                     Invoice
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-2"></i>
+                    <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
@@ -159,7 +159,7 @@ function TabSuperAdmin() {
                     Pago
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-2"></i>
+                    <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
@@ -176,12 +176,14 @@ function TabSuperAdmin() {
         {/* !!!!!!!!!!!!!!!!!! TABLA DE ESPECIALISTAS !!!!!!!!!!!!!!!!!!!!!!!*/}
         <TabPane tabId="3">
           <div className="container">
-            <div className="add-specialist-button mt-2">
+            <div className="add-specialist-button mt-3">
               {/* <ModalAddSpecialist /> */}
               <ModalAddWithForm
                 addWord="Agregar"
                 connector="un"
                 addWhat="especialista"
+                backgroundColor="#BCBBF8"
+                color="white"
               />
             </div>
             <br />
@@ -207,7 +209,7 @@ function TabSuperAdmin() {
                     Especialización
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-2"></i>
+                    <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>
@@ -225,11 +227,12 @@ function TabSuperAdmin() {
           <div className="container">
             {/* <ModalAddService /> */}
 
-            <div className="add-service-button mt-2">
+            <div className="add-service-button mt-3">
               <ModalAddWithForm
                 addWord="Añadir"
                 connector="un"
                 addWhat="servicio"
+                addButtonColor="primary"
               />
             </div>
             <br />
@@ -253,7 +256,7 @@ function TabSuperAdmin() {
                   </th>
 
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-2"></i>
+                    <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>

@@ -18,9 +18,7 @@ const TableDataClient = ({ name, lastname, email, index }) => {
         <td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
-              <div className="edit-btn me-2">
-                <ModalEdit editWord="Editar" editWhat="cliente" />
-              </div>
+              <ModalEdit editWord="Editar" editWhat="cliente" />
               <ModalDelete
                 deleteWord="Eliminar"
                 connector="al"

@@ -8,7 +8,7 @@ function ModalDelete({ deleteWord, connector, deleteWhat }) {
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>
+      <Button color="light" onClick={toggle}>
         <i className="fa-solid fa-trash-can"></i>
       </Button>
       <Modal isOpen={modal} fade={false} toggle={toggle}>
@@ -20,7 +20,7 @@ function ModalDelete({ deleteWord, connector, deleteWhat }) {
           {deleteWhat}?
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+          <Button color="danger" onClick={toggle}>
             Confirmar
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
