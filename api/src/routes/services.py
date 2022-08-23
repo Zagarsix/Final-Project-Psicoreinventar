@@ -5,6 +5,7 @@ from models import User, Service
 services = Blueprint('services', __name__)
 
 @services.route('/service', methods=['POST'])
+@jwt_required()
 def create_service():
     name = request.json.get('name')
     description = request.json.get('description')
