@@ -28,26 +28,6 @@ const RegisterForm = (props) => {
     mode: "all",
   });
 
-  // const onSubmit = () => {
-  //   // If input is not filled
-  //   if (
-  //     // HOW TO MAKE IT NOT WORK IF USER ALREADY EXISTS, like
-  //     // if (message === "User already exists") {
-
-  //     // }
-  //     errors.phone ||
-  //     errors.email ||
-  //     errors.name ||
-  //     errors.lastname ||
-  //     errors.password ||
-  //     errors.confirmpassword
-  //   ) {
-  //     console.log("Form data not filled");
-  //   } else {
-  //     // If input is filled, go to the next step
-  //     props.nextStep();
-  //   }
-  // };
   const onSubmit = () => {
     // If input is not filled
     if (
@@ -59,18 +39,13 @@ const RegisterForm = (props) => {
       errors.email ||
       errors.name ||
       errors.lastname ||
-      errors.password ||
-      errors.confirmpassword
+      errors.password
     ) {
       console.log("Form data not filled");
     }
   };
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  // React hook form method
-  const password = watch("password");
 
   return (
     <>
@@ -91,13 +66,11 @@ const RegisterForm = (props) => {
           </div>
           <div className="register-form">
             <div className="container">
-              {/* onSubmit={handleSubmit(onSubmit)}  */}
               <form
                 onSubmit={(e) => {
                   handleSubmit(onSubmit)(e);
                   actions.handleRegister(e, navigate);
                 }}
-                // ACTIVATE THIS AFTER TEST
                 id="form"
               >
                 <div className="row justify-content-center">
@@ -251,62 +224,7 @@ const RegisterForm = (props) => {
                     )}
                   </div>
                 </div>
-                {/* Confirm Password */}
-                <div className="row justify-content-center">
-                  <div className="col-md-6">
-                    <label
-                      htmlFor="inputConfirmPassword"
-                      className="form-label"
-                    >
-                      Confirmar Contraseña
-                    </label>
-                    <div className="input-password position-relative">
-                      <input
-                        // type="text"
-                        type={showConfirmPassword ? "text" : "password"}
-                        name="confirmpassword"
-                        placeholder="Contraseña"
-                        {...register("confirmpassword", {
-                          required: {
-                            value: true,
-                            message: "El campo es requerido",
-                            // Verify if confirm password has the same value of password
-                          },
-                          validate: {
-                            validate: (value) =>
-                              value === password ||
-                              "Las contraseñas no coinciden",
-                          },
-                        })}
-                        // If error, then add invalid-input class
-                        className={`form-control ${
-                          errors.confirmpassword && "invalid-input"
-                        }`}
-                        id="inputConfirmPassword"
-                        pattern={store.password}
-                      />
-                      <span
-                        className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
-                        style={{ cursor: "pointer" }}
-                        onClick={() =>
-                          setShowConfirmPassword(!showConfirmPassword)
-                        }
-                      >
-                        {showConfirmPassword ? (
-                          <AiFillEye />
-                        ) : (
-                          <AiFillEyeInvisible />
-                        )}
-                      </span>
-                    </div>
 
-                    {errors.confirmpassword && (
-                      <span className="text-danger">
-                        {errors.confirmpassword?.message}
-                      </span>
-                    )}
-                  </div>
-                </div>
                 <div className="row justify-content-center">
                   <div className="col-md-6">
                     <label htmlFor="inputPhone" className="form-label">

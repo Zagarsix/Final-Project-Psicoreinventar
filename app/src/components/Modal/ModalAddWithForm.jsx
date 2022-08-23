@@ -18,8 +18,8 @@ function ModalAdd({
     <div>
       <Button
         onClick={toggle}
-        className="px-4"
-        style={{ backgroundColor: `${backgroundColor}` }}
+        className="px-4 fw-semibold"
+        style={{ backgroundColor: `${backgroundColor}`, color: `${color}` }}
       >
         {addWord} {""} {addWhat}
       </Button>

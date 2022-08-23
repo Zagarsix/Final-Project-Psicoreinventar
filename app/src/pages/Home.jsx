@@ -9,6 +9,7 @@ import CardClient from "../components/CardClient";
 import ServiceCard from "../components/ServiceCard";
 import SpecialistCard from "../components/SpecialistCard";
 import headerImg from "../img/82910-psychotherapy.gif";
+import ServiceCardShowCase from "../components/ServiceCardShowCase";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -135,7 +136,11 @@ const Home = () => {
                 {!!store.services &&
                   store.services.length > 0 &&
                   store.services.map((service, i) => (
-                    <ServiceCard {...service} key={i} index={service.id} />
+                    <ServiceCardShowCase
+                      {...service}
+                      key={i}
+                      index={service.id}
+                    />
                   ))}
               </div>
             </div>

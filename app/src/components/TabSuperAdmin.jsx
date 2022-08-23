@@ -183,7 +183,7 @@ function TabSuperAdmin() {
                 connector="un"
                 addWhat="especialista"
                 backgroundColor="#BCBBF8"
-                color="white"
+                color="black"
               />
             </div>
             <br />
