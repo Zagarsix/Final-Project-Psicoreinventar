@@ -43,16 +43,16 @@ const Doctores = ({
           {/* inicio contenido */}
 
           <div
-            className="container-fluid p-5"
+            className="container-fluid py-5 ps-0"
             style={{
               fontFamily: "monospace",
             }}
           >
             <div
-              className="col-12 p-5 rounded-3"
+              className="p-5 rounded-3"
               style={{ color: "black", backgroundColor: "#8dc2fe" }}
             >
-              <div className="container-fluid">
+              <div className="container-fluid pe-0">
                 <h3 className="display-5 fw-bold">
                   Bienvenido(a),
                   <br></br>
@@ -66,9 +66,16 @@ const Doctores = ({
             </div>
           </div>
           <div className="row">
-            <div className="container p-5">
+            <div className="container p-3">
               {/* agendar cita con la base de datos de usuarios */}
-              <ModalAddAppointment />
+              <div className="appointment-button mb-4">
+                <ModalAddAppointment
+                  addButtonColor="black"
+                  backgroundColor="#8dc2fe"
+                  color="white"
+                />
+              </div>
+
               <div className="col-sm-12">
                 <div className="table-responsive">
                   <table
