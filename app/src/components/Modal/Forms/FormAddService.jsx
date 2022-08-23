@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../../store/appContext";
@@ -16,21 +18,21 @@ const FormAddService = (props) => {
     mode: "all",
   });
 
+  /* State saving all the service data and then this state is send to the API
+     to create a new service with the data of the service state*/
+
   const [service, setService] = useState({
     price: "30 USD", // Setting default price
     time: "45 min", // Setting default time
   });
 
-  useEffect(() => {
-    console.log(service);
-  }, [service]);
-
-  // const handleService = async (e) => {
-  //   const { apiURL } = getStore();
-  // };
+  // Display service state everytime it changes
+  // useEffect(() => {
+  //   console.log(service);
+  // }, [service]);
 
   const handleAddService = async (e) => {
-    const fields = service;
+    const fields = service; // Passing service state as fields
 
     // Fetching data from API
     const response = await fetch(`${store.apiURL}/api/service`, {
@@ -47,12 +49,17 @@ const FormAddService = (props) => {
     console.log(data);
 
     if (status === "failed") {
-      console.log(message);
+      toast.error(message);
     }
 
     if (status === "success") {
-      console.log(message);
       actions.getServices();
+      Swal.fire({
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 

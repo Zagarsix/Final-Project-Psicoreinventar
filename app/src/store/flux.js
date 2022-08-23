@@ -457,40 +457,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           timer: 2000,
         });
       },
-      // ADMIN DASHBOARD ACTIONS
-      // handleAddService: async (e, serviceData) => {
-      //   const { currentUser, apiURL } = getStore();
-
-      //   const fields = serviceData;
-
-      //   // Fetching data from API
-      //   const response = await fetch(`${apiURL}/api/service`, {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Authorization: `Bearer ${currentUser?.access_token}`,
-      //     },
-      //     body: JSON.stringify(fields),
-      //   });
-
-      //   const { status, message, data } = await response.json();
-
-      //   console.log(data);
-
-      //   // Display a certain notification based on status of the fetch data
-      //   if (status === "failed") {
-      //     toast.error(message);
-      //   }
-
-      //   if (status === "success") {
-      //     Swal.fire({
-      //       icon: "success",
-      //       title: message,
-      //       showConfirmButton: false,
-      //       timer: 1500,
-      //     });
-      //   }
-      // },
+      // ADMIN DASHBOARD ACTIONS ARE ON FORMADDSERVICE,
     },
   };
 };
