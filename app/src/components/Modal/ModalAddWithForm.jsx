@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-function ModalAdd({
+function ModalAddWithForm({
   addWord,
   connector,
   addWhat,
   backgroundColor,
   color,
   addButtonColor,
+  children,
 }) {
   const [modal, setModal] = useState(false);
 
@@ -23,7 +24,7 @@ function ModalAdd({
       >
         {addWord} {""} {addWhat}
       </Button>
-      <Modal isOpen={modal} fade={false} toggle={toggle}>
+      <Modal isOpen={modal} fade={false} toggle={toggle} size="lg">
         <ModalHeader
           toggle={toggle}
           style={{ backgroundColor: `${backgroundColor}`, color: `${color}` }}
@@ -31,7 +32,9 @@ function ModalAdd({
           {addWord} {""} {addWhat}
         </ModalHeader>
         <ModalBody>
-          Seguro que quieres {addWord} {connector} {addWhat}?
+          {/* Seguro que quieres {addWord} {connector} {addWhat}? */}
+
+          {children}
         </ModalBody>
         <ModalFooter>
           <Link
@@ -51,4 +54,4 @@ function ModalAdd({
   );
 }
 
-export default ModalAdd;
+export default ModalAddWithForm;

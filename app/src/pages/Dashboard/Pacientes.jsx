@@ -5,7 +5,6 @@ import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
 import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
-import ModalEdit from "../../components/Modal/ModalEdit";
 import ModalDelete from "../../components/Modal/ModalDelete";
 
 const Pacientes = ({}) => {
@@ -53,8 +52,8 @@ const Pacientes = ({}) => {
               <div className="appointment-button mb-4">
                 <ModalAddAppointment
                   backgroundColor="#BCBBF8"
-                  color="white"
-                  addButtonColor="black"
+                  color="black"
+                  addButtonColor="white"
                 />
               </div>
               <div className="col-md-12">

@@ -9,6 +9,7 @@ import TableDataService from "./TableDataService";
 import TableDataSpecialist from "./TableDataSpecialist";
 import TableDataAppointment from "./TableDataAppointment";
 import ModalAddWithForm from "./Modal/ModalAddWithForm";
+import FormAddService from "./Modal/Forms/FormAddService";
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -233,7 +234,9 @@ function TabSuperAdmin() {
                 connector="un"
                 addWhat="servicio"
                 addButtonColor="primary"
-              />
+              >
+                <FormAddService />
+              </ModalAddWithForm>
             </div>
             <br />
             <table className="table table-borderer table-sm shadow">

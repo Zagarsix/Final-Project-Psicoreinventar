@@ -70,7 +70,7 @@ const Doctores = ({
               {/* agendar cita con la base de datos de usuarios */}
               <div className="appointment-button mb-4">
                 <ModalAddAppointment
-                  addButtonColor="black"
+                  addButtonColor="white"
                   backgroundColor="#8dc2fe"
                   color="white"
                 />
@@ -123,7 +123,7 @@ const Doctores = ({
                           scope="col"
                           style={{ width: "15%", border: "1px solid #000" }}
                         >
-                          <i className="fa-solid fa-pen-to-square"></i>{" "}
+                          <i className="fa-solid fa-pen-to-square me-3"></i>{" "}
                           <i className="fa-solid fa-trash-can"></i>
                         </th>
                       </tr>
@@ -145,22 +145,15 @@ const Doctores = ({
                         <td style={{ border: "1px solid #000" }}>Pendiente</td>
                         <td style={{ border: "1px solid #000" }}>Realizado</td>
                         <td style={{ border: "1px solid #000" }}>
-                          <div>
-                            <td>
-                              <div className="d-flex justify-content-between">
-                                <div className="edit-btn me-2">
-                                  <ModalEdit
-                                    editWord="Reagendar"
-                                    editWhat="cita"
-                                  />
-                                </div>
-                                <ModalDelete
-                                  deleteWord="Cancelar"
-                                  connector="la"
-                                  deleteWhat="cita"
-                                />
-                              </div>
-                            </td>
+                          <div className="d-flex">
+                            <div className="edit-btn me-2">
+                              <ModalEdit editWord="Reagendar" editWhat="cita" />
+                            </div>
+                            <ModalDelete
+                              deleteWord="Cancelar"
+                              connector="la"
+                              deleteWhat="cita"
+                            />
                           </div>
                         </td>
                       </tr>
