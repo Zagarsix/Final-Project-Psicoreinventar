@@ -10,6 +10,7 @@ import TableDataSpecialist from "./TableDataSpecialist";
 import TableDataAppointment from "./TableDataAppointment";
 import ModalAddWithForm from "./Modal/ModalAddWithForm";
 import FormAddService from "./Modal/Forms/FormAddService";
+import FormAddSpecialist from "./Modal/Forms/FormAddSpecialist";
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -185,8 +186,11 @@ function TabSuperAdmin() {
                 addWhat="especialista"
                 backgroundColor="#BCBBF8"
                 color="black"
-              />
+              >
+                <FormAddSpecialist />
+              </ModalAddWithForm>
             </div>
+
             <br />
             <table className="table table-borderer table-sm shadow">
               <thead>
