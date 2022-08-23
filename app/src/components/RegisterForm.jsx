@@ -241,7 +241,7 @@ const RegisterForm = (props) => {
                         },
                         pattern: {
                           value: /^[a-z]{8,12}$/,
-                          message: "Minimo 8 caracters, Maximo 12",
+                          message: "Minimo 8 caracteres, Maximo 12",
                         },
                       })}
                       // If error, then add invalid-input class
