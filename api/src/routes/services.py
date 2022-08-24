@@ -62,6 +62,7 @@ def edit_service(id):
 
 # Delete service by id
 @services.route('/delete_service/<int:id>', methods=['DELETE'])
+@jwt_required()
 def delete_service(id):
     service = Service.query.filter_by(id=id).first()
     service.delete()

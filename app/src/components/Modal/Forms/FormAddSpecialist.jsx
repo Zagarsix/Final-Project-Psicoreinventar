@@ -29,9 +29,9 @@ const FormAddSpecialist = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Display specialist state everytime it changes
-  useEffect(() => {
-    console.log(specialist);
-  }, [specialist]);
+  // useEffect(() => {
+  //   console.log(specialist);
+  // }, [specialist]);
 
   const handleAddSpecialist = async (e) => {
     const fields = specialist; // Passing specialist state as fields

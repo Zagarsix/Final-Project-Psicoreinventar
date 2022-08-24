@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-function ModalDelete({ deleteWord, connector, deleteWhat }) {
+function ModalDelete({ deleteWord, connector, deleteWhat, handleClick }) {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -20,7 +20,11 @@ function ModalDelete({ deleteWord, connector, deleteWhat }) {
           {deleteWhat}?
         </ModalBody>
         <ModalFooter>
-          <Button color="danger" onClick={toggle}>
+          <Button
+            color="danger"
+            // onClick={toggle}
+            onClick={handleClick}
+          >
             Confirmar
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
