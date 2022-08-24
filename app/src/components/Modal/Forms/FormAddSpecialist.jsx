@@ -434,6 +434,13 @@ const FormAddSpecialist = (props) => {
                 )}
               </div>
             </div>
+            <div className="row mt-3">
+              <div className="col-md-12">
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
