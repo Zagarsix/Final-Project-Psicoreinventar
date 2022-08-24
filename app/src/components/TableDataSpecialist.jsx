@@ -1,4 +1,8 @@
-import ModalDelete from "./Modal/ModalDelete";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import ModalEdit from "./Modal/ModalEdit";
 
 const TableDataSpecialist = ({
@@ -13,6 +17,52 @@ const TableDataSpecialist = ({
   phone,
   image,
 }) => {
+  const { store, actions } = useContext(Context);
+
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+  const [specialistId, setSpecialistId] = useState(null);
+
+  useEffect(() => {
+    console.log(specialistId);
+  }, [specialistId]);
+
+  const handleDeleteSpecialist = async (e) => {
+    // Fetching data from API
+    const response = await fetch(
+      `${store.apiURL}/api/delete_user/${specialistId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${store.currentUser?.access_token}`,
+        },
+      }
+    );
+
+    const { status, message, data } = await response.json();
+
+    actions.getDoctors();
+
+    console.log(data);
+
+    if (status === "failed") {
+      toast.error(message);
+    }
+
+    if (status === "success") {
+      actions.getDoctors();
+      Swal.fire({
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
   return (
     <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
       <tr>
@@ -35,11 +85,41 @@ const TableDataSpecialist = ({
           <div className="botones">
             <div className="d-flex align-items-center">
               <ModalEdit editWord="Editar" editWhat="especialista" />
-              <ModalDelete
-                deleteWord="Eliminar"
-                connector="al"
-                deleteWhat="especialista"
-              />
+              <div className="delete-user-modal">
+                <Button
+                  color="light"
+                  onClick={() => {
+                    toggle();
+                    setSpecialistId(index);
+                  }}
+                  index={index}
+                >
+                  <i className="fa-solid fa-trash-can"></i>
+                </Button>
+                <Modal isOpen={modal} fade={false} toggle={toggle}>
+                  <ModalHeader toggle={toggle}>
+                    Eliminar especialista
+                  </ModalHeader>
+                  <ModalBody>
+                    Estas seguro de qué quieres Eliminar al especialista?
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      color="danger"
+                      // onClick={toggle}
+                      onClick={(e) => {
+                        toggle();
+                        handleDeleteSpecialist(e);
+                      }}
+                    >
+                      Confirmar
+                    </Button>
+                    <Button color="secondary" onClick={toggle}>
+                      Cancelar
+                    </Button>
+                  </ModalFooter>
+                </Modal>
+              </div>
             </div>
           </div>
         </td>

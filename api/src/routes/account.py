@@ -151,6 +151,7 @@ def edit_user(id):
 
 # Delete user by id
 @account.route('/delete_user/<int:id>', methods=['DELETE'])
+@jwt_required()
 def delete_user(id):
     user = User.query.filter_by(id=id).first()
     user.delete()

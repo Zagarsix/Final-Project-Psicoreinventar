@@ -1,12 +1,8 @@
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { Context } from "../store/appContext";
-import ModalAddService from "./Modal/ModalAddService";
-import ModalDelete from "./Modal/ModalDelete";
 import ModalEdit from "./Modal/ModalEdit";
 
 const TableDataService = ({ index, name, description, price, time }) => {
@@ -74,12 +70,6 @@ const TableDataService = ({ index, name, description, price, time }) => {
           <div className="botones">
             <div className="d-flex align-items-center">
               <ModalEdit editWord="Editar" editWhat="servicio" />
-              {/* <ModalDelete
-                deleteWord="Eliminar"
-                connector="el"
-                deleteWhat="servicio"
-                handleClick={handleClick}
-              /> */}
               <div className="delete-service-modal">
                 <Button
                   color="light"
@@ -94,7 +84,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
                 <Modal isOpen={modal} fade={false} toggle={toggle}>
                   <ModalHeader toggle={toggle}>Eliminar servicio</ModalHeader>
                   <ModalBody>
-                    Estas seguro de que quieres Eliminar el servicio?
+                    Estas seguro de qué quieres Eliminar el servicio?
                   </ModalBody>
                   <ModalFooter>
                     <Button
