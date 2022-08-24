@@ -110,19 +110,6 @@ const Login = () => {
                           Regístrate
                         </Link>
                       </div>
-                      {/* <div align="center">
-                        <p>¿Aún no has creado tu cuenta?</p>
-                        <Link
-                          className={({ isActive }) =>
-                            isActive
-                              ? "nav-link fw-semibold link-gray me-2 active-link"
-                              : "nav-link fw-semibold link-gray me-2"
-                          }
-                          to="/register"
-                        >
-                          Regístrate
-                        </Link>
-                      </div> */}
                     </div>
                   </form>
                 </div>
