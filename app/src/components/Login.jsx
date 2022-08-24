@@ -96,6 +96,22 @@ const Login = () => {
                         Sign in
                       </button>
                     </div>
+                    <div className>
+                      <p align="center"> ó </p>
+                      <div align="center">
+                        <span>
+                          ¿Aún no has creado tu perfil?
+                        </span>
+                        <NavLink className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                          to="/register">
+                          <u>Regístrate</u>
+                        </NavLink>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </div>
