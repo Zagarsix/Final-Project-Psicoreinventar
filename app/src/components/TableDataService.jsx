@@ -22,38 +22,6 @@ const TableDataService = ({ index, name, description, price, time }) => {
     console.log(serviceId);
   }, [serviceId]);
 
-  // const handleAddSpecialist = async (e) => {
-  //   const fields = specialist; // Passing specialist state as fields
-
-  //   // Fetching data from API
-  //   const response = await fetch(`${store.apiURL}/api/register/doctor`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${store.currentUser?.access_token}`,
-  //     },
-  //     body: JSON.stringify(fields),
-  //   });
-
-  //   const { status, message, data } = await response.json();
-
-  //   console.log(data);
-
-  //   if (status === "failed") {
-  //     toast.error(message);
-  //   }
-
-  //   if (status === "success") {
-  //     actions.getDoctors();
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: message,
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //     });
-  //   }
-  // };
-
   const handleDeleteService = async (e) => {
     // Fetching data from API
     const response = await fetch(
