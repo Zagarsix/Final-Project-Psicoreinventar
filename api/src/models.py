@@ -90,7 +90,8 @@ class Appointment(db.Model):
     pacient = db.relationship('User', foreign_keys=[pacient_id], backref='pacient')
     doctor = db.relationship('User', foreign_keys=[doctor_id], backref='doctor')
     # relationing the appointment with the service being chosen
-    service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
+    service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=True)
+    # service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
     # creating an invoice for the appointment
     invoice = db.relationship('Invoice', backref="appointment", uselist=False)
 
