@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../styles/Appointment.css";
@@ -96,11 +96,11 @@ const Login = () => {
                         Sign in
                       </button>
                     </div>
-                    <div className>
+                    <div className="redirect-to-register-page">
                       <p align="center"> ó </p>
                       <div align="center">
                         <span>
-                          ¿Aún no has creado tu perfil?
+                          ¿Aún no has creado tu cuenta?
                         </span>
                         <NavLink className={({ isActive }) =>
                           isActive
