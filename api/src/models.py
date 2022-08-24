@@ -177,7 +177,7 @@ class Invoice(db.Model):
     date_of_purchase = db.Column(db.String(50), nullable=False)
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
+    service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=True)
     # stripe_id = db.Column(db.String(100), nullable=False)
     # relationship with the appointment
     appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'), nullable=True)

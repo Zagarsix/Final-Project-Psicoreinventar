@@ -25,9 +25,9 @@ const TableDataSpecialist = ({
 
   const [specialistId, setSpecialistId] = useState(null);
 
-  useEffect(() => {
-    console.log(specialistId);
-  }, [specialistId]);
+  // useEffect(() => {
+  //   console.log(specialistId);
+  // }, [specialistId]);
 
   const handleDeleteSpecialist = async (e) => {
     // Fetching data from API
@@ -43,8 +43,6 @@ const TableDataSpecialist = ({
     );
 
     const { status, message, data } = await response.json();
-
-    actions.getDoctors();
 
     console.log(data);
 

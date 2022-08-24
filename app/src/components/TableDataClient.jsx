@@ -14,9 +14,9 @@ const TableDataClient = ({ name, lastname, email, index }) => {
 
   const [clientId, setClientId] = useState(null);
 
-  useEffect(() => {
-    console.log(clientId);
-  }, [clientId]);
+  // useEffect(() => {
+  //   console.log(clientId);
+  // }, [clientId]);
 
   const handleDeleteClient = async (e) => {
     // Fetching data from API

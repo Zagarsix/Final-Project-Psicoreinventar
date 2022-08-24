@@ -23,9 +23,9 @@ const TableDataAppointment = ({
 
   const [appointmentId, setAppointmentId] = useState(null);
 
-  useEffect(() => {
-    console.log(appointmentId);
-  }, [appointmentId]);
+  // useEffect(() => {
+  //   console.log(appointmentId);
+  // }, [appointmentId]);
 
   const handleDeleteAppoinment = async (e) => {
     // Fetching data from API
@@ -41,8 +41,6 @@ const TableDataAppointment = ({
     );
 
     const { status, message, data } = await response.json();
-
-    actions.getAllAppointments();
 
     console.log(data);
 
@@ -98,9 +96,9 @@ const TableDataAppointment = ({
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
                 <Modal isOpen={modal} fade={false} toggle={toggle}>
-                  <ModalHeader toggle={toggle}>Eliminar servicio</ModalHeader>
+                  <ModalHeader toggle={toggle}>Cancelar cita</ModalHeader>
                   <ModalBody>
-                    Estas seguro de qué quieres Eliminar el servicio?
+                    Estas seguro de qué quieres Cancelar la cita?
                   </ModalBody>
                   <ModalFooter>
                     <Button

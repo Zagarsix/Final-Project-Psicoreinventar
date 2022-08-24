@@ -14,9 +14,9 @@ const TableDataService = ({ index, name, description, price, time }) => {
 
   const [serviceId, setServiceId] = useState(null);
 
-  useEffect(() => {
-    console.log(serviceId);
-  }, [serviceId]);
+  // useEffect(() => {
+  //   console.log(serviceId);
+  // }, [serviceId]);
 
   const handleDeleteService = async (e) => {
     // Fetching data from API
@@ -32,8 +32,6 @@ const TableDataService = ({ index, name, description, price, time }) => {
     );
 
     const { status, message, data } = await response.json();
-
-    actions.getServices();
 
     console.log(data);
 
