@@ -59,7 +59,7 @@ const Navbar = () => {
                         aria-current="page"
                         to="/profile"
                       >
-                        Dashboard
+                        Panel de usuario
                       </NavLink>
                     </li>
                   </>
