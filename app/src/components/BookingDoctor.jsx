@@ -25,9 +25,6 @@ const BookingDoctor = (props) => {
           `Agendando cita con: ${doctorName}, el ${store.dateTime}`
         );
       }, 2000);
-      // actions.handleAppointmentSuccess(
-      //   `Agendando cita con: ${doctorName}, el ${store.dateTime}`
-      // );
     } else {
       actions.handleAppointmentError(
         "Seleccione un especialista y la fecha y el horario de la cita"

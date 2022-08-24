@@ -48,7 +48,7 @@ def update_profile():
     # check if user already exist
     userFound = User.query.filter_by(email = email).first()
     # if user found and its id is different from the current user id
-    if userFound and userFound.id != id: return jsonify({'status': 'failed', 'message': 'Email already exists', 'data': None}), 400
+    if userFound and userFound.id != id: return jsonify({'status': 'failed', 'message': 'User already exists', 'data': None}), 400
 
     # if user sends password
     if password:

@@ -31,6 +31,10 @@ def add_appointment():
     appointment.doctor_id = doctor_id
     appointment.service_id = service_id
 
+    # Check if currentUser has booked an initial appointment already
+    # check_for_initial_appointment = Appointment.query.filter_by(service_id = 1, pacient_id = id)
+    # if check_for_initial_appointment: return jsonify({'status': 'failed', 'message': 'Solo puedes agendar una consulta inicial', 'data': None}), 400
+
     invoice = Invoice()
     # should be linked to stripe but currently is just the datetime of the appointment
     invoice.date_of_purchase = dateTime # should be date_of_purchase but what is mentioned above
