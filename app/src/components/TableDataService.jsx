@@ -87,7 +87,6 @@ const TableDataService = ({ index, name, description, price, time }) => {
                   <ModalFooter>
                     <Button
                       color="danger"
-                      // onClick={toggle}
                       onClick={(e) => {
                         toggle();
                         handleDeleteService(e);

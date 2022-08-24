@@ -103,7 +103,6 @@ const TableDataAppointment = ({
                   <ModalFooter>
                     <Button
                       color="danger"
-                      // onClick={toggle}
                       onClick={(e) => {
                         toggle();
                         handleDeleteAppoinment(e);

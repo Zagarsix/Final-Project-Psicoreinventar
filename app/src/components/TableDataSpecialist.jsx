@@ -104,7 +104,6 @@ const TableDataSpecialist = ({
                   <ModalFooter>
                     <Button
                       color="danger"
-                      // onClick={toggle}
                       onClick={(e) => {
                         toggle();
                         handleDeleteSpecialist(e);
