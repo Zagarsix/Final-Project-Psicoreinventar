@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../styles/Appointment.css";
@@ -96,21 +96,33 @@ const Login = () => {
                         Sign in
                       </button>
                     </div>
-                    <div className="redirect-to-register-page">
-                      <p align="center"> ó </p>
-                      <div align="center">
-                        <span>
-                          ¿Aún no has creado tu cuenta?
-                        </span>
-                        <NavLink className={({ isActive }) =>
-                          isActive
-                            ? "nav-link fw-semibold link-gray me-2 active-link"
-                            : "nav-link fw-semibold link-gray me-2"
-                        }
-                          to="/register">
-                          <u>Regístrate</u>
-                        </NavLink>
+                    <div className="redirect-to-register-page mt-4">
+                      <div className="d-flex flex-column justify-content-center align-items-center">
+                        <p>¿Aún no has creado tu cuenta?</p>
+                        <Link
+                          className={({ isActive }) =>
+                            isActive
+                              ? "nav-link fw-semibold link-gray me-2 active-link"
+                              : "nav-link fw-semibold link-gray me-2"
+                          }
+                          to="/register"
+                        >
+                          Regístrate
+                        </Link>
                       </div>
+                      {/* <div align="center">
+                        <p>¿Aún no has creado tu cuenta?</p>
+                        <Link
+                          className={({ isActive }) =>
+                            isActive
+                              ? "nav-link fw-semibold link-gray me-2 active-link"
+                              : "nav-link fw-semibold link-gray me-2"
+                          }
+                          to="/register"
+                        >
+                          Regístrate
+                        </Link>
+                      </div> */}
                     </div>
                   </form>
                 </div>
