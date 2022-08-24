@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -270,6 +270,23 @@ const RegisterForm = (props) => {
                     >
                       Registrar
                     </button>
+                  </div>
+                </div>
+                <div className="redirect-to-login-page mt-4">
+                  <div className="d-flex flex-row justify-content-md-center align-items-center">
+                    <div className="col-md-6">
+                      <span className="me-2">¿Ya tienes una cuenta?</span>
+                      <Link
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                        to="/login"
+                      >
+                        Inicia sesión
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </form>
