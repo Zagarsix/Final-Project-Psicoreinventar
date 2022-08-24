@@ -42,7 +42,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
     }
 
     if (status === "success") {
-      actions.getDoctors();
+      actions.getServices();
       Swal.fire({
         icon: "success",
         title: message,

@@ -80,6 +80,7 @@ def edit_appoinment(id):
 
 
 @appointment.route('/delete_appoinment/<int:id>', methods=['DELETE'])
+@jwt_required()
 def delete_appoinment(id):
     appointment = Appointment.query.filter_by(id=id).first()
     appointment.delete()

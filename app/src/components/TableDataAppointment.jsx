@@ -1,4 +1,8 @@
-import ModalDelete from "./Modal/ModalDelete";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import ModalEdit from "./Modal/ModalEdit";
 
 const TableDataAppointment = ({
@@ -11,6 +15,52 @@ const TableDataAppointment = ({
   service,
   invoice,
 }) => {
+  const { store, actions } = useContext(Context);
+
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+  const [appointmentId, setAppointmentId] = useState(null);
+
+  useEffect(() => {
+    console.log(appointmentId);
+  }, [appointmentId]);
+
+  const handleDeleteAppoinment = async (e) => {
+    // Fetching data from API
+    const response = await fetch(
+      `${store.apiURL}/api/delete_appoinment/${appointmentId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${store.currentUser?.access_token}`,
+        },
+      }
+    );
+
+    const { status, message, data } = await response.json();
+
+    actions.getAllAppointments();
+
+    console.log(data);
+
+    if (status === "failed") {
+      toast.error(message);
+    }
+
+    if (status === "success") {
+      actions.getAllAppointments();
+      Swal.fire({
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
   return (
     <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
       <tr>
@@ -36,11 +86,39 @@ const TableDataAppointment = ({
           <div className="botones">
             <div className="d-flex align-items-center">
               <ModalEdit editWord="Reagendar" editWhat="cita" />
-              <ModalDelete
-                deleteWord="Eliminar"
-                connector="la"
-                deleteWhat="cita"
-              />
+              <div className="delete-appointment-modal">
+                <Button
+                  color="light"
+                  onClick={() => {
+                    toggle();
+                    setAppointmentId(index);
+                  }}
+                  index={index}
+                >
+                  <i className="fa-solid fa-trash-can"></i>
+                </Button>
+                <Modal isOpen={modal} fade={false} toggle={toggle}>
+                  <ModalHeader toggle={toggle}>Eliminar servicio</ModalHeader>
+                  <ModalBody>
+                    Estas seguro de qué quieres Eliminar el servicio?
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      color="danger"
+                      // onClick={toggle}
+                      onClick={(e) => {
+                        toggle();
+                        handleDeleteAppoinment(e);
+                      }}
+                    >
+                      Confirmar
+                    </Button>
+                    <Button color="secondary" onClick={toggle}>
+                      Cancelar
+                    </Button>
+                  </ModalFooter>
+                </Modal>
+              </div>
             </div>
           </div>
         </td>

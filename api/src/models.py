@@ -180,7 +180,7 @@ class Invoice(db.Model):
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
     # stripe_id = db.Column(db.String(100), nullable=False)
     # relationship with the appointment
-    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'), nullable=False)
+    appointment_id = db.Column(db.Integer, db.ForeignKey('appointments.id'), nullable=True)
 
     def serialize(self):
         return {
