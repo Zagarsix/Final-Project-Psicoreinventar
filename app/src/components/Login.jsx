@@ -99,16 +99,7 @@ const Login = () => {
                     <div className="redirect-to-register-page mt-4">
                       <div className="d-flex flex-column justify-content-center align-items-center">
                         <p>¿Aún no has creado tu cuenta?</p>
-                        <Link
-                          className={({ isActive }) =>
-                            isActive
-                              ? "nav-link fw-semibold link-gray me-2 active-link"
-                              : "nav-link fw-semibold link-gray me-2"
-                          }
-                          to="/register"
-                        >
-                          Regístrate
-                        </Link>
+                        <Link to="/register">Regístrate</Link>
                       </div>
                     </div>
                   </form>
