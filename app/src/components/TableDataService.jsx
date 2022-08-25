@@ -3,14 +3,16 @@ import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import ModalEdit from "./Modal/ModalEdit";
+import { Link } from "react-router-dom";
 
 const TableDataService = ({ index, name, description, price, time }) => {
   const { store, actions } = useContext(Context);
 
-  const [modal, setModal] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+  const toggleDelete = () => setModalDelete(!modalDelete);
 
-  const toggle = () => setModal(!modal);
+  const [modalEdit, setModalEdit] = useState(false);
+  const toggleEdit = () => setModalEdit(!modalEdit);
 
   const [serviceId, setServiceId] = useState(null);
 
@@ -67,20 +69,49 @@ const TableDataService = ({ index, name, description, price, time }) => {
         <td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
-              <ModalEdit editWord="Editar" editWhat="servicio" />
+              {/* Modal Edit  */}
+              <div className="edit-service-modal">
+                <Link
+                  // color="light"
+                  onClick={() => {
+                    toggleEdit();
+                    // setServiceId(index);
+                  }}
+                  index={index}
+                  to={`/edit/service/${index}`}
+                >
+                  <i className="fa-solid fa-pen-to-square"></i>
+                </Link>
+                <Modal isOpen={modalEdit} fade={false} toggle={toggleEdit}>
+                  <ModalHeader toggle={toggleEdit}>Editar servicio</ModalHeader>
+                  <ModalBody>Modifica los campos</ModalBody>
+                  <ModalFooter>
+                    <Button color="primary" onClick={toggleEdit}>
+                      Editar
+                    </Button>{" "}
+                    <Button color="secondary" onClick={toggleEdit}>
+                      Cancelar
+                    </Button>
+                  </ModalFooter>
+                </Modal>
+              </div>
+
+              {/* Modal Delete */}
               <div className="delete-service-modal">
                 <Button
                   color="light"
                   onClick={() => {
-                    toggle();
+                    toggleDelete();
                     setServiceId(index);
                   }}
                   index={index}
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modal} fade={false} toggle={toggle}>
-                  <ModalHeader toggle={toggle}>Eliminar servicio</ModalHeader>
+                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                  <ModalHeader toggle={toggleDelete}>
+                    Eliminar servicio
+                  </ModalHeader>
                   <ModalBody>
                     Estas seguro de qué quieres Eliminar el servicio?
                   </ModalBody>
@@ -88,13 +119,13 @@ const TableDataService = ({ index, name, description, price, time }) => {
                     <Button
                       color="danger"
                       onClick={(e) => {
-                        toggle();
+                        toggleDelete();
                         handleDeleteService(e);
                       }}
                     >
                       Confirmar
                     </Button>
-                    <Button color="secondary" onClick={toggle}>
+                    <Button color="secondary" onClick={toggleDelete}>
                       Cancelar
                     </Button>
                   </ModalFooter>

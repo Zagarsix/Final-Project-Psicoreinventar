@@ -17,6 +17,7 @@ import Servicios from "./pages/Dashboard/Servicios";
 import Appointment from "./components/Appointment";
 import SelectDoctor from "./components/SelectDoctor";
 import Calendar from "./components/Calendar";
+import FormEditService from "./components/Modal/Forms/FormEditService";
 
 const Layout = () => {
   return (
@@ -39,6 +40,8 @@ const Layout = () => {
         <Route path="/selectdoctor" element={<SelectDoctor />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/appointment" element={<Appointment />} />
+        {/* EDIT ROUTES */}
+        <Route path="/edit/service/:id" element={<FormEditService />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

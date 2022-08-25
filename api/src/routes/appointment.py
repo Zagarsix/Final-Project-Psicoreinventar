@@ -55,6 +55,7 @@ def add_appointment():
 
 # Edit appoinment
 @appointment.route('/edit_appoinment/<int:id>', methods=['PUT'])
+@jwt_required()
 def edit_appoinment(id):
     appointment = Appointment.query.filter_by(id=id).first()
     dateTime = request.json.get('dateTime')

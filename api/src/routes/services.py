@@ -36,6 +36,7 @@ def create_service():
    
 # Edit service by id
 @services.route('/edit_service/<int:id>', methods=['PUT'])
+@jwt_required()
 def edit_service(id):
     service = Service.query.filter_by(id=id).first()
     name = request.json.get('name')
@@ -75,3 +76,9 @@ def get_services():
     services = list(map(lambda service: service.serialize(), services))
     return jsonify(services), 200
     
+# Get service by id
+@services.route('/services/<int:id>', methods=["GET"])
+def get_service(id):
+    service = Service.query.get(id)
+    service = service.serialize()
+    return jsonify(service), 200

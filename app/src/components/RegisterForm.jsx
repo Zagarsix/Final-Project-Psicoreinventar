@@ -197,7 +197,7 @@ const RegisterForm = (props) => {
                             value:
                               /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
                             message:
-                              "La contraseña debe tener al menos 8 caracteres, incluyendo al menos: 1 mayúscula, 1 número y 1 caracter especial",
+                              "La contraseña debe tener al menos 8 caracteres, incluyendo al menos: 1 mayúscula, 1 número y 1 carácter especial",
                           },
                         })}
                         // If error, then add invalid-input class

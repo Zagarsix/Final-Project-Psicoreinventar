@@ -122,6 +122,7 @@ def register_doctor():
 
 # Edit user by id
 @account.route('/edit_user/<int:id>', methods=['PUT'])
+@jwt_required()
 def edit_user(id):
     user = User.query.filter_by(id=id).first()
     name = request.json.get('name')
