@@ -28,21 +28,11 @@ const RegisterForm = (props) => {
     mode: "all",
   });
 
-  const onSubmit = () => {
-    // If input is not filled
-    if (
-      // HOW TO MAKE IT NOT WORK IF USER ALREADY EXISTS, like
-      // if (message === "User already exists") {
-
-      // }
-      errors.phone ||
-      errors.email ||
-      errors.name ||
-      errors.lastname ||
-      errors.password
-    ) {
-      console.log("Form data not filled");
-    }
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+  const handleRegister = (e) => {
+    actions.handleRegister(e, navigate);
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -69,7 +59,7 @@ const RegisterForm = (props) => {
               <form
                 onSubmit={(e) => {
                   handleSubmit(onSubmit)(e);
-                  actions.handleRegister(e, navigate);
+                  handleSubmit(handleRegister)(e);
                 }}
                 id="form"
               >
@@ -240,7 +230,7 @@ const RegisterForm = (props) => {
                           message: "El campo es requerido",
                         },
                         pattern: {
-                          value: /^[a-z]{8,12}$/,
+                          value: /^\d{8,12}$/,
                           message: "Minimo 8 caracteres, Maximo 12",
                         },
                       })}
@@ -250,7 +240,6 @@ const RegisterForm = (props) => {
                       }`}
                       value={store.phone}
                       onChange={actions.handleChange}
-                      pattern="^\d{8,12}$"
                       id="inputPhone"
                     />
 

@@ -159,7 +159,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       // If user is pacient, then this, but if it's a specialist i want to require the collegedegree, how can i do it?
       handleRegister: async (e, navigate) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const {
           apiURL,
