@@ -36,12 +36,13 @@ const FormEditService = (props) => {
     setService({ ...service, [e.target.name]: [e.target.value] });
   };
 
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
+  // useEffect(() => {
+  //   console.log(id);
+  // }, [id]);
 
   const onSubmit = (data) => console.log(data);
 
+  // Get service by id, run this function everytime the useParams id changes
   useEffect(() => {
     const getService = async (e) => {
       const response = await fetch(`${store.apiURL}/api/services/${id}`, {
@@ -53,7 +54,7 @@ const FormEditService = (props) => {
 
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
 
       // Display a certain notification based on status of the fetch data
       if (data.name) {
@@ -66,6 +67,46 @@ const FormEditService = (props) => {
     getService();
   }, [id]);
 
+  const handleEditService = async () => {
+    // const fields = service;
+    const fields = {
+      name: service.name.toString(),
+      description: service.description.toString(),
+      price: service.price.toString(),
+      time: service.time.toString(),
+      image: service.image.toString(),
+    };
+
+    console.log(fields);
+    const response = await fetch(`${store.apiURL}/api/edit_service/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+      body: JSON.stringify(fields),
+    });
+
+    const { status, message, data } = await response.json();
+
+    console.log(data);
+
+    // Display a certain notification based on status of the fetch data
+    if (status === "failed") {
+      toast.error(message);
+    }
+
+    if (status === "success") {
+      actions.getServices();
+      Swal.fire({
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
   return (
     <>
       <div className="add-service-form">
@@ -74,7 +115,7 @@ const FormEditService = (props) => {
             id="form"
             onSubmit={(e) => {
               handleSubmit(onSubmit)(e);
-              //   handleAddService(e);
+              handleEditService(e);
             }}
           >
             <div className="row justify-content-center">
@@ -151,6 +192,7 @@ const FormEditService = (props) => {
                   value={service.price}
                   onChange={handleChange}
                 >
+                  <option value="Gratis">Gratis</option>
                   <option value="30 USD">30 USD</option>
                   <option value="40 USD">40 USD</option>
                   <option value="50 USD">50 USD</option>
@@ -178,6 +220,7 @@ const FormEditService = (props) => {
                   value={service.time}
                   onChange={handleChange}
                 >
+                  <option value="30 min">30 min</option>
                   <option value="45 min">45 min</option>
                   <option value="1 hora">1 hora</option>
                 </select>

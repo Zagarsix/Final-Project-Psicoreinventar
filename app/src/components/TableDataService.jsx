@@ -72,15 +72,15 @@ const TableDataService = ({ index, name, description, price, time }) => {
               {/* Modal Edit  */}
               <div className="edit-service-modal">
                 <Link
-                  // color="light"
                   onClick={() => {
                     toggleEdit();
-                    // setServiceId(index);
                   }}
                   index={index}
                   to={`/edit/service/${index}`}
                 >
-                  <i className="fa-solid fa-pen-to-square"></i>
+                  <Button color="light">
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </Button>
                 </Link>
                 <Modal isOpen={modalEdit} fade={false} toggle={toggleEdit}>
                   <ModalHeader toggle={toggleEdit}>Editar servicio</ModalHeader>
