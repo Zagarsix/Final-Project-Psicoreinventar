@@ -33,12 +33,17 @@ const FormEditService = (props) => {
   });
 
   const handleChange = (e) => {
-    setService({ ...service, [e.target.name]: [e.target.value] });
+    const { name, value } = e.target;
+    setService({ ...service, [name]: value });
   };
 
   // useEffect(() => {
   //   console.log(id);
   // }, [id]);
+
+  useEffect(() => {
+    console.log(service);
+  }, [service]);
 
   const onSubmit = (data) => console.log(data);
 
@@ -68,14 +73,14 @@ const FormEditService = (props) => {
   }, [id]);
 
   const handleEditService = async () => {
-    // const fields = service;
-    const fields = {
-      name: service.name.toString(),
-      description: service.description.toString(),
-      price: service.price.toString(),
-      time: service.time.toString(),
-      image: service.image.toString(),
-    };
+    const fields = service;
+    // const fields = {
+    //   name: service.name,
+    //   description: service.description,
+    //   price: service.price,
+    //   time: service.time,
+    //   image: service.image,
+    // };
 
     console.log(fields);
     const response = await fetch(`${store.apiURL}/api/edit_service/${id}`, {

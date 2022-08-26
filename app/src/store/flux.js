@@ -249,7 +249,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         const { status, message, data } = await response.json();
 
-        console.log(data);
+        // console.log(data);
 
         // Display a certain notification based on status of the fetch data
         if (status === "failed") {
