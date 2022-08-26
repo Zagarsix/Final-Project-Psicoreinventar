@@ -22,7 +22,7 @@ const FormEditService = (props) => {
   const { id } = useParams();
 
   /* State saving all the service data and then this state is send to the API
-     to create a new service with the data of the service state*/
+     to update the service*/
 
   const [service, setService] = useState({
     name: "",
@@ -59,8 +59,6 @@ const FormEditService = (props) => {
 
       const data = await response.json();
 
-      // console.log(data);
-
       // Display a certain notification based on status of the fetch data
       if (data.name) {
         setService(data);
@@ -74,15 +72,7 @@ const FormEditService = (props) => {
 
   const handleEditService = async () => {
     const fields = service;
-    // const fields = {
-    //   name: service.name,
-    //   description: service.description,
-    //   price: service.price,
-    //   time: service.time,
-    //   image: service.image,
-    // };
 
-    console.log(fields);
     const response = await fetch(`${store.apiURL}/api/edit_service/${id}`, {
       method: "PUT",
       headers: {
