@@ -48,10 +48,6 @@ const FormAddService = (props) => {
 
     console.log(data);
 
-    if (status === "failed") {
-      toast.error(message);
-    }
-
     if (status === "success") {
       actions.getServices();
       Swal.fire({
@@ -63,7 +59,9 @@ const FormAddService = (props) => {
     }
   };
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
@@ -73,7 +71,7 @@ const FormAddService = (props) => {
             id="form"
             onSubmit={(e) => {
               handleSubmit(onSubmit)(e);
-              handleAddService(e);
+              handleSubmit(handleAddService)(e);
             }}
           >
             <div className="row justify-content-center">
@@ -92,6 +90,10 @@ const FormAddService = (props) => {
                     required: {
                       value: true,
                       message: "El campo es requerido",
+                    },
+                    pattern: {
+                      value: /^[a-zA-ZÀ-ú_]+( [a-zA-ZÀ-ú_]+)*$/,
+                      message: "El formato no es el correcto",
                     },
                   })}
                   onChange={(e) => {
@@ -122,6 +124,10 @@ const FormAddService = (props) => {
                     required: {
                       value: true,
                       message: "El campo es requerido",
+                    },
+                    pattern: {
+                      value: /^[a-zA-ZÀ-ú_]+( [a-zA-ZÀ-ú_]+)*$/,
+                      message: "El formato no es el correcto",
                     },
                   })}
                   onChange={(e) => {
@@ -217,6 +223,11 @@ const FormAddService = (props) => {
                     required: {
                       value: true,
                       message: "El campo es requerido",
+                    },
+                    pattern: {
+                      value:
+                        /^(?:https?:\/\/(?:www\.)?|https:(?:\/\/)?)?\w+(?:[-.]\w+)+(?:\/[^\/\s]+)*$/,
+                      message: "El formato no es el correcto",
                     },
                   })}
                   onChange={(e) => {

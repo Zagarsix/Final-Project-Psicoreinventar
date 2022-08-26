@@ -45,7 +45,9 @@ const FormEditService = (props) => {
     console.log(service);
   }, [service]);
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   // Get service by id, run this function everytime the useParams id changes
   useEffect(() => {
@@ -86,11 +88,6 @@ const FormEditService = (props) => {
 
     console.log(data);
 
-    // Display a certain notification based on status of the fetch data
-    if (status === "failed") {
-      toast.error(message);
-    }
-
     if (status === "success") {
       actions.getServices();
       Swal.fire({
@@ -110,7 +107,7 @@ const FormEditService = (props) => {
             id="form"
             onSubmit={(e) => {
               handleSubmit(onSubmit)(e);
-              handleEditService(e);
+              handleSubmit(handleEditService)(e);
             }}
           >
             <div className="row justify-content-center">
@@ -129,6 +126,10 @@ const FormEditService = (props) => {
                     required: {
                       value: true,
                       message: "El campo es requerido",
+                    },
+                    pattern: {
+                      value: /^[a-zA-ZÀ-ú_]+( [a-zA-ZÀ-ú_]+)*$/,
+                      message: "El formato no es el correcto",
                     },
                   })}
                   value={service.name}
@@ -155,6 +156,10 @@ const FormEditService = (props) => {
                     required: {
                       value: true,
                       message: "El campo es requerido",
+                    },
+                    pattern: {
+                      value: /^[a-zA-ZÀ-ú_]+( [a-zA-ZÀ-ú_]+)*$/,
+                      message: "El formato no es el correcto",
                     },
                   })}
                   value={service.description}
@@ -240,6 +245,11 @@ const FormEditService = (props) => {
                     required: {
                       value: true,
                       message: "El campo es requerido",
+                    },
+                    pattern: {
+                      value:
+                        /^(?:https?:\/\/(?:www\.)?|https:(?:\/\/)?)?\w+(?:[-.]\w+)+(?:\/[^\/\s]+)*$/,
+                      message: "El formato no es el correcto",
                     },
                   })}
                   value={service.image}
