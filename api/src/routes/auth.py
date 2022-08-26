@@ -72,10 +72,10 @@ def login():
     
     userExists = User.query.filter_by(email = email).first()
     # check if user does not exist
-    if not userExists: return jsonify({'status': 'failed', 'message': 'Email/Password are incorrects', 'data': None}), 401
+    if not userExists: return jsonify({'status': 'failed', 'message': 'Email or Password is incorrect', 'data': None}), 401
     # validate password, if the password of the user is different from the password being passed
     if not check_password_hash(userExists.password, password): 
-        return jsonify({'status': 'failed', 'message': 'Email/Password are incorrects', 'data': None}), 401
+        return jsonify({'status': 'failed', 'message': 'Email or Password is incorrect', 'data': None}), 401
 
     # expire date of access token 3 days
     expires = datetime.timedelta(days=3)
