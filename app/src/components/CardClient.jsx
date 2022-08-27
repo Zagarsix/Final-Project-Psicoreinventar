@@ -4,17 +4,16 @@ const CardClient = ({ ImgClient, imgLabel, NameClient, AgeClient, Review }) => {
   return (
     <div
       className="card mb-3 shadow"
-      style={{ border: "1px solid #0f0ff5", padding: "1rem" }}
     >
       <div className="row">
-        <div className="col-7 col-sm-3 col-md-3 col-lg-3">
+        <div className="col-7 col-sm-3 col-md-2 col-lg-3 col-xl-2">
           <img
             src={ImgClient}
             alt={imgLabel}
             className="img-fluid foto d-flex"
           />
         </div>
-        <div className="col-12 col-sm-9 col-md-9 col-lg-9 texto">
+        <div className="col-12 col-sm-9 col-md-10 col-lg-9 col-xl-10 texto">
           <div className="card-body">
             <div className="col">
               <strong>

@@ -1,20 +1,85 @@
 .foto {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   min-width: 100px;
   min-height: 90px;
-  max-width: 100px;
-  max-height: 100%;
+  max-width: 120px;
 }
 .texto {
-  font-size: 1rem;
+  font-size: 0.7rem;
+}
+.card{
+  border: 1px solid white;
 }
 
 @media (min-width: 576px) {
+  .card-body{
+    padding-left: 0;
+  }
   .foto {
     max-width: 100%;
     height: 100%;
     object-fit: cover;
   }
+  .texto {
+    font-size: 0.7rem;
+  }
 }
+@media (min-width: 768px) { 
+  .card-body{
+    padding: 0.8rem;
+  }
+  .foto {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .texto {
+    font-size: 0.7rem;
+    text-align: left;
+    
+  }
+ }
+@media (min-width: 992px) {
+  .card-body{
+    padding: 0.4rem;
+   }
+  .foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   
+  }
+  .texto {
+    font-size: 0.7rem;
+    text-align: left;
+  } 
+}
+@media (min-width: 1200px) { 
+  .card-body{
+    padding: 1rem;
+  }
+  .foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .texto {
+    font-size: 0.75rem;
+    text-align: left;
+  }}
+@media (min-width: 1400px) { 
+  .card-body{
+    padding: 0.5rem;
+  }
+  .foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .texto {
+    font-size: 0.75rem;
+    text-align: left; 
+  }
+  }
+  
+
+ 
