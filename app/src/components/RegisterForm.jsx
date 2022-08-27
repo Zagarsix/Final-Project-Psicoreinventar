@@ -173,7 +173,6 @@ const RegisterForm = (props) => {
                     </label>
                     <div className="input-password position-relative">
                       <input
-                        // type="text"
                         type={showPassword ? "text" : "password"}
                         name="password"
                         placeholder="Contraseña"
@@ -181,7 +180,6 @@ const RegisterForm = (props) => {
                           required: {
                             value: true,
                             message: "El campo es requerido",
-                            // Verify if confirm password has the same value of password
                           },
                           pattern: {
                             value:

@@ -131,7 +131,14 @@ def edit_user(id):
     password = request.json.get('password')
     phone = request.json.get('phone')
     is_active = request.json.get('is_active')
-    role_id = request.json.get('role_id')   
+    role_id = request.json.get('role_id') 
+
+    # Doctor model
+    experience = request.json.get('experience')
+    education = request.json.get('education')
+    specialization1 = request.json.get('specialization1')
+    specialization2 = request.json.get('specialization2')
+    image = request.json.get('image')  
 
     # Check if user doesn't exist
     if not user:  return jsonify({ "status": "failed", "code": 404, "message": "User not found", "data": None }), 404
@@ -139,11 +146,30 @@ def edit_user(id):
     user.name = name if name is not None else user.name
     user.lastname = lastname
     user.email = email
-    user.password = generate_password_hash(password)
+    # if user sends password
+    if password:
+        user.password = generate_password_hash(password)
     user.phone = phone
     user.is_active = is_active
     user.role_id = role_id
+
+    # if doctor model properties passed, update them, if not, just default value of null
+    user.experience = experience if experience is not None else user.experience
+    user.education = education if education is not None else user.education
+    user.specialization1 = specialization1 if specialization1 is not None else user.specialization1
+    user.specialization2 = specialization2 if specialization2 is not None else user.specialization2
+    user.image = image if image is not None else user.image
+
     user.update()
+
+    
+    # if user is doctor, make this fields required, otherwise for other users, not required
+    if user.role_id == 2:
+        if not experience: return jsonify({'status': 'failed', 'message': 'Experience is required', 'data': None}), 400
+        if not education: return jsonify({'status': 'failed', 'message': 'Education is required', 'data': None}), 400
+        if not specialization1: return jsonify({'status': 'failed', 'message': 'Specialization1 is required', 'data': None}), 400
+        if not specialization2: return jsonify({'status': 'failed', 'message': 'Specialization2 is required', 'data': None}), 400
+        if not image: return jsonify({'status': 'failed', 'message': 'Image is required', 'data': None}), 400
 
     data = {
         'user': user.serialize()
@@ -165,6 +191,13 @@ def get_users():
     users = User.query.all()
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
+
+# Get user by id
+@account.route('/users/<int:id>', methods=["GET"])
+def get_user(id):
+    user = User.query.get(id)
+    user = user.serialize()
+    return jsonify(user), 200
     
 # Get all clients
 @account.route('/clients', methods=['GET'])

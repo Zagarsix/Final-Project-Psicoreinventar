@@ -4,13 +4,16 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import ModalEdit from "./Modal/ModalEdit";
+import { Link } from "react-router-dom";
 
 const TableDataClient = ({ name, lastname, email, index }) => {
   const { store, actions } = useContext(Context);
 
-  const [modal, setModal] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+  const toggleDelete = () => setModalDelete(!modalDelete);
 
-  const toggle = () => setModal(!modal);
+  const [modalEdit, setModalEdit] = useState(false);
+  const toggleEdit = () => setModalEdit(!modalEdit);
 
   const [clientId, setClientId] = useState(null);
 
@@ -65,20 +68,48 @@ const TableDataClient = ({ name, lastname, email, index }) => {
         <td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
-              <ModalEdit editWord="Editar" editWhat="cliente" />
+              {/* Modal edit */}
+              <div className="edit-client-modal">
+                <Link
+                  onClick={() => {
+                    toggleEdit();
+                  }}
+                  index={index}
+                  to={`/edit/client/${index}`}
+                >
+                  <Button color="light">
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </Button>
+                </Link>
+                {/* <Modal isOpen={modalEdit} fade={false} toggle={toggleEdit}>
+                  <ModalHeader toggle={toggleEdit}>Editar paciente</ModalHeader>
+                  <ModalBody>Modifica los campos</ModalBody>
+                  <ModalFooter>
+                    <Button color="primary" onClick={toggleEdit}>
+                      Editar
+                    </Button>{" "}
+                    <Button color="secondary" onClick={toggleEdit}>
+                      Cancelar
+                    </Button>
+                  </ModalFooter>
+                </Modal> */}
+              </div>
+              {/* Modal delete */}
               <div className="delete-user-modal">
                 <Button
                   color="light"
                   onClick={() => {
-                    toggle();
+                    toggleDelete();
                     setClientId(index);
                   }}
                   index={index}
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modal} fade={false} toggle={toggle}>
-                  <ModalHeader toggle={toggle}>Eliminar paciente</ModalHeader>
+                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                  <ModalHeader toggle={toggleDelete}>
+                    Eliminar paciente
+                  </ModalHeader>
                   <ModalBody>
                     Estas seguro de qué quieres Eliminar al paciente?
                   </ModalBody>
@@ -86,13 +117,13 @@ const TableDataClient = ({ name, lastname, email, index }) => {
                     <Button
                       color="danger"
                       onClick={(e) => {
-                        toggle();
+                        toggleDelete();
                         handleDeleteClient(e);
                       }}
                     >
                       Confirmar
                     </Button>
-                    <Button color="secondary" onClick={toggle}>
+                    <Button color="secondary" onClick={toggleDelete}>
                       Cancelar
                     </Button>
                   </ModalFooter>

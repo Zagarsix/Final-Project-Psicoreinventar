@@ -82,7 +82,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
                     <i className="fa-solid fa-pen-to-square"></i>
                   </Button>
                 </Link>
-                <Modal isOpen={modalEdit} fade={false} toggle={toggleEdit}>
+                {/* <Modal isOpen={modalEdit} fade={false} toggle={toggleEdit}>
                   <ModalHeader toggle={toggleEdit}>Editar servicio</ModalHeader>
                   <ModalBody>Modifica los campos</ModalBody>
                   <ModalFooter>
@@ -93,7 +93,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
                       Cancelar
                     </Button>
                   </ModalFooter>
-                </Modal>
+                </Modal> */}
               </div>
 
               {/* Modal Delete */}

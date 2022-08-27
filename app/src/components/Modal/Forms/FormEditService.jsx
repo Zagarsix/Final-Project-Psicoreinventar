@@ -101,7 +101,7 @@ const FormEditService = (props) => {
 
   return (
     <>
-      <div className="add-service-form">
+      <div className="edit-service-form">
         <div className="container">
           <form
             id="form"
