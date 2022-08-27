@@ -41,7 +41,7 @@
  }
 @media (min-width: 992px) {
   .card-body{
-    padding: 0.4rem;
+    padding: 1rem;
    }
   .foto {
     width: 100%;
@@ -54,9 +54,7 @@
   } 
 }
 @media (min-width: 1200px) { 
-  .card-body{
-    padding: 1rem;
-  }
+  
   .foto {
     width: 100%;
     height: 100%;
