@@ -67,6 +67,9 @@
     text-align: left;
   }}
 @media (min-width: 1400px) { 
+  .card{
+    max-width: 580px;
+  }
   .card-body{
     padding: 0.5rem;
   }
