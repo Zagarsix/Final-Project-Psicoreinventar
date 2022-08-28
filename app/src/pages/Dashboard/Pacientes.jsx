@@ -5,20 +5,21 @@ import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
 import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
-import ModalDelete from "../../components/Modal/ModalDelete";
+import TablePacientAppointments from "./TablePacientAppointments";
 
 const Pacientes = ({}) => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
-
-  useEffect(() => {}, []);
 
   // If user is not signed in, redirect to login
   useEffect(() => {
     if (store.currentUser === null) navigate("/login");
   }, [store.currentUser]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    actions.getPacientAppointments();
+  }, [store.pacientAppointments]);
+
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -100,31 +101,16 @@ const Pacientes = ({}) => {
                         </th>
                       </tr>
                     </thead>
-                    <tbody
-                      className="table-group-divider"
-                      style={{ fontSize: "13px" }}
-                    >
-                      <tr>
-                        <th scope="row" style={{ border: "1px solid #000" }}>
-                          #12143
-                        </th>
-                        <td style={{ border: "1px solid #000" }}>
-                          María Rojas
-                        </td>
-                        <td style={{ border: "1px solid #000" }}>
-                          13 Agosto, 2022. 15:00 hrs
-                        </td>
-                        <td style={{ border: "1px solid #000" }}>Realizado</td>
-                        <td style={{ border: "1px solid #000" }}>
-                          {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
-                          <ModalDelete
-                            deleteWord="Cancelar"
-                            connector="la"
-                            deleteWhat="cita"
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
+
+                    {!!store.pacientAppointments &&
+                      store.pacientAppointments.length > 0 &&
+                      store.pacientAppointments.map((appointment, i) => (
+                        <TablePacientAppointments
+                          {...appointment}
+                          key={i}
+                          index={appointment.id}
+                        />
+                      ))}
                   </table>
                 </div>
               </div>

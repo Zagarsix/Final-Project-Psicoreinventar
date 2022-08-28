@@ -30,6 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       users: null,
       clients: null,
       appointments: null, // Save appointments
+      pacientAppointments: null, // Save currentUser (pacient) appointments
       doctors: null,
       admins: null,
     },
@@ -120,7 +121,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         try {
           // Fetch data from backend
           const response = await fetch(`${apiURL}/api/all_appointments`, {
-            // Display appointments of the currentUser client
+            // Display appointments of all the clients
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -132,25 +133,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Error loading appointments from backend", error);
         }
       },
-      // getAppointments: async () => {
-      //   // Get currentUser (client) appointments
-      //   const { apiURL } = getStore();
+      getPacientAppointments: async () => {
+        // Get currentUser (pacient) appointments
+        const { apiURL, currentUser } = getStore();
 
-      //   try {
-      //     // Fetch data from backend
-      //     const response = await fetch(`${apiURL}/api/appointments`, {
-      //       // Display appointments of the currentUser client
-      //       method: "GET",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //     });
-      //     const data = await response.json();
-      //     setStore({ appointments: data });
-      //   } catch (error) {
-      //     console.log("Error loading appointments from backend", error);
-      //   }
-      // },
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/client_appointments`, {
+            // Display appointments of the currentUser client
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${currentUser?.access_token}`,
+            },
+          });
+          const data = await response.json();
+          setStore({ pacientAppointments: data });
+        } catch (error) {
+          console.log("Error loading appointments from backend", error);
+        }
+      },
       handleChange: (e) => {
         const { name, value } = e.target;
         setStore({
@@ -458,7 +460,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           timer: 2000,
         });
       },
-      // ADMIN DASHBOARD ACTIONS ARE ON FORMADDSERVICE, TableDataService
+      /* ADMIN DASHBOARD ACTIONS ARE ON FormAddService, FormEditService, TableDataService, FormAddSpecialist, TableDataSpecialist, FormEditClient, TableDataClient, ...  */
     },
   };
 };

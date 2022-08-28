@@ -95,12 +95,24 @@ def get_appointments():
     return jsonify(appointments), 200
 
 # Get current user (client) appointments
-@appointment.route("/appointments", methods=["GET"])
+@appointment.route("/client_appointments", methods=["GET"])
 @jwt_required()
-def get_user_appointments():
+def get_client_appointments():
     id = get_jwt_identity()
     user = User.query.get(id)
-    appointments = Appointment.query.filter_by(pacient_id = id)
+    pacient_id = user.id
+    appointments = Appointment.query.filter_by(pacient_id=pacient_id)
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify(appointments), 200
+
+# Get current user (doctor) appointments
+@appointment.route("/doctor_appointments", methods=["GET"])
+@jwt_required()
+def get_doctor_appointments():
+    id = get_jwt_identity()
+    user = User.query.get(id)
+    doctor_id = user.id
+    appointments = Appointment.query.filter_by(doctor_id=doctor_id)
     appointments = list(map(lambda appointment: appointment.serialize(), appointments))
     return jsonify(appointments), 200
 

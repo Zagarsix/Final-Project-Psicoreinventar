@@ -28,7 +28,7 @@ const FormAddSpecialist = (props) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  // Display specialist state everytime it changes
+  // clg specialist state everytime it changes
   // useEffect(() => {
   //   console.log(specialist);
   // }, [specialist]);
@@ -49,10 +49,6 @@ const FormAddSpecialist = (props) => {
     const { status, message, data } = await response.json();
 
     console.log(data);
-
-    if (status === "failed") {
-      toast.error(message);
-    }
 
     if (status === "success") {
       actions.getDoctors();
@@ -75,7 +71,7 @@ const FormAddSpecialist = (props) => {
             id="form"
             onSubmit={(e) => {
               handleSubmit(onSubmit)(e);
-              handleAddSpecialist(e);
+              handleSubmit(handleAddSpecialist)(e);
             }}
           >
             <div className="row justify-content-center">

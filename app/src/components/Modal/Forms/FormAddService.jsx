@@ -22,8 +22,8 @@ const FormAddService = (props) => {
      to create a new service with the data of the service state*/
 
   const [service, setService] = useState({
-    price: "30 USD", // Setting default price
-    time: "45 min", // Setting default time
+    price: "30 USD", // Setting defaultValue price
+    time: "45 min", // Setting defaultValue time
   });
 
   // Display service state everytime it changes
