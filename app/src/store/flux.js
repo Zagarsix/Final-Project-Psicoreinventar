@@ -461,6 +461,18 @@ const getState = ({ getStore, getActions, setStore }) => {
             showConfirmButton: false,
             timer: 1500,
           });
+
+          // If user is patient, redirect to his/her dashboard
+          {
+            currentUser?.user?.role_id === 3 && navigate("/pacientes");
+          }
+
+          // NEED TO ADD NEW APPOINTMENT ROUTE FOR DOCTORS BOOKING APPOINTMENTS WITH THEIR PATIENTS
+
+          // If user is doctor, redirect to his/her dashboard
+          {
+            currentUser?.user?.role_id === 2 && navigate("/doctores");
+          }
         }
       },
       handleAppointmentSuccess: (message) => {
