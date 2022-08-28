@@ -46,9 +46,9 @@ const FormEditClient = (props) => {
   //   console.log(id);
   // }, [id]);
 
-  useEffect(() => {
-    console.log(client);
-  }, [client]);
+  // useEffect(() => {
+  //   console.log(client);
+  // }, [client]);
 
   const onSubmit = (data) => {
     console.log(data);

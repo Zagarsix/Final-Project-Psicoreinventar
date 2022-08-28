@@ -36,7 +36,7 @@ const TableDataClient = ({ name, lastname, email, index }) => {
 
     const { status, message, data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     if (status === "failed") {
       toast.error(message);

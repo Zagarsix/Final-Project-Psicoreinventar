@@ -35,7 +35,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
 
     const { status, message, data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     if (status === "failed") {
       toast.error(message);

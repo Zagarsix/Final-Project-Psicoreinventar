@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const TableDoctorAppointments = ({
   index,
@@ -18,6 +19,9 @@ const TableDoctorAppointments = ({
 
   const [modalDelete, setModalDelete] = useState(false);
   const toggleDelete = () => setModalDelete(!modalDelete);
+
+  const [modalEdit, setModalEdit] = useState(false);
+  const toggleEdit = () => setModalEdit(!modalEdit);
 
   const [appointmentId, setAppointmentId] = useState(null);
 
@@ -36,7 +40,7 @@ const TableDoctorAppointments = ({
 
     const { status, message, data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     if (status === "failed") {
       toast.error(message);
@@ -66,10 +70,23 @@ const TableDoctorAppointments = ({
           <td className="td p-2">Invoice PDF</td>
           <td className="td p-2">
             <div className="d-flex align-items-center">
+              {/* Modal Edit Appointment  */}
+              <div className="edit-appointment-modal">
+                <Link
+                  onClick={() => {
+                    toggleEdit();
+                  }}
+                  to={`/edit/appointment/${index}`}
+                >
+                  <Button color="light">
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </Button>
+                </Link>
+              </div>
               {/* <div className="edit-appointment-modal me-2">
                 <ModalEdit editWord="Reagendar" editWhat="cita" />
               </div> */}
-              {/* Modal delete appointment */}
+              {/* Modal Delete Appointment */}
               <div className="delete-appointment-modal">
                 <Button
                   color="light"
