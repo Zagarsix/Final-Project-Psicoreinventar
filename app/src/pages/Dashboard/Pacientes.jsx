@@ -18,7 +18,7 @@ const Pacientes = ({}) => {
 
   useEffect(() => {
     actions.getPacientAppointments();
-  }, [store.pacientAppointments]);
+  }, []);
 
   return (
     <div className="container-fluid">

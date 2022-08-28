@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ModalEdit from "../../components/Modal/ModalEdit";
 import ModalDelete from "../../components/Modal/ModalDelete";
 import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
+import TableDoctorAppointments from "../../components/tableDoctorAppointments";
 
 const Doctores = ({
   name,
@@ -23,12 +24,14 @@ const Doctores = ({
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
-
   // If user is not signed in, redirect to login
   useEffect(() => {
     if (store.currentUser === null) navigate("/login");
   }, [store.currentUser]);
+
+  useEffect(() => {
+    actions.getDoctorAppointments();
+  }, []);
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -88,76 +91,39 @@ const Doctores = ({
                   >
                     <thead>
                       <tr style={{ background: "#8dc2fe" }}>
-                        <th
-                          scope="col"
-                          style={{ width: "5%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "5%" }}>
                           #
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "20%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "20%" }}>
                           Paciente
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "20%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "20%" }}>
                           Cita
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "15%", border: "1px solid #000" }}
-                        >
-                          Estado
+                        <th scope="col" className="th" style={{ width: "15%" }}>
+                          Estado de la cita
                         </th>
-
-                        <th
-                          scope="col"
-                          style={{ width: "15%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "15%" }}>
                           Estado del pago
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "15%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "15%" }}>
+                          Invoice
+                        </th>
+                        <th scope="col" className="th" style={{ width: "10%" }}>
                           <i className="fa-solid fa-pen-to-square me-3"></i>{" "}
                           <i className="fa-solid fa-trash-can"></i>
                         </th>
                       </tr>
                     </thead>
-                    <tbody
-                      className="table-group-divider"
-                      style={{ fontSize: "13px" }}
-                    >
-                      <tr>
-                        <th scope="row" style={{ border: "1px solid #000" }}>
-                          #8999
-                        </th>
-                        <td style={{ border: "1px solid #000" }}>
-                          Juan Bodoque
-                        </td>
-                        <td style={{ border: "1px solid #000" }}>
-                          24 de Agosto, 2022. 18:00hrs
-                        </td>
-                        <td style={{ border: "1px solid #000" }}>Pendiente</td>
-                        <td style={{ border: "1px solid #000" }}>Realizado</td>
-                        <td style={{ border: "1px solid #000" }}>
-                          <div className="d-flex">
-                            <div className="edit-btn me-2">
-                              <ModalEdit editWord="Reagendar" editWhat="cita" />
-                            </div>
-                            <ModalDelete
-                              deleteWord="Cancelar"
-                              connector="la"
-                              deleteWhat="cita"
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
+                    {!!store.doctorAppointments &&
+                      store.doctorAppointments.length > 0 &&
+                      store.doctorAppointments.map((appointment, i) => (
+                        <TableDoctorAppointments
+                          {...appointment}
+                          key={i}
+                          index={appointment.id}
+                        />
+                      ))}
                   </table>
                 </div>
               </div>

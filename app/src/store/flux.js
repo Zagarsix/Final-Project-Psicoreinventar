@@ -30,6 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       users: null,
       clients: null,
       appointments: null, // Save appointments
+      doctorAppointments: null, // Save currentUser (doctor) appointments
       pacientAppointments: null, // Save currentUser (pacient) appointments
       doctors: null,
       admins: null,
@@ -129,6 +130,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
           const data = await response.json();
           setStore({ appointments: data });
+        } catch (error) {
+          console.log("Error loading appointments from backend", error);
+        }
+      },
+      getDoctorAppointments: async () => {
+        // Get currentUser (doctor) appointments
+        const { apiURL, currentUser } = getStore();
+
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/doctor_appointments`, {
+            // Display appointments of the currentUser client
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${currentUser?.access_token}`,
+            },
+          });
+          const data = await response.json();
+          setStore({ doctorAppointments: data });
         } catch (error) {
           console.log("Error loading appointments from backend", error);
         }
@@ -426,7 +447,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         const { status, message, data } = await response.json();
 
-        console.log(data);
+        // console.log(data);
 
         // Display a certain notification based on status of the fetch data
         if (status === "failed") {
