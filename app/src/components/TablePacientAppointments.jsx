@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Context } from "../../store/appContext";
+import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
@@ -21,37 +21,37 @@ const TablePacientAppointments = ({
 
   const [appointmentId, setAppointmentId] = useState(null);
 
-  // const handleDeleteAppointment = async (e) => {
-  //   // Fetching data from API
-  //   const response = await fetch(
-  //     `${store.apiURL}/api/delete_service/${appointmentId}`,
-  //     {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${store.currentUser?.access_token}`,
-  //       },
-  //     }
-  //   );
+  const handleDeleteAppointment = async (e) => {
+    // Fetching data from API
+    const response = await fetch(
+      `${store.apiURL}/api/delete_appoinment/${appointmentId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${store.currentUser?.access_token}`,
+        },
+      }
+    );
 
-  //   const { status, message, data } = await response.json();
+    const { status, message, data } = await response.json();
 
-  //   console.log(data);
+    console.log(data);
 
-  //   if (status === "failed") {
-  //     toast.error(message);
-  //   }
+    if (status === "failed") {
+      toast.error(message);
+    }
 
-  //   if (status === "success") {
-  //     actions.get();
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: message,
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //     });
-  //   }
-  // };
+    if (status === "success") {
+      actions.getPacientAppointments();
+      Swal.fire({
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
   return (
     <>
       <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
@@ -63,6 +63,7 @@ const TablePacientAppointments = ({
           <td className="td p-2">
             {dateTime} {service}
           </td>
+          <td className="td p-2">{invoice["price"]}</td>
           <td className="td p-2">Hardcode Realizado</td>
           <td className="td p-2">
             {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
@@ -79,18 +80,16 @@ const TablePacientAppointments = ({
                 <i className="fa-solid fa-trash-can"></i>
               </Button>
               <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                <ModalHeader toggle={toggleDelete}>
-                  Eliminar servicio
-                </ModalHeader>
+                <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
                 <ModalBody>
-                  Estas seguro de qué quieres Eliminar el servicio?
+                  Estas seguro de qué quieres cancelar la cita?
                 </ModalBody>
                 <ModalFooter>
                   <Button
                     color="danger"
                     onClick={(e) => {
                       toggleDelete();
-                      // handleDeleteAppointment(e);
+                      handleDeleteAppointment(e);
                     }}
                   >
                     Confirmar

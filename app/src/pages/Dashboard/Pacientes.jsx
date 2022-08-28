@@ -5,7 +5,7 @@ import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
 import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
-import TablePacientAppointments from "./TablePacientAppointments";
+import TablePacientAppointments from "../../components/TablePacientAppointments";
 
 const Pacientes = ({}) => {
   const { store, actions } = useContext(Context);
@@ -69,34 +69,22 @@ const Pacientes = ({}) => {
                   >
                     <thead>
                       <tr style={{ backgroundColor: "#bcbbf8" }}>
-                        <th
-                          scope="col"
-                          style={{ width: "5%", border: "1px solid #000" }}
-                        >
-                          #
+                        <th scope="col" className="th" style={{ width: "5%" }}>
+                          #ID
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "30%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "25%" }}>
                           Especialista
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "30%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "30%" }}>
                           Cita
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "20%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "15%" }}>
+                          Precio
+                        </th>
+                        <th scope="col" className="th" style={{ width: "15%" }}>
                           Estado
                         </th>
-                        <th
-                          scope="col"
-                          style={{ width: "15%", border: "1px solid #000" }}
-                        >
+                        <th scope="col" className="th" style={{ width: "10%" }}>
                           Cancelar cita
                         </th>
                       </tr>
