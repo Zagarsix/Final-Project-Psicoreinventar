@@ -117,7 +117,6 @@ function TabSuperAdmin() {
                     Invoice
                   </th>
                   <th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
                   </th>
                 </tr>

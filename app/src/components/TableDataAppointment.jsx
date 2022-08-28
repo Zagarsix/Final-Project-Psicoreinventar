@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import ModalEdit from "./Modal/ModalEdit";
 
 const TableDataAppointment = ({
   index,
@@ -83,7 +82,6 @@ const TableDataAppointment = ({
         <td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
-              <ModalEdit editWord="Reagendar" editWhat="cita" />
               <div className="delete-appointment-modal">
                 <Button
                   color="light"
