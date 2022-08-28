@@ -42,13 +42,13 @@ const FormEditService = (props) => {
   //   console.log(id);
   // }, [id]);
 
-  useEffect(() => {
-    console.log(service);
-  }, [service]);
+  // useEffect(() => {
+  //   console.log(service);
+  // }, [service]);
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  // };
 
   // Get service by id, run this function everytime the useParams id changes
   useEffect(() => {
@@ -116,7 +116,7 @@ const FormEditService = (props) => {
               <form
                 id="form"
                 onSubmit={(e) => {
-                  handleSubmit(onSubmit)(e);
+                  // handleSubmit(onSubmit)(e);
                   handleSubmit(handleEditService)(e);
                 }}
               >

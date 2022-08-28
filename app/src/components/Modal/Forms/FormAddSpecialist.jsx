@@ -61,7 +61,7 @@ const FormAddSpecialist = (props) => {
     }
   };
 
-  const onSubmit = (data) => console.log(data);
+  // const onSubmit = (data) => console.log(data);
 
   return (
     <>
@@ -70,7 +70,7 @@ const FormAddSpecialist = (props) => {
           <form
             id="form"
             onSubmit={(e) => {
-              handleSubmit(onSubmit)(e);
+              // handleSubmit(onSubmit)(e);
               handleSubmit(handleAddSpecialist)(e);
             }}
           >

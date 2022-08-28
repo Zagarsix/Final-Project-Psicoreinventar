@@ -118,6 +118,7 @@ const FormEditAppointment = (props) => {
               <form
                 id="form"
                 onSubmit={(e) => {
+                  // handleSubmit(onSubmit)(e);
                   handleSubmit(handleEditAppointmentDateTime)(e);
                 }}
               >

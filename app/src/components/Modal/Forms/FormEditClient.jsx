@@ -50,9 +50,9 @@ const FormEditClient = (props) => {
   //   console.log(client);
   // }, [client]);
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  // };
 
   // Get client by id, run this function everytime the useParams id changes
   useEffect(() => {
@@ -120,7 +120,7 @@ const FormEditClient = (props) => {
               <form
                 id="form"
                 onSubmit={(e) => {
-                  handleSubmit(onSubmit)(e);
+                  // handleSubmit(onSubmit)(e);
                   handleSubmit(handleEditClient)(e);
                 }}
               >

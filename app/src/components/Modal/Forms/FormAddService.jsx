@@ -59,9 +59,9 @@ const FormAddService = (props) => {
     }
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  // };
 
   return (
     <>
@@ -70,7 +70,7 @@ const FormAddService = (props) => {
           <form
             id="form"
             onSubmit={(e) => {
-              handleSubmit(onSubmit)(e);
+              // handleSubmit(onSubmit)(e);
               handleSubmit(handleAddService)(e);
             }}
           >
