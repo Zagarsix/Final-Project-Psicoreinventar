@@ -22,7 +22,7 @@ const Specialists = () => {
           <h4>Especialistas disponibles</h4>
           <p className="fw-semibold lead text-secondary">
             Mostrando{" "}
-            <span className="text-primary">{store.doctors?.length}</span>{" "}
+            <span className="text-primary">{store.doctors?.length || 0}</span>{" "}
             resultados
           </p>
         </div>
