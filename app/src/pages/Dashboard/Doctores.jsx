@@ -1,12 +1,10 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
+import { Thead, Tr, Th } from 'react-super-responsive-table';
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
-
-import ModalEdit from "../../components/Modal/ModalEdit";
-import ModalDelete from "../../components/Modal/ModalDelete";
 import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
 import TableDoctorAppointments from "../../components/tableDoctorAppointments";
 
@@ -90,32 +88,32 @@ const Doctores = ({
                       fontSize: "15px",
                     }}
                   >
-                    <thead>
-                      <tr style={{ background: "#8dc2fe" }}>
-                        <th scope="col" className="th" style={{ width: "5%" }}>
+                    <Thead>
+                      <Tr style={{ background: "#8dc2fe" }}>
+                        <Th scope="col" className="th" style={{ width: "5%" }}>
                           #
-                        </th>
-                        <th scope="col" className="th" style={{ width: "20%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "20%" }}>
                           Paciente
-                        </th>
-                        <th scope="col" className="th" style={{ width: "20%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "20%" }}>
                           Cita
-                        </th>
-                        <th scope="col" className="th" style={{ width: "15%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "15%" }}>
                           Estado de la cita
-                        </th>
-                        <th scope="col" className="th" style={{ width: "15%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "15%" }}>
                           Estado del pago
-                        </th>
-                        <th scope="col" className="th" style={{ width: "15%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "15%" }}>
                           Invoice
-                        </th>
-                        <th scope="col" className="th" style={{ width: "10%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "10%" }}>
                           <i className="fa-solid fa-pen-to-square me-3"></i>{" "}
                           <i className="fa-solid fa-trash-can"></i>
-                        </th>
-                      </tr>
-                    </thead>
+                        </Th>
+                      </Tr>
+                    </Thead>
                     {!!store.doctorAppointments &&
                       store.doctorAppointments.length > 0 &&
                       store.doctorAppointments.map((appointment, i) => (

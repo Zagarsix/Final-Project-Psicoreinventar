@@ -1,4 +1,7 @@
-import { useContext, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
+import { Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -54,18 +57,18 @@ const TablePacientAppointments = ({
   };
   return (
     <>
-      <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
-        <tr>
-          <th scope="row" className="th p-2">
+      <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
+        <Tr>
+          <Th scope="row" className="th p-2">
             #{index}
-          </th>
-          <td className="td p-2">{doctor}</td>
-          <td className="td p-2">
+          </Th>
+          <Td className="td p-2">{doctor}</Td>
+          <Td className="td p-2">
             {dateTime} {service}
-          </td>
-          <td className="td p-2">{invoice["price"]}</td>
-          <td className="td p-2">Hardcode Realizado</td>
-          <td className="td p-2">
+          </Td>
+          <Td className="td p-2">{invoice["price"]}</Td>
+          <Td className="td p-2">Hardcode Realizado</Td>
+          <Td className="td p-2">
             {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
             {/* Modal delete appointment */}
             <div className="delete-appointment-modal">
@@ -100,9 +103,9 @@ const TablePacientAppointments = ({
                 </ModalFooter>
               </Modal>
             </div>
-          </td>
-        </tr>
-      </tbody>
+          </Td>
+        </Tr>
+      </Tbody>
     </>
   );
 };

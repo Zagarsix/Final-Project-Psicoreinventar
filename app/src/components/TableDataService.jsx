@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from "react";
+import { Tbody, Tr, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -53,20 +55,20 @@ const TableDataService = ({ index, name, description, price, time }) => {
   };
 
   return (
-    <tbody
+    <Tbody
       className="table-group-divider"
       id={index}
       style={{ fontSize: "13px" }}
     >
-      <tr>
-        <td scope="row" className="td p-2">
+      <Tr>
+        <Td scope="row" className="td p-2">
           #{index}
-        </td>
-        <td className="td p-2">{name}</td>
-        <td className="td  p-2">{description}</td>
-        <td className="td p-2">{price}</td>
-        <td className="td p-2">{time}</td>
-        <td className="td p-2">
+        </Td>
+        <Td className="td p-2">{name}</Td>
+        <Td className="td  p-2">{description}</Td>
+        <Td className="td p-2">{price}</Td>
+        <Td className="td p-2">{time}</Td>
+        <Td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
               {/* Modal Edit  */}
@@ -121,9 +123,9 @@ const TableDataService = ({ index, name, description, price, time }) => {
               </div>
             </div>
           </div>
-        </td>
-      </tr>
-    </tbody>
+        </Td>
+      </Tr>
+    </Tbody>
   );
 };
 

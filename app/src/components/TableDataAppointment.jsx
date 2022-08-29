@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from "react";
+import { Tbody, Tr, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -59,18 +61,18 @@ const TableDataAppointment = ({
   };
 
   return (
-    <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
-      <tr>
-        <td scope="row" className="td p-2">
+    <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
+      <Tr>
+        <Td scope="row" className="td p-2">
           #{index}
-        </td>
-        <td className="td p-2">{dateTime}</td>
-        <td className="td p-2">{pacient_id}</td>
-        <td className="td p-2">{pacient}</td>
-        <td className="td p-2">{doctor_id}</td>
-        <td className="td p-2">{doctor}</td>
-        <td className="td p-2">{service}</td>
-        <td className="td p-2">
+        </Td>
+        <Td className="td p-2">{dateTime}</Td>
+        <Td className="td p-2">{pacient_id}</Td>
+        <Td className="td p-2">{pacient}</Td>
+        <Td className="td p-2">{doctor_id}</Td>
+        <Td className="td p-2">{doctor}</Td>
+        <Td className="td p-2">{service}</Td>
+        <Td className="td p-2">
           {Object.keys(invoice).map((key, i) => {
             return (
               <p key={i}>
@@ -78,8 +80,8 @@ const TableDataAppointment = ({
               </p>
             );
           })}
-        </td>
-        <td className="td p-2">
+        </Td>
+        <Td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
               <div className="delete-appointment-modal">
@@ -116,9 +118,9 @@ const TableDataAppointment = ({
               </div>
             </div>
           </div>
-        </td>
-      </tr>
-    </tbody>
+        </Td>
+      </Tr>
+    </Tbody>
   );
 };
 

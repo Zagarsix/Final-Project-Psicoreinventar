@@ -1,4 +1,7 @@
-import { useContext, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
+import {Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -58,17 +61,17 @@ const TableDoctorAppointments = ({
   };
   return (
     <>
-      <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
-        <tr>
-          <th scope="row" className="th p-2">
+      <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
+        <Tr>
+          <Th scope="row" className="th p-2">
             #{index}
-          </th>
-          <td className="td p-2">{pacient}</td>
-          <td className="td p-2">{dateTime}</td>
-          <td className="td p-2">Pendiente hardcoded</td>
-          <td className="td p-2">Realizado hardcoded</td>
-          <td className="td p-2">Invoice PDF</td>
-          <td className="td p-2">
+          </Th>
+          <Td className="td p-2">{pacient}</Td>
+          <Td className="td p-2">{dateTime}</Td>
+          <Td className="td p-2">Pendiente hardcoded</Td>
+          <Td className="td p-2">Realizado hardcoded</Td>
+          <Td className="td p-2">Invoice PDF</Td>
+          <Td className="td p-2">
             <div className="d-flex align-items-center">
               {/* Modal Edit Appointment  */}
               <div className="edit-appointment-modal">
@@ -120,9 +123,9 @@ const TableDoctorAppointments = ({
                 </Modal>
               </div>
             </div>
-          </td>
-        </tr>
-      </tbody>
+          </Td>
+        </Tr>
+      </Tbody>
     </>
   );
 };

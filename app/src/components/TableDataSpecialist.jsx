@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from "react";
+import { Tbody, Tr, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -64,24 +66,24 @@ const TableDataSpecialist = ({
   };
 
   return (
-    <tbody className="table-group-divider" style={{ fontSize: "13px" }}>
-      <tr>
-        <td scope="row" className="td p-2">
+    <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
+      <Tr>
+        <Td scope="row" className="td p-2">
           #{index}
-        </td>
-        <td className="td p-2">
+        </Td>
+        <Td className="td p-2">
           {name} {""}
           {lastname}
-        </td>
-        <td className="td p-2">{email}</td>
-        <td className="td p-2">{education}</td>
-        <td className="td p-2">{experience}</td>
-        <td className="td p-2">
+        </Td>
+        <Td className="td p-2">{email}</Td>
+        <Td className="td p-2">{education}</Td>
+        <Td className="td p-2">{experience}</Td>
+        <Td className="td p-2">
           {specialization1}
           {", "}
           {specialization2}
-        </td>
-        <td className="td p-2">
+        </Td>
+        <Td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
               {/* Modal Edit  */}
@@ -134,9 +136,9 @@ const TableDataSpecialist = ({
               </div>
             </div>
           </div>
-        </td>
-      </tr>
-    </tbody>
+        </Td>
+      </Tr>
+    </Tbody>
   );
 };
 

@@ -1,4 +1,7 @@
 import { useContext, useState, useEffect } from "react";
+import React from 'react';
+import { Table, Thead, Tr, Th } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { Context } from "../store/appContext";
 import TableDataClient from "../components/TableDataClient";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
@@ -11,6 +14,7 @@ import TableDataAppointment from "./TableDataAppointment";
 import ModalAddWithForm from "./Modal/ModalAddWithForm";
 import FormAddService from "./Modal/Forms/FormAddService";
 import FormAddSpecialist from "./Modal/Forms/FormAddSpecialist";
+
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -89,38 +93,38 @@ function TabSuperAdmin() {
           <div className="container">
             <br />
 
-            <table className="table table-borderer table-sm shadow">
-              <thead>
-                <tr style={{ backgroundColor: "#E8FFEB" }}>
-                  <th scope="col" className="th p-2">
+            <Table className="table table-borderer table-sm shadow">
+              <Thead>
+                <Tr style={{ backgroundColor: "#E8FFEB" }}>
+                  <Th scope="col" className="th p-2">
                     #
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Fecha
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     ID Paciente
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Paciente
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     ID Doctor
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Doctor
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Servicio
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Invoice
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     <i className="fa-solid fa-trash-can"></i>
-                  </th>
-                </tr>
-              </thead>
+                  </Th>
+                </Tr>
+              </Thead>
               {!!store.appointments &&
                 store.appointments.length > 0 &&
                 store.appointments.map((appointment, i) => (
@@ -130,7 +134,7 @@ function TabSuperAdmin() {
                     index={appointment.id}
                   />
                 ))}
-            </table>
+            </Table>
           </div>
         </TabPane>
 
@@ -138,39 +142,39 @@ function TabSuperAdmin() {
         <TabPane tabId="2">
           <div className="container">
             <br />
-            <table className="table table-borderer table-sm shadow">
-              <thead>
-                <tr style={{ backgroundColor: "#6495ED" }}>
-                  <th scope="col" className="th p-2">
+            <Table  className="table table-borderer table-sm shadow">
+              <Thead>
+                <Tr style={{ backgroundColor: "#6495ED" }}>
+                  <Th scope="col" className="th p-2">
                     ID
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Paciente
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Email
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Historial de citas
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Próximas citas
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Pago
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
-                  </th>
-                </tr>
-              </thead>
+                  </Th>
+                </Tr>
+              </Thead>
               {!!store.clients &&
                 store.clients.length > 0 &&
                 store.clients.map((client, i) => (
                   <TableDataClient {...client} key={i} index={client.id} />
                 ))}
-            </table>
+            </Table>
           </div>
         </TabPane>
 
@@ -191,39 +195,39 @@ function TabSuperAdmin() {
             </div>
 
             <br />
-            <table className="table table-borderer table-sm shadow">
-              <thead>
-                <tr style={{ backgroundColor: "#BCBBF8" }}>
-                  <th scope="col" className="th p-2">
+            <Table className="table table-borderer table-sm shadow">
+              <Thead>
+                <Tr style={{ backgroundColor: "#BCBBF8" }}>
+                  <Th scope="col" className="th p-2">
                     ID
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Especialista
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Email
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Formación académica
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Experiencia laboral
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2">
                     Especialización
-                  </th>
-                  <th scope="col" className="th p-2">
+                  </Th>
+                  <Th scope="col" className="th p-2" id="botoness">
                     <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
-                  </th>
-                </tr>
-              </thead>
+                  </Th>
+                </Tr>
+              </Thead>
               {!!store.doctors &&
                 store.doctors.length > 0 &&
                 store.doctors.map((doctor, i) => (
                   <TableDataSpecialist {...doctor} key={i} index={doctor.id} />
                 ))}
-            </table>
+            </Table>
           </div>
         </TabPane>
         {/* !!!!!!!!!!!!!!!!!! TABLA DE SERVICIOS !!!!!!!!!!!!!!!!!!!!!!!*/}
@@ -242,37 +246,37 @@ function TabSuperAdmin() {
               </ModalAddWithForm>
             </div>
             <br />
-            <table className="table table-borderer table-sm shadow">
-              <thead>
-                <tr style={{ backgroundColor: "#939794", color: "white" }}>
-                  <th scope="col" className="th p-2" style={{ width: "5%" }}>
+            <Table className="table table-borderer table-sm shadow">
+              <Thead>
+                <Tr style={{ backgroundColor: "#939794", color: "white" }}>
+                  <Th scope="col" className="th p-2" style={{ width: "5%" }}>
                     ID
-                  </th>
-                  <th scope="col" className="th p-2" style={{ width: "25%" }}>
+                  </Th>
+                  <Th scope="col" className="th p-2" style={{ width: "25%" }}>
                     Servicio
-                  </th>
-                  <th scope="col" className="th p-2" style={{ width: "35%" }}>
+                  </Th>
+                  <Th scope="col" className="th p-2" style={{ width: "35%" }}>
                     Descripción
-                  </th>
-                  <th scope="col" className="th p-2" style={{ width: "10%" }}>
+                  </Th>
+                  <Th scope="col" className="th p-2" style={{ width: "10%" }}>
                     Tarifa
-                  </th>
-                  <th scope="col" className="th p-2" style={{ width: "10%" }}>
+                  </Th>
+                  <Th scope="col" className="th p-2" style={{ width: "10%" }}>
                     Duración
-                  </th>
+                  </Th>
 
-                  <th scope="col" className="th p-2">
+                  <Th scope="col" className="th p-2">{[5]}
                     <i className="fa-solid fa-pen-to-square me-3"></i>
                     <i className="fa-solid fa-trash-can"></i>
-                  </th>
-                </tr>
-              </thead>
+                  </Th>
+                </Tr>
+              </Thead>
               {!!store.services &&
                 store.services.length > 0 &&
                 store.services.map((service, i) => (
                   <TableDataService {...service} key={i} index={service.id} />
                 ))}
-            </table>
+            </Table>
           </div>
         </TabPane>
         {/*fin tabla servicios*/}

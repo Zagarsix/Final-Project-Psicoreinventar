@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
+import { Table, Thead, Tr, Th } from 'react-super-responsive-table';
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
@@ -62,7 +63,7 @@ const Pacientes = ({}) => {
               </div>
               <div className="col-md-12">
                 <div className="table-responsive">
-                  <table
+                  <Table
                     className="table"
                     style={{
                       width: "100%",
@@ -70,28 +71,28 @@ const Pacientes = ({}) => {
                       fontSize: "15px",
                     }}
                   >
-                    <thead>
-                      <tr style={{ backgroundColor: "#bcbbf8" }}>
-                        <th scope="col" className="th" style={{ width: "5%" }}>
+                    <Thead>
+                      <Tr style={{ backgroundColor: "#bcbbf8" }}>
+                        <Th scope="col" className="th" style={{ width: "5%" }}>
                           #ID
-                        </th>
-                        <th scope="col" className="th" style={{ width: "25%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "25%" }}>
                           Especialista
-                        </th>
-                        <th scope="col" className="th" style={{ width: "30%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "30%" }}>
                           Cita
-                        </th>
-                        <th scope="col" className="th" style={{ width: "15%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "15%" }}>
                           Precio
-                        </th>
-                        <th scope="col" className="th" style={{ width: "15%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "15%" }}>
                           Estado
-                        </th>
-                        <th scope="col" className="th" style={{ width: "10%" }}>
+                        </Th>
+                        <Th scope="col" className="th" style={{ width: "10%" }}>
                           Cancelar cita
-                        </th>
-                      </tr>
-                    </thead>
+                        </Th>
+                      </Tr>
+                    </Thead>
 
                     {!!store.pacientAppointments &&
                       store.pacientAppointments.length > 0 &&
@@ -102,7 +103,7 @@ const Pacientes = ({}) => {
                           index={appointment.id}
                         />
                       ))}
-                  </table>
+                  </Table>
                 </div>
               </div>
             </div>
