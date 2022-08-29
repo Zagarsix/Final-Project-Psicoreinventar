@@ -81,18 +81,6 @@ const TableDataClient = ({ name, lastname, email, index }) => {
                     <i className="fa-solid fa-pen-to-square"></i>
                   </Button>
                 </Link>
-                {/* <Modal isOpen={modalEdit} fade={false} toggle={toggleEdit}>
-                  <ModalHeader toggle={toggleEdit}>Editar paciente</ModalHeader>
-                  <ModalBody>Modifica los campos</ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={toggleEdit}>
-                      Editar
-                    </Button>{" "}
-                    <Button color="secondary" onClick={toggleEdit}>
-                      Cancelar
-                    </Button>
-                  </ModalFooter>
-                </Modal> */}
               </div>
               {/* Modal delete */}
               <div className="delete-user-modal">

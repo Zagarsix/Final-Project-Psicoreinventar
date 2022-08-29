@@ -82,18 +82,6 @@ const TableDataService = ({ index, name, description, price, time }) => {
                     <i className="fa-solid fa-pen-to-square"></i>
                   </Button>
                 </Link>
-                {/* <Modal isOpen={modalEdit} fade={false} toggle={toggleEdit}>
-                  <ModalHeader toggle={toggleEdit}>Editar servicio</ModalHeader>
-                  <ModalBody>Modifica los campos</ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={toggleEdit}>
-                      Editar
-                    </Button>{" "}
-                    <Button color="secondary" onClick={toggleEdit}>
-                      Cancelar
-                    </Button>
-                  </ModalFooter>
-                </Modal> */}
               </div>
 
               {/* Modal Delete */}

@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import ModalEdit from "./Modal/ModalEdit";
+import { Link } from "react-router-dom";
 
 const TableDataSpecialist = ({
   index,
@@ -19,9 +19,11 @@ const TableDataSpecialist = ({
 }) => {
   const { store, actions } = useContext(Context);
 
-  const [modal, setModal] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+  const toggleDelete = () => setModalDelete(!modalDelete);
 
-  const toggle = () => setModal(!modal);
+  const [modalEdit, setModalEdit] = useState(false);
+  const toggleEdit = () => setModalEdit(!modalEdit);
 
   const [specialistId, setSpecialistId] = useState(null);
 
@@ -82,20 +84,33 @@ const TableDataSpecialist = ({
         <td className="td p-2">
           <div className="botones">
             <div className="d-flex align-items-center">
-              <ModalEdit editWord="Editar" editWhat="especialista" />
+              {/* Modal Edit  */}
+              <div className="edit-specialist-modal">
+                <Link
+                  onClick={() => {
+                    toggleEdit();
+                  }}
+                  index={index}
+                  to={`/edit/specialist/${index}`}
+                >
+                  <Button color="light">
+                    <i className="fa-solid fa-pen-to-square"></i>
+                  </Button>
+                </Link>
+              </div>
               <div className="delete-user-modal">
                 <Button
                   color="light"
                   onClick={() => {
-                    toggle();
+                    toggleDelete();
                     setSpecialistId(index);
                   }}
                   index={index}
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modal} fade={false} toggle={toggle}>
-                  <ModalHeader toggle={toggle}>
+                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                  <ModalHeader toggle={toggleDelete}>
                     Eliminar especialista
                   </ModalHeader>
                   <ModalBody>
@@ -105,13 +120,13 @@ const TableDataSpecialist = ({
                     <Button
                       color="danger"
                       onClick={(e) => {
-                        toggle();
+                        toggleDelete();
                         handleDeleteSpecialist(e);
                       }}
                     >
                       Confirmar
                     </Button>
-                    <Button color="secondary" onClick={toggle}>
+                    <Button color="secondary" onClick={toggleDelete}>
                       Cancelar
                     </Button>
                   </ModalFooter>
