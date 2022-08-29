@@ -426,7 +426,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       handleAppointment: async (e, navigate) => {
-        const { service, doctor, dateTime, currentUser, apiURL } = getStore();
+        const { service, doctor, doctors, dateTime, currentUser, apiURL } =
+          getStore();
 
         const fields = {
           dateTime: dateTime,
@@ -434,6 +435,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           doctor_id: doctor,
           service_id: service,
         };
+
+        const doctorSelected = doctors.find(
+          (specialist) => specialist.id === doctor
+        );
+        const doctorName = `${doctorSelected?.name} ${doctorSelected?.lastname}`;
 
         // Fetching data from API
         const response = await fetch(`${apiURL}/api/appointment`, {
@@ -457,9 +463,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (status === "success") {
           Swal.fire({
             icon: "success",
-            title: message,
+            title: `Cita agendada exitosamente con ${doctorName} el ${dateTime}`,
             showConfirmButton: false,
-            timer: 1500,
+            timer: 3000,
           });
 
           // If user is patient, redirect to his/her dashboard

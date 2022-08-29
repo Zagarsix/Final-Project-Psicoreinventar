@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
-import React from 'react';
-import { Table, Thead, Tr, Th } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import React from "react";
+import { Table, Thead, Tr, Th } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { Context } from "../store/appContext";
 import TableDataClient from "../components/TableDataClient";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
@@ -14,7 +14,6 @@ import TableDataAppointment from "./TableDataAppointment";
 import ModalAddWithForm from "./Modal/ModalAddWithForm";
 import FormAddService from "./Modal/Forms/FormAddService";
 import FormAddSpecialist from "./Modal/Forms/FormAddSpecialist";
-
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);
@@ -121,7 +120,7 @@ function TabSuperAdmin() {
                     Invoice
                   </Th>
                   <Th scope="col" className="th p-2">
-                    <i className="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
                   </Th>
                 </Tr>
               </Thead>
@@ -142,7 +141,7 @@ function TabSuperAdmin() {
         <TabPane tabId="2">
           <div className="container">
             <br />
-            <Table  className="table table-borderer table-sm shadow">
+            <Table className="table table-borderer table-sm shadow">
               <Thead>
                 <Tr style={{ backgroundColor: "#6495ED" }}>
                   <Th scope="col" className="th p-2">
@@ -164,8 +163,8 @@ function TabSuperAdmin() {
                     Pago
                   </Th>
                   <Th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-3"></i>
-                    <i className="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-pen-to-square me-3 btn-dashboard"></i>
+                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
                   </Th>
                 </Tr>
               </Thead>
@@ -217,8 +216,8 @@ function TabSuperAdmin() {
                     Especialización
                   </Th>
                   <Th scope="col" className="th p-2" id="botoness">
-                    <i className="fa-solid fa-pen-to-square me-3"></i>
-                    <i className="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-pen-to-square me-3 btn-dashboard"></i>
+                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
                   </Th>
                 </Tr>
               </Thead>
@@ -265,9 +264,9 @@ function TabSuperAdmin() {
                     Duración
                   </Th>
 
-                  <Th scope="col" className="th p-2">{[5]}
-                    <i className="fa-solid fa-pen-to-square me-3"></i>
-                    <i className="fa-solid fa-trash-can"></i>
+                  <Th scope="col" className="th p-2">
+                    <i className="fa-solid fa-pen-to-square me-3 btn-dashboard"></i>
+                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
                   </Th>
                 </Tr>
               </Thead>
