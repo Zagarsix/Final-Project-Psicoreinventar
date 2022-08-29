@@ -31,9 +31,15 @@ def add_appointment():
     appointment.doctor_id = doctor_id
     appointment.service_id = service_id
 
+    # DO I NEED TO CREATE A HISTORY OF APPOINTMENTS TO FILTER REF TO IT?
+
     # Check if currentUser has booked an initial appointment already
     # check_for_initial_appointment = Appointment.query.filter_by(service_id = 1, pacient_id = id)
     # if check_for_initial_appointment: return jsonify({'status': 'failed', 'message': 'Solo puedes agendar una consulta inicial', 'data': None}), 400
+
+    # check_for_already_booked_appointment = Appointment.query.filter_by(dateTime = dateTime, doctor_id = doctor_id)
+    # if check_for_already_booked_appointment: return jsonify({'status': 'failed', 'message': 'Ya agendaste una consulta con este mismo doctor, en este mismo horario', 'data': None}), 400
+
 
     invoice = Invoice()
     # should be linked to stripe but currently is just the datetime of the appointment
@@ -72,31 +78,6 @@ def edit_appoinment(id):
         'appointment': appointment.serialize()
     }
     return jsonify({'status': 'success', 'message': 'Cita reagendada', 'data': data}), 200
-# # Edit appoinment
-# @appointment.route('/edit_appoinment/<int:id>', methods=['PUT'])
-# @jwt_required()
-# def edit_appoinment(id):
-#     appointment = Appointment.query.filter_by(id=id).first()
-#     dateTime = request.json.get('dateTime')
-#     pacient_id = request.json.get('pacient_id')
-#     doctor_id = request.json.get('doctor_id')  
-#     service_id = request.json.get('service_id')
-
-#     # Check if appointment doesn't exist
-#     if not appointment:  return jsonify({ "status": "failed", "code": 404, "message": "Cita no encontrada", "data": None }), 404
-
-#     appointment = Appointment()
-#     appointment.dateTime = dateTime
-#     appointment.pacient_id = pacient_id
-#     appointment.doctor_id = doctor_id
-#     appointment.service_id = service_id
-    
-#     appointment.update()
-
-#     data = {
-#         'appointment': appointment.serialize()
-#     }
-#     return jsonify({'status': 'success', 'message': 'Cita reagendada', 'data': data}), 200
 
 @appointment.route('/delete_appoinment/<int:id>', methods=['DELETE'])
 @jwt_required()
