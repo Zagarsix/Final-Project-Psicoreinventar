@@ -16,15 +16,16 @@ def add_appointment():
     doctor_id = request.json.get('doctor_id')
     service_id = request.json.get('service_id')
 
-    # if not pacient_id: return jsonify({'status': 'failed', 'message': 'Pacient_id is required', 'data': None}), 400
-    # if not doctor_id: return jsonify({'status': 'failed', 'message': 'Doctor_id is required', 'data': None}), 400
-    # if not service_id: return jsonify({'status': 'failed', 'message': 'Service is required', 'data': None}), 400
-    # if not dateTime: return jsonify({'status': 'failed', 'message': 'Date and Time are required', 'data': None}), 400
+    check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
+    if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada'}), 400 
 
-    # Invoice 
-    # date_of_purchase = request.json.get('date_of_purchase')
+    # check_for_booked_appointment = Appointment.query.filter_by(dateTime = '8/30/2022 11:00:00 AM')
+    # if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada'}), 400
+    # check_for_booked_appointment = Appointment.query.filter_by(dateTime = '9/19/2022 9:00:00 AM', doctor_id= 8)
 
     appointment = Appointment()
+
+    # check_for_booked_appointment = 
 
     appointment.dateTime = dateTime
     appointment.pacient_id = pacient_id
@@ -32,6 +33,7 @@ def add_appointment():
     appointment.service_id = service_id
 
     # DO I NEED TO CREATE A HISTORY OF APPOINTMENTS TO FILTER REF TO IT?
+
 
     # Check if currentUser has booked an initial appointment already
     # check_for_initial_appointment = Appointment.query.filter_by(service_id = 1, pacient_id = id)
@@ -58,6 +60,21 @@ def add_appointment():
     # if add appointment succeded
     if appointment: return jsonify({'status': 'success', 'message': 'Cita agendada exitosamente', 'data': data}), 200
     else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': data}), 200
+
+# Get appointment by date
+@appointment.route('/appointment_by_date', methods=['POST'])
+def get_appointment_by_date():
+    dateTime = request.json.get('dateTime')
+
+    appointments = Appointment.query.filter_by(dateTime=dateTime)
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    
+    return jsonify(appointments), 200
+
+
+    
+
+
 
 # Edit (Reagendar fecha y hora) appoinment
 @appointment.route('/edit_appoinment/<int:id>', methods=['PUT'])
