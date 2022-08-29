@@ -63,7 +63,8 @@ const Doctores = ({
                   {store.currentUser?.user?.lastname}
                 </h3>
                 <p className="col-sm-8 fs-5 pt-4 m-2">
-                  Tienes 1 cita(s) agendada(s)
+                  Tienes {store.doctorAppointments?.length || 0} cita(s)
+                  agendada(s)
                 </p>
               </div>
             </div>

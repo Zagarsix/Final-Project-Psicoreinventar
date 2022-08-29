@@ -44,7 +44,10 @@ const Pacientes = ({}) => {
                   Bienvenido(a), {store.currentUser?.user?.name}{" "}
                   {store.currentUser?.user?.lastname}
                 </h1>
-                <p className="col-md-8 fs-4">Tienes 1 cita(s) agendada(s)</p>
+                <p className="col-md-8 fs-4">
+                  Tienes {store.pacientAppointments?.length || 0} cita(s)
+                  agendada(s)
+                </p>
               </div>
             </div>
           </div>
