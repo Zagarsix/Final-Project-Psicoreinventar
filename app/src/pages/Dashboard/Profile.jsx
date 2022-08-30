@@ -182,6 +182,7 @@ const Profile = (props) => {
                       className={`form-control ${
                         errors.email && "invalid-input"
                       }`}
+                      autoComplete="username"
                       value={store.email}
                       onChange={actions.handleChange}
                       id="inputEmail"
@@ -218,6 +219,7 @@ const Profile = (props) => {
                         className={`form-control ${
                           errors.password && "invalid-input"
                         }`}
+                        autoComplete="new-password"
                         value={store.password}
                         onChange={actions.handleChange}
                         id="inputPassword"

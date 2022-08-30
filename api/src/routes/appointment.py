@@ -1,3 +1,4 @@
+from re import S
 from flask import Flask, jsonify, request, url_for, Blueprint
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -24,10 +25,10 @@ def add_appointment():
     check_for_booked_appointment_by_date = Appointment.query.filter_by(dateTime=dateTime).first()
     if check_for_booked_appointment_by_date: return jsonify({'status': 'failed', 'message': 'Ya tienes una cita agendada, a esta misma fecha y hora'}), 400 
     
-    # check if the patient has booked an initial appointment before (free appointment = 1 time, consulta inicial service_id = 1)
-    check_for_initial_appointment = Appointment.query.filter_by(service_id=1, doctor_id=doctor_id).first()
-    if check_for_initial_appointment: return jsonify({'status': 'failed', 'message': 'Solo puedes agendar una consulta inicial por especialista', 'data': None}), 400
-
+    # check if the patient has booked an initial appointment before (free appointment = 1 time)
+    if service_id == 1:
+        check_for_initial_appointment_booked = Appointment.query.filter_by(doctor_id=doctor_id, service_id=1, pacient_id=pacient_id).first()
+        if check_for_initial_appointment_booked: return jsonify({'status': 'failed', 'message': 'Solo puedes agendar una consulta inicial por especialista'}), 400 
 
 
     appointment = Appointment()
@@ -66,6 +67,33 @@ def get_appointment_by_date():
     
     return jsonify(appointments), 200
 
+# Get appointments with certain service_id
+@appointment.route('/appointment_by_service_id', methods=['POST'])
+def get_appointment_by_service_id():
+    service_id = request.json.get('service_id')
+
+    appointments = Appointment.query.filter_by(service_id=service_id)
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    
+    return jsonify(appointments), 200
+
+# Get all appointments with service_id 1
+@appointment.route('/initial_appointments', methods=['POST'])
+def get_initial_appointments():
+    appointments = Appointment.query.filter_by(service_id=1)
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    
+    return jsonify(appointments), 200
+
+# Get all appointments with service_id 1 of a certain user
+@appointment.route('/initial_appointments_of_pacient', methods=['GET'])
+def get_initial_appointments_of_user():
+    doctor_id = 6
+    pacient_id = 1
+    appointments = Appointment.query.filter_by(service_id=1, doctor_id=doctor_id, pacient_id=pacient_id)
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    
+    return jsonify(appointments), 200
 
 # Edit (Reagendar fecha y hora) appoinment
 @appointment.route('/edit_appoinment/<int:id>', methods=['PUT'])
