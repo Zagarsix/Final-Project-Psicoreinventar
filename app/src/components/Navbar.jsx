@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 import "../styles/Navbar.css";
 import Logo from "../img/nav-logo.png";
 
@@ -9,6 +10,12 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {}, []);
+
+  // const scrollWithOffset = (el) => {
+  //   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  //   const yOffset = -80;
+  //   window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  // };
 
   return (
     <>
@@ -38,6 +45,17 @@ const Navbar = () => {
                 {!!store.currentUser ? (
                   <>
                     <li className="nav-item">
+                      <NavHashLink
+                        className="nav-link fw-semibold link-gray me-2"
+                        activeClassName="active-link"
+                        smooth
+                        to="/#services"
+                        // scroll={scrollWithOffset}
+                      >
+                        Servicios
+                      </NavHashLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink
                         className={({ isActive }) =>
                           isActive
@@ -66,13 +84,24 @@ const Navbar = () => {
                 ) : (
                   <>
                     <li className="nav-item">
+                      <NavHashLink
+                        className="nav-link fw-semibold link-gray me-2"
+                        activeClassName="active-link"
+                        smooth
+                        to="/#services"
+                        // scroll={scrollWithOffset}
+                      >
+                        Servicios
+                      </NavHashLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink
+                        to="/specialists"
                         className={({ isActive }) =>
                           isActive
                             ? "nav-link fw-semibold link-gray me-2 active-link"
                             : "nav-link fw-semibold link-gray me-2"
                         }
-                        to="/specialists"
                       >
                         Especialistas
                       </NavLink>

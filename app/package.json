@@ -20,6 +20,7 @@
     "react-hook-form": "^7.34.1",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",
     "react-step-wizard": "^5.3.11",
     "react-super-responsive-table": "^5.2.1",
