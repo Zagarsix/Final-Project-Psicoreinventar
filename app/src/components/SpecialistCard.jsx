@@ -25,8 +25,8 @@ const SpecialistCard = ({
             {name} {""} {lastname}
           </h5>
           <ul className="doctor-info p-3 ms-1 mb-0">
-            <li className="li-item mb-2">{experience}</li>
-            <li className="li-item">{education}</li>
+            <li className="li-item mb-2 paragraph">{experience}</li>
+            <li className="li-item paragraph">{education}</li>
           </ul>
           <div className="specialization-info mb-4">
             <div className="d-flex">

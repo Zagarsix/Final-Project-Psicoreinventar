@@ -16,7 +16,7 @@ const LeftHeader = ({ img, imgLabel, title, title_highlight, description }) => {
               <h1 className="fw-bold">
                 {title} <span className="text-primary">{title_highlight}</span>
               </h1>
-              <p className="my-2">{description}</p>
+              <p className="my-2 paragraph">{description}</p>
             </div>
           </div>
         </div>

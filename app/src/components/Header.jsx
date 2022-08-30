@@ -15,7 +15,7 @@ const Header = ({
           <h1 className="fw-bold display-4">
             {title} <span className="text-primary">{title_highlight}</span>
           </h1>
-          <p className="mt-2 mb-3">{description}</p>
+          <p className="mt-2 mb-3 paragraph">{description}</p>
           <Link
             className="btn btn-primary btn-md appointment-btn"
             style={{ padding: ".5em 2em" }}

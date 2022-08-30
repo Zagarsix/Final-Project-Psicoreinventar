@@ -2,9 +2,7 @@ import "../styles/CardClient.css";
 
 const CardClient = ({ ImgClient, imgLabel, NameClient, AgeClient, Review }) => {
   return (
-    <div
-      className="card mb-3 shadow"
-    >
+    <div className="card mb-3 shadow">
       <div className="row">
         <div className="col-7 col-sm-3 col-md-2 col-lg-3 col-xl-2">
           <img
@@ -42,7 +40,7 @@ const CardClient = ({ ImgClient, imgLabel, NameClient, AgeClient, Review }) => {
                 alt="star"
               />
             </div>
-            <p className="card-text">{Review}</p>
+            <p className="card-text paragraph">{Review}</p>
           </div>
         </div>
       </div>
