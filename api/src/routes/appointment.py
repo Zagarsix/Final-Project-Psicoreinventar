@@ -20,28 +20,22 @@ def add_appointment():
     check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
     if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada'}), 400 
 
-    # check_for_booked_appointment = Appointment.query.filter_by(dateTime = '8/30/2022 11:00:00 AM')
-    # if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada'}), 400
-    # check_for_booked_appointment = Appointment.query.filter_by(dateTime = '9/19/2022 9:00:00 AM', doctor_id= 8)
+    # check if there is already an appointment booked by the patient, in the same dateTime with different doctor
+    check_for_booked_appointment_by_date = Appointment.query.filter_by(dateTime=dateTime).first()
+    if check_for_booked_appointment_by_date: return jsonify({'status': 'failed', 'message': 'Ya tienes una cita agendada, a esta misma fecha y hora'}), 400 
+    
+    # check if the patient has booked an initial appointment before (free appointment = 1 time, consulta inicial service_id = 1)
+    check_for_initial_appointment = Appointment.query.filter_by(service_id=1, doctor_id=doctor_id).first()
+    if check_for_initial_appointment: return jsonify({'status': 'failed', 'message': 'Solo puedes agendar una consulta inicial por especialista', 'data': None}), 400
+
+
 
     appointment = Appointment()
-
-    # check_for_booked_appointment = 
 
     appointment.dateTime = dateTime
     appointment.pacient_id = pacient_id
     appointment.doctor_id = doctor_id
     appointment.service_id = service_id
-
-    # DO I NEED TO CREATE A HISTORY OF APPOINTMENTS TO FILTER REF TO IT?
-
-
-    # Check if currentUser has booked an initial appointment already
-    # check_for_initial_appointment = Appointment.query.filter_by(service_id = 1, pacient_id = id)
-    # if check_for_initial_appointment: return jsonify({'status': 'failed', 'message': 'Solo puedes agendar una consulta inicial', 'data': None}), 400
-
-    # check_for_already_booked_appointment = Appointment.query.filter_by(dateTime = dateTime, doctor_id = doctor_id)
-    # if check_for_already_booked_appointment: return jsonify({'status': 'failed', 'message': 'Ya agendaste una consulta con este mismo doctor, en este mismo horario', 'data': None}), 400
 
 
     invoice = Invoice()
