@@ -19,10 +19,12 @@ import FormEditService from "./components/Modal/Forms/FormEditService";
 import FormEditClient from "./components/Modal/Forms/FormEditClient";
 import FormEditAppointment from "./components/Modal/Forms/FormEditAppointment";
 import FormEditSpecialist from "./components/Modal/Forms/FormEditSpecialist";
+import ScrollToTop from "./components/ScrollToTop";
 
 const Layout = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="*" element={<NotFound />} />
