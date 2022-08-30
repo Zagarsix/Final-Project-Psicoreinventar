@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
-import { Thead, Tr, Th } from 'react-super-responsive-table';
+import { Thead, Tr, Th } from "react-super-responsive-table";
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
@@ -93,10 +93,10 @@ const Doctores = ({
                         <Th scope="col" className="th" style={{ width: "5%" }}>
                           #
                         </Th>
-                        <Th scope="col" className="th" style={{ width: "20%" }}>
+                        <Th scope="col" className="th" style={{ width: "15%" }}>
                           Paciente
                         </Th>
-                        <Th scope="col" className="th" style={{ width: "20%" }}>
+                        <Th scope="col" className="th" style={{ width: "25%" }}>
                           Cita
                         </Th>
                         <Th scope="col" className="th" style={{ width: "15%" }}>
