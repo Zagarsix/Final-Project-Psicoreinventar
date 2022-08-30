@@ -33,24 +33,25 @@ const FormEditAppointment = (props) => {
 
   const [appointmentDateTime, setAppointmentDateTime] = useState({
     dateTime: "",
+    doctor_id: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAppointmentDateTime({ ...appointmentDateTime, [name]: value });
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setAppointmentDateTime({ ...appointmentDateTime, [name]: value });
+  // };
+
+  // useEffect(() => {
+  //   console.log(appointmentDateTime["doctor_id"]);
+  // }, [appointmentDateTime]);
+
+  // useEffect(() => {
+  //   console.log(appointmentDateTime["dateTime"]);
+  // }, [appointmentDateTime]);
+
+  const onSubmit = (data) => {
+    console.log(data);
   };
-
-  //   useEffect(() => {
-  //     console.log(appointmentDateTime);
-  //   }, [appointmentDateTime]);
-
-  //   useEffect(() => {
-  //     console.log(appointmentDateTime["dateTime"]);
-  //   }, [appointmentDateTime]);
-
-  //   const onSubmit = (data) => {
-  //     console.log(data);
-  //   };
 
   // Get appointment by id, run this function everytime the useParams id changes
   useEffect(() => {
@@ -91,6 +92,10 @@ const FormEditAppointment = (props) => {
 
     console.log(data);
 
+    if (status === "failed") {
+      toast.error(message);
+    }
+
     if (status === "success") {
       actions.getDoctorAppointments();
       navigate("/doctores");
@@ -118,7 +123,7 @@ const FormEditAppointment = (props) => {
               <form
                 id="form"
                 onSubmit={(e) => {
-                  // handleSubmit(onSubmit)(e);
+                  handleSubmit(onSubmit)(e);
                   handleSubmit(handleEditAppointmentDateTime)(e);
                 }}
               >

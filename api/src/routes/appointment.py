@@ -16,6 +16,7 @@ def add_appointment():
     doctor_id = request.json.get('doctor_id')
     service_id = request.json.get('service_id')
 
+    # check if there is already an appointment booked by the patient, in the same dateTime with the same doctor
     check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
     if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada'}), 400 
 
@@ -72,19 +73,21 @@ def get_appointment_by_date():
     return jsonify(appointments), 200
 
 
-    
-
-
-
 # Edit (Reagendar fecha y hora) appoinment
 @appointment.route('/edit_appoinment/<int:id>', methods=['PUT'])
 @jwt_required()
 def edit_appoinment(id):
     appointment = Appointment.query.filter_by(id=id).first()
     dateTime = request.json.get('dateTime')
+    doctor_id = request.json.get('doctor_id')
 
     # Check if appointment doesn't exist
     if not appointment:  return jsonify({ "status": "failed", "code": 404, "message": "Cita no encontrada", "data": None }), 404
+
+    # Check if doctor already has a booked appointment in that dateTime
+
+    check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
+    if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada'}), 400 
 
     # Update dateTime of appointment
     appointment.dateTime = dateTime
