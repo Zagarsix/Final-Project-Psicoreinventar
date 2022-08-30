@@ -50,7 +50,7 @@ const RegisterForm = (props) => {
                 {/* <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
                   1
                 </span> */}
-                <h5 className="fw-semibold">Register</h5>
+                <h5 className="fw-semibold">Regístrate</h5>
               </div>
             </div>
           </div>

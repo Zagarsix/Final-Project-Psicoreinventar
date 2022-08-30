@@ -86,7 +86,7 @@ const Navbar = () => {
                         }
                         to="/register"
                       >
-                        Registrate
+                        Regístrate
                       </NavLink>
                     </li>
                   </>

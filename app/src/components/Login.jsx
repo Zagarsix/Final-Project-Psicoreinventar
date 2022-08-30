@@ -31,7 +31,7 @@ const Login = () => {
             <div className="container d-flex justify-content-md-center align-items-center mb-3">
               <div className="col-md-6">
                 <div className="step-num-container d-flex align-items-center">
-                  <h5 className="fw-semibold">Login</h5>
+                  <h5 className="fw-semibold">Iniciar sesión</h5>
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@ const Login = () => {
                     <div className="row mb-3">
                       <label
                         htmlFor="inputEmail"
-                        className="col-sm-2 col-form-label"
+                        className="col-sm-2 col-form-label pe-0"
                       >
                         Email
                       </label>
@@ -63,9 +63,9 @@ const Login = () => {
                     <div className="row mb-3">
                       <label
                         htmlFor="inputPassword"
-                        className="col-sm-2 col-form-label"
+                        className="col-sm-2 col-form-label pe-0"
                       >
-                        Password
+                        Contraseña
                       </label>
                       <div className="col-sm-10">
                         <div className="input-password position-relative">
@@ -93,7 +93,7 @@ const Login = () => {
                     </div>
                     <div className="d-flex">
                       <button type="submit" className="btn btn-primary w-100">
-                        Sign in
+                        Iniciar sesión
                       </button>
                     </div>
                     <div className="redirect-to-register-page mt-4">
