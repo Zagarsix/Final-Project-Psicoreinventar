@@ -54,7 +54,9 @@ const SidebarDoctor = () => {
           aria-expanded="false"
         >
           <img
-            src="http://placekitten.com/200/300"
+            src={
+              store.currentUser?.user?.image || "http://placekitten.com/200/300"
+            }
             alt="hugenerd"
             width={30}
             height={30}
