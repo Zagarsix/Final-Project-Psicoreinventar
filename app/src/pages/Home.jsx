@@ -127,7 +127,9 @@ const Home = () => {
       </div>
 
       {/* Services Section */}
-      <h2 className="fw-bold text-center mb-3">Nuestros servicios</h2>
+      <h2 className="fw-bold text-center mb-3">
+        Nuestros <span className="text-primary">servicios</span>{" "}
+      </h2>
       <section className="card-section bg-primary">
         <div className="container">
           <div className="row">

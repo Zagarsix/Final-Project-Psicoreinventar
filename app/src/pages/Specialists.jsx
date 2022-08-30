@@ -11,8 +11,8 @@ const Specialists = () => {
     <>
       <main className="main-section w-100 h-100 p-3 mb-5">
         <Header
-          title="Specialists"
-          title_highlight="Page"
+          title="Nuestros"
+          title_highlight="especialistas"
           description="Todos nuestros especialistas pasan por un riguroso proceso de validación en cada uno de sus servicios. Agenda para comenzar este proceso de forma online y con un enfoque personalizado."
           btnLabel="Agendar cita"
           img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62825881dce5c040e3fda9b9_woman-using-tablet.png"
