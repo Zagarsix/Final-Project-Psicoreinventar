@@ -8,8 +8,8 @@ const Footer = () => {
   return (
     <footer className="text-center text-lg-start mt-5">
       <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-sm-12 col-md-8 col-lg-7 order-1 order-md-0">
+        <div className="row justify-content-center flex-column-reverse flex-lg-row">
+          <div className="col-sm-12 col-lg-7">
             <div className="footer-logo pb-4">
               <img src={Logo} alt="Psicoreinventar logo" />
             </div>
@@ -53,7 +53,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="col-sm-12 col-md-4 col-lg-4 col-xl-3 order-0 order-md-1 right-column">
+          <div className="col-sm-12 col-lg-4 col-xl-3">
             <div className="image-logo-head mt-0 mb-4">
               <img
                 src={Logo2}
