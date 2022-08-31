@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Adding this because of fixed navbar */
+  padding-top: 5.125rem;
 }
 
 code {

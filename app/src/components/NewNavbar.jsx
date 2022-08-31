@@ -20,13 +20,25 @@ const NavbarNew = () => {
     setID(id);
   };
 
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -80;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  };
+
   return (
     <div className="main-nav">
       <div className="container">
-        <Navbar collapseOnSelect expand="lg" className="py-3">
+        <Navbar
+          fixed="top"
+          collapseOnSelect
+          expand="lg"
+          className="py-3"
+          style={{ backgroundColor: "white" }}
+        >
           <Container className="container-fluid p-0">
             <Nav.Link
-              as={NavLink}
+              as={HashLink}
               onClick={() => handleActive("home")}
               eventKey="home"
               className={
@@ -34,7 +46,8 @@ const NavbarNew = () => {
                   ? "nav-link fw-semibold link-gray me-2 active-link"
                   : "nav-link fw-semibold link-gray me-2"
               }
-              to="/"
+              smooth="true"
+              to="/#"
             >
               <img
                 src={Logo}
@@ -49,6 +62,22 @@ const NavbarNew = () => {
                 {/* Conditionally Rendering links if currentUser is different of null, if user is logged don't show services link, only show specialists and dashboard links*/}
                 {!!store.currentUser ? (
                   <>
+                    <Nav.Link
+                      as={HashLink}
+                      onClick={() => handleActive("services")}
+                      eventKey="services"
+                      className="nav-link fw-semibold link-gray me-2"
+                      // className={
+                      //   id === "services"
+                      //     ? "nav-link fw-semibold link-gray me-2 active-link"
+                      //     : ""
+                      // }
+                      smooth="true"
+                      scroll={scrollWithOffset}
+                      to="/#services"
+                    >
+                      Servicios
+                    </Nav.Link>
                     <Nav.Link
                       as={NavLink}
                       onClick={() => handleActive("specialists")}
@@ -91,6 +120,7 @@ const NavbarNew = () => {
                       // }
                       smooth="true"
                       to="/#services"
+                      scroll={scrollWithOffset}
                     >
                       Servicios
                     </Nav.Link>
