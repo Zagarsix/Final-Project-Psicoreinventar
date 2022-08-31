@@ -9,15 +9,17 @@ const Footer = () => {
             <section>
                 <div className='text-md-start text-center mt-5'>
                     <div className='row'>
-                        <div className='col-sm-12 col-md-8 col-lg-9 mb-1'>
-                        <img src="https://imagizer.imageshack.com/img923/515/ZslHLf.png" 
+                        <div className='col-sm-12 col-md-8 col-lg-9 mb-1 order-1 order-md-0'>
+                        <img src=" https://imagizer.imageshack.com/img923/515/ZslHLf.png" 
                         alt="project-logo"
-                        className='pb-4' />
+                        className=' image-logo text-center'/>
+                        <p>
+                        <i className="fa-solid fa-spa lotus-flower pt-1 pb-1"></i></p>
                             <p className="" style={{ fontSize: "0.8rem" }}>
                                 En caso de emergencia, por favor utiliza alguno de estos recursos en vez de este sitio.
                             </p>
                             <div className="">
-                                <a style={{ fontSize: "0.7rem", color: "#000000" }}
+                                <a style={{ fontSize: "0.7rem", color: "#000000"}}
                                     className={({ isActive }) =>
                                         isActive
                                             ? "nav-link active-link"
@@ -51,9 +53,14 @@ const Footer = () => {
                                 </a>
                             </div>
                         </div>
-                        <div className="col-sm-12 col-md-4 col-lg-3 mx-auto mb-4 right-column">
+                        <div className="col-sm-6 col-md-4 col-lg-3 mx-auto mb-4 right-column order-0 order-md-1">
+                        <p><img src=" https://imagizer.imageshack.com/img922/7008/9ybO8U.png" 
+                        alt="project-logo"
+                        className=' image-logo-head text-center'
+                        style={{width:"2rem"}} /></p>
+                       
                             <Link
-                                className="col-10 col-sm-10 col-md-9 col-lg-7 btn btn-primary btn-md appointment-btn mt-4 mb-3"
+                                className="col-10 col-sm-10 col-md-9 col-lg-7 btn btn-primary btn-md appointment-btn mt-3 mb-3"
                                 style={{ padding: "", fontSize: "0.68rem" }}
                                 to="/appointment">
                                 Agendar cita
@@ -99,6 +106,7 @@ const Footer = () => {
                                 to="/contact">
                                 Contáctanos
                             </NavLink>
+                            
                             </div>
                         </div>
                     </div>
