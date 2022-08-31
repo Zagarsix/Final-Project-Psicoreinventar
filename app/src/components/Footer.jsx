@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../styles/Footer.css";
+import Logo from "../img/nav-logo.png";
 
 const Footer = () => {
   return (
@@ -8,6 +9,9 @@ const Footer = () => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-sm-12 col-lg-7">
+            <div className="footer-logo pb-4">
+              <img src={Logo} alt="Psicoreinventar logo" />
+            </div>
             <p className="py-2 px-2 footer-paragraph">
               En caso de emergencia, por favor utilice alguno de estos recursos
               en vez de este sitio.
@@ -61,21 +65,15 @@ const Footer = () => {
 
             <NavLink
               to="/specialists"
-              className="nav-link fw-semibold link-gray me-2 mb-3"
+              className="nav-link fw-semibold me-2 mb-3"
             >
               Especialistas
             </NavLink>
 
-            <NavLink
-              className="nav-link fw-semibold link-gray me-2 mb-3"
-              to="/register"
-            >
+            <NavLink className="nav-link fw-semibold me-2 mb-3" to="/register">
               Regístrate
             </NavLink>
-            <NavLink
-              className="nav-link fw-semibold link-gray me-2 mb-3"
-              to="/contact"
-            >
+            <NavLink className="nav-link fw-semibold me-2 mb-3" to="/contact">
               Contactar
             </NavLink>
           </div>
