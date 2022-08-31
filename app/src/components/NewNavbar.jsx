@@ -36,7 +36,7 @@ const NavbarNew = () => {
           className="py-3"
           style={{ backgroundColor: "white" }}
         >
-          <Container className="container-fluid p-0">
+          <Container className="container-fluid">
             <Nav.Link
               as={HashLink}
               onClick={() => handleActive("home")}
