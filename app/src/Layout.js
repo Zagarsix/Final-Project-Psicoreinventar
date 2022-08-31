@@ -4,7 +4,8 @@ import injectContext from "./store/appContext";
 import Home from "./pages/Home";
 import Specialists from "./pages/Specialists";
 import NotFound from "./pages/NotFound";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
+import NavbarNew from "./components/NewNavbar";
 import SuperAdmin from "./pages/Dashboard/SuperAdmin";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm";
@@ -25,7 +26,8 @@ const Layout = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Navbar />
+      {/* <Navbar /> */}
+      <NavbarNew />
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />

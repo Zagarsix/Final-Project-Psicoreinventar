@@ -5,3 +5,7 @@
 .active-link {
   color: #0d6efd !important;
 }
+
+.nav-link.active-link {
+  color: #0d6efd !important;
+}
