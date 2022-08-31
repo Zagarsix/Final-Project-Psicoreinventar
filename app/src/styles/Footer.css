@@ -1,0 +1,8 @@
+.footer-paragraph {
+  font-size: 0.9rem;
+}
+
+.social-media-icon:hover .fa-brands {
+  color: hsl(216, 98%, 62%);
+  transition: 0.3s;
+}
