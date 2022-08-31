@@ -79,6 +79,17 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div
+        className="d-flex justify-content-center text-center p-2 pt-4"
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.05)",
+        }}
+      >
+        <p className="footer-copy-paragraph">&copy; 2022 - Developed by</p>
+        <p className="footer-copy-paragraph ps-2" style={{ color: "#0d6efd" }}>
+          Team <i className="fa-solid fa-spa"></i> Hope
+        </p>
+      </div>
     </footer>
   );
 };
