@@ -21,6 +21,7 @@ import FormEditClient from "./components/Modal/Forms/FormEditClient";
 import FormEditAppointment from "./components/Modal/Forms/FormEditAppointment";
 import FormEditSpecialist from "./components/Modal/Forms/FormEditSpecialist";
 import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./components/Footer";
 
 const Layout = () => {
   return (
@@ -50,6 +51,7 @@ const Layout = () => {
         <Route path="/edit/appointment/:id" element={<FormEditAppointment />} />
       </Routes>
       <ToastContainer />
+      <Footer/>
     </BrowserRouter>
   );
 };
