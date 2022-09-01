@@ -91,7 +91,6 @@ const NavbarNew = () => {
                     >
                       Especialistas
                     </Nav.Link>
-
                     <Nav.Link
                       as={NavLink}
                       onClick={() => handleActive("profile")}
@@ -149,6 +148,19 @@ const NavbarNew = () => {
                       to="/register"
                     >
                       Regístrate
+                    </Nav.Link>
+                    <Nav.Link
+                      as={NavLink}
+                      onClick={() => handleActive("contact")}
+                      eventKey="contact"
+                      className={
+                        id === "contact"
+                          ? "nav-link fw-semibold link-gray me-2 active-link"
+                          : "nav-link fw-semibold link-gray me-2"
+                      }
+                      to="/contact"
+                    >
+                      Contáctanos
                     </Nav.Link>
                   </>
                 )}
