@@ -6,8 +6,6 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
-import ServiceCard from "../components/ServiceCard";
-import SpecialistCard from "../components/SpecialistCard";
 import headerImg from "../img/82910-psychotherapy.gif";
 import ServiceCardShowCase from "../components/ServiceCardShowCase";
 
@@ -127,23 +125,26 @@ const Home = () => {
       </div>
 
       {/* Services Section */}
-      <h2 className="fw-bold text-center mb-3">
-        Nuestros <span className="text-primary">servicios</span>{" "}
-      </h2>
-      <section className="card-section bg-primary">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-10 offset-md-1 py-4">
-              <div className="row justify-content-between gy-3">
-                {!!store.services &&
-                  store.services.length > 0 &&
-                  store.services.map((service, i) => (
-                    <ServiceCardShowCase
-                      {...service}
-                      key={i}
-                      index={service.id}
-                    />
-                  ))}
+
+      <section className="service-section" id="services">
+        <h2 className="fw-bold text-center mb-3">
+          Nuestros <span className="text-primary">servicios</span>{" "}
+        </h2>
+        <div className="card-section bg-primary">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-10 offset-md-1 py-4">
+                <div className="row justify-content-between gy-3">
+                  {!!store.services &&
+                    store.services.length > 0 &&
+                    store.services.map((service, i) => (
+                      <ServiceCardShowCase
+                        {...service}
+                        key={i}
+                        index={service.id}
+                      />
+                    ))}
+                </div>
               </div>
             </div>
           </div>

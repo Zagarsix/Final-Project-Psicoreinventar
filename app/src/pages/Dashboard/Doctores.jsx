@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
-import { Thead, Tr, Th } from "react-super-responsive-table";
+import { Table, Thead, Tr, Th } from "react-super-responsive-table";
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
@@ -80,7 +80,7 @@ const Doctores = ({
 
               <div className="col-sm-12">
                 <div className="table-responsive">
-                  <table
+                  <Table
                     className="table"
                     style={{
                       width: "100%",
@@ -123,7 +123,7 @@ const Doctores = ({
                           index={appointment.id}
                         />
                       ))}
-                  </table>
+                  </Table>
                 </div>
               </div>
             </div>

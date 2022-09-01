@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 import "../styles/Navbar.css";
 import Logo from "../img/nav-logo.png";
 
@@ -38,6 +39,17 @@ const Navbar = () => {
                 {!!store.currentUser ? (
                   <>
                     <li className="nav-item">
+                      <NavHashLink
+                        className="nav-link fw-semibold link-gray me-2"
+                        activeClassName="active-link"
+                        smooth
+                        to="/#services"
+                        // scroll={scrollWithOffset}
+                      >
+                        Servicios
+                      </NavHashLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink
                         className={({ isActive }) =>
                           isActive
@@ -66,13 +78,24 @@ const Navbar = () => {
                 ) : (
                   <>
                     <li className="nav-item">
+                      <NavHashLink
+                        className="nav-link fw-semibold link-gray me-2"
+                        activeClassName="active-link"
+                        smooth
+                        to="/#services"
+                        // scroll={scrollWithOffset}
+                      >
+                        Servicios
+                      </NavHashLink>
+                    </li>
+                    <li className="nav-item">
                       <NavLink
+                        to="/specialists"
                         className={({ isActive }) =>
                           isActive
                             ? "nav-link fw-semibold link-gray me-2 active-link"
                             : "nav-link fw-semibold link-gray me-2"
                         }
-                        to="/specialists"
                       >
                         Especialistas
                       </NavLink>
@@ -108,7 +131,7 @@ const Navbar = () => {
               {/* Admin and doctors shouldn't view agendar cita button on navbar */}
               {store.currentUser?.user?.role_id !== 1 &&
               store.currentUser?.user?.role_id !== 2 ? (
-                <div className="d-flex">
+                <div className="d-flex py-4">
                   <Link
                     className="btn btn-primary btn-md appointment-btn"
                     style={{ padding: ".5em 2em" }}
@@ -124,21 +147,6 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
-      {/* <ul className="nav justify-content-center">
-        <li className="nav-item">
-          <NavLink className="nav-link" aria-current="page" to="/">
-            Home
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to="/about">
-            About
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <img src={Logo} alt="" />
-        </li>
-      </ul> */}
     </>
   );
 };
