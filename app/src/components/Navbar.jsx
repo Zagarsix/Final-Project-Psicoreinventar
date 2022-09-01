@@ -89,6 +89,18 @@ const Navbar = () => {
                         Regístrate
                       </NavLink>
                     </li>
+                    <li className="nav-item">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "nav-link fw-semibold link-gray me-2 active-link"
+                            : "nav-link fw-semibold link-gray me-2"
+                        }
+                        to="/contact"
+                      >
+                        Contáctanos
+                      </NavLink>
+                    </li>
                   </>
                 )}
               </ul>

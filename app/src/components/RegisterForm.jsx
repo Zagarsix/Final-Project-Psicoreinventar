@@ -11,7 +11,7 @@ const RegisterForm = (props) => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   // If user signed in, redirect to profile page
   useEffect(() => {
@@ -83,9 +83,8 @@ const RegisterForm = (props) => {
                         },
                       })}
                       // If error, then add invalid-input class
-                      className={`form-control ${
-                        errors.name && "invalid-input"
-                      }`}
+                      className={`form-control ${errors.name && "invalid-input"
+                        }`}
                       value={store.name}
                       onChange={actions.handleChange}
                       id="inputName"
@@ -116,9 +115,8 @@ const RegisterForm = (props) => {
                         },
                       })}
                       // If error, then add invalid-input class
-                      className={`form-control ${
-                        errors.lastname && "invalid-input"
-                      }`}
+                      className={`form-control ${errors.lastname && "invalid-input"
+                        }`}
                       value={store.lastname}
                       onChange={actions.handleChange}
                       id="inputLastName"
@@ -152,9 +150,8 @@ const RegisterForm = (props) => {
                         },
                       })}
                       // If error, then add invalid-input class
-                      className={`form-control ${
-                        errors.email && "invalid-input"
-                      }`}
+                      className={`form-control ${errors.email && "invalid-input"
+                        }`}
                       value={store.email}
                       onChange={actions.handleChange}
                       id="inputEmail1"
@@ -189,9 +186,8 @@ const RegisterForm = (props) => {
                           },
                         })}
                         // If error, then add invalid-input class
-                        className={`form-control ${
-                          errors.password && "invalid-input"
-                        }`}
+                        className={`form-control ${errors.password && "invalid-input"
+                          }`}
                         value={store.password}
                         onChange={actions.handleChange}
                         id="inputPassword1"
@@ -233,9 +229,8 @@ const RegisterForm = (props) => {
                         },
                       })}
                       // If error, then add invalid-input class
-                      className={`form-control ${
-                        errors.phone && "invalid-input"
-                      }`}
+                      className={`form-control ${errors.phone && "invalid-input"
+                        }`}
                       value={store.phone}
                       onChange={actions.handleChange}
                       id="inputPhone"

@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import SuperAdmin from "./pages/Dashboard/SuperAdmin";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm";
+import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Services from "./components/Services";
 import Profile from "./pages/Dashboard/Profile";
@@ -36,6 +37,7 @@ const Layout = () => {
         <Route path="/servicios" element={<Servicios />} />
         {/* WIZARD COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/services" element={<Services />} />
         <Route path="/appointment" element={<Appointment />} />
