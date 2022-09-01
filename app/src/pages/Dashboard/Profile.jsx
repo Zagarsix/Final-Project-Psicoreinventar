@@ -224,6 +224,13 @@ const Profile = (props) => {
                         onChange={actions.handleChange}
                         id="inputPassword"
                       />
+                      <span
+                        className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                      </span>
                     </div>
 
                     {errors.password && (
