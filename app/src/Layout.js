@@ -8,6 +8,7 @@ import NavbarNew from "./components/NewNavbar";
 import SuperAdmin from "./pages/Dashboard/SuperAdmin";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm";
+import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Profile from "./pages/Dashboard/Profile";
 import Doctores from "./pages/Dashboard/Doctores";
@@ -50,6 +51,7 @@ const Layout = () => {
         {/* AUTH COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/contact" element={<Contact />} />
         {/* WIZARD COMPONENTS */}
         <Route path="/appointment" element={<Appointment />} />
         {/* EDIT ROUTES */}
