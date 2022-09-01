@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import Header from "../components/Header";
 import SpecialistCard from "../components/SpecialistCard";
 import "../styles/Specialists.css";
+import headerImg from "../img/specialist-appointment.png";
 
 const Specialists = () => {
   const { store, actions } = useContext(Context);
@@ -15,7 +16,8 @@ const Specialists = () => {
           title_highlight="especialistas"
           description="Todos nuestros especialistas pasan por un riguroso proceso de validación (tanto de sus credenciales, como profesional). Agenda para comenzar tu proceso psicoterapéutico de la mejor manera."
           btnLabel="Agendar cita"
-          img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62825881dce5c040e3fda9b9_woman-using-tablet.png"
+          img={headerImg}
+          // img="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/62825881dce5c040e3fda9b9_woman-using-tablet.png"
           imgLabel="Doctor"
         />
         <div className="container specialists-available">

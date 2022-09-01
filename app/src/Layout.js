@@ -32,20 +32,6 @@ const Layout = () => {
     } else {
       return null;
     }
-
-    // if (
-    //   pathname === "/appointment" ||
-    //   pathname === "/dashboard" ||
-    //   pathname === "/admin" ||
-    //   pathname === "/profile" ||
-    //   pathname === "/doctores" ||
-    //   pathname === "/pacientes" ||
-    //   pathname === "/register" ||
-    //   pathname === "/login" ||
-    // )
-    //   return null;
-
-    // return <Footer />;
   };
   return (
     <BrowserRouter>

@@ -14,15 +14,15 @@ code {
     monospace;
 }
 
-.appointment-btn {
+/* .appointment-btn {
   margin-bottom: 2rem;
-}
+} */
 
-@media screen and (min-width: 48rem) {
+/* @media screen and (min-width: 48rem) {
   .appointment-btn {
     margin-bottom: 0;
   }
-}
+} */
 
 #citasRow {
   margin-top: 100px;

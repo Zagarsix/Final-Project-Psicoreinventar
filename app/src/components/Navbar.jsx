@@ -119,7 +119,7 @@ const Navbar = () => {
               {/* Admin and doctors shouldn't view agendar cita button on navbar */}
               {store.currentUser?.user?.role_id !== 1 &&
               store.currentUser?.user?.role_id !== 2 ? (
-                <div className="d-flex">
+                <div className="d-flex py-4">
                   <Link
                     className="btn btn-primary btn-md appointment-btn"
                     style={{ padding: ".5em 2em" }}
