@@ -44,3 +44,8 @@ code {
 .paragraph {
   color: rgb(57, 57, 70);
 }
+
+html.swal2-shown,
+body.swal2-shown {
+  overflow-y: auto !important;
+}

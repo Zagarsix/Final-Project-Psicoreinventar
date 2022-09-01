@@ -484,6 +484,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       handleAppointmentSuccess: (message) => {
         // Display a certain notification based on appointment user error
         Swal.fire({
+          didClose: () => window.scrollTo(0, 0),
+          // onAfterClose: () => (window.location.href = "/appointment"),
           icon: "success",
           title: message,
           showConfirmButton: false,

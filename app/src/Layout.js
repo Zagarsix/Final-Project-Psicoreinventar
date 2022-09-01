@@ -59,7 +59,7 @@ const Layout = () => {
         <Route path="/edit/appointment/:id" element={<FormEditAppointment />} />
       </Routes>
       <ToastContainer />
-      <FooterCheck />
+      {/* <FooterCheck /> */}
     </BrowserRouter>
   );
 };

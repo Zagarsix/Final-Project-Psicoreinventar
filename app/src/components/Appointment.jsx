@@ -10,8 +10,6 @@ const Appointment = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
-
   // If user is not signed in, redirect to login
   useEffect(() => {
     if (store.currentUser === null) navigate("/login");

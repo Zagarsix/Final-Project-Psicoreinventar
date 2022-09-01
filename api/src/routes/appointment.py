@@ -16,6 +16,7 @@ def add_appointment():
     dateTime = request.json.get('dateTime')
     doctor_id = request.json.get('doctor_id')
     service_id = request.json.get('service_id')
+    state = "Pendiente"
 
     # check if there is already an appointment booked by the patient, in the same dateTime with the same doctor
     check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
@@ -37,6 +38,9 @@ def add_appointment():
     appointment.pacient_id = pacient_id
     appointment.doctor_id = doctor_id
     appointment.service_id = service_id
+    appointment.state = state
+    # Setting default state as Pendiente
+    # appointment.state = "Pendiente"
 
 
     invoice = Invoice()
@@ -81,16 +85,6 @@ def get_appointment_by_service_id():
 @appointment.route('/initial_appointments', methods=['POST'])
 def get_initial_appointments():
     appointments = Appointment.query.filter_by(service_id=1)
-    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
-    
-    return jsonify(appointments), 200
-
-# Get all appointments with service_id 1 of a certain user
-@appointment.route('/initial_appointments_of_pacient', methods=['GET'])
-def get_initial_appointments_of_user():
-    doctor_id = 6
-    pacient_id = 1
-    appointments = Appointment.query.filter_by(service_id=1, doctor_id=doctor_id, pacient_id=pacient_id)
     appointments = list(map(lambda appointment: appointment.serialize(), appointments))
     
     return jsonify(appointments), 200

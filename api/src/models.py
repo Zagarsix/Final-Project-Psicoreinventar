@@ -83,6 +83,8 @@ class Appointment(db.Model):
     __tablename__ = 'appointments'
     id = db.Column(db.Integer, primary_key=True)
     dateTime = db.Column(db.String(100), nullable=False)
+    # state of appointment (pendiente o realizada)
+    state = db.Column(db.String(50), nullable=False, default='Pendiente')
     # relationing with the currentUser.user.id (pacient) and with the doctor being chosen on dropdown
     pacient_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     doctor_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -100,6 +102,7 @@ class Appointment(db.Model):
         return {
             'id': self.id,
             'dateTime': self.dateTime,
+            'state': self.state,
             'pacient_id': self.pacient_id,
             'doctor_id': self.doctor_id,
             'pacient': self.pacient.name + " " + self.pacient.lastname,

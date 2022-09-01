@@ -12,6 +12,7 @@ const Services = (props) => {
     // If service selected, go to next step and display notification
     if (store.service !== null) {
       props.nextStep();
+      window.scrollTo(0, 0);
       actions.handleAppointmentSuccess(
         `Servicio seleccionado ${store.services[store.service - 1].name}`
       );
