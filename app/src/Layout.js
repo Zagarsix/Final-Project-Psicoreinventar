@@ -9,7 +9,6 @@ import NavbarNew from "./components/NewNavbar";
 import SuperAdmin from "./pages/Dashboard/SuperAdmin";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm";
-import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Profile from "./pages/Dashboard/Profile";
 import Doctores from "./pages/Dashboard/Doctores";
@@ -50,7 +49,6 @@ const Layout = () => {
         <Route path="/pacientes" element={<Pacientes />} />
         {/* WIZARD COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/services" element={<Services />} /> */}
         <Route path="/appointment" element={<Appointment />} />
