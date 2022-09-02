@@ -115,6 +115,27 @@ def edit_appoinment(id):
     }
     return jsonify({'status': 'success', 'message': 'Cita reagendada', 'data': data}), 200
 
+# Edit appointment status (Pendiente/Realizada)
+
+@appointment.route('/edit_appoinment_status/<int:id>', methods=['PUT'])
+@jwt_required()
+def edit_appointment_status(id):
+    appointment = Appointment.query.filter_by(id=id).first()
+    status = request.json.get('status')
+
+    # Check if appointment doesn't exist
+    if not appointment:  return jsonify({ "status": "failed", "code": 404, "message": "Cita no encontrada", "data": None }), 404
+
+    # Update status of appointment
+    appointment.status = status
+
+    appointment.update()
+
+    data = {
+        'appointment': appointment.serialize()
+    }
+    return jsonify({'status': 'success', 'message': 'Estado de cita actualizado', 'data': data}), 200
+
 @appointment.route('/delete_appoinment/<int:id>', methods=['DELETE'])
 @jwt_required()
 def delete_appoinment(id):
