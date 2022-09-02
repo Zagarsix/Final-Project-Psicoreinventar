@@ -228,7 +228,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         // Display a certain notification based on status of the fetch data
         if (status === "failed") {
-          // e.preventDefault();
           toast.error(message);
         }
         if (status === "success") {

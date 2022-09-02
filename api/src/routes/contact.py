@@ -17,6 +17,7 @@ def create_comment():
     if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
     if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
     if not found_psicoreinventar: return jsonify({'status': 'failed', 'message': 'How you find out about Psicoreinventar is required', 'data': None}), 400
+    if not psicoreinventar_help: return jsonify({'status': 'failed', 'message': 'How can we help you is required', 'data': None}), 400
 
     comment = Comment()
 

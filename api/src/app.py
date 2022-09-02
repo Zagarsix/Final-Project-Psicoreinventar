@@ -28,6 +28,7 @@ app.register_blueprint(auth, url_prefix='/api')
 app.register_blueprint(account, url_prefix='/api')
 app.register_blueprint(services, url_prefix='/api')
 app.register_blueprint(appointment, url_prefix='/api')
+app.register_blueprint(contact, url_prefix='/api')
 
 @app.route('/')
 def root():
