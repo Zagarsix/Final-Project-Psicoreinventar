@@ -225,7 +225,7 @@ const Profile = (props) => {
                         id="inputPassword"
                       />
                       <span
-                        className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
+                        className="eye-icon fs-5 position-absolute top-0 mt-1 end-0 me-4"
                         style={{ cursor: "pointer" }}
                         onClick={() => setShowPassword(!showPassword)}
                       >

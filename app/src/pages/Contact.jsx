@@ -65,7 +65,7 @@ const Contact = (props) => {
         icon: "success",
         title: message,
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
       });
     }
   };
