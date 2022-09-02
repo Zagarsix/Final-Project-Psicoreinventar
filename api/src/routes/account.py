@@ -115,13 +115,9 @@ def register_doctor():
 
     # save the user
     user.save()
-
-    data = {
-        'user': user.serialize()
-    }
     
     # if register succeded
-    if user: return jsonify({'status': 'success', 'message': 'Registered successfully, please login', 'data': data}), 200
+    if user: return jsonify({'status': 'success', 'message': 'Registered successfully, please login', 'data': None}), 200
     else: return jsonify({'status': 'failed', 'message': 'Error in register, please try again', 'data': None}), 200
 
 # Edit user by id

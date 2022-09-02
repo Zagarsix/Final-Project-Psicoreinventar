@@ -16,7 +16,7 @@ def add_appointment():
     dateTime = request.json.get('dateTime')
     doctor_id = request.json.get('doctor_id')
     service_id = request.json.get('service_id')
-    state = "Pendiente"
+    status = "Pendiente"
 
     # check if there is already an appointment booked by the patient, in the same dateTime with the same doctor
     check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
@@ -39,9 +39,8 @@ def add_appointment():
     appointment.pacient_id = pacient_id
     appointment.doctor_id = doctor_id
     appointment.service_id = service_id
-    appointment.state = state
-    # Setting default state as Pendiente
-    # appointment.state = "Pendiente"
+    appointment.status = status
+    # Setting default status as Pendiente ===  appointment.status = "Pendiente"
 
 
     invoice = Invoice()
@@ -145,6 +144,25 @@ def get_client_appointments():
     user = User.query.get(id)
     pacient_id = user.id
     appointments = Appointment.query.filter_by(pacient_id=pacient_id)
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify(appointments), 200
+
+# Get all clients appointment history
+@appointment.route('/appointment_history')
+def get_appointment_history():
+    appointments = Appointment.query.filter_by(status="Realizada").all()
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify(appointments), 200
+
+# Get curren user (client) history of appointments based on done (Realizada) status
+
+@appointment.route('/client_appointment_history', methods=['GET'])
+@jwt_required()
+def get_client_appointments_history():
+    id = get_jwt_identity()
+    user = User.query.get(id)
+    pacient_id = user.id
+    appointments = Appointment.query.filter_by(pacient_id=pacient_id, status="Realizada")
     appointments = list(map(lambda appointment: appointment.serialize(), appointments))
     return jsonify(appointments), 200
 

@@ -28,12 +28,8 @@ def create_comment():
 
     comment.save()
 
-    data = {
-        'comment': comment.serialize()
-    }
-
     # if create comment succeded
-    if comment: return jsonify({'status': 'success', 'message': '¡Gracias! Pronto te contactaremos', 'data': data}), 200
+    if comment: return jsonify({'status': 'success', 'message': '¡Gracias! Pronto te contactaremos', 'data': None}), 200
     else: return jsonify({'status': 'failed', 'message': 'Error creando tu , please try again', 'data': None}), 200
 
 @contact.route('/comments', methods=['GET'])
