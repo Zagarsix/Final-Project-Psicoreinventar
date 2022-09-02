@@ -3,12 +3,12 @@ import { ToastContainer } from "react-toastify";
 import injectContext from "./store/appContext";
 import Home from "./pages/Home";
 import Specialists from "./pages/Specialists";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import NavbarNew from "./components/NewNavbar";
 import SuperAdmin from "./pages/Dashboard/SuperAdmin";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import RegisterForm from "./components/RegisterForm";
-import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Profile from "./pages/Dashboard/Profile";
 import Doctores from "./pages/Dashboard/Doctores";
@@ -42,6 +42,7 @@ const Layout = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="/specialists" element={<Specialists />} />
+        <Route path="/contact" element={<Contact />} />
         {/* DASHBOARD  */}
         <Route path="/admin" element={<SuperAdmin />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -51,7 +52,6 @@ const Layout = () => {
         {/* AUTH COMPONENTS */}
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/contact" element={<Contact />} />
         {/* WIZARD COMPONENTS */}
         <Route path="/appointment" element={<Appointment />} />
         {/* EDIT ROUTES */}
@@ -61,7 +61,7 @@ const Layout = () => {
         <Route path="/edit/appointment/:id" element={<FormEditAppointment />} />
       </Routes>
       <ToastContainer />
-      {/* <FooterCheck /> */}
+      <FooterCheck />
     </BrowserRouter>
   );
 };
