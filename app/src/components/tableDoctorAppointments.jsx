@@ -16,6 +16,7 @@ const TableDoctorAppointments = ({
   doctor,
   service,
   invoice,
+  status,
 }) => {
   const { store, actions } = useContext(Context);
 
@@ -69,7 +70,7 @@ const TableDoctorAppointments = ({
           <Td className="td p-2">
             {dateTime} {service}
           </Td>
-          <Td className="td p-2">Pendiente hardcoded</Td>
+          <Td className="td p-2">{status}</Td>
           <Td className="td p-2">Realizado hardcoded</Td>
           <Td className="td p-2">Invoice PDF</Td>
           <Td className="td p-2">

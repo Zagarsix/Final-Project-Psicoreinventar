@@ -1,7 +1,6 @@
-
 import { useContext, useEffect, useState } from "react";
-import { Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import { Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -16,6 +15,7 @@ const TablePacientAppointments = ({
   doctor,
   service,
   invoice,
+  status,
 }) => {
   const { store, actions } = useContext(Context);
 
@@ -67,7 +67,7 @@ const TablePacientAppointments = ({
             {dateTime} {service}
           </Td>
           <Td className="td p-2">{invoice["price"]}</Td>
-          <Td className="td p-2">Hardcode Realizado</Td>
+          <Td className="td p-2">{status}</Td>
           <Td className="td p-2">
             {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
             {/* Modal delete appointment */}
