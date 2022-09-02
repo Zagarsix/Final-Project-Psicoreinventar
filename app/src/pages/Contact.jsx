@@ -48,7 +48,6 @@ const Contact = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${store.currentUser?.access_token}`,
       },
       body: JSON.stringify(fields),
     });

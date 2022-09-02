@@ -7,6 +7,7 @@ from routes.auth import auth
 from routes.account import account
 from routes.services import services
 from routes.appointment import appointment
+from routes.contact import contact
 
 app = Flask(__name__)
 app.config['DEBUG'] = True

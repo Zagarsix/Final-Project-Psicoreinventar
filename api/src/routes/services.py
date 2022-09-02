@@ -30,8 +30,12 @@ def create_service():
 
     service.save()
 
+    data = {
+        'service': service.serialize()
+    }
+
     # if create service succeded
-    if service: return jsonify({'status': 'success', 'message': 'Service created successfully', 'data': None}), 200
+    if service: return jsonify({'status': 'success', 'message': 'Service created successfully', 'data': data}), 200
     else: return jsonify({'status': 'failed', 'message': 'Error creating service, please try again', 'data': None}), 200
    
 # Edit service by id

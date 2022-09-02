@@ -1,8 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
-# VERSION 2
-
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True, default=3)
@@ -93,7 +91,6 @@ class Appointment(db.Model):
     doctor = db.relationship('User', foreign_keys=[doctor_id], backref='doctor')
     # relationing the appointment with the service being chosen
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=True)
-    # service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=False)
     # creating an invoice for the appointment
     invoice = db.relationship('Invoice', backref="appointment", uselist=False)
 
@@ -136,7 +133,6 @@ class Service(db.Model):
     # Appointment relationship
     appointment = db.relationship('Appointment', backref="service", uselist=False)
     invoice = db.relationship('Invoice', backref="service", uselist=False)
-    # invoice = db.relationship('Invoice', backref="invoice", uselist=False)
 
     def serialize(self):
         return {
@@ -234,3 +230,32 @@ class Payment(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    # How the user find out about Psicoreinventar
+    found_psicoreinventar = db.Column(db.String(100), nullable=False)
+    # How psicoreinventar staff can help the user
+    psicoreinventar_help = db.Column(db.String(100), nullable=False)
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'found_psicoreinventar': self.found_psicoreinventar,
+            'psicoreinventar_help': self.psicoreinventar_help 
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()

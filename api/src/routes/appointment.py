@@ -26,6 +26,7 @@ def add_appointment():
     check_for_booked_appointment_by_date = Appointment.query.filter_by(dateTime=dateTime).first()
     if check_for_booked_appointment_by_date: return jsonify({'status': 'failed', 'message': 'Ya tienes una cita agendada, a esta misma fecha y hora'}), 400 
     
+    # if user selects initial appointment (service_id = 1)
     # check if the patient has booked an initial appointment before (free appointment = 1 time)
     if service_id == 1:
         check_for_initial_appointment_booked = Appointment.query.filter_by(doctor_id=doctor_id, service_id=1, pacient_id=pacient_id).first()
@@ -59,7 +60,7 @@ def add_appointment():
 
     # if add appointment succeded
     if appointment: return jsonify({'status': 'success', 'message': 'Cita agendada exitosamente', 'data': data}), 200
-    else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': data}), 200
+    else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': None}), 200
 
 # Get appointment by date
 @appointment.route('/appointment_by_date', methods=['POST'])
