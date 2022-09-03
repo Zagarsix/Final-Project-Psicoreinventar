@@ -82,22 +82,23 @@ const TableDoctorAppointments = ({
 
   // State saving all the appointment data, used to edit the status of the appointment,
   // then send to API with the appointment updated
-  const [appointmentStatus, setAppointmentStatus] = useState({
-    status: "",
-  });
+  const [appointmentStatus, setAppointmentStatus] = useState({});
+  // const [appointmentStatus, setAppointmentStatus] = useState({
+  //   status: "",
+  // });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAppointmentStatus({ ...appointmentStatus, [name]: value });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setAppointmentStatus({ ...appointmentStatus, [name]: value });
+  // };
 
   useEffect(() => {
     console.log(appointmentStatus);
   }, [appointmentStatus]);
 
-  // useEffect(() => {
-  //   console.log(index);
-  // }, [index]);
+  useEffect(() => {
+    console.log(index);
+  }, [index]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -198,7 +199,6 @@ const TableDoctorAppointments = ({
                     Editar estado de la cita
                   </ModalHeader>
                   <ModalBody>
-                    Modifica el campo
                     <form
                       id="form"
                       onSubmit={(e) => {
@@ -226,7 +226,12 @@ const TableDoctorAppointments = ({
                               },
                             })}
                             value={appointmentStatus["status"]}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                              setAppointmentStatus({
+                                ...appointmentStatus,
+                                status: e.target.value,
+                              });
+                            }}
                           >
                             <option value="Pendiente">Pendiente</option>
                             <option value="Realizada">Realizada</option>
@@ -257,7 +262,7 @@ const TableDoctorAppointments = ({
             </div>
           </Td>
           <Td className="td p-2">Realizado hardcoded</Td>
-          <Td className="td p-2">Invoice PDF</Td>
+          <Td className="td p-2">Invoice Component</Td>
           <Td className="td p-2">
             <div className="d-flex align-items-center">
               {/* Modal Edit Appointment  */}
