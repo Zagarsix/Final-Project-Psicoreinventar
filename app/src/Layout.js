@@ -20,6 +20,7 @@ import FormEditAppointment from "./components/Modal/Forms/FormEditAppointment";
 import FormEditSpecialist from "./components/Modal/Forms/FormEditSpecialist";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
+import Invoice from "./components/Invoice";
 
 const Layout = () => {
   const FooterCheck = () => {
@@ -43,6 +44,7 @@ const Layout = () => {
         <Route path="/" element={<Home />} />
         <Route path="/specialists" element={<Specialists />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/invoice" element={<Invoice />} />
         {/* DASHBOARD  */}
         <Route path="/admin" element={<SuperAdmin />} />
         <Route path="/dashboard" element={<Dashboard />} />
