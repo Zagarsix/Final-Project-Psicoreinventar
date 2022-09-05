@@ -179,6 +179,15 @@ def get_appointment_history():
     appointments = list(map(lambda appointment: appointment.serialize(), appointments))
     return jsonify(appointments), 200
 
+# Get certain client appointment history
+@appointment.route('/appointment_history/<int:id>')
+def get_appointment_history_by_user_id(id):
+    user = User.query.get(id)
+    pacient_id = user.id
+    appointments = Appointment.query.filter_by(pacient_id=pacient_id,status="Realizada").all()
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify(appointments), 200
+
 # Get curren user (client) history of appointments based on done (Realizada) status
 
 @appointment.route('/client_appointment_history', methods=['GET'])

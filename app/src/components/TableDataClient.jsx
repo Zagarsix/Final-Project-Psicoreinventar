@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Tbody, Tr, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { Context } from "../store/appContext";
@@ -19,22 +19,50 @@ const TableDataClient = ({ name, lastname, email, index }) => {
 
   const [clientId, setClientId] = useState(null);
 
+  const [patientAppointmentHistory, setPatientAppointmentHistory] = useState([]);
+
   // useEffect(() => {
   //   console.log(clientId);
   // }, [clientId]);
 
-  const handleDeleteClient = async (e) => {
-    // Fetching data from API
-    const response = await fetch(
-      `${store.apiURL}/api/delete_user/${clientId}`,
-      {
-        method: "DELETE",
+  const getPatientsAppointmentHistory = async () => {
+    try {
+      // Fetch data from backend
+      const response = await fetch(`${store.apiURL}/api/appointment_history/${index}`, {
+        // Display appointments of the currentUser client
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${store.currentUser?.access_token}`,
         },
+      });
+      const data = await response.json();
+
+      if (data.dateTime !== []) {
+        setPatientAppointmentHistory(data);
       }
-    );
+    } catch (error) {
+      console.log("Error loading appointments from backend", error);
+    }
+  };
+
+  useEffect(() => {
+    getPatientsAppointmentHistory();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(patientAppointmentHistory);
+  // }, [patientAppointmentHistory]);
+
+  const handleDeleteClient = async (e) => {
+    // Fetching data from API
+    const response = await fetch(`${store.apiURL}/api/delete_user/${clientId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+    });
 
     const { status, message, data } = await response.json();
 
@@ -64,7 +92,17 @@ const TableDataClient = ({ name, lastname, email, index }) => {
           {name} {""} {lastname}
         </Td>
         <Td className="td p-2">{email}</Td>
-        <Td className="td p-2">13 de Agosto, 2022. Dr. Juanín Juan Harry</Td>
+        <Td className="td p-2">
+          {/* Display patient appointment history (appointments dateTime with status="Realizada") */}
+          {patientAppointmentHistory.map((appointment, index, arr) => (
+            <span key={index}>
+              {appointment.dateTime}
+              {index !== arr.length - 1 ? ", " : ""}
+              {/* Adding comma after dateTime, only if it's not the last dateTime of the arr */}
+            </span>
+          ))}
+        </Td>
+        {/* <Td className="td p-2">13 de Agosto, 2022. Dr. Juanín Juan Harry</Td> */}
         <Td className="td p-2">16 de Agosto, 2022. 10:00 hrs</Td>
         <Td className="td p-2">Realizado</Td>
         <Td className="td p-2">
@@ -97,12 +135,8 @@ const TableDataClient = ({ name, lastname, email, index }) => {
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
                 <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                  <ModalHeader toggle={toggleDelete}>
-                    Eliminar paciente
-                  </ModalHeader>
-                  <ModalBody>
-                    Estas seguro de qué quieres Eliminar al paciente?
-                  </ModalBody>
+                  <ModalHeader toggle={toggleDelete}>Eliminar paciente</ModalHeader>
+                  <ModalBody>Estas seguro de qué quieres Eliminar al paciente?</ModalBody>
                   <ModalFooter>
                     <Button
                       color="danger"
