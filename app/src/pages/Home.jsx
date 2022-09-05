@@ -8,6 +8,10 @@ import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
 import headerImg from "../img/82910-psychotherapy.gif";
 import ServiceCardShowCase from "../components/ServiceCardShowCase";
+import client1 from "../img/client1.png";
+import client2 from "../img/client2.png";
+import client3 from "../img/client3.png";
+import client4 from "../img/client4.png";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -92,29 +96,29 @@ const Home = () => {
 
             <div className="col-sm-12 col-md-10 col-lg-6">
               <CardClient
-                ImgClient="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d509f475bbb766fc9b204_4.png"
+                ImgClient={client1}
                 imgLabel="CardImgClient"
                 NameClient="Laura"
                 AgeClient="27 años"
                 Review="Luego de un año en terapia puedo notar mejorías. Tenía muchos prejuicios sobre tomar terapia pero lo personalizado del servicio me hizo tomar la decisión y no me arrepiento."
               />
               <CardClient
-                ImgClient="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d508cd3237eb424b497fc_2.png"
-                imgLabel="CardImgClient"
+                ImgClient="https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                imgLabel={client3}
                 NameClient="Mateo"
                 AgeClient="32 años"
                 Review="Lo personalizado del servicio me permitió escoger un profesional ajustado a mis necesidades y en horarios que realmente me acomodan. Agradezco el profesionalismo del especialista, me ha guiado de forma certera en todo mi proceso."
               />
               <CardClient
-                ImgClient="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d50e0f373ab219ce4dc84_5.png"
+                ImgClient={client2}
                 imgLabel="CardImgClient"
                 NameClient="Carolina"
                 AgeClient="23 años"
                 Review="El proceso de sanar ha sido difícil pero mi terapeuta me ha acompañado en todo momento de forma amable y respetuosa. Sin duda alguna recomiendo el servicio."
               />
               <CardClient
-                ImgClient="https://uploads-ssl.webflow.com/6165ed3d14364c7f8297fe2e/620d5115844b6721a99f62e6_6.png"
-                imgLabel="CardImgClient"
+                ImgClient={client4}
+                imgLabel="cardimgclient"
                 NameClient="Juan"
                 AgeClient="27 años"
                 Review="Después de un tiempo intentando solucionar los problemas en mi relación tomar terapia sin duda alguna fue la mejor decisión. Las sesiones han sido provechosas y han aportado a mejorar las dinámicas con mi pareja. Excelente servicio."
