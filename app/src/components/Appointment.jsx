@@ -15,6 +15,13 @@ const Appointment = () => {
     if (store.currentUser === null) navigate("/login");
   }, [store.currentUser]);
 
+  // Reset states when appointment page loads
+  useEffect(() => {
+    store.service = null;
+    store.doctor = null;
+    store.dateTime = null;
+  }, []);
+
   return (
     <>
       <div className="bg-primary">
