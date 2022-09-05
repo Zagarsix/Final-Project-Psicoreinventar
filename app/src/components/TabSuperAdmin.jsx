@@ -40,10 +40,7 @@ function TabSuperAdmin() {
             className={activeTab == "1" ? "activeTab baseTab" : "baseTab"}
             onClick={() => cambiarTab("1")}
           >
-            <i
-              className="fa-solid fa-calendar-check p-1"
-              style={{ color: "#8DC2FE" }}
-            ></i>
+            <i className="fa-solid fa-calendar-check p-1" style={{ color: "#8DC2FE" }}></i>
             Citas
           </NavLink>
         </NavItem>
@@ -52,10 +49,7 @@ function TabSuperAdmin() {
             className={activeTab == "2" ? "activeTab baseTab" : "baseTab"}
             onClick={() => cambiarTab("2")}
           >
-            <i
-              className="fa-solid fa-hospital-user p-1"
-              style={{ color: "#8DC2FE" }}
-            ></i>
+            <i className="fa-solid fa-hospital-user p-1" style={{ color: "#8DC2FE" }}></i>
             Pacientes
           </NavLink>
         </NavItem>
@@ -64,10 +58,7 @@ function TabSuperAdmin() {
             className={activeTab == "3" ? "activeTab baseTab" : "baseTab"}
             onClick={() => cambiarTab("3")}
           >
-            <i
-              className="fa-solid fa-user-doctor p-1"
-              style={{ color: "#8DC2FE" }}
-            ></i>
+            <i className="fa-solid fa-user-doctor p-1" style={{ color: "#8DC2FE" }}></i>
             Especialistas
           </NavLink>
         </NavItem>
@@ -76,10 +67,7 @@ function TabSuperAdmin() {
             className={activeTab == "4" ? "activeTab baseTab" : "baseTab"}
             onClick={() => cambiarTab("4")}
           >
-            <i
-              className="fa-solid fa-bookmark p-1"
-              style={{ color: "#8DC2FE" }}
-            />
+            <i className="fa-solid fa-bookmark p-1" style={{ color: "#8DC2FE" }} />
             Servicios
           </NavLink>
         </NavItem>
@@ -126,11 +114,7 @@ function TabSuperAdmin() {
               {!!store.appointments &&
                 store.appointments.length > 0 &&
                 store.appointments.map((appointment, i) => (
-                  <TableDataAppointment
-                    {...appointment}
-                    key={i}
-                    index={appointment.id}
-                  />
+                  <TableDataAppointment {...appointment} key={i} index={appointment.id} />
                 ))}
             </Table>
           </div>
@@ -153,10 +137,10 @@ function TabSuperAdmin() {
                     Email
                   </Th>
                   <Th scope="col" className="th p-2">
-                    Historial de citas
+                    Teléfono
                   </Th>
                   <Th scope="col" className="th p-2">
-                    Próximas citas
+                    Historial de citas
                   </Th>
                   <Th scope="col" className="th p-2">
                     Pago

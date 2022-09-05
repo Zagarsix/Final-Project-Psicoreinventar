@@ -8,7 +8,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import ModalEdit from "./Modal/ModalEdit";
 import { Link } from "react-router-dom";
 
-const TableDataClient = ({ name, lastname, email, index }) => {
+const TableDataClient = ({ name, lastname, email, phone, index }) => {
   const { store, actions } = useContext(Context);
 
   const [modalDelete, setModalDelete] = useState(false);
@@ -92,6 +92,7 @@ const TableDataClient = ({ name, lastname, email, index }) => {
           {name} {""} {lastname}
         </Td>
         <Td className="td p-2">{email}</Td>
+        <Td className="td p-2">{phone}</Td>
         <Td className="td p-2">
           {/* Display patient appointment history (appointments dateTime with status="Realizada") */}
           {patientAppointmentHistory.map((appointment, index, arr) => (
@@ -102,8 +103,6 @@ const TableDataClient = ({ name, lastname, email, index }) => {
             </span>
           ))}
         </Td>
-        {/* <Td className="td p-2">13 de Agosto, 2022. Dr. Juanín Juan Harry</Td> */}
-        <Td className="td p-2">16 de Agosto, 2022. 10:00 hrs</Td>
         <Td className="td p-2">Realizado</Td>
         <Td className="td p-2">
           <div className="botones">
