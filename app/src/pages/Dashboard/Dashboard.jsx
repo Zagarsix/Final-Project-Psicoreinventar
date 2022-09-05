@@ -37,8 +37,6 @@ const Dashboard = () => {
               </h1>
             </div>
           </div>
-
-          {/* fin contenido */}
         </div>
       </div>
     </div>

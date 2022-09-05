@@ -155,6 +155,7 @@ const RegisterForm = (props) => {
                       className={`form-control ${
                         errors.email && "invalid-input"
                       }`}
+                      autoComplete="username"
                       value={store.email}
                       onChange={actions.handleChange}
                       id="inputEmail1"
@@ -192,6 +193,7 @@ const RegisterForm = (props) => {
                         className={`form-control ${
                           errors.password && "invalid-input"
                         }`}
+                        autoComplete="new-password"
                         value={store.password}
                         onChange={actions.handleChange}
                         id="inputPassword1"
@@ -219,7 +221,7 @@ const RegisterForm = (props) => {
                       Teléfono
                     </label>
                     <input
-                      type="text"
+                      type="tel"
                       name="phone"
                       placeholder="Teléfono"
                       {...register("phone", {

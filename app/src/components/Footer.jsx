@@ -21,6 +21,7 @@ const Footer = () => {
               <a
                 className="nav-link me-2 mb-1 footer-paragraph fw-semibold text-primary"
                 target="_blank"
+                rel="noreferrer"
                 href="https://www.gob.cl/saludablemente/"
               >
                 Saludable Mente
@@ -29,24 +30,26 @@ const Footer = () => {
               <a
                 className="nav-link me-2 footer-paragraph fw-semibold text-primary"
                 target="_blank"
+                rel="noreferrer"
                 href="http://asistenciaalsuicida.com/telefono-de-la-esperanza-chile/"
               >
                 Teléfono de la Esperanza
               </a>
             </div>
             <div className="container py-4 px-2">
-              <a href="#" className="me-3 text-reset social-media-icon">
+              <a href="/#" className="me-3 text-reset social-media-icon">
                 <i className="fa-brands fa-twitter fa-lg"></i>
               </a>
-              <a href="#" className="me-3 text-reset social-media-icon">
+              <a href="/#" className="me-3 text-reset social-media-icon">
                 <i className="fa-brands fa-instagram fa-lg"></i>
               </a>
-              <a href="#" className="me-3 text-reset social-media-icon">
+              <a href="/#" className="me-3 text-reset social-media-icon">
                 <i className="fa-brands fa-linkedin-in fa-lg"></i>
               </a>
               <a
                 href="https://github.com/samuelpalaciosdev/final-project"
                 target="_blank"
+                rel="noreferrer"
                 className=" me-1 text-reset social-media-icon fa-lg"
               >
                 <i className="fa-brands fa-github"></i>
@@ -71,7 +74,7 @@ const Footer = () => {
               </Link>
             </div>
 
-            <NavLink
+            {/* <NavLink
               to="/specialists"
               className="nav-link fw-semibold me-2 mb-3"
             >
@@ -83,7 +86,7 @@ const Footer = () => {
             </NavLink>
             <NavLink className="nav-link fw-semibold me-2 mb-3" to="/contact">
               Contactar
-            </NavLink>
+            </NavLink> */}
           </div>
         </div>
       </div>

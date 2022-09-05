@@ -17,16 +17,9 @@ const BookingDoctor = (props) => {
     );
     const doctorName = `${doctorSelected?.name} ${doctorSelected?.lastname}`;
 
-    // VALIDATE IF STATUS = SUCCESS SO THEN IF, HANDLEAPPOINTMENTSUCCESS
-
     // If doctor and dateTime selected, display notification and post request
     if (store.doctor !== null && store.dateTime !== null) {
-      // Displaying this alert after the one coming from the backend, 2 seconds after (right when the other closes)
-      // setTimeout(() => {
-      //   actions.handleAppointmentSuccess(
-      //     `Agendando cita con: ${doctorName}, el ${store.dateTime}`
-      //   );
-      // }, 2000);
+      console.log(`Agendando cita con: ${doctorName}, el ${store.dateTime}`);
     } else {
       actions.handleAppointmentError(
         "Seleccione un especialista y la fecha y el horario de la cita"
@@ -75,27 +68,20 @@ const BookingDoctor = (props) => {
                   <button
                     className="btn btn-secondary me-3"
                     // reset state if user goes back to profile page
-                    // como resetearlo si el usuario le da click a la flecha de atrás
                     onClick={props.previousStep}
                     style={{ width: "5.5rem" }}
                   >
-                    Previous
+                    Previo
                   </button>
                   <button
                     className="btn btn-primary"
-                    // onSubmit={send data to api}
-                    // onClick={(e) => {
-                    //   submitBooking(e);
-                    //   actions.handleAppointment(e, navigate);
-                    // }}
                     onClick={(e) => {
                       submitBooking(e);
                       actions.handleAppointment(e, navigate);
                     }}
                     style={{ width: "5.5rem" }}
-                    // type="submit"
                   >
-                    Submit
+                    Agendar
                   </button>
                 </div>
               </div>

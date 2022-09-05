@@ -31,11 +31,7 @@ function ModalAddWithForm({
         >
           {addWord} {""} {addWhat}
         </ModalHeader>
-        <ModalBody>
-          {/* Seguro que quieres {addWord} {connector} {addWhat}? */}
-
-          {children}
-        </ModalBody>
+        <ModalBody>{children}</ModalBody>
         <ModalFooter>
           <Link
             className={`btn btn-${addButtonColor}`}

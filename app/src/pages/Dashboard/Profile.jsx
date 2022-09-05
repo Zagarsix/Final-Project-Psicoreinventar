@@ -33,23 +33,7 @@ const Profile = (props) => {
     mode: "all",
   });
 
-  const onSubmit = () => {
-    // If input is not filled
-    if (
-      // HOW TO MAKE IT NOT WORK IF USER ALREADY EXISTS, like
-      // if (message === "User already exists") {
-
-      // }
-
-      errors.name ||
-      errors.lastname ||
-      errors.email ||
-      errors.password ||
-      errors.phone
-    ) {
-      console.log("Form data not filled");
-    }
-  };
+  const onSubmit = (data) => console.log(data);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -62,7 +46,6 @@ const Profile = (props) => {
           {store.currentUser?.user?.role_id === 3 && <SidebarClient />}
         </div>
         <div className="col py-3">
-          {/* inicio contenido */}
           <div
             className="container p-4"
             style={{ backgroundColor: "#8dc2fe", fontFamily: "monospace" }}
@@ -282,8 +265,6 @@ const Profile = (props) => {
               </form>
             </div>
           </div>
-
-          {/* fin contenido */}
         </div>
       </div>
     </div>

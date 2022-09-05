@@ -17,7 +17,6 @@ const Appointment = () => {
 
   return (
     <>
-      {/* Blue background on appointment */}
       <div className="bg-primary">
         <div
           className="appointment-container py-4"
@@ -27,11 +26,6 @@ const Appointment = () => {
             <Services />
             <BookingDoctor />
           </StepWizard>
-          {/* <StepWizard>
-            <RegisterForm />
-            <Login />
-            <Services />
-          </StepWizard> */}
         </div>
       </div>
     </>

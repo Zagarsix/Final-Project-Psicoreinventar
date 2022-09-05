@@ -50,6 +50,10 @@ const FormAddSpecialist = (props) => {
 
     console.log(data);
 
+    if (status === "failed") {
+      toast.error(message);
+    }
+
     if (status === "success") {
       actions.getDoctors();
       Swal.fire({

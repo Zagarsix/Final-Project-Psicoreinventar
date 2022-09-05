@@ -18,12 +18,16 @@ def add_appointment():
     service_id = request.json.get('service_id')
     status = "Pendiente"
 
-    # check if there is already an appointment booked by the patient, in the same dateTime with the same doctor
-    check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
-    if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada'}), 400 
+    # check if there is already an appointment booked by the current patient, in the same dateTime with the same doctor
+    check_for_booked_appointment_by_patient = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id, pacient_id=pacient_id).first()  
+    if check_for_booked_appointment_by_patient: return jsonify({'status': 'failed', 'message': 'Ya agendaste esta cita'}), 400 
 
-    # check if there is already an appointment booked by the patient, in the same dateTime with different doctor
-    check_for_booked_appointment_by_date = Appointment.query.filter_by(dateTime=dateTime).first()
+    # check if there is already an appointment booked in the same dateTime with the same doctor
+    check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()  
+    if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada (no disponible)'}), 400 
+
+    # check if there is already an appointment booked by the current patient, in the same dateTime with different doctor
+    check_for_booked_appointment_by_date = Appointment.query.filter_by(dateTime=dateTime, pacient_id=pacient_id).first()
     if check_for_booked_appointment_by_date: return jsonify({'status': 'failed', 'message': 'Ya tienes una cita agendada, a esta misma fecha y hora'}), 400 
     
     # if user selects initial appointment (service_id = 1)

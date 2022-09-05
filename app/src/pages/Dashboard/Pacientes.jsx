@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
-import { Table, Thead, Tr, Th } from 'react-super-responsive-table';
+import { Table, Thead, Tr, Th } from "react-super-responsive-table";
 import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
@@ -108,8 +108,6 @@ const Pacientes = ({}) => {
               </div>
             </div>
           </div>
-
-          {/* fin contenido */}
         </div>
       </div>
     </div>

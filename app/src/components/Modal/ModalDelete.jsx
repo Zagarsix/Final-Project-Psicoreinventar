@@ -20,11 +20,7 @@ function ModalDelete({ deleteWord, connector, deleteWhat, handleClick }) {
           {deleteWhat}?
         </ModalBody>
         <ModalFooter>
-          <Button
-            color="danger"
-            // onClick={toggle}
-            onClick={handleClick}
-          >
+          <Button color="danger" onClick={handleClick}>
             Confirmar
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>

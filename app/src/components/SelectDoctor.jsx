@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import InputLabel from "@mui/material/InputLabel";

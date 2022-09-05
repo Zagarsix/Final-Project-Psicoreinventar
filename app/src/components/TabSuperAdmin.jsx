@@ -3,17 +3,16 @@ import React from "react";
 import { Table, Thead, Tr, Th } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { Context } from "../store/appContext";
-import TableDataClient from "../components/TableDataClient";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
-import ServiceCard from "./ServiceCard";
-import "../styles/TabSuperAdmin.css";
-import "../styles/DashboardTables.css";
+import TableDataClient from "../components/TableDataClient";
 import TableDataService from "./TableDataService";
 import TableDataSpecialist from "./TableDataSpecialist";
 import TableDataAppointment from "./TableDataAppointment";
 import ModalAddWithForm from "./Modal/ModalAddWithForm";
 import FormAddService from "./Modal/Forms/FormAddService";
 import FormAddSpecialist from "./Modal/Forms/FormAddSpecialist";
+import "../styles/TabSuperAdmin.css";
+import "../styles/DashboardTables.css";
 
 function TabSuperAdmin() {
   const { store, actions } = useContext(Context);

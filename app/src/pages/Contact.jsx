@@ -1,10 +1,9 @@
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useForm } from "react-hook-form";
-import HeaderContact from "../components/HeaderContact";
 import Header from "../components/Header";
 import headerImg from "../img/customer-support.png";
 
@@ -19,7 +18,6 @@ const Contact = (props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     mode: "all",
@@ -57,7 +55,7 @@ const Contact = (props) => {
     console.log(data);
 
     if (status === "failed") {
-      console.log(message);
+      toast.error(message);
     }
 
     if (status === "success") {

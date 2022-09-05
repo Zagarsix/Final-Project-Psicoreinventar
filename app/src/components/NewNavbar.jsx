@@ -138,19 +138,6 @@ const NavbarNew = () => {
                     </Nav.Link>
                     <Nav.Link
                       as={NavLink}
-                      onClick={() => handleActive("register")}
-                      eventKey="register"
-                      className={
-                        id === "register"
-                          ? "nav-link fw-semibold link-gray me-2 active-link"
-                          : "nav-link fw-semibold link-gray me-2"
-                      }
-                      to="/register"
-                    >
-                      Regístrate
-                    </Nav.Link>
-                    <Nav.Link
-                      as={NavLink}
                       onClick={() => handleActive("contact")}
                       eventKey="contact"
                       className={
@@ -161,6 +148,19 @@ const NavbarNew = () => {
                       to="/contact"
                     >
                       Contáctanos
+                    </Nav.Link>
+                    <Nav.Link
+                      as={NavLink}
+                      onClick={() => handleActive("register")}
+                      eventKey="register"
+                      className={
+                        id === "register"
+                          ? "nav-link fw-semibold link-gray me-2 active-link"
+                          : "nav-link fw-semibold link-gray me-2"
+                      }
+                      to="/register"
+                    >
+                      Regístrate
                     </Nav.Link>
                   </>
                 )}

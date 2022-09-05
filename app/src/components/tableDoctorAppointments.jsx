@@ -83,9 +83,6 @@ const TableDoctorAppointments = ({
   // State saving all the appointment data, used to edit the status of the appointment,
   // then send to API with the appointment updated
   const [appointmentStatus, setAppointmentStatus] = useState({});
-  // const [appointmentStatus, setAppointmentStatus] = useState({
-  //   status: "",
-  // });
 
   // const handleChange = (e) => {
   //   const { name, value } = e.target;

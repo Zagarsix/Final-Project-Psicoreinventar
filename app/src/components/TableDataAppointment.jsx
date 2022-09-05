@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { Tbody, Tr, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import { useContext, useState } from "react";
+import { Tbody, Tr, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";

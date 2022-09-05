@@ -20,7 +20,11 @@ const Invoice = ({
         {/* Invoice Header */}
         <div className="row d-flex flex-row justify-content-between">
           <div className="col-md-6">
-            <img src={Logo} style={{ width: "100%", maxWidth: "200px" }} />
+            <img
+              src={Logo}
+              style={{ width: "100%", maxWidth: "200px" }}
+              alt="Psicoreinventar logo"
+            />
           </div>
           <div className="col-md-6 mt-3 mt-md-0">
             <p className="data-invoice mb-0">Invoice: # {id}</p>

@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../../store/appContext";
 import { useForm } from "react-hook-form";
@@ -46,7 +46,7 @@ const FormAddService = (props) => {
 
     const { status, message, data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     if (status === "success") {
       actions.getServices();

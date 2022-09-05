@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const Services = (props) => {
   const { store, actions } = useContext(Context);
-  // let [serviceSelected, setServiceSelected] = useState(null);
 
   const handleSubmit = () => {
     // If service selected, go to next step and display notification
@@ -56,7 +55,6 @@ const Services = (props) => {
                   <Link
                     className="btn btn-secondary me-3"
                     // reset state if user goes back to profile page
-                    // como resetearlo si el usuario le da click a la flecha de atrás
                     onClick={() => (store.service = null)}
                     to="/profile"
                     style={{ width: "5.5rem" }}

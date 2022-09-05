@@ -52,9 +52,10 @@ const Login = () => {
                       <div className="col-sm-10">
                         <input
                           type="email"
-                          className="form-control"
-                          id="inputEmail"
                           name="email"
+                          id="inputEmail"
+                          className="form-control"
+                          autoComplete="username"
                           value={store.email}
                           onChange={actions.handleChange}
                         />
@@ -74,6 +75,7 @@ const Login = () => {
                             name="password"
                             id="inputPassword"
                             className="form-control"
+                            autoComplete="current-password"
                             value={store.password}
                             onChange={actions.handleChange}
                           />

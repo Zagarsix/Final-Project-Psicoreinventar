@@ -25,7 +25,6 @@ const SuperAdmin = () => {
           {store.currentUser?.user?.role_id === 3 && <SidebarClient />}
         </div>
         <div className="col py-3">
-          {/*inicio contenido*/}
           <div
             className="container text-center text-white"
             style={{
@@ -46,8 +45,6 @@ const SuperAdmin = () => {
           </div>
 
           <TabSuperAdmin />
-
-          {/*fin contenido*/}
         </div>
       </div>
     </div>
