@@ -8,10 +8,10 @@ import LeftHeader from "../components/LeftHeader";
 import CardClient from "../components/CardClient";
 import headerImg from "../img/82910-psychotherapy.gif";
 import ServiceCardShowCase from "../components/ServiceCardShowCase";
-import client1 from "../img/client1.png";
-import client2 from "../img/client2.png";
-import client3 from "../img/client3.png";
-import client4 from "../img/client4.png";
+import client1 from "../img/client1.jpg";
+import client2 from "../img/client2.jpg";
+import client3 from "../img/client3.jpg";
+import client4 from "../img/client4.jpg";
 
 const Home = () => {
   const { store, actions } = useContext(Context);
@@ -84,9 +84,9 @@ const Home = () => {
                 <strong>Clientes más felices</strong>
               </h1>
               <p className="my-3 paragraph">
-                Nuestro principal objetivo es que encuentres un especialista
-                adecuado a tus necesidades para que así puedas mejorar tu
-                calidad de vida y ser la mejor versión de ti mismo.
+                Nuestro principal objetivo es que encuentres un especialista adecuado a tus
+                necesidades para que así puedas mejorar tu calidad de vida y ser la mejor versión de
+                ti mismo.
               </p>
 
               <Link className="col-6 btn btn-primary py-2" to="/appointment">
@@ -142,11 +142,7 @@ const Home = () => {
                   {!!store.services &&
                     store.services.length > 0 &&
                     store.services.map((service, i) => (
-                      <ServiceCardShowCase
-                        {...service}
-                        key={i}
-                        index={service.id}
-                      />
+                      <ServiceCardShowCase {...service} key={i} index={service.id} />
                     ))}
                 </div>
               </div>
