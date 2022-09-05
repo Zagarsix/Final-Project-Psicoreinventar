@@ -89,6 +89,10 @@ const FormEditService = (props) => {
 
     // console.log(data);
 
+    if (status === "failed") {
+      toast.error(message);
+    }
+
     if (status === "success") {
       actions.getServices();
       navigate("/admin");
@@ -135,10 +139,6 @@ const FormEditService = (props) => {
                       }`}
                       placeholder="Nombre"
                       {...register("name", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^[a-zA-ZÀ-ú_]+( [a-zA-ZÀ-ú_]+)*$/,
                           message: "El formato no es el correcto",
@@ -167,10 +167,6 @@ const FormEditService = (props) => {
                       }`}
                       placeholder="Descripción"
                       {...register("description", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^[a-zA-ZÀ-ú_]+( [,a-zA-ZÀ-ú_]+)*$/,
                           message: "El formato no es el correcto",
@@ -199,12 +195,7 @@ const FormEditService = (props) => {
                         errors.price && "invalid-input"
                       }`}
                       aria-label="select price option"
-                      {...register("price", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      {...register("price", {})}
                       value={service.price}
                       onChange={handleChange}
                     >
@@ -231,12 +222,7 @@ const FormEditService = (props) => {
                         errors.time && "invalid-input"
                       }`}
                       aria-label="select time option"
-                      {...register("time", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      {...register("time", {})}
                       value={service.time}
                       onChange={handleChange}
                     >
@@ -266,10 +252,6 @@ const FormEditService = (props) => {
                       }`}
                       placeholder="URL"
                       {...register("image", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value:
                             /^(?:https?:\/\/(?:www\.)?|https:(?:\/\/)?)?\w+(?:[-.]\w+)+(?:\/[^\/\s]+)*$/,

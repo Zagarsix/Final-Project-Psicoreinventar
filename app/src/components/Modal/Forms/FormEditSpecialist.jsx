@@ -96,7 +96,11 @@ const FormEditSpecialist = () => {
 
     const { status, message, data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
+
+    if (status === "failed") {
+      toast.error(message);
+    }
 
     if (status === "success") {
       actions.getDoctors();
@@ -144,10 +148,6 @@ const FormEditSpecialist = () => {
                       }`}
                       placeholder="Nombre"
                       {...register("name", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^[A-zÀ-ú]+$/,
                           message: "El formato no es el correcto",
@@ -176,10 +176,6 @@ const FormEditSpecialist = () => {
                       }`}
                       placeholder="Apellido"
                       {...register("lastname", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^[A-zÀ-ú]+$/,
                           message: "El formato no es el correcto",
@@ -210,10 +206,6 @@ const FormEditSpecialist = () => {
                       }`}
                       placeholder="johndoe@gmail.com"
                       {...register("email", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value:
                             // RFC 5322 regex
@@ -276,10 +268,6 @@ const FormEditSpecialist = () => {
                       }`}
                       placeholder="Teléfono"
                       {...register("phone", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^\d{8,12}$/,
                           message: "Minimo 8 caracteres, Maximo 12",
@@ -307,12 +295,7 @@ const FormEditSpecialist = () => {
                         errors.is_active && "invalid-input"
                       }`}
                       aria-label="select is_active option"
-                      {...register("is_active", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      {...register("is_active", {})}
                       value={doctor.is_active}
                       // onChange={handleChange}
                       onChange={(e) => {
@@ -346,12 +329,7 @@ const FormEditSpecialist = () => {
                         errors.experience && "invalid-input"
                       }`}
                       placeholder="5+ años de terapia conductual"
-                      {...register("experience", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      {...register("experience", {})}
                       value={doctor.experience}
                       onChange={handleChange}
                     />
@@ -373,13 +351,8 @@ const FormEditSpecialist = () => {
                       className={`form-control ${
                         errors.education && "invalid-input"
                       }`}
-                      placeholder="5+ años de terapia conductual"
-                      {...register("education", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      placeholder="Licenciatura en psicología"
+                      {...register("education", {})}
                       value={doctor.education}
                       onChange={handleChange}
                     />
@@ -403,13 +376,8 @@ const FormEditSpecialist = () => {
                       className={`form-control ${
                         errors.specialization1 && "invalid-input"
                       }`}
-                      placeholder="5+ años de terapia conductual"
-                      {...register("specialization1", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      placeholder="Adultos"
+                      {...register("specialization1", {})}
                       value={doctor.specialization1}
                       onChange={handleChange}
                     />
@@ -431,13 +399,8 @@ const FormEditSpecialist = () => {
                       className={`form-control ${
                         errors.specialization2 && "invalid-input"
                       }`}
-                      placeholder="5+ años de terapia conductual"
-                      {...register("specialization2", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      placeholder="Parejas"
+                      {...register("specialization2", {})}
                       value={doctor.specialization2}
                       onChange={handleChange}
                     />
@@ -463,10 +426,6 @@ const FormEditSpecialist = () => {
                       }`}
                       placeholder="URL"
                       {...register("image", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value:
                             /^(?:https?:\/\/(?:www\.)?|https:(?:\/\/)?)?\w+(?:[-.]\w+)+(?:\/[^\/\s]+)*$/,

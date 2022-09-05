@@ -138,7 +138,7 @@ const FormEditAppointment = (props) => {
                           inputFormat="dd/MM/yyyy hh:mm"
                           format="dd/MM/yyyy hh:mm"
                           disablePast
-                          minutesStep={45}
+                          minutesStep={60}
                           minTime={new Date(0, 0, 0, 9)}
                           maxTime={new Date(0, 0, 0, 17)}
                           views={["day", "hours", "minutes"]}

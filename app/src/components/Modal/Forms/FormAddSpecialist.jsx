@@ -29,7 +29,7 @@ const FormAddSpecialist = (props) => {
     password: "",
     phone: "",
     image: "",
-    experience: "+5 años", // setting defaultValue experience
+    experience: "",
     education: "",
     specialization1: "",
     specialization2: "",
@@ -48,7 +48,7 @@ const FormAddSpecialist = (props) => {
       password: "",
       phone: "",
       image: "",
-      experience: "+5 años",
+      experience: "",
       education: "",
       specialization1: "",
       specialization2: "",
@@ -75,7 +75,7 @@ const FormAddSpecialist = (props) => {
 
     const { status, message, data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     if (status === "failed") {
       toast.error(message);
@@ -307,14 +307,14 @@ const FormAddSpecialist = (props) => {
                 <label htmlFor="experience" className="form-label">
                   Experiencia laboral
                 </label>
-                <select
+                <input
+                  type="text"
                   name="experience"
-                  id="experience"
-                  // If error, then add invalid-input class
-                  className={`form-select ${
+                  id="experience" // If error, then add invalid-input class
+                  className={`form-control ${
                     errors.experience && "invalid-input"
                   }`}
-                  placeholder="Experiencia laboral"
+                  placeholder="+5 años de..."
                   {...register("experience", {
                     required: {
                       value: true,
@@ -323,14 +323,7 @@ const FormAddSpecialist = (props) => {
                   })}
                   value={specialist.experience}
                   onChange={handleChange}
-                >
-                  <option value="+5 años">+5 años</option>
-                  <option value="+10 años">+10 años</option>
-                  <option value="+15 años">+15 años</option>
-                  <option value="+20 años">+20 años</option>
-                  <option value="+25 años">+25 años</option>
-                  <option value="+30 años">+30 años</option>
-                </select>
+                />
                 {errors.experience && (
                   <span className="text-danger">
                     {errors.experience?.message}

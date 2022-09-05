@@ -91,7 +91,11 @@ const FormEditClient = (props) => {
 
     const { status, message, data } = await response.json();
 
-    console.log(data);
+    // console.log(data);
+
+    if (status === "failed") {
+      toast.error(message);
+    }
 
     if (status === "success") {
       actions.getClients();
@@ -139,10 +143,6 @@ const FormEditClient = (props) => {
                       }`}
                       placeholder="Nombre"
                       {...register("name", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^[A-zÀ-ú]+$/,
                           message: "El formato no es el correcto",
@@ -171,10 +171,6 @@ const FormEditClient = (props) => {
                       }`}
                       placeholder="Apellido"
                       {...register("lastname", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^[A-zÀ-ú]+$/,
                           message: "El formato no es el correcto",
@@ -205,10 +201,6 @@ const FormEditClient = (props) => {
                       }`}
                       placeholder="johndoe@gmail.com"
                       {...register("email", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value:
                             // RFC 5322 regex
@@ -271,10 +263,6 @@ const FormEditClient = (props) => {
                       }`}
                       placeholder="Teléfono"
                       {...register("phone", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
                         pattern: {
                           value: /^\d{8,12}$/,
                           message: "Minimo 8 caracteres, Maximo 12",
@@ -302,12 +290,7 @@ const FormEditClient = (props) => {
                         errors.is_active && "invalid-input"
                       }`}
                       aria-label="select is_active option"
-                      {...register("is_active", {
-                        required: {
-                          value: true,
-                          message: "El campo es requerido",
-                        },
-                      })}
+                      {...register("is_active", {})}
                       value={client.is_active}
                       // onChange={handleChange}
                       onChange={(e) => {

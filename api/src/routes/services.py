@@ -48,6 +48,13 @@ def edit_service(id):
     # Check if service doesn't exist
     if not service:  return jsonify({ "status": "failed", "code": 404, "message": "Service not found", "data": None }), 404
 
+     # check if all is filled
+    if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
+    if not description: return jsonify({'status': 'failed', 'message': 'Description is required', 'data': None}), 400
+    if not price: return jsonify({'status': 'failed', 'message': 'Price is required', 'data': None}), 400
+    if not time: return jsonify({'status': 'failed', 'message': 'Time is required', 'data': None}), 400
+    if not image: return jsonify({'status': 'failed', 'message': 'Service Image is required', 'data': None}), 400
+
 
     service.name = name if name is not None else service.name
     service.description = description

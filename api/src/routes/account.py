@@ -153,6 +153,12 @@ def edit_user(id):
     user.is_active = is_active
     user.role_id = role_id
 
+   # check if all inputs are filled
+    if not name: return jsonify({'status': 'failed', 'message': 'Name is required', 'data': None}), 400
+    if not lastname: return jsonify({'status': 'failed', 'message': 'Last Name is required', 'data': None}), 400
+    if not email: return jsonify({'status': 'failed', 'message': 'Email is required', 'data': None}), 400
+    if not phone: return jsonify({'status': 'failed', 'message': 'Phone is required', 'data': None}), 400
+
     # if doctor model properties passed, update them, if not, just default value of null
     user.experience = experience if experience is not None else user.experience
     user.education = education if education is not None else user.education
