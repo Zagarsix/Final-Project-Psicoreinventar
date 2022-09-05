@@ -16,6 +16,16 @@
   background-color: #fcede4;
 }
 
+.showcase-card {
+  filter: blur(0);
+  -webkit-filter: blur(0);
+  transition: all 0.2s ease-out;
+}
+.showcase-card:hover {
+  transform: scale(1.02);
+  transition: all 0.2s ease-out;
+}
+
 .pill {
   border-radius: 1rem;
   padding: 0.4em 1em;

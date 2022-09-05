@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import { useState } from "react";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Context } from "../../../store/appContext";
 import { useForm } from "react-hook-form";
 
@@ -22,9 +21,27 @@ const FormAddService = (props) => {
      to create a new service with the data of the service state*/
 
   const [service, setService] = useState({
+    name: "",
+    description: "",
     price: "30 USD", // Setting defaultValue price
     time: "45 min", // Setting defaultValue time
+    image: "",
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setService({ ...service, [name]: value });
+  };
+
+  const resetForm = () => {
+    setService({
+      name: "",
+      description: "",
+      price: "",
+      time: "",
+      image: "",
+    });
+  };
 
   // Display service state everytime it changes
   // useEffect(() => {
@@ -49,6 +66,7 @@ const FormAddService = (props) => {
     // console.log(data);
 
     if (status === "success") {
+      resetForm();
       actions.getServices();
       Swal.fire({
         icon: "success",
@@ -96,12 +114,8 @@ const FormAddService = (props) => {
                       message: "El formato no es el correcto",
                     },
                   })}
-                  onChange={(e) => {
-                    setService({
-                      ...service,
-                      name: e.target.value,
-                    });
-                  }}
+                  value={service.name}
+                  onChange={handleChange}
                 />
                 {errors.name && (
                   <span className="text-danger">{errors.name?.message}</span>
@@ -130,12 +144,8 @@ const FormAddService = (props) => {
                       message: "El formato no es el correcto",
                     },
                   })}
-                  onChange={(e) => {
-                    setService({
-                      ...service,
-                      description: e.target.value,
-                    });
-                  }}
+                  value={service.description}
+                  onChange={handleChange}
                 />
                 {errors.description && (
                   <span className="text-danger">
@@ -161,12 +171,8 @@ const FormAddService = (props) => {
                       message: "El campo es requerido",
                     },
                   })}
-                  onChange={(e) => {
-                    setService({
-                      ...service,
-                      price: e.target.value,
-                    });
-                  }}
+                  value={service.price}
+                  onChange={handleChange}
                 >
                   <option value="30 USD">30 USD</option>
                   <option value="40 USD">40 USD</option>
@@ -192,12 +198,8 @@ const FormAddService = (props) => {
                       message: "El campo es requerido",
                     },
                   })}
-                  onChange={(e) => {
-                    setService({
-                      ...service,
-                      time: e.target.value,
-                    });
-                  }}
+                  value={service.time}
+                  onChange={handleChange}
                 >
                   <option value="45 min">45 min</option>
                   <option value="1 hora">1 hora</option>
@@ -230,12 +232,8 @@ const FormAddService = (props) => {
                       message: "El formato no es el correcto",
                     },
                   })}
-                  onChange={(e) => {
-                    setService({
-                      ...service,
-                      image: e.target.value,
-                    });
-                  }}
+                  value={service.image}
+                  onChange={handleChange}
                 />
                 {errors.image && (
                   <span className="text-danger">{errors.image?.message}</span>
@@ -245,7 +243,7 @@ const FormAddService = (props) => {
             <div className="row mt-3">
               <div className="col-md-12">
                 <button type="submit" className="btn btn-primary">
-                  Submit
+                  Añadir
                 </button>
               </div>
             </div>

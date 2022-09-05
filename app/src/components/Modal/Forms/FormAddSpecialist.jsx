@@ -23,10 +23,37 @@ const FormAddSpecialist = (props) => {
      to create a new specialist with the data of the specialist state*/
 
   const [specialist, setSpecialist] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    password: "",
+    phone: "",
+    image: "",
     experience: "+5 años", // setting defaultValue experience
+    education: "",
+    specialization1: "",
+    specialization2: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSpecialist({ ...specialist, [name]: value });
+  };
+
+  const resetForm = () => {
+    setSpecialist({
+      name: "",
+      lastname: "",
+      email: "",
+      password: "",
+      phone: "",
+      image: "",
+      experience: "+5 años",
+      education: "",
+      specialization1: "",
+      specialization2: "",
+    });
+  };
 
   // clg specialist state everytime it changes
   // useEffect(() => {
@@ -55,6 +82,7 @@ const FormAddSpecialist = (props) => {
     }
 
     if (status === "success") {
+      resetForm();
       actions.getDoctors();
       Swal.fire({
         icon: "success",
@@ -64,6 +92,8 @@ const FormAddSpecialist = (props) => {
       });
     }
   };
+
+  const [showPassword, setShowPassword] = useState(false);
 
   // const onSubmit = (data) => console.log(data);
 
@@ -100,12 +130,8 @@ const FormAddSpecialist = (props) => {
                       message: "El formato no es el correcto",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      name: e.target.value,
-                    });
-                  }}
+                  value={specialist.name}
+                  onChange={handleChange}
                 />
                 {errors.name && (
                   <span className="text-danger">{errors.name?.message}</span>
@@ -134,12 +160,8 @@ const FormAddSpecialist = (props) => {
                       message: "El formato no es el correcto",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      lastname: e.target.value,
-                    });
-                  }}
+                  value={specialist.lastname}
+                  onChange={handleChange}
                 />
                 {errors.lastname && (
                   <span className="text-danger">
@@ -172,12 +194,8 @@ const FormAddSpecialist = (props) => {
                       message: "El formato no es el correcto",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      email: e.target.value,
-                    });
-                  }}
+                  value={specialist.email}
+                  onChange={handleChange}
                 />
                 {errors.email && (
                   <span className="text-danger">{errors.email?.message}</span>
@@ -211,12 +229,8 @@ const FormAddSpecialist = (props) => {
                           "La contraseña debe tener al menos 8 caracteres, incluyendo al menos: 1 mayúscula, 1 número y 1 caracter especial",
                       },
                     })}
-                    onChange={(e) => {
-                      setSpecialist({
-                        ...specialist,
-                        password: e.target.value,
-                      });
-                    }}
+                    value={specialist.password}
+                    onChange={handleChange}
                   />
                   <span
                     className="eye-icon fs-5 position-absolute top-0 end-0 me-4"
@@ -256,12 +270,8 @@ const FormAddSpecialist = (props) => {
                       message: "Minimo 8 caracteres, Maximo 12",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      phone: e.target.value,
-                    });
-                  }}
+                  value={specialist.phone}
+                  onChange={handleChange}
                 />
                 {errors.phone && (
                   <span className="text-danger">{errors.phone?.message}</span>
@@ -284,12 +294,8 @@ const FormAddSpecialist = (props) => {
                       message: "El campo es requerido",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      image: e.target.value,
-                    });
-                  }}
+                  value={specialist.image}
+                  onChange={handleChange}
                 />
                 {errors.image && (
                   <span className="text-danger">{errors.image?.message}</span>
@@ -315,12 +321,8 @@ const FormAddSpecialist = (props) => {
                       message: "El campo es requerido",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      experience: e.target.value,
-                    });
-                  }}
+                  value={specialist.experience}
+                  onChange={handleChange}
                 >
                   <option value="+5 años">+5 años</option>
                   <option value="+10 años">+10 años</option>
@@ -354,12 +356,8 @@ const FormAddSpecialist = (props) => {
                       message: "El campo es requerido",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      education: e.target.value,
-                    });
-                  }}
+                  value={specialist.education}
+                  onChange={handleChange}
                 />
                 {errors.education && (
                   <span className="text-danger">
@@ -388,12 +386,8 @@ const FormAddSpecialist = (props) => {
                       message: "El campo es requerido",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      specialization1: e.target.value,
-                    });
-                  }}
+                  value={specialist.specialization1}
+                  onChange={handleChange}
                 />
                 {errors.specialization1 && (
                   <span className="text-danger">
@@ -420,12 +414,8 @@ const FormAddSpecialist = (props) => {
                       message: "El campo es requerido",
                     },
                   })}
-                  onChange={(e) => {
-                    setSpecialist({
-                      ...specialist,
-                      specialization2: e.target.value,
-                    });
-                  }}
+                  value={specialist.specialization2}
+                  onChange={handleChange}
                 />
                 {errors.specialization2 && (
                   <span className="text-danger">
@@ -437,7 +427,7 @@ const FormAddSpecialist = (props) => {
             <div className="row mt-3">
               <div className="col-md-12">
                 <button type="submit" className="btn btn-primary">
-                  Submit
+                  Agregar
                 </button>
               </div>
             </div>

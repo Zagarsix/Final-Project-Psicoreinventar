@@ -9,7 +9,7 @@ const ServiceCardShowCase = ({ index, image, name, time, price }) => {
   return (
     <div className="col-md-6 col-lg-4">
       <div
-        className="card service-card h-100 text-center p-3"
+        className="card service-card showcase-card h-100 text-center p-3"
         id={index}
         style={{ width: "18rem" }}
       >

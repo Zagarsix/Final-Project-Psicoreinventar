@@ -33,14 +33,6 @@ function ModalAddWithForm({
         </ModalHeader>
         <ModalBody>{children}</ModalBody>
         <ModalFooter>
-          <Link
-            className={`btn btn-${addButtonColor}`}
-            style={{ backgroundColor: `${backgroundColor}`, color: `${color}` }}
-            onClick={toggle}
-            to="/appointment"
-          >
-            {addWord}
-          </Link>{" "}
           <button className="btn btn-secondary" onClick={toggle}>
             Cancelar
           </button>
