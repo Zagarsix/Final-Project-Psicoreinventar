@@ -36,18 +36,13 @@ const Pacientes = ({}) => {
               fontFamily: "monospace",
             }}
           >
-            <div
-              className="p-5 rounded-3"
-              style={{ color: "black", backgroundColor: "#bcbbf8" }}
-            >
+            <div className="p-5 rounded-3" style={{ color: "black", backgroundColor: "#bcbbf8" }}>
               <div className="container-fluid pe-0">
                 <h1 className="display-5 fw-bold">
-                  Bienvenido(a), {store.currentUser?.user?.name}{" "}
-                  {store.currentUser?.user?.lastname}
+                  Bienvenido(a), {store.currentUser?.user?.name} {store.currentUser?.user?.lastname}
                 </h1>
                 <p className="col-md-8 fs-4">
-                  Tienes {store.pacientAppointments?.length || 0} cita(s)
-                  agendada(s)
+                  Tienes {store.pacientAppointments?.length || 0} cita(s) agendada(s)
                 </p>
               </div>
             </div>
@@ -73,8 +68,8 @@ const Pacientes = ({}) => {
                   >
                     <Thead>
                       <Tr style={{ backgroundColor: "#bcbbf8" }}>
-                        <Th scope="col" className="th" style={{ width: "5%" }}>
-                          #ID
+                        <Th scope="col" className="th p-2" style={{ width: "5%" }}>
+                          ID
                         </Th>
                         <Th scope="col" className="th" style={{ width: "25%" }}>
                           Especialista
@@ -86,7 +81,7 @@ const Pacientes = ({}) => {
                           Precio
                         </Th>
                         <Th scope="col" className="th" style={{ width: "15%" }}>
-                          Estado
+                          Factura
                         </Th>
                         <Th scope="col" className="th" style={{ width: "10%" }}>
                           Cancelar cita
@@ -97,11 +92,7 @@ const Pacientes = ({}) => {
                     {!!store.pacientAppointments &&
                       store.pacientAppointments.length > 0 &&
                       store.pacientAppointments.map((appointment, i) => (
-                        <TablePacientAppointments
-                          {...appointment}
-                          key={i}
-                          index={appointment.id}
-                        />
+                        <TablePacientAppointments {...appointment} key={i} index={appointment.id} />
                       ))}
                   </Table>
                 </div>

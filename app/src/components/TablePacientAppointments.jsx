@@ -26,16 +26,13 @@ const TablePacientAppointments = ({
 
   const handleDeleteAppointment = async (e) => {
     // Fetching data from API
-    const response = await fetch(
-      `${store.apiURL}/api/delete_appoinment/${appointmentId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${store.currentUser?.access_token}`,
-        },
-      }
-    );
+    const response = await fetch(`${store.apiURL}/api/delete_appoinment/${appointmentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+    });
 
     const { status, message, data } = await response.json();
 
@@ -59,49 +56,49 @@ const TablePacientAppointments = ({
     <>
       <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
         <Tr>
-          <Th scope="row" className="th p-2">
+          <Td scope="row" className="td p-2">
             #{index}
-          </Th>
+          </Td>
           <Td className="td p-2">{doctor}</Td>
           <Td className="td p-2">
             {dateTime} {service}
           </Td>
           <Td className="td p-2">{invoice["price"]}</Td>
-          <Td className="td p-2">{status}</Td>
+          <Td className="td p-2">Invoice Component</Td>
           <Td className="td p-2">
             {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
             {/* Modal delete appointment */}
-            <div className="delete-appointment-modal">
-              <Button
-                color="light"
-                onClick={() => {
-                  toggleDelete();
-                  setAppointmentId(index);
-                }}
-                index={index}
-              >
-                <i className="fa-solid fa-trash-can"></i>
-              </Button>
-              <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
-                <ModalBody>
-                  Estas seguro de qué quieres cancelar la cita?
-                </ModalBody>
-                <ModalFooter>
-                  <Button
-                    color="danger"
-                    onClick={(e) => {
-                      toggleDelete();
-                      handleDeleteAppointment(e);
-                    }}
-                  >
-                    Confirmar
-                  </Button>
-                  <Button color="secondary" onClick={toggleDelete}>
-                    Cancelar
-                  </Button>
-                </ModalFooter>
-              </Modal>
+            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
+              <div className="delete-appointment-modal">
+                <Button
+                  color="light"
+                  onClick={() => {
+                    toggleDelete();
+                    setAppointmentId(index);
+                  }}
+                  index={index}
+                >
+                  <i className="fa-solid fa-trash-can"></i>
+                </Button>
+                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                  <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
+                  <ModalBody>Estas seguro de qué quieres cancelar la cita?</ModalBody>
+                  <ModalFooter>
+                    <Button
+                      color="danger"
+                      onClick={(e) => {
+                        toggleDelete();
+                        handleDeleteAppointment(e);
+                      }}
+                    >
+                      Confirmar
+                    </Button>
+                    <Button color="secondary" onClick={toggleDelete}>
+                      Cancelar
+                    </Button>
+                  </ModalFooter>
+                </Modal>
+              </div>
             </div>
           </Td>
         </Tr>

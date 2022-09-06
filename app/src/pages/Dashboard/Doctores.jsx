@@ -83,8 +83,8 @@ const Doctores = ({
                   >
                     <Thead>
                       <Tr style={{ background: "#8dc2fe" }}>
-                        <Th scope="col" className="th" style={{ width: "5%" }}>
-                          #
+                        <Th scope="col" className="th p-2" style={{ width: "5%" }}>
+                          ID
                         </Th>
                         <Th scope="col" className="th" style={{ width: "15%" }}>
                           Paciente
@@ -102,8 +102,10 @@ const Doctores = ({
                           Invoice
                         </Th>
                         <Th scope="col" className="th" style={{ width: "10%" }}>
-                          <i className="fa-solid fa-pen-to-square me-3"></i>{" "}
-                          <i className="fa-solid fa-trash-can"></i>
+                          <div className="d-flex justify-content-center align-items-center">
+                            <i className="fa-solid fa-pen-to-square btn-dashboard"></i>{" "}
+                            <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                          </div>
                         </Th>
                       </Tr>
                     </Thead>

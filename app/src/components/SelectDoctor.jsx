@@ -17,12 +17,12 @@ const SelectDoctor = (props) => {
   return (
     <div className="specialists-select" style={{ maxWidth: "15rem" }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Specialist</InputLabel>
+        <InputLabel id="demo-simple-select-label">Especialista</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={specialistSelected}
-          label="Specialist"
+          label="Especialista"
           onChange={handleChange}
         >
           {!!store.doctors &&

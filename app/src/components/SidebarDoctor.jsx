@@ -29,17 +29,12 @@ const SidebarDoctor = () => {
         <li className="nav-item">
           <Link to="/profile" className="nav-link align-middle px-0">
             <i className="fa-solid fa-user" style={{ color: "#8dc2fe" }} />{" "}
-            <span className="ms-1 d-none d-sm-inline text-white">
-              Mi perfil
-            </span>
+            <span className="ms-1 d-none d-sm-inline text-white">Mi perfil</span>
           </Link>
         </li>
         <li className="w-100">
           <Link to="/doctores" className="nav-link px-0">
-            <i
-              className="fa-solid fa-user-doctor"
-              style={{ color: "#8dc2fe" }}
-            ></i>{" "}
+            <i className="fa-solid fa-user-doctor" style={{ color: "#8dc2fe" }}></i>{" "}
             <span className="d-none d-sm-inline text-white">Doctor</span>{" "}
           </Link>
         </li>
@@ -54,17 +49,13 @@ const SidebarDoctor = () => {
           aria-expanded="false"
         >
           <img
-            src={
-              store.currentUser?.user?.image || "http://placekitten.com/200/300"
-            }
+            src={store.currentUser?.user?.image || "http://placekitten.com/200/300"}
             alt="hugenerd"
             width={30}
             height={30}
             className="rounded-circle"
           />
-          <span className="d-none d-sm-inline mx-1">
-            {store.currentUser?.user?.name}
-          </span>
+          <span className="d-none d-sm-inline mx-1">{store.currentUser?.user?.name}</span>
         </a>
         <ul
           className="dropdown-menu dropdown-menu-dark text-small shadow"

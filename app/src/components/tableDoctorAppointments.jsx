@@ -44,16 +44,13 @@ const TableDoctorAppointments = ({
 
   const handleDeleteAppointment = async (e) => {
     // Fetching data from API
-    const response = await fetch(
-      `${store.apiURL}/api/delete_appoinment/${appointmentId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${store.currentUser?.access_token}`,
-        },
-      }
-    );
+    const response = await fetch(`${store.apiURL}/api/delete_appoinment/${appointmentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+    });
 
     const { status, message, data } = await response.json();
 
@@ -103,15 +100,12 @@ const TableDoctorAppointments = ({
 
   useEffect(() => {
     const getAppointment = async (e) => {
-      const response = await fetch(
-        `${store.apiURL}/api/appointments/${index}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${store.apiURL}/api/appointments/${index}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const data = await response.json();
 
@@ -129,17 +123,14 @@ const TableDoctorAppointments = ({
   const handleEditAppointmentStatus = async () => {
     const fields = appointmentStatus;
 
-    const response = await fetch(
-      `${store.apiURL}/api/edit_appoinment_status/${index}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${store.currentUser?.access_token}`,
-        },
-        body: JSON.stringify(fields),
-      }
-    );
+    const response = await fetch(`${store.apiURL}/api/edit_appoinment_status/${index}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+      body: JSON.stringify(fields),
+    });
 
     const { status, message, data } = await response.json();
 
@@ -164,9 +155,9 @@ const TableDoctorAppointments = ({
     <>
       <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
         <Tr>
-          <Th scope="row" className="th p-2">
+          <Td scope="row" className="td p-2">
             #{index}
-          </Th>
+          </Td>
           <Td className="td p-2">{pacient}</Td>
           <Td className="td p-2">
             {dateTime} {service}
@@ -186,15 +177,8 @@ const TableDoctorAppointments = ({
                 >
                   <i className="fa-solid fa-pen-to-square"></i>
                 </Button>
-                <Modal
-                  isOpen={modalEditStatus}
-                  fade={false}
-                  toggle={toggleEditStatus}
-                  centered
-                >
-                  <ModalHeader toggle={toggleEditStatus}>
-                    Editar estado de la cita
-                  </ModalHeader>
+                <Modal isOpen={modalEditStatus} fade={false} toggle={toggleEditStatus} centered>
+                  <ModalHeader toggle={toggleEditStatus}>Editar estado de la cita</ModalHeader>
                   <ModalBody>
                     <form
                       id="form"
@@ -212,9 +196,7 @@ const TableDoctorAppointments = ({
                             name="status"
                             id="status"
                             // If error, then add invalid-input class
-                            className={`form-select ${
-                              errors.status && "invalid-input"
-                            }`}
+                            className={`form-select ${errors.status && "invalid-input"}`}
                             aria-label="select status option"
                             {...register("status", {
                               required: {
@@ -234,9 +216,7 @@ const TableDoctorAppointments = ({
                             <option value="Realizada">Realizada</option>
                           </select>
                           {errors.status && (
-                            <span className="text-danger">
-                              {errors.status?.message}
-                            </span>
+                            <span className="text-danger">{errors.status?.message}</span>
                           )}
                         </div>
                         <div className="row mt-3">
@@ -261,7 +241,7 @@ const TableDoctorAppointments = ({
           <Td className="td p-2">Realizado hardcoded</Td>
           <Td className="td p-2">Invoice Component</Td>
           <Td className="td p-2">
-            <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
               {/* Modal Edit Appointment  */}
               <div className="edit-appointment-modal">
                 <Link
@@ -292,9 +272,7 @@ const TableDoctorAppointments = ({
                 </Button>
                 <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
-                  <ModalBody>
-                    Estas seguro de qué quieres cancelar la cita?
-                  </ModalBody>
+                  <ModalBody>Estas seguro de qué quieres cancelar la cita?</ModalBody>
                   <ModalFooter>
                     <Button
                       color="danger"

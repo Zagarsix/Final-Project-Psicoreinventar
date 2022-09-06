@@ -23,12 +23,12 @@ const SelectPatient = (props) => {
   return (
     <div className="patient-select" style={{ maxWidth: "15rem" }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Patient</InputLabel>
+        <InputLabel id="demo-simple-select-label">Paciente</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={patientSelected}
-          label="Patient"
+          label="Paciente"
           onChange={handleChange}
         >
           {!!store.doctorClients &&

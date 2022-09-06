@@ -16,7 +16,7 @@ const Calendar = () => {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DateTimePicker
           renderInput={(props) => <TextField {...props} />}
-          label="DateTimePicker"
+          label="Fecha y Hora"
           value={dateTimeSelected}
           inputFormat="dd/MM/yyyy hh:mm"
           format="dd/MM/yyyy hh:mm"
