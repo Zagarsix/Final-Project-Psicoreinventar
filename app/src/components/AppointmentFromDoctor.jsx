@@ -20,8 +20,8 @@ const AppointmentFromDoctor = () => {
     store.service = null;
     store.patient = null;
     store.dateTime = null;
+    store.doctor = null;
     actions.getClients();
-    // store.doctor = null;
   }, []);
 
   return (

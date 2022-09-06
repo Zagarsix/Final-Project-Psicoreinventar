@@ -12,7 +12,6 @@ const BookingPatientFromDoctor = (props) => {
   const submitBooking = () => {
     /*  Find which patient in the database has the same id as the patient being selected and saved on store.patient
         Doing this because on the flux, the patients attribute is being saved starting from zero, not with patient.id*/
-
     const patientSelected = store.clients.find((client) => client.id === store?.patient);
     const patientName = `${patientSelected?.name} ${patientSelected?.lastname}`;
 
@@ -59,7 +58,6 @@ const BookingPatientFromDoctor = (props) => {
                 <div className="col-md-6">
                   <button
                     className="btn btn-secondary me-3"
-                    // reset state if user goes back to profile page
                     onClick={props.previousStep}
                     style={{ width: "5.5rem" }}
                   >

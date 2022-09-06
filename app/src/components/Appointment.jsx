@@ -20,15 +20,13 @@ const Appointment = () => {
     store.service = null;
     store.doctor = null;
     store.dateTime = null;
+    store.patient = null;
   }, []);
 
   return (
     <>
       <div className="bg-primary">
-        <div
-          className="appointment-container py-4"
-          style={{ minHeight: "505px" }}
-        >
+        <div className="appointment-container py-4" style={{ minHeight: "505px" }}>
           <StepWizard>
             <Services />
             <BookingDoctor />

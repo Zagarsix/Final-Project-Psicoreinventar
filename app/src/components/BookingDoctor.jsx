@@ -12,9 +12,7 @@ const BookingDoctor = (props) => {
   const submitBooking = () => {
     /*  Find which doctor in the database has the same id as the doctor being selected and saved on store.doctor
         Doing this because on the flux, the doctors attribute is being saved starting from zero, not with doctor.id*/
-    const doctorSelected = store.doctors.find(
-      (doctor) => doctor.id === store?.doctor
-    );
+    const doctorSelected = store.doctors.find((doctor) => doctor.id === store?.doctor);
     const doctorName = `${doctorSelected?.name} ${doctorSelected?.lastname}`;
 
     // If doctor and dateTime selected, display notification and post request
@@ -40,19 +38,14 @@ const BookingDoctor = (props) => {
                 <span className="step-num rounded-circle bg-primary text-center pt-2 fw-semibold text-light me-3">
                   2
                 </span>
-                <h5 className="fw-semibold">
-                  Selecciona un especialista y la fecha de la cita
-                </h5>
+                <h5 className="fw-semibold">Selecciona un especialista y la fecha de la cita</h5>
               </div>
             </div>
           </div>
           <div className="container">
             <div className="row">
               <div className="row align-items-center justify-content-center gy-3">
-                <div
-                  className="d-flex justify-content-center mb-5"
-                  style={{ maxWidth: "50rem" }}
-                >
+                <div className="d-flex justify-content-center mb-5" style={{ maxWidth: "50rem" }}>
                   <div className="col-4">
                     <SelectDoctor />
                   </div>
@@ -67,7 +60,6 @@ const BookingDoctor = (props) => {
                 <div className="col-md-6">
                   <button
                     className="btn btn-secondary me-3"
-                    // reset state if user goes back to profile page
                     onClick={props.previousStep}
                     style={{ width: "5.5rem" }}
                   >
