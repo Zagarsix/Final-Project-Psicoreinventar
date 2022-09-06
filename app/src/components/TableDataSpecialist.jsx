@@ -35,16 +35,13 @@ const TableDataSpecialist = ({
 
   const handleDeleteSpecialist = async (e) => {
     // Fetching data from API
-    const response = await fetch(
-      `${store.apiURL}/api/delete_user/${specialistId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${store.currentUser?.access_token}`,
-        },
-      }
-    );
+    const response = await fetch(`${store.apiURL}/api/delete_user/${specialistId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+    });
 
     const { status, message, data } = await response.json();
 
@@ -85,7 +82,7 @@ const TableDataSpecialist = ({
         </Td>
         <Td className="td p-2">
           <div className="botones">
-            <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
               {/* Modal Edit  */}
               <div className="edit-specialist-modal">
                 <Link
@@ -112,12 +109,8 @@ const TableDataSpecialist = ({
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
                 <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                  <ModalHeader toggle={toggleDelete}>
-                    Eliminar especialista
-                  </ModalHeader>
-                  <ModalBody>
-                    Estas seguro de qué quieres Eliminar al especialista?
-                  </ModalBody>
+                  <ModalHeader toggle={toggleDelete}>Eliminar especialista</ModalHeader>
+                  <ModalBody>Estas seguro de qué quieres Eliminar al especialista?</ModalBody>
                   <ModalFooter>
                     <Button
                       color="danger"

@@ -106,7 +106,7 @@ const TableDataClient = ({ name, lastname, email, phone, index }) => {
         <Td className="td p-2">Realizado</Td>
         <Td className="td p-2">
           <div className="botones">
-            <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
               {/* Modal edit */}
               <div className="edit-client-modal">
                 <Link

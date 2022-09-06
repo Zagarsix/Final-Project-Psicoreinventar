@@ -89,13 +89,7 @@ function TabSuperAdmin() {
                     Fecha
                   </Th>
                   <Th scope="col" className="th p-2">
-                    ID Paciente
-                  </Th>
-                  <Th scope="col" className="th p-2">
                     Paciente
-                  </Th>
-                  <Th scope="col" className="th p-2">
-                    ID Doctor
                   </Th>
                   <Th scope="col" className="th p-2">
                     Doctor
@@ -107,7 +101,9 @@ function TabSuperAdmin() {
                     Invoice
                   </Th>
                   <Th scope="col" className="th p-2">
-                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    <div className="d-flex justify-content-center align-items-center">
+                      <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    </div>
                   </Th>
                 </Tr>
               </Thead>
@@ -146,8 +142,10 @@ function TabSuperAdmin() {
                     Pago
                   </Th>
                   <Th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-3 btn-dashboard"></i>
-                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    <div className="d-flex justify-content-center align-items-center">
+                      <i className="fa-solid fa-pen-to-square btn-dashboard"></i>
+                      <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    </div>
                   </Th>
                 </Tr>
               </Thead>
@@ -199,8 +197,10 @@ function TabSuperAdmin() {
                     Especialización
                   </Th>
                   <Th scope="col" className="th p-2" id="botoness">
-                    <i className="fa-solid fa-pen-to-square me-3 btn-dashboard"></i>
-                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    <div className="d-flex justify-content-center align-items-center">
+                      <i className="fa-solid fa-pen-to-square btn-dashboard"></i>
+                      <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    </div>
                   </Th>
                 </Tr>
               </Thead>
@@ -248,8 +248,10 @@ function TabSuperAdmin() {
                   </Th>
 
                   <Th scope="col" className="th p-2">
-                    <i className="fa-solid fa-pen-to-square me-3 btn-dashboard"></i>
-                    <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    <div className="d-flex justify-content-center align-items-center">
+                      <i className="fa-solid fa-pen-to-square btn-dashboard"></i>
+                      <i className="fa-solid fa-trash-can btn-dashboard"></i>
+                    </div>
                   </Th>
                 </Tr>
               </Thead>

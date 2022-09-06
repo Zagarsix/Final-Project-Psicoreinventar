@@ -30,16 +30,13 @@ const TableDataAppointment = ({
 
   const handleDeleteAppoinment = async (e) => {
     // Fetching data from API
-    const response = await fetch(
-      `${store.apiURL}/api/delete_appoinment/${appointmentId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${store.currentUser?.access_token}`,
-        },
-      }
-    );
+    const response = await fetch(`${store.apiURL}/api/delete_appoinment/${appointmentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+    });
 
     const { status, message, data } = await response.json();
 
@@ -67,10 +64,12 @@ const TableDataAppointment = ({
           #{index}
         </Td>
         <Td className="td p-2">{dateTime}</Td>
-        <Td className="td p-2">{pacient_id}</Td>
-        <Td className="td p-2">{pacient}</Td>
-        <Td className="td p-2">{doctor_id}</Td>
-        <Td className="td p-2">{doctor}</Td>
+        <Td className="td p-2">
+          #{pacient_id} {""} {pacient}
+        </Td>
+        <Td className="td p-2">
+          #{doctor_id} {""} {doctor}
+        </Td>
         <Td className="td p-2">{service}</Td>
         <Td className="td p-2">
           {Object.keys(invoice).map((key, i) => {
@@ -83,7 +82,7 @@ const TableDataAppointment = ({
         </Td>
         <Td className="td p-2">
           <div className="botones">
-            <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
               <div className="delete-appointment-modal">
                 <Button
                   color="light"
@@ -97,9 +96,7 @@ const TableDataAppointment = ({
                 </Button>
                 <Modal isOpen={modal} fade={false} toggle={toggle}>
                   <ModalHeader toggle={toggle}>Cancelar cita</ModalHeader>
-                  <ModalBody>
-                    Estas seguro de qué quieres Cancelar la cita?
-                  </ModalBody>
+                  <ModalBody>Estas seguro de qué quieres Cancelar la cita?</ModalBody>
                   <ModalFooter>
                     <Button
                       color="danger"

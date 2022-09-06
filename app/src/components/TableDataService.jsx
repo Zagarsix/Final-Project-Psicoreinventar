@@ -24,16 +24,13 @@ const TableDataService = ({ index, name, description, price, time }) => {
 
   const handleDeleteService = async (e) => {
     // Fetching data from API
-    const response = await fetch(
-      `${store.apiURL}/api/delete_service/${serviceId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${store.currentUser?.access_token}`,
-        },
-      }
-    );
+    const response = await fetch(`${store.apiURL}/api/delete_service/${serviceId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.currentUser?.access_token}`,
+      },
+    });
 
     const { status, message, data } = await response.json();
 
@@ -55,11 +52,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
   };
 
   return (
-    <Tbody
-      className="table-group-divider"
-      id={index}
-      style={{ fontSize: "13px" }}
-    >
+    <Tbody className="table-group-divider" id={index} style={{ fontSize: "13px" }}>
       <Tr>
         <Td scope="row" className="td p-2">
           #{index}
@@ -70,7 +63,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
         <Td className="td p-2">{time}</Td>
         <Td className="td p-2">
           <div className="botones">
-            <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-start justify-content-md-center align-items-center">
               {/* Modal Edit  */}
               <div className="edit-service-modal">
                 <Link
@@ -99,12 +92,8 @@ const TableDataService = ({ index, name, description, price, time }) => {
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
                 <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
-                  <ModalHeader toggle={toggleDelete}>
-                    Eliminar servicio
-                  </ModalHeader>
-                  <ModalBody>
-                    Estas seguro de qué quieres Eliminar el servicio?
-                  </ModalBody>
+                  <ModalHeader toggle={toggleDelete}>Eliminar servicio</ModalHeader>
+                  <ModalBody>Estas seguro de qué quieres Eliminar el servicio?</ModalBody>
                   <ModalFooter>
                     <Button
                       color="danger"
