@@ -8,6 +8,7 @@ import { Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import Invoice from "./Invoice";
 
 const TableDoctorAppointments = ({
   index,
@@ -74,25 +75,23 @@ const TableDoctorAppointments = ({
   // !!!!!!!!!! --- EDIT APPOINTMENT STATUS --- !!!!!!!!!!
 
   const [modalEditStatus, setModalEditStatus] = useState(false);
-
   const toggleEditStatus = () => setModalEditStatus(!modalEditStatus);
+
+  // Modal to toggle invoice component
+  const [modalInvoice, setModalInvoice] = useState(false);
+  const toggleInvoice = () => setModalInvoice(!modalInvoice);
 
   // State saving all the appointment data, used to edit the status of the appointment,
   // then send to API with the appointment updated
   const [appointmentStatus, setAppointmentStatus] = useState({});
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setAppointmentStatus({ ...appointmentStatus, [name]: value });
-  // };
+  // useEffect(() => {
+  //   console.log(appointmentStatus);
+  // }, [appointmentStatus]);
 
-  useEffect(() => {
-    console.log(appointmentStatus);
-  }, [appointmentStatus]);
-
-  useEffect(() => {
-    console.log(index);
-  }, [index]);
+  // useEffect(() => {
+  //   console.log(index);
+  // }, [index]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -239,7 +238,30 @@ const TableDoctorAppointments = ({
             </div>
           </Td>
           <Td className="td p-2">Realizado hardcoded</Td>
-          <Td className="td p-2">Invoice Component</Td>
+          <Td className="td p-2">
+            <div className="invoice-modal">
+              <Button
+                color="light"
+                onClick={() => {
+                  toggleInvoice();
+                  setAppointmentId(index);
+                }}
+                index={index}
+              >
+                <a className="link-primary">Factura</a>
+              </Button>
+              <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
+                <ModalBody>
+                  <Invoice invoice={invoice} pacient={pacient} doctor={doctor} />
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="secondary" onClick={toggleInvoice}>
+                    Salir
+                  </Button>
+                </ModalFooter>
+              </Modal>
+            </div>
+          </Td>
           <Td className="td p-2">
             <div className="d-flex justify-content-start justify-content-md-center align-items-center">
               {/* Modal Edit Appointment  */}
