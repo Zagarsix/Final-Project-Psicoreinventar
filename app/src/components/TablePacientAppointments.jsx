@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import Invoice from "./Invoice";
 
 const TablePacientAppointments = ({
   index,
@@ -19,8 +20,13 @@ const TablePacientAppointments = ({
 }) => {
   const { store, actions } = useContext(Context);
 
+  // Modal delete appointment
   const [modalDelete, setModalDelete] = useState(false);
   const toggleDelete = () => setModalDelete(!modalDelete);
+
+  // Modal to toggle invoice component
+  const [modalInvoice, setModalInvoice] = useState(false);
+  const toggleInvoice = () => setModalInvoice(!modalInvoice);
 
   const [appointmentId, setAppointmentId] = useState(null);
 
@@ -64,7 +70,30 @@ const TablePacientAppointments = ({
             {dateTime} {service}
           </Td>
           <Td className="td p-2">{invoice["price"]}</Td>
-          <Td className="td p-2">Invoice Component</Td>
+          <Td className="td p-2">
+            <div className="invoice-modal">
+              <Button
+                color="light"
+                onClick={() => {
+                  toggleInvoice();
+                  setAppointmentId(index);
+                }}
+                index={index}
+              >
+                <a className="link-primary">Factura</a>
+              </Button>
+              <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
+                <ModalBody>
+                  <Invoice invoice={invoice} pacient={pacient} doctor={doctor} />
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="secondary" onClick={toggleInvoice}>
+                    Salir
+                  </Button>
+                </ModalFooter>
+              </Modal>
+            </div>
+          </Td>
           <Td className="td p-2">
             {/* reagendar cita edit appointment only if user cancelled appointment and has payed */}
             {/* Modal delete appointment */}

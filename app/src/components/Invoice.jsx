@@ -3,29 +3,26 @@ import Logo from "../img/nav-logo.png";
 import { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 
-const Invoice = ({
-  id,
-  date_of_purchase,
-  pacient,
-  doctor,
-  service_id,
-  date_appointment,
-  specialist,
-  price_service,
-  total_amount,
-  invoice,
-}) => {
+const Invoice = ({ pacient, doctor, invoice }) => {
   const { store, actions } = useContext(Context);
 
-  const client = store.clients.find((client) => client.id === invoice["pacient_id"]);
+  const client = store?.clients?.find((client) => client.id === invoice["pacient_id"]);
   const emailOfPatient = client?.email;
   const phoneOfPatient = client?.phone;
 
-  useEffect(() => {
-    console.log(client);
-    console.log(emailOfPatient);
-    console.log(phoneOfPatient);
-  }, [client]);
+  const currentPatientEmail = store?.currentUser?.user?.email;
+  const currentPatientPhone = store?.currentUser?.user?.phone;
+
+  // useEffect(() => {
+  //   console.log(client);
+  //   console.log(emailOfPatient);
+  //   console.log(phoneOfPatient);
+  // }, [client]);
+
+  // useEffect(() => {
+  //   console.log(currentPatientEmail);
+  //   console.log(currentPatientPhone);
+  // }, [store.currentUser]);
   return (
     <>
       {/* {Object.keys(invoice).map((key, i) => {
@@ -55,8 +52,10 @@ const Invoice = ({
           <div className="row mt-3">
             <div className="col-md-6">
               <p className="client-name text-primary fw-semibold">{pacient}</p>
-              <p className="client-data mb-1">{emailOfPatient}</p>
-              <p className="client-data">{phoneOfPatient}</p>
+              <p className="client-data mb-1">
+                {store.clients ? emailOfPatient : currentPatientEmail}
+              </p>
+              <p className="client-data"> {store.clients ? phoneOfPatient : currentPatientPhone}</p>
             </div>
           </div>
           {/* Payment method */}
@@ -75,15 +74,15 @@ const Invoice = ({
               <div className="col-sm-12 d-flex flex-column flex-md-row">
                 <div className="col-sm-12">
                   <div className="invoice-heading invoice-heading-bg">Servicio</div>
-                  <div className="invoice-paragraph">Terapia individual</div>
+                  <div className="invoice-paragraph">{invoice["service"]}</div>
                 </div>
                 <div className="col-sm-12 mt-2 mt-md-0">
                   <div className="invoice-heading invoice-heading-bg">Especialista</div>
-                  <div className="invoice-paragraph">Walter Riso</div>
+                  <div className="invoice-paragraph">{doctor}</div>
                 </div>
                 <div className="col-sm-12 mt-2 mt-md-0">
                   <div className="invoice-heading invoice-heading-bg">Fecha de la cita</div>
-                  <div className="invoice-paragraph">05-09-22</div>
+                  <div className="invoice-paragraph">{invoice["date_of_purchase"]}</div>
                 </div>
                 <div className="col-sm-12 mt-2 mt-md-0">
                   <div className="invoice-heading invoice-heading-bg">Precio</div>

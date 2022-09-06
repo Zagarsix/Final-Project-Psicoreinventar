@@ -82,14 +82,6 @@ const TableDataAppointment = ({
         <Td className="td p-2">{service}</Td>
         <Td className="td p-2">
           {/* modal to open Invoice component */}
-
-          {/* {Object.keys(invoice).map((key, i) => {
-            return (
-              <p key={i}>
-                {key}: {invoice[key]}
-              </p>
-            );
-          })} */}
           <div className="invoice-modal">
             <Button
               color="light"
@@ -112,6 +104,14 @@ const TableDataAppointment = ({
               </ModalFooter>
             </Modal>
           </div>
+
+          {/* {Object.keys(invoice).map((key, i) => {
+            return (
+              <p key={i}>
+                {key}: {invoice[key]}
+              </p>
+            );
+          })} */}
         </Td>
         <Td className="td p-2">
           <div className="botones">
