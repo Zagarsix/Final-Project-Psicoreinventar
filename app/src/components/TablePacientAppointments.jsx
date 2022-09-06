@@ -80,7 +80,7 @@ const TablePacientAppointments = ({
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Cancelar cita</ModalHeader>
                   <ModalBody>Estas seguro de qué quieres cancelar la cita?</ModalBody>
                   <ModalFooter>

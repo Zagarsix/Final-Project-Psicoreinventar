@@ -72,6 +72,7 @@ const TableDataAppointment = ({
         </Td>
         <Td className="td p-2">{service}</Td>
         <Td className="td p-2">
+          {/* modal to open Invoice component */}
           {Object.keys(invoice).map((key, i) => {
             return (
               <p key={i}>
@@ -94,7 +95,7 @@ const TableDataAppointment = ({
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modal} fade={false} toggle={toggle}>
+                <Modal centered isOpen={modal} fade={false} toggle={toggle}>
                   <ModalHeader toggle={toggle}>Cancelar cita</ModalHeader>
                   <ModalBody>Estas seguro de qué quieres Cancelar la cita?</ModalBody>
                   <ModalFooter>

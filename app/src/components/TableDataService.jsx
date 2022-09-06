@@ -91,7 +91,7 @@ const TableDataService = ({ index, name, description, price, time }) => {
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Eliminar servicio</ModalHeader>
                   <ModalBody>Estas seguro de qué quieres Eliminar el servicio?</ModalBody>
                   <ModalFooter>

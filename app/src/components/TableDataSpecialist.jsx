@@ -108,7 +108,7 @@ const TableDataSpecialist = ({
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Eliminar especialista</ModalHeader>
                   <ModalBody>Estas seguro de qué quieres Eliminar al especialista?</ModalBody>
                   <ModalFooter>

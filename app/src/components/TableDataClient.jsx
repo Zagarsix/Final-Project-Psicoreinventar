@@ -133,7 +133,7 @@ const TableDataClient = ({ name, lastname, email, phone, index }) => {
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </Button>
-                <Modal isOpen={modalDelete} fade={false} toggle={toggleDelete}>
+                <Modal centered isOpen={modalDelete} fade={false} toggle={toggleDelete}>
                   <ModalHeader toggle={toggleDelete}>Eliminar paciente</ModalHeader>
                   <ModalBody>Estas seguro de qué quieres Eliminar al paciente?</ModalBody>
                   <ModalFooter>
