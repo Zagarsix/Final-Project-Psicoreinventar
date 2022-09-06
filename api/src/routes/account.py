@@ -1,18 +1,9 @@
 from flask import Flask, jsonify, request, url_for, Blueprint
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import User
+from models import User, Appointment
 
 account = Blueprint('account', __name__)
-
-@account.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
-
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
-
-    return jsonify(response_body), 200
 
 # CLIENTS ROUTES
 
@@ -218,6 +209,17 @@ def get_doctors():
     users = User.query.filter_by(role_id = 2)
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
+
+# Get current user (doctor) patients (by appointments of status Realizada)
+@account.route('/doctor_patients', methods=['GET'])
+@jwt_required()
+def get_doctor_patients():
+    id = get_jwt_identity()
+    user = User.query.get(id)
+    doctor_id = user.id
+    appointments = Appointment.query.filter_by(doctor_id=doctor_id, status="Realizada").all()
+    appointments = list(map(lambda appointment: appointment.serialize(), appointments))
+    return jsonify(appointments), 200  
     
 # Get all admins
 @account.route('/admins', methods=['GET'])
@@ -225,8 +227,3 @@ def get_admins():
     users = User.query.filter_by(role_id = 1)
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
-    
-
-# @account.route('/admin/services', methods=['GET', 'POST'])
-# @account.route('/admin/services/<int:id>', methods=['GET', 'PUT', 'DELETE'])
-# def services(id):

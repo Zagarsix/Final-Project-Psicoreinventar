@@ -21,6 +21,7 @@ import FormEditSpecialist from "./components/Modal/Forms/FormEditSpecialist";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
 import Invoice from "./components/Invoice";
+import AppointmentFromDoctor from "./components/AppointmentFromDoctor";
 
 const Layout = () => {
   const FooterCheck = () => {
@@ -61,6 +62,7 @@ const Layout = () => {
         <Route path="/login" element={<Login />} />
         {/* WIZARD COMPONENTS */}
         <Route path="/appointment" element={<Appointment />} />
+        <Route path="/appointmentdoctor" element={<AppointmentFromDoctor />} />
         {/* EDIT ROUTES */}
         <Route path="/edit/service/:id" element={<FormEditService />} />
         <Route path="/edit/client/:id" element={<FormEditClient />} />

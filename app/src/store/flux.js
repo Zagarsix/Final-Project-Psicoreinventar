@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       service: null,
       dateTime: null,
       doctor: null,
+      patient: null,
       // Getting Users and Services
       services: null,
       errors: null,
@@ -32,6 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       appointments: null, // Save appointments
       doctorAppointments: null, // Save currentUser (doctor) appointments
       pacientAppointments: null, // Save currentUser (pacient) appointments
+      doctorClients: null,
       doctors: null,
       admins: null,
     },
@@ -46,6 +48,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       handleChangeDateTime: (dateSelected) => {
         setStore({ dateTime: dateSelected });
+      },
+      handleClickPatient: (id) => {
+        setStore({ patient: id });
       },
       getServices: async () => {
         const { apiURL } = getStore();
@@ -96,6 +101,27 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ doctors: data });
         } catch (error) {
           console.log("Error loading doctors from backend", error);
+        }
+      },
+      getDoctorPatients: async () => {
+        const { apiURL, currentUser } = getStore();
+
+        try {
+          // Fetch data from backend
+          const response = await fetch(`${apiURL}/api/doctor_patients`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${currentUser?.access_token}`,
+            },
+          });
+          const data = await response.json();
+
+          setStore({ doctorClients: data });
+
+          // setStore({ doctorClients: data });
+        } catch (error) {
+          console.log("Error loading doctor clients from backend", error);
         }
       },
       getClients: async () => {
@@ -425,8 +451,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       handleAppointment: async (e, navigate) => {
-        const { service, doctor, doctors, dateTime, currentUser, apiURL } =
-          getStore();
+        const { service, doctor, doctors, dateTime, currentUser, apiURL } = getStore();
 
         const fields = {
           dateTime: dateTime,
@@ -435,9 +460,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           service_id: service,
         };
 
-        const doctorSelected = doctors.find(
-          (specialist) => specialist.id === doctor
-        );
+        const doctorSelected = doctors.find((specialist) => specialist.id === doctor);
         const doctorName = `${doctorSelected?.name} ${doctorSelected?.lastname}`;
 
         // Fetching data from API
@@ -463,6 +486,59 @@ const getState = ({ getStore, getActions, setStore }) => {
           Swal.fire({
             icon: "success",
             title: `Cita agendada exitosamente con ${doctorName} el ${dateTime}`,
+            showConfirmButton: false,
+            timer: 3000,
+          });
+
+          // If user is patient, redirect to his/her dashboard
+          {
+            currentUser?.user?.role_id === 3 && navigate("/pacientes");
+          }
+
+          // NEED TO ADD NEW APPOINTMENT ROUTE FOR DOCTORS BOOKING APPOINTMENTS WITH THEIR PATIENTS
+
+          // If user is doctor, redirect to his/her dashboard
+          {
+            currentUser?.user?.role_id === 2 && navigate("/doctores");
+          }
+        }
+      },
+      handleAppointmentFromDoctor: async (e, navigate) => {
+        const { service, patient, clients, dateTime, currentUser, apiURL } = getStore();
+
+        const fields = {
+          dateTime: dateTime,
+          pacient_id: patient,
+          // doctor_id: currentUser?.user?.id,
+          service_id: service,
+        };
+
+        const patientSelected = clients.find((client) => client.id === patient);
+        const patientName = `${patientSelected?.name} ${patientSelected?.lastname}`;
+
+        // Fetching data from API
+        const response = await fetch(`${apiURL}/api/appointment_from_doctor`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${currentUser?.access_token}`,
+          },
+          body: JSON.stringify(fields),
+        });
+
+        const { status, message, data } = await response.json();
+
+        console.log(data);
+
+        // Display a certain notification based on status of the fetch data
+        if (status === "failed") {
+          toast.error(message);
+        }
+
+        if (status === "success") {
+          Swal.fire({
+            icon: "success",
+            title: `Cita agendada exitosamente con ${patientName} el ${dateTime}`,
             showConfirmButton: false,
             timer: 3000,
           });

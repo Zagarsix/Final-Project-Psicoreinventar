@@ -5,8 +5,8 @@ import Sidebar from "../../components/Sidebar";
 import SidebarDoctor from "../../components/SidebarDoctor";
 import SidebarClient from "../../components/SidebarClient";
 import { useNavigate } from "react-router-dom";
-import ModalAddAppointment from "../../components/Modal/ModalAddAppointment";
 import TableDoctorAppointments from "../../components/tableDoctorAppointments";
+import ModalAddAppointmentDoctor from "../../components/Modal/ModalAddAppointmentDoctor";
 
 const Doctores = ({
   name,
@@ -29,6 +29,7 @@ const Doctores = ({
 
   useEffect(() => {
     actions.getDoctorAppointments();
+    actions.getDoctorPatients();
   }, []);
   return (
     <div className="container-fluid">
@@ -46,20 +47,15 @@ const Doctores = ({
               fontFamily: "monospace",
             }}
           >
-            <div
-              className="p-5 rounded-3"
-              style={{ color: "black", backgroundColor: "#8dc2fe" }}
-            >
+            <div className="p-5 rounded-3" style={{ color: "black", backgroundColor: "#8dc2fe" }}>
               <div className="container-fluid pe-0">
                 <h3 className="display-5 fw-bold">
                   Bienvenido(a),
                   <br></br>
-                  Dr(a). {store.currentUser?.user?.name}{" "}
-                  {store.currentUser?.user?.lastname}
+                  Dr(a). {store.currentUser?.user?.name} {store.currentUser?.user?.lastname}
                 </h3>
                 <p className="col-sm-8 fs-5 pt-4 m-2">
-                  Tienes {store.doctorAppointments?.length || 0} cita(s)
-                  agendada(s)
+                  Tienes {store.doctorAppointments?.length || 0} cita(s) agendada(s)
                 </p>
               </div>
             </div>
@@ -68,7 +64,7 @@ const Doctores = ({
             <div className="container p-3">
               {/* agendar cita con la base de datos de usuarios */}
               <div className="appointment-button mb-4">
-                <ModalAddAppointment
+                <ModalAddAppointmentDoctor
                   addButtonColor="white"
                   backgroundColor="#8dc2fe"
                   color="white"
@@ -114,11 +110,7 @@ const Doctores = ({
                     {!!store.doctorAppointments &&
                       store.doctorAppointments.length > 0 &&
                       store.doctorAppointments.map((appointment, i) => (
-                        <TableDoctorAppointments
-                          {...appointment}
-                          key={i}
-                          index={appointment.id}
-                        />
+                        <TableDoctorAppointments {...appointment} key={i} index={appointment.id} />
                       ))}
                   </Table>
                 </div>

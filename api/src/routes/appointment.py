@@ -65,6 +65,64 @@ def add_appointment():
     if appointment: return jsonify({'status': 'success', 'message': 'Cita agendada exitosamente', 'data': data}), 200
     else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': None}), 200
 
+@appointment.route('/appointment_from_doctor', methods=['POST'])
+@jwt_required()
+def add_appointment_from_doctor_dashboard():
+    # Appointment
+    id = get_jwt_identity()
+    user = User.query.get(id)
+    doctor_id = user.id
+    dateTime = request.json.get('dateTime')
+    pacient_id = request.json.get('pacient_id')
+    service_id = request.json.get('service_id')
+    status = "Pendiente"
+
+    # check if there is already an appointment booked by the current doctor, in the same dateTime with the same patient
+    check_for_booked_appointment_by_patient = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id, pacient_id=pacient_id).first()  
+    if check_for_booked_appointment_by_patient: return jsonify({'status': 'failed', 'message': 'Ya agendaste esta cita'}), 400 
+
+    # check if there is already an appointment booked in the same dateTime with the same patient
+    check_for_booked_appointment = Appointment.query.filter_by(dateTime=dateTime, pacient_id=pacient_id).first()  
+    if check_for_booked_appointment: return jsonify({'status': 'failed', 'message': 'Cita ya agendada (no disponible)'}), 400 
+
+    # check if there is already an appointment booked by the current doctor, in the same dateTime with different patient
+    check_for_booked_appointment_by_date = Appointment.query.filter_by(dateTime=dateTime, doctor_id=doctor_id).first()
+    if check_for_booked_appointment_by_date: return jsonify({'status': 'failed', 'message': 'Ya tienes una cita agendada, a esta misma fecha y hora'}), 400 
+    
+    # if user selects initial appointment (service_id = 1)
+    # check if the patient has booked an initial appointment before (free appointment = 1 time)
+    if service_id == 1:
+        check_for_initial_appointment_booked = Appointment.query.filter_by(doctor_id=doctor_id, service_id=1, pacient_id=pacient_id).first()
+        if check_for_initial_appointment_booked: return jsonify({'status': 'failed', 'message': 'Solo puedes agendar una consulta inicial por especialista'}), 400 
+
+
+    appointment = Appointment()
+
+    appointment.dateTime = dateTime
+    appointment.doctor_id = doctor_id
+    appointment.pacient_id = pacient_id
+    appointment.service_id = service_id
+    appointment.status = status
+    # Setting default status as Pendiente ===  appointment.status = "Pendiente"
+
+
+    invoice = Invoice()
+    # should be linked to stripe but currently is just the datetime of the appointment
+    invoice.date_of_purchase = dateTime # should be date_of_purchase but what is mentioned above
+    invoice.pacient_id = pacient_id
+    invoice.service_id = service_id
+
+    #relationship of appointment with invoice
+    appointment.invoice = invoice
+    appointment.save()
+
+    data = {
+        'appointment': appointment.serialize()
+    }
+
+    # if add appointment succeded
+    if appointment: return jsonify({'status': 'success', 'message': 'Cita agendada exitosamente', 'data': data}), 200
+    else: return jsonify({'status': 'failed', 'message': 'Cita no agendada, intente nuevamente', 'data': None}), 200
 # Get appointment by date
 @appointment.route('/appointment_by_date', methods=['POST'])
 def get_appointment_by_date():
