@@ -59,7 +59,7 @@ const Services = (props) => {
                     to="/profile"
                     style={{ width: "5.5rem" }}
                   >
-                    Previous
+                    Previo
                   </Link>
                   <button
                     className="btn btn-primary"
@@ -68,7 +68,7 @@ const Services = (props) => {
                     }}
                     style={{ width: "5.5rem" }}
                   >
-                    Next
+                    Siguiente
                   </button>
                 </div>
               </div>
