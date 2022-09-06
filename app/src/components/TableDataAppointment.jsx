@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import Invoice from "./Invoice";
 
 const TableDataAppointment = ({
   index,
@@ -18,9 +19,17 @@ const TableDataAppointment = ({
 }) => {
   const { store, actions } = useContext(Context);
 
+  // Modal to toggle delete appointment
+
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
+
+  // Modal to toggle invoice component
+
+  const [modalInvoice, setModalInvoice] = useState(false);
+
+  const toggleInvoice = () => setModalInvoice(!modalInvoice);
 
   const [appointmentId, setAppointmentId] = useState(null);
 
@@ -73,13 +82,36 @@ const TableDataAppointment = ({
         <Td className="td p-2">{service}</Td>
         <Td className="td p-2">
           {/* modal to open Invoice component */}
-          {Object.keys(invoice).map((key, i) => {
+
+          {/* {Object.keys(invoice).map((key, i) => {
             return (
               <p key={i}>
                 {key}: {invoice[key]}
               </p>
             );
-          })}
+          })} */}
+          <div className="invoice-modal">
+            <Button
+              color="light"
+              onClick={() => {
+                toggleInvoice();
+                setAppointmentId(index);
+              }}
+              index={index}
+            >
+              <a className="link-primary">Factura</a>
+            </Button>
+            <Modal centered isOpen={modalInvoice} fade={false} toggle={toggleInvoice} size="lg">
+              <ModalBody>
+                <Invoice invoice={invoice} pacient={pacient} doctor={doctor} />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="secondary" onClick={toggleInvoice}>
+                  Salir
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </div>
         </Td>
         <Td className="td p-2">
           <div className="botones">

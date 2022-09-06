@@ -98,7 +98,7 @@ function TabSuperAdmin() {
                     Servicio
                   </Th>
                   <Th scope="col" className="th p-2">
-                    Invoice
+                    Factura
                   </Th>
                   <Th scope="col" className="th p-2">
                     <div className="d-flex justify-content-center align-items-center">
