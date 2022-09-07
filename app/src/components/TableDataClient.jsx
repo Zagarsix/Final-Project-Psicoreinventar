@@ -82,6 +82,9 @@ const TableDataClient = ({ name, lastname, email, phone, index }) => {
       });
     }
   };
+
+  const lastThreeAppointments = patientAppointmentHistory.slice(-3);
+
   return (
     <Tbody className="table-group-divider" style={{ fontSize: "13px" }}>
       <Tr>
@@ -95,7 +98,8 @@ const TableDataClient = ({ name, lastname, email, phone, index }) => {
         <Td className="td p-2">{phone}</Td>
         <Td className="td p-2">
           {/* Display patient appointment history (appointments dateTime with status="Realizada") */}
-          {patientAppointmentHistory.map((appointment, index, arr) => (
+          {/* Display last 3 appointments on appointment history */}
+          {lastThreeAppointments.map((appointment, index, arr) => (
             <span key={index}>
               {appointment.dateTime}
               {index !== arr.length - 1 ? ", " : ""}
